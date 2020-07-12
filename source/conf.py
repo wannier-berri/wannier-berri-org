@@ -24,7 +24,6 @@ author = 'Stepan Tsirkin'
 # The full version, including alpha/beta/rc tags
 release = wannierberri.__version__
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -114,16 +113,16 @@ html_use_opensearch = 'https://wannier-berri.org'
 html_theme = 'sphinx_rtd_theme'
 html_favicon = 'imag/logo-WB/WB-logo.ico'
 html_logo = 'imag/logo-WB/WANNIERBERRI-redblack.png'
-
+html_show_sourcelink = False
 
 bred='#D62618' 
 bgreen= '#009C46'
 html_theme_options = {
     'canonical_url': '',
 #    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
-    'logo_only': False,
+    'logo_only': True,
     'display_version': True,
-    'prev_next_buttons_location': 'top',
+    'prev_next_buttons_location': 'bottom',
     'style_external_links': True,
 #    'vcs_pageview_mode': '',
     'style_nav_header_background':  bgreen , # '#009C46', #  'white',

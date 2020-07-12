@@ -8,6 +8,8 @@ Compling
 
 to generate the html just type "make"  (you need the sphinx installed, and prbably some other extensions)
 
+`pip3 install sphinx sphinx_pyreverse sphinx_sitemap sphinx_rtd_theme`
+
 Autodoc
 -------
 Automated documentation will be generated for that wannierberri version which will be imported by the ``import wannierberri`` command. If you want to generate html for the local copy of the code, please make a symbolik link in the root of this repository via `ln -s /path/to/wannier-berri/wannierberri .`

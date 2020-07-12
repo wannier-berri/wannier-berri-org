@@ -23,13 +23,18 @@ Creating a grid
 Initializing a System
 ======================
 
-.. autoclass:: System
+.. autoclass:: wannierberri.__system.System
    :members: set_symmetry
 
-   .. automethod:: set_symmetry
+From Wannier functions
+----------------------
 
 .. autoclass:: System_w90
    :show-inheritance:
+
+
+From tight-binding model
+------------------------
 
 .. autoclass:: System_tb
    :show-inheritance:

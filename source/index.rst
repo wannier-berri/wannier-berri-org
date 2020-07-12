@@ -12,18 +12,18 @@
 
 |
 
-is a code to calculate different properties by neans of Wannier interpolation. 
-It may be considered very much improved version of ``postw90.x`` part of `Wannier90 <https://wannier.org>`_.  
+is a code to calculate different properties by means of Wannier interpolation. 
+It may be considered as a strongly improved version of ``postw90.x`` part of `Wannier90 <https://wannier.org>`_.  
 
 #############
 Advantages
 #############
 
-    *  **speed** - it may be upto **1000 or more times faster** then ``postw90.x`` : :ref:`comparison  <sec-timing>`
+    *  **speed**  - it may be upto **1000 or more times faster** then ``postw90.x`` : :ref:`comparison  <sec-timing>`
 
     *  **extensive functionality** -- see :ref:`sec-capabilities`
 
-    *  **felxibility** -- may be used with Wannier functions and TB models
+    *  **felxibility** -- may be used with Wannier functions and tight-binding models
 
     *  use of  :ref:`symmetries <sec-symmetries>`  to reduce evaluation to symmetry-irreducible **k** points.
 
@@ -76,11 +76,11 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
 
    news
    capabilities
+   timing
    exampleFe
-   install
    wannierberri
    methods
-   timing
+   install
    people
    organizations
    contribute
