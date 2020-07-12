@@ -148,7 +148,7 @@ Fig `2 <#fig:Fe-frmsf>`__
    :math:`\Omega_z`
 
 This short example demonstrates that that the calculations with
-``WBerri``\ may be run in a few lines.
+``WannierBerri``\ may be run in a few lines.
 Appendix. `[sec:capabilities] <#sec:capabilities>`__ describes all
 options available to integrate and tabulate for the moment. Fore options
 are under development or under testing. For more information on all

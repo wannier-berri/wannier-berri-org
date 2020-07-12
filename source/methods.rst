@@ -213,7 +213,7 @@ good intuition to guess a good value for this threshold, because it
 depends both on the quantity one wants to calculate, and the material
 considered.
 
-In ``WBerri``\ it is implemented in a way that does not require initial
+In ``WannierBerri``\ it is implemented in a way that does not require initial
 guess from the user. This procedure, in combination with symmetrization
 described in Sec. `[sec:symmetry] <#sec:symmetry>`__, is illustrated in
 Fig. `[fig:refinement] <#fig:refinement>`__. The results from every
@@ -266,7 +266,7 @@ The latter expression can be done via mixed Fourier transform, as
 describe in Sec. `[sec:FFT] <#sec:FFT>`__.
 
 Thus the minimal-distance replica selection method is implemented in
-``WBerri``\ via
+``WannierBerri``\ via
 Eqs. `[eq:replica1] <#eq:replica1>`__-`[eq:replica2] <#eq:replica2>`__,
 and has no extra computational cost, while giving notable accuracy
 improvement.

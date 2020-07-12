@@ -2,7 +2,7 @@
 Installation and technical remarks
 **********************************
 
-To run the ``WBerri``\ code only python3 is required, independent of the
+To run the ``WannierBerri``\ code only python3 is required, independent of the
 operating system. The easy way of installation of the latest stable
 version maybe achieved via ``pip``\ (“PyPI Repository,” n.d.):
 
@@ -18,7 +18,7 @@ Johnson 2005)), ``lazy_property``, and a few ’cosmetic’ modules
 colorful output in the terminal.
 
 One note should be mentioned about the parallel run. numpy already
-includes parallelization over threads. However, if ``WBerri``\ is
+includes parallelization over threads. However, if ``WannierBerri``\ is
 running with the number of processes equal to the number of physical
 cores, obviously extra threading may only slow down the calculation.
 Generally I recommend to switch off the threading in numpy by setting

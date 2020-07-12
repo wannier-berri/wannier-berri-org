@@ -2,7 +2,7 @@
 
 
 *************************************************************
-Speed-up compared to ``postw90.x`` 
+Speed
 *************************************************************
 
 In this section we will compare the calculation time for the
@@ -19,11 +19,11 @@ performing Fourier transform from ab initio grid :math:`{\bf q}` to
 real-space vectors :math:`{\bf R}` :
 eqs. `[eq:fourier_q_to_R_H] <#eq:fourier_q_to_R_H>`__ and
 `[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__. This operation takes in
-``WBerri``\ (postw90) between 2 (3) seconds for the small ab-initio grid
+``WannierBerri``\ (postw90) between 2 (3) seconds for the small ab-initio grid
 4x4x4 and 2 (3) minutes for a large grid of 16x16x16. This time is
 mostly taken by reading the large formatted text file ``Fe.mmn``, and it
 is done only once and does not scale with the density of the
-interpolation grid. In ``WBerri``\ this is done in the constructor of
+interpolation grid. In ``WannierBerri``\ this is done in the constructor of
 the ``System\_w90`` class, and the object can be saved on disk using a
 ``pickle`` module, so that this operation does not repeat for further
 calculations.
@@ -36,21 +36,21 @@ rather good grid to make an accurate calculation for this material.
 .. figure:: imag/figures/timing-NK.pdf.svg
    :name: fig:timing
 
-   Figure 3: Computational time for AHC using ``WBerri``\ (triangles)
+   Figure 3: Computational time for AHC using ``WannierBerri``\ (triangles)
    and ``postw90.x``\ (circles) for different ab initio grids. For
    ``postw90.x``\ the calculations are done with (yellow) and without
-   (purple) MDRS. Fpr ``WBerri``\ the calculations are done with (cyan)
+   (purple) MDRS. Fpr ``WannierBerri``\ the calculations are done with (cyan)
    and without (red) use of symmetries.
 
 We start with comparing time with the MDRS switched off
-(``use_ws_distance=False``) and without use of symmetries in ``WBerri``.
+(``use_ws_distance=False``) and without use of symmetries in ``WannierBerri``.
 As can be seen in Fig. `3 <#fig:timing>`__, for a small abinitio
-:math:`{\bf q}`-grid 4x4x4 ``WBerri``\ is just slightly faster then
+:math:`{\bf q}`-grid 4x4x4 ``WannierBerri``\ is just slightly faster then
 ``postw90.x``. However, for dense :math:`{\bf q}`-grids the
 computational time of ``postw90.x``\ grows linearly with the number of
-:math:`{\bf q}` points, while in ``WBerri``\ it stays almost the same.
+:math:`{\bf q}` points, while in ``WannierBerri``\ it stays almost the same.
 This happens because in ``postw90.x``\ the Fourier transform is major
-time-consuming routine. On the other hand, in ``WBerri``, although cost
+time-consuming routine. On the other hand, in ``WannierBerri``, although cost
 of the mixed Fourier transform is expected to grow logarithmically with
 the ab-initio grid (see sec. `[sec:FFT] <#sec:FFT>`__), we do not see it
 because Fourier transform amounts only to :math:`\sim 10`\ % of the
@@ -61,7 +61,7 @@ Next, we switch on the MDRS method (``use_ws_distance=True``) in
 other hand the computational time does not change (not shown), just by
 construction, as described in Sec. `[sec:replica] <#sec:replica>`__.
 
-Finally let’s switch on the use of symmetries in :math:`{ \tt WBerri }`.
+Finally let’s switch on the use of symmetries in :math:`{ \tt WannierBerri }`.
 Thus the computational time decreases by a factor of 8. In the
 ultra-dense grid limit one would expect the speedup to be approximately
 equal to the number of elements in the group — 16 in the present
@@ -76,14 +76,14 @@ partners to be excluded from the calculation.
    :name: fig:timing-fscan
 
    Figure 4: Computational time for scanning multiple chemical
-   potentials using ``WBerri``\ and ``postw90.x``\ for different ab
+   potentials using ``WannierBerri``\ and ``postw90.x``\ for different ab
    initio grids. MDRS method and symmetries are disabled here.
 
 Thus we can see that the difference in computational time with
-``postw90.x``\ and ``WBerri``\ reaches 3 orders of magnitude for this
+``postw90.x``\ and ``WannierBerri``\ reaches 3 orders of magnitude for this
 example. Note that The examples above were performed only for the
 pristene Fermi level. Now let’s see what happens upon scanning the
-chemical potential (Fig. `4 <#fig:timing-fscan>`__). In ``WBerri``\ the
+chemical potential (Fig. `4 <#fig:timing-fscan>`__). In ``WannierBerri``\ the
 computational time remains practically unchanged when we use upto
 :math:`N_\mu\approx1000` chemical potentials, and only start to grow
 considerably at :math:`N_\mu\sim 10^4`. On the other hand in
