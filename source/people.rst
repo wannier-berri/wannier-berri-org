@@ -65,7 +65,7 @@ Working on
 
 .. list-table:: 
    :align: left
-   :widths: 33 33
+   :widths: 33 33 33
    :header-rows: 0
 
    *  - Jae-Mo Lihm, 
@@ -79,6 +79,16 @@ Working on
        
         Republic of Korea
 
+      - Minsu Ghim,
+      
+        Seoul National University
+       
+        Republic of Korea
+
+        .. image:: imag/photo/minsu.jpg
+           :height: 200px
+           :width: 200px
+           :alt: Minsu Ghim
 
 
    *  - Julen Ibañez Azpiroz 
@@ -104,6 +114,7 @@ Working on
            :width: 200px
            :alt: Inigo Robredo
 
+      - 
 
 
 

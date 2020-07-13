@@ -126,7 +126,7 @@ following method:
 Which produce files ``Fe_berry-x.frmsf``, ``Fe_berry-y.frmsf``,
 ``Fe_berry-z.frmsf``, containing the Energies and Berry curvature of
 bands ``4,5,6,7,8,9``\  [8]_ over. The format is chosen such that the
-files can be directly passed to the ``FermiSurfer`` visualization
+files can be directly passed to the ``FermiSurfer`` |fsurf| visualization
 tool(“Fermisurfer Visualization Tool,” n.d.; Kawamura 2019) [9]_
 However, the hotspots of Berry curvature usually present tiny areas with
 huge magnitude of :math:`{\cal O}`. Hence to get a smoother picture we
@@ -155,3 +155,8 @@ are under development or under testing. For more information on all
 available parameters, please read the docstrings of the corresponding
 methods, which are accessible with the python built-in ``help()``
 function.
+
+.. |fsurf| image:: https://fermisurfer.osdn.jp/figs/fermisurfer.png
+     :target: https://fermisurfer.osdn.jp/
+     :alt: FermiSurfer
+     :height: 30px 
