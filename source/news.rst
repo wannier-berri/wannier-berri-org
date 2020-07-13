@@ -1,10 +1,14 @@
 
 ########################
-NEWS 
+NEWS  
 ########################
 
-* 2020-07-09  The web page is online!
+.. raw:: html
 
-*  The used to be a Tutorial at  Electronic Structure Workshop. Reording is available:
-   Video: https://uzh.zoom.us/rec/share/y84qFIzs8WlIY53g-UGYdfUCB6DUaaa80SUZ-fJZy-GyE37OpaVGSfwDqVj43hk
+   <a href="https://twitter.com/WannierBerri?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @WannierBerri</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+   <a class="twitter-timeline" data-width="100%"  data-theme="light" href="https://twitter.com/WannierBerri?ref_src=twsrc%5Etfw"> Tweets by WannierBerri  </a> 
+   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
 

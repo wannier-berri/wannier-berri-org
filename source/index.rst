@@ -44,14 +44,27 @@ Please cite
 
     *   Stepan S. Tsirkin. "WannierBerri: an advanced python code for interpolation and integration of Berry curvature and related quantities", to be published
 
+
+
+
 #########################################################
-`Presentation slides 
+Presentation 
 #########################################################
 
-.. image:: imag/presentation.png
+   From Tutorial at *Virtual Electronic Structure Workshop* |ESW2020|
+
+   *  `Video <https://uzh.zoom.us/rec/share/y84qFIzs8WlIY53g-UGYdfUCB6DUaaa80SUZ-fJZy-GyE37OpaVGSfwDqVj43hk>`_ 
+
+   *  `Slides <http://slides.wannier-berri.org>`_ (updated)
+
+.. |slides| image:: imag/presentation.png
    :width: 100px
    :target: http://slides.wannier-berri.org
 
+.. |ESW2020| image:: https://physics.ucmerced.edu/sites/physics.ucmerced.edu/files/page/images/virtual_es20_0.png
+   :height: 30px
+   :target: https://physics.ucmerced.edu/electronic-structure-workshop
+   :alt: Virtual Electronic Structure Workshop Merced
 
 ##############
 Contact:
@@ -60,6 +73,11 @@ Contact:
     *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_.
     *    contact author: `stepan.tsirkin@uzh.ch <mailto:stepan.tsirkin@uzh.ch>`_
     *    GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_
+    *    |twitter-button|
+    
+.. |twitter-button| raw:: html
+
+   <a href="https://twitter.com/WannierBerri?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @WannierBerri</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ################################################################################################################
 Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
@@ -74,17 +92,17 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    :maxdepth: 3
    :hidden:
 
-   news
    capabilities
    timing
    exampleFe
-   wannierberri
+   wannier-berri
    methods
    install
    people
    organizations
    contribute
    software
+   news
 
 
 

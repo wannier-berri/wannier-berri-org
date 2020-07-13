@@ -41,3 +41,6 @@ html : Makefile
 clean_fig_svg :
 	rm source/imag/*/*.pdf.svg
 
+clean_html :
+	rm html/*.html
+

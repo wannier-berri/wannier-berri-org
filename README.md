@@ -22,6 +22,12 @@ PDF images
 ----------
 html does not support `\*.pdf` figures, but all `\*.pdf` figures in `source/\*/` directories will be automatically converted  to `\*.pdf.svg`.  So in the .rst files please reference the `\*.pdf.svg` files instead of `pdf`s. Please do not add the converted figures to repository. If you add original svg figures, please do NOT name them `\*.pdf.svg` ,  otehwise they may be accidentally removed. To remove all converted figures type ``make clean_fig_svg``.
 
+Table of contents
+------------------
+
+If you modify the structure of the site (change the titles of the sections, reorder sections, and new ones), 
+then probably the table of contents is not updted on all pages. Therefor do  `make clean_html` before `make`
+
 Privacy
 -------
 This is intended to be a private repository. Please do not fork it into your public repository, and avoid any other form of publoshing.

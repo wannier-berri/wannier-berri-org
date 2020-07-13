@@ -16,7 +16,7 @@ Stepan Tsirkin, University of Zurich
 
 |
 
-Contributors
+Contributed
 ==============
 
 .. list-table:: 
@@ -60,17 +60,80 @@ Contributors
           :alt: Patrick
           :target: https://www.psi.ch/en/lsm/people/patrick-mario-lenggenhager 
 
+Working on 
+============
+
+.. list-table:: 
+   :align: left
+   :widths: 33 33
+   :header-rows: 0
+
+   *  - Jae-Mo Lihm, 
+
+        Seoul National University
+        Republic of Korea
+
+      - Ji Hoon Ryoo, 
+      
+        Seoul National University
+       
+        Republic of Korea
 
 
-Consultant
+
+   *  - Julen Ibañez Azpiroz 
+
+        Centro de Física de Materiales
+
+        San Sebastián, Spain
+
+        .. image:: https://cfm.ehu.es/view/files/julen_Iba%C3%B1ez.jpg
+           :height: 200px
+           :width: 200px
+           :alt: Julen
+           :target: https://cfm.ehu.es/team/julen-ibanez-azpiroz/
+
+      - Iñigo Robredo Magro
+
+        Donostia International Physics Center
+
+        San Sebastián, Spain
+       
+        .. image:: https://pbs.twimg.com/profile_images/1166671811062501376/YBQfHmSm_400x400.jpg
+           :height: 200px
+           :width: 200px
+           :alt: Inigo Robredo
+
+
+
+
+
+Consultants
 ==============
-Ivo Souza, IKERBASQUE foundation
+.. list-table:: 
+   :align: left
+   :widths: 33 33 
+   :header-rows: 0
 
-.. image:: imag/photo/Perfil-Ivo-Souza_mini.jpg
-    :height: 200px
-    :width: 200px
-    :alt: Ivo Souza
-    :target: https://cfm.ehu.es/ivo/
+   *  - Ivo Souza
+
+        IKERBASQUE foundation
+
+        .. image:: https://cfm.ehu.es/view/files/Perfil-Ivo-Souza_mini.jpg
+           :height: 200px
+           :width: 200px
+           :alt: Ivo Souza
+           :target: https://cfm.ehu.es/ivo/
+
+      - Cheol-Hwan Park 
+
+        Seoul National University
+
+        .. image:: imag/photo/cheol-hwan.png
+           :height: 200px
+           :width: 200px
+           :alt: Cheol Hwan Park
+           :target: https://physics.snu.ac.kr/en/research-faculty/faculty/fulltime?mode=view&profidx=16
 
 
 Active bug reporters:
@@ -79,7 +142,7 @@ Active bug reporters:
 
 .. list-table:: 
    :align: left
-   :widths: 25  25 25 25
+   :widths: 25  25 25 
    :header-rows: 0
 
 
@@ -103,11 +166,6 @@ Active bug reporters:
        
        at Urbana-Champaign, USA
 
-     - Jae-Mo Lihm, 
-     
-       Seoul National University
-       
-       Republic of Korea
 
 
 .. |rafael| image:: imag/photo/rafael_gonzalez.png

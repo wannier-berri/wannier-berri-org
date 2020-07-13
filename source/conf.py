@@ -13,6 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
+
 import wannierberri
 
 # -- Project information -----------------------------------------------------
@@ -33,10 +34,10 @@ release = wannierberri.__version__
 
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx',
-    'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon'
+    'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon',
 ]
 
-html_baseurl = 'https://my-site.com/docs/'
+html_baseurl = 'https://wannier-berri.org'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
