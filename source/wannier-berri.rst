@@ -39,6 +39,17 @@ From tight-binding model
 .. autoclass:: System_tb
    :show-inheritance:
 
+From PythTB tight-binding model class
+------------------------
+
+.. autoclass:: System_PythTB
+   :show-inheritance:
+
+From TBmodels tight-binding model
+------------------------
+
+.. autoclass:: System_TBmodels
+   :show-inheritance:
 
 Symmetries
 ======================
