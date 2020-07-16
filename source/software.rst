@@ -12,6 +12,10 @@ External software used
 
 + `pyFFTW <https://github.com/pyFFTW/pyFFTW>`_ - a pythonic wrapper around |FFTW3|, the speedy FFT library.
 
++ |tbmodels| - a Python package for evaluating tight-binding models, part of |Z2pack| code.
+
++ `PythTB <https://www.physics.rutgers.edu/pythtb/>`_  a package for manipulating tight-binding models, 
+  maintained by Sinisa Coh and David Vanderbilt.
 
 .. |fsurfer| image:: https://fermisurfer.osdn.jp/figs/fermisurfer.png
      :target: https://fermisurfer.osdn.jp/
@@ -39,5 +43,16 @@ External software used
      :target: http://www.fftw.org/
      :alt: FFTW3
      :height: 50px 
+
+.. |tbmodels| image:: http://z2pack.ethz.ch/tbmodels/doc/1.3/_images/tbmodels_logo.jpg
+     :target: http://z2pack.ethz.ch/tbmodels/doc/1.3/index.html#
+     :alt: tbmodels
+     :height: 50px 
+
+.. |Z2pack| image:: http://z2pack.ethz.ch/doc/2.1/_images/z2pack_logo.svg
+     :target: http://z2pack.ethz.ch/
+     :alt: Z2pack
+     :width: 100px 
+
 
 

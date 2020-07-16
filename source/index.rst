@@ -92,6 +92,7 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    :maxdepth: 3
    :hidden:
 
+   news
    capabilities
    timing
    exampleFe
@@ -102,13 +103,5 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    organizations
    contribute
    software
-   news
 
 
-
-########################
-.. Indices and tables
-########################
-   * :ref:`genindex`
-   * :ref:`modindex`
-   * :ref:`search`

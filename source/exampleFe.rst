@@ -10,7 +10,8 @@ over the Fermi surface. This is equivalent to example18 of Wannier90.
 We assume that we have performed the ab-initio calculations and
 constructed the MLWFs for bcc iron with magnetization along [001]
 direction (:math:`z`). For information how to do it, please refer to the
-manuals of the abinitio codes and Wannier90.
+manuals of the abinitio codes and Wannier90. Also a nicely ilustrated tutorial is published
+on the `WanierToools <https://www.wanniertools.org/tutorials/high-quality-wfs/>`_ website.
 
 After that, the calculation is performed by the following short python
 script. First, we import the needed packages
@@ -160,3 +161,19 @@ function.
      :target: https://fermisurfer.osdn.jp/
      :alt: FermiSurfer
      :height: 30px 
+
+.. [6]
+   the first is written by Wannier90, the other two by the interface of
+   the ab initio code (e.g. pw2wannier90.x)
+
+.. [7]
+   see Sec. `[sec:adaptive] <#sec:adaptive>`__
+
+.. [8]
+   counting starts from zero
+
+.. [9]
+   For description of the format please refer to (Kawamura 2019). This
+   format is an arbitrary choice, and by means of simple manipulations
+   the file may be transformed to be used by ant other visualization
+   software.
