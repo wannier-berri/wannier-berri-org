@@ -43,7 +43,7 @@ account:
 .. code:: python
 
    generators = ['Inversion','C4z','TimeReversal*C2x']
-   system.set_symmetries(generators)
+   system.set_symmetry(generators)
 
 In the ab initio calculation we have specified the magnetization along
 the :math:`z` axis, hence the symmetries that are preserved are
