@@ -34,7 +34,7 @@ Contributed
           :alt: Xiaoxiong Liu
           :target: https://www.physik.uzh.ch/en/groups/neupert/team/Xiaoxiong-Liu.html
 
-     - Miguel Angel Jimenez Herrera
+     - Miguel Ángel Jiménez Herrera
 
        University of the Basque Country
 
@@ -45,7 +45,7 @@ Contributed
           :alt: Miguel Angel Jimenez Herrera
           :target: https://cfm.ehu.es/team/miguel-angel-jimenez-herrera/
 
-     - Patrick Lannggenhager
+     - Patrick Lenggenhager
 
        Paul Scherrer Institute
        
@@ -55,14 +55,6 @@ Contributed
           :width: 200px
           :alt: Patrick
           :target: https://www.psi.ch/en/lsm/people/patrick-mario-lenggenhager 
-
-Working on 
-============
-
-.. list-table:: 
-   :align: left
-   :widths: 33 33 33
-   :header-rows: 0
 
    *  - Jae-Mo Lihm, 
 
@@ -74,16 +66,6 @@ Working on
            :width: 200px
            :alt: Jae-Mo
 
-      - Ji Hoon Ryoo, 
-      
-        Seoul National University
-       
-        Republic of Korea
-
-        .. image:: imag/photo/jihoon.png
-           :width: 200px
-           :alt: Ji Hoon
-
 
       - Minsu Ghim,
       
@@ -94,9 +76,30 @@ Working on
         .. image:: imag/photo/minsu.jpg
            :width: 200px
            :alt: Minsu Ghim
+      -
 
 
-   *  - Julen Ibañez Azpiroz 
+
+Working on 
+============
+
+.. list-table:: 
+   :align: left
+   :widths: 33 33 33
+   :header-rows: 0
+
+   *  - Ji Hoon Ryoo, 
+      
+        Seoul National University
+       
+        Republic of Korea
+
+        .. image:: imag/photo/jihoon.png
+           :width: 200px
+           :alt: Ji Hoon
+
+
+      - Julen Ibañez Azpiroz 
 
         Centro de Física de Materiales
 
@@ -117,7 +120,6 @@ Working on
            :width: 200px
            :alt: Inigo Robredo
 
-      - 
 
 
 

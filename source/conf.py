@@ -21,6 +21,7 @@ import wannierberri
 project = 'Wannier Berri'
 copyright = '2020, Stepan Tsirkin'
 author = 'Stepan Tsirkin'
+numfig = True
 
 # The full version, including alpha/beta/rc tags
 release = wannierberri.__version__
@@ -132,7 +133,7 @@ html_theme_options = {
     'sticky_navigation': True,
     'navigation_depth': 4,
     'includehidden': True,
-    'titles_only': False
+    'titles_only': False,
 }
 
 def setup(app):

@@ -36,7 +36,7 @@ rather good grid to make an accurate calculation for this material.
 .. figure:: imag/figures/timing-NK.pdf.svg
    :name: fig:timing
 
-   Figure 3: Computational time for AHC using ``WannierBerri``\ (triangles)
+   Computational time for AHC using ``WannierBerri``\ (triangles)
    and ``postw90.x``\ (circles) for different ab initio grids. For
    ``postw90.x``\ the calculations are done with (yellow) and without
    (purple) MDRS. Fpr ``WannierBerri``\ the calculations are done with (cyan)
@@ -44,7 +44,7 @@ rather good grid to make an accurate calculation for this material.
 
 We start with comparing time with the MDRS switched off
 (``use_ws_distance=False``) and without use of symmetries in ``WannierBerri``.
-As can be seen in Fig. `3 <#fig:timing>`__, for a small abinitio
+As can be seen in :numref:`fig:timing`, for a small abinitio
 :math:`{\bf q}`-grid 4x4x4 ``WannierBerri``\ is just slightly faster then
 ``postw90.x``. However, for dense :math:`{\bf q}`-grids the
 computational time of ``postw90.x``\ grows linearly with the number of
@@ -75,7 +75,7 @@ partners to be excluded from the calculation.
 .. figure:: imag/figures/timing-Efermi.pdf.svg
    :name: fig:timing-fscan
 
-   Figure 4: Computational time for scanning multiple chemical
+   Computational time for scanning multiple chemical
    potentials using ``WannierBerri``\ and ``postw90.x``\ for different ab
    initio grids. MDRS method and symmetries are disabled here.
 
@@ -83,7 +83,7 @@ Thus we can see that the difference in computational time with
 ``postw90.x``\ and ``WannierBerri``\ reaches 3 orders of magnitude for this
 example. Note that The examples above were performed only for the
 pristene Fermi level. Now let’s see what happens upon scanning the
-chemical potential (Fig. `4 <#fig:timing-fscan>`__). In ``WannierBerri``\ the
+chemical potential (:numref:`fig:timing-fscan`). In ``WannierBerri``\ the
 computational time remains practically unchanged when we use upto
 :math:`N_\mu\approx1000` chemical potentials, and only start to grow
 considerably at :math:`N_\mu\sim 10^4`. On the other hand in

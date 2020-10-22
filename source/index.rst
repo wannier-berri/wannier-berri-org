@@ -42,7 +42,7 @@ Please cite
         to Axial Gauge Fields.” *Npj Quantum Materials* 5 (1): 5.
         `DOI <https://doi.org/10.1038/s41535-019-0207-7>`_.
 
-    *   Stepan S. Tsirkin. "WannierBerri: an advanced python code for interpolation and integration of Berry curvature and related quantities", to be published
+    *   Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
 
 
 
@@ -96,7 +96,7 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    capabilities
    timing
    exampleFe
-   wannier-berri
+   documentation
    methods
    install
    people

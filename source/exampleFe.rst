@@ -63,7 +63,7 @@ the ``’length’`` parameter.
 This will guarantee the grid to be consistent with the symmetries, and
 the spacing of :math:`k`-points will be
 :math:`\Delta k\approx \frac{2\pi}{\rm length}`. In this particular case
-a grid of ??? :math:`100\times100\times100` will be generated, but that
+a grid of :math:`52\times52\times52` will be generated, but that
 is dependent on the size of the unit cell.
 
 Next, we want to integrate the Berry curvature to get the AHC. This is
@@ -101,15 +101,15 @@ cell. This is much more accurate, then the result of the ``postw90.x`` which
 is evaluated from a coarse abinitio grid.
 
 Next, it is instructive to plot the AHC after each iteration
-(Fig. `1 <#fig:Fe-ahc>`__). One can see that already after a few
+(:numref:`figFeahc`). One can see that already after a few
 iterations most of the chaotic peaks are removed, and we can get a
 reasonably sooth curve already starting from a not very dense grid.
 
+.. _figFeahc:
 .. figure:: imag/figures/Fe-ahc.pdf.svg
-   :alt: Figure 1: AHC of bcc iron after each refinement iteration
    :width: 60%
 
-   Figure 1: AHC of bcc iron after each refinement iteration
+   AHC of bcc iron after each refinement iteration
 
 Now we wish to visualize the Berry curvature to see, from which parts of
 the BZ mostly contribute for the AHC. For that purpose we employ the
@@ -139,13 +139,15 @@ apply a logarithmic scale as
    \label{eq:logscale}
 
 with :math:`x_0=1` ???. Now we can use the ``FermiSurfer`` to produce
-Fig `2 <#fig:Fe-frmsf>`__
+:numref:`figFefrmsf`
 
+
+.. _figFefrmsf:
 .. figure:: imag/figures/Fe-bcc-curv-fermisurf.png
    :name: fig:Fe-frmsf
    :width: 600px
 
-   Figure 2: Fermi surface of bcc iron, colored by the Berry curvature
+   Fermi surface of bcc iron, colored by the Berry curvature
    :math:`\Omega_z`
 
 This short example demonstrates that that the calculations with
@@ -173,7 +175,7 @@ function.
    counting starts from zero
 
 .. [9]
-   For description of the format please refer to (Kawamura 2019). This
+   For description of the format please refer to (`Kawamura 2019 <https://www.sciencedirect.com/science/article/pii/S0010465519300347?via%3Dihub>`). This
    format is an arbitrary choice, and by means of simple manipulations
    the file may be transformed to be used by ant other visualization
    software.
