@@ -52,14 +52,14 @@ computational time of ``postw90.x``\ grows linearly with the number of
 This happens because in ``postw90.x``\ the Fourier transform is major
 time-consuming routine. On the other hand, in ``WannierBerri``, although cost
 of the mixed Fourier transform is expected to grow logarithmically with
-the ab-initio grid (see sec. `[sec:FFT] <#sec:FFT>`__), we do not see it
+the ab-initio grid (see :ref:`sec-FFT`), we do not see it
 because Fourier transform amounts only to :math:`\sim 10`\ % of the
 computational time.
 
 Next, we switch on the MDRS method (``use_ws_distance=True``) in
 ``postw90.x``, and the computational time grows by a factor of 5. On the
 other hand the computational time does not change (not shown), just by
-construction, as described in Sec. `[sec:replica] <#sec:replica>`__.
+construction, as described in :ref:`sec-replica`.
 
 Finally let’s switch on the use of symmetries in :math:`{ \tt WannierBerri }`.
 Thus the computational time decreases by a factor of 8. In the

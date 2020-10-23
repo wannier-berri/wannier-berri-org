@@ -25,13 +25,13 @@ Advantages
 
     *  **felxibility** -- may be used with Wannier functions and tight-binding models
 
-    *  use of  :ref:`symmetries <sec-symmetries>`  to reduce evaluation to symmetry-irreducible **k** points.
+    *  use of  :ref:`symmetries <sec-symmetry>`  to reduce evaluation to symmetry-irreducible **k** points.
 
     *  :ref:`fast Fourier transform  <sec-FFT>`  
 
-    *  Recursive adaptive :ref:`refinement   <sec-refine>` for enhanced accuracy.
+    *  Recursive adaptive :ref:`refinement   <sec-adaptive>` for enhanced accuracy.
 
-    *  :ref:`Fermi scan <sec-fermiscan>`  and :ref:`minimal distance replica selection  <sec-replica>` have no cost
+    *  :ref:`Fermi scan <sec-fermisea>`  and :ref:`minimal distance replica selection  <sec-replica>` have no cost
 
 #############
 Please cite
@@ -103,5 +103,6 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    organizations
    contribute
    software
+   literature
 
 
