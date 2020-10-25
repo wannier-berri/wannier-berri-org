@@ -37,42 +37,23 @@ Advantages
 Please cite
 #############
 
+    *   Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
+
     *   Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. “Magnetism and
         Anomalous Transport in the Weyl Semimetal Pralge: Possible Route
         to Axial Gauge Fields.” *Npj Quantum Materials* 5 (1): 5.
         `DOI <https://doi.org/10.1038/s41535-019-0207-7>`_.
 
-    *   Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
-
-
-
-
-#########################################################
-Presentation 
-#########################################################
-
-   From Tutorial at *Virtual Electronic Structure Workshop* |ESW2020|
-
-   *  `Video <https://uzh.zoom.us/rec/share/y84qFIzs8WlIY53g-UGYdfUCB6DUaaa80SUZ-fJZy-GyE37OpaVGSfwDqVj43hk>`_ 
-
-   *  `Slides <http://slides.wannier-berri.org>`_ (updated)
-
-.. |slides| image:: imag/presentation.png
-   :width: 100px
-   :target: http://slides.wannier-berri.org
-
-.. |ESW2020| image:: https://physics.ucmerced.edu/sites/physics.ucmerced.edu/files/page/images/virtual_es20_0.png
-   :height: 30px
-   :target: https://physics.ucmerced.edu/electronic-structure-workshop
-   :alt: Virtual Electronic Structure Workshop Merced
 
 ##############
 Contact:
 ##############
 
-    *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_.
-    *    contact author: `stepan.tsirkin@uzh.ch <mailto:stepan.tsirkin@uzh.ch>`_
-    *    GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_
+    *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ . 
+         It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc ). 
+         Also consider searching through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
+    *    contact author: `stepan.tsirkin@uzh.ch <mailto:stepan.tsirkin@uzh.ch>`_ (for private communication, if a public message is not appropriate )
+    *    GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_ 
     *    |twitter-button|
     
 .. |twitter-button| raw:: html

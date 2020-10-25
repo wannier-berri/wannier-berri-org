@@ -23,7 +23,10 @@ as Brillouin zone integrals (by means of the |integrate| function):
    :math:`\sigma_{\alpha\beta}(\epsilon)^{\rm AHE}` evaluated over a
    dense grid of Fermi levels :math:`\epsilon`
 
-   .. math:: \alpha_{\alpha\beta}^{\rm ANE}=-\frac{1}{e}\int d\varepsilon \frac{\partial f}{\partial\varepsilon}\sigma_{\alpha\beta}(\varepsilon)\frac{\varepsilon-\mu}{T}, \label{eq:ANE}
+   .. math:: 
+       :label: eq-ANE
+
+       \alpha_{\alpha\beta}^{\rm ANE}=-\frac{1}{e}\int d\varepsilon \frac{\partial f}{\partial\varepsilon}\sigma_{\alpha\beta}(\varepsilon)\frac{\varepsilon-\mu}{T}, \label{eq:ANE}
 
    where
    :math:`f(\varepsilon)=1/\left(1+e^\frac{\varepsilon-\mu}{k_{\rm B}T}\right)`;

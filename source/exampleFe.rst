@@ -212,7 +212,7 @@ An example call might look as follows (with appropriate initialization):
    the ab initio code (e.g. pw2wannier90.x)
 
 .. [7]
-   see Sec. `[sec:adaptive] <#sec:adaptive>`__
+   see Sec. :ref:`sec-refine`
 
 .. [8]
    counting starts from zero

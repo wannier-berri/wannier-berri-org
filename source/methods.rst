@@ -6,7 +6,7 @@ Methods implemented in WannierBerri and allowing the performance boost are best 
 
 Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
 
-Below is given a section from that paper. Sorry for bad formatting. 
+Below is given a section from that paper. 
 
 .. _sec-wanfun:
 
@@ -14,8 +14,8 @@ General equations for Wannier interpolation
 -------------------------------------------------------
 
 The goal of this section is to introduce notation necessary for further
-discussion. For more details please refer to review (Marzari et al.
-2012) and original articles cited therein. The problem of Wannier
+discussion. For more details please refer to review (`Marzari et al. 2012 <https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.84.1419>`_) 
+and original articles cited therein. The problem of Wannier
 interpolation is stated in the following way. First we evaluate the
 energies :math:`E_{n{\bf q}}` and wavefunctions
 :math:`\psi_{n{\bf q}}({\bf r})\equiv e^{i{\bf q}\cdot{\bf r}}u_{n{\bf q}}({\bf r})`
@@ -40,7 +40,10 @@ Wannier90 code. They are constrained by
 and are chosen in such a way that the WFs are localized, which yields
 that the Bloch wavefunctions in the Wannier gauge
 
-.. math:: \vert\psi_{n{\bf k}}^{\rm W}\rangle \equiv e^{i{\bf k}\cdot{\bf r}}\vert u_{n{\bf k}}^{\rm W}\rangle\equiv  \sum_{{\bf R}}e^{i{\bf k}\cdot{\bf R}}\vert{\bf R}n\rangle  \label{eq:psiW}
+.. math::
+   :label: eq-psiW
+
+   \vert\psi_{n{\bf k}}^{\rm W}\rangle \equiv e^{i{\bf k}\cdot{\bf r}}\vert u_{n{\bf k}}^{\rm W}\rangle\equiv  \sum_{{\bf R}}e^{i{\bf k}\cdot{\bf R}}\vert{\bf R}n\rangle  \label{eq:psiW}
 
 vary slowly with the :math:`{\bf k}` vector, unlike the true
 wavefunctions. Now let us see how WFs may be used to interpolate the
@@ -48,6 +51,7 @@ band energies. First, one evaluates the matrix elements of the
 Hamiltonian
 
 .. math::
+   :label: eq-fourier_q_to_R_H
 
    \begin{gathered}
        H_{mn}({\bf R})\equiv\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} \langle\psi_{m{\bf q}}^{\rm W}\vert\hat{H}\vert\psi_{n{\bf q}}^{\rm W}\rangle=\\
@@ -57,7 +61,10 @@ Hamiltonian
 Next, to obtain energies at an arbitrary point :math:`{\bf k}` one needs
 to construct the Wannier Hamiltonian
 
-.. math:: H_{mn}^{\rm W}({\bf k})=\sum_{\bf R}H_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}}, \label{eq:Hwann}
+.. math::
+   :label: eq-Hwann
+
+   H_{mn}^{\rm W}({\bf k})=\sum_{\bf R}H_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}}, \label{eq:Hwann}
 
 which further may be diagonalized as
 
@@ -65,35 +72,48 @@ which further may be diagonalized as
 
 where :math:`U_{nl'}({\bf k})` are unitary matrices with columns
 corresponding to the eigenvectors of the Hamiltonian
-`[eq:Hwann] <#eq:Hwann>`__. In a similar way, for any operator
+:eq:`eq-Hwann`. In a similar way, for any operator
 :math:`\hat{X}`, for which the matrix elements are evaluated on the *ab
 initio* grid, one may obtain the real-space matrix elements
 
-.. math:: X_{mn}({\bf R})\equiv\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} X_{mn}^{\text{W}}({\bf q}), \label{eq:fourier_q_to_R}
+.. math::
+   :label: eq-fourier_q_to_R
+
+   X_{mn}({\bf R})\equiv\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} X_{mn}^{\text{W}}({\bf q}), \label{eq:fourier_q_to_R}
 
 where in a simple case (e.g. :math:`\hat{X}=\boldsymbol{\sigma}`)
 
-.. math:: X_{mn}^{\text{W}}({\bf q})= \sum_{ll'}V_{lm}^*({\bf q}) \langle\psi_{m{\bf q}}\vert\hat{X}\vert\psi_{n{\bf q}}\rangle V_{l'n}({\bf q}), \label{eq:H_to_W}
+.. math::
+   :label: eq-H_to_W
+
+   X_{mn}^{\text{W}}({\bf q})= \sum_{ll'}V_{lm}^*({\bf q}) \langle\psi_{m{\bf q}}\vert\hat{X}\vert\psi_{n{\bf q}}\rangle V_{l'n}({\bf q}), \label{eq:H_to_W}
 
 or if :math:`\hat{X}` involves momentum-space derivatives, (e.g. the
 position operator
 :math:`\hat{r}_\alpha\equiv i\partial/\partial k\alpha`) may also
 involve matrix elements between neighbouring :math:`{\bf q}` points (see
-(Wang et al. 2006; Lopez et al. 2012) for details). Then the matrix
+`Wang et al. 2006 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118>`_, 
+`Lopez et al. 2012 <https://doi.org/10.1103/PhysRevB.85.014435.>`_ for details). Then the matrix
 elements may be interpolated to any :math:`{\bf k}` point in the Wannier
 gauge by
 
-.. math:: X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}X_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}} , \label{eq:fourier_R_to_k}
+.. math::
+   :label: eq-fourier_R_to_k
+
+   X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}X_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}} , \label{eq:fourier_R_to_k}
 
 and further rotated to the Hamiltonian gauge
 
-.. math:: \overline{X}_{mn}^{\rm H}({\bf k})=\left( U^\dagger\cdot X^{\rm W}\cdot U \right)_{mn} . \label{eq:rotate_gauge}
+.. math::
+   :label: eq-rotate_gauge
 
-Note that equations `[eq:fourier_q_to_R_H] <#eq:fourier_q_to_R_H>`__,
-`[eq:Hwann] <#eq:Hwann>`__ are particular cases of
-`[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__ and
-`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__. Equation
-`[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__ can be performed by means
+   \overline{X}_{mn}^{\rm H}({\bf k})=\left( U^\dagger\cdot X^{\rm W}\cdot U \right)_{mn} . \label{eq:rotate_gauge}
+
+Note that equations :eq:`eq-fourier_q_to_R_H`,
+:eq:`eq-Hwann` are particular cases of
+:eq:`eq-fourier_q_to_R` and
+:eq:`eq-fourier_R_to_k`. Equation
+:eq:`eq-fourier_q_to_R` can be performed by means
 of FFT, and its result is periodic in :math:`{\bf R}` with a supercell
 formed by vectors :math:`\mathbf{A}_i=\mathbf{a}_iN_{\bf q}^i`, where
 :math:`\mathbf{a}_i` (:math:`i=1,2,3`) are the primitive unit cell
@@ -106,9 +126,10 @@ vector. Further, the MDRS method (see :ref:`sec-replica`) may also slightly modi
 of :math:`{\bf R}` vectors.
 
 As an example, the total Berry curvature of the occupied manifold is
-interpolated (Wang et al. 2006) via
+interpolated (`Wang et al. 2006 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118>`_) via
 
 .. math::
+   :label: eq-Berry-wanint
 
    \begin{gathered}
    \Omega_\gamma ({\bf k}) =   {\rm Re\,}\sum_n^{\text{occ}}\overline{\Omega}^{\rm H}_{nn,\gamma}
@@ -117,8 +138,8 @@ interpolated (Wang et al. 2006) via
    \label{eq:Berry-wanint}\end{gathered}
 
 where the ingredients of the equation are obtained using
-eqs. `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__,
-`[eq:rotate_gauge] <#eq:rotate_gauge>`__ starting from
+eqs. :eq:`eq-fourier_R_to_k`,
+:eq:`eq-rotate_gauge` starting from
 :math:`D_{nl,\alpha}\equiv\frac{\overline{H}_{nl,\alpha}^{\rm H}}{E_l-E_n}`,
 :math:`H_\alpha^{\rm W}\equiv\partial_\alpha H^{\rm W}`,
 :math:`A_{mn,\alpha}({\bf R})\equiv\langle\mathbf{0}m\vert\hat{r}_\alpha\vert{\bf R}n\rangle`,
@@ -127,15 +148,16 @@ eqs. `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__,
 Hall conductivity is evaluated as an integral
 
 .. math::
+   :label: eq-AHC
 
    \sigma_{\alpha\beta}^{\rm AHE}=-\frac{e^2}{\hbar}\epsilon_{\alpha\beta\gamma}\int \frac{d{\bf k}}{(2\pi)^3}\Omega_\gamma({\bf k}).
        \label{eq:AHC}
 
 Note, that while the direct Fourier transform
-(`[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__) is performed only once
+(:eq:`eq-fourier_q_to_R`) is performed only once
 for the calculation, and is not repeated for the multiple
 :math:`{\bf k}` points upon interpolation, the inverse Fourier transform
-(`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__) is repeated for every
+(:eq:`eq-fourier_R_to_k`) is repeated for every
 interpolation :math:`{\bf k}` point. And in fact it presents the most
 time-consuming part of the calculation involving Wannier interpolation
 as implemented in the Wannier90 code.
@@ -157,7 +179,7 @@ Mixed Fourier transform
    (g) AHC of bcc Fe, evaluated from a grid of :math:`52\times 52\times 52` :math:`\mathbf{k}` points and 20 recursive adaptive refinement iterations.
 
 In this section we will see how the evaluation of
-(`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__) may be accelerated. It is
+(:eq:`eq-fourier_R_to_k`) may be accelerated. It is
 easy to see that the computation time of a straightforward discrete
 Fourier transform scales with the number of :math:`{\bf R}` vectors and
 :math:`{\bf k}` points as :math:`t\propto N_{\bf R}N_{\bf k}`, and we
@@ -179,19 +201,23 @@ in parallel. However there is a way to combine the advantages of both
 the FFT and the usual discrete Fourier transform, leading to the concept
 of *mixed Fourier transform*.
 
-We want to evaluate (`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__) for a
+We want to evaluate (:eq:`eq-fourier_R_to_k`) for a
 set of :math:`{\bf k}` points.
 
-.. math:: {\bf k}_{n_1,n_2,n_3}=\frac{n_1}{N_{\bf k}^1}{\bf b}_1 +\frac{n_2}{N_{\bf k}^2}{\bf b}_2 +\frac{n_3}{N_{\bf k}^3}{\bf b}_3 ,   \label{eq:kgrid}
+.. math::
+   :label: eq-kgrid
+
+   {\bf k}_{n_1,n_2,n_3}=\frac{n_1}{N_{\bf k}^1}{\bf b}_1 +\frac{n_2}{N_{\bf k}^2}{\bf b}_2 +\frac{n_3}{N_{\bf k}^3}{\bf b}_3 ,   \label{eq:kgrid}
 
 where :math:`0\le n_i< N_{\bf k}^i` – integers (:math:`i=1,2,3`),
 :math:`N_{\bf k}^i` – size of interpolation grid, :math:`{\bf b}_i` —
 reciprocal lattice vectors. Now suppose we can factorize
 :math:`N_{\bf k}^i=N_{\rm FFT}^i N_{\bf K}^i`\  [2]_ . Then the set of
-points (`[eq:kgrid] <#eq:kgrid>`__) is equivalent to a set of points
+points (:eq:`eq-kgrid`) is equivalent to a set of points
 :math:`{\bf k}={\bf K}+\boldsymbol{\kappa}`, where
 
 .. math::
+   :label: eq-Kgrid
 
    \begin{aligned}
    {\bf K}_{l_1,l_2,l_3}&=&\frac{l_1}{N_{\bf k}^1}{\bf b}_1 +\frac{l_2}{N_{\bf k}^2}{\bf b}_2 +\frac{l_3}{N_{\bf k}^3}{\bf b}_3,  \label{eq:Kgrid}  \\
@@ -205,15 +231,21 @@ This separation is illustrated in
 4\ :math:`\times`\ 4 FFT grid (dots of a certain color). Now for each
 :math:`{\bf K}`-point we can define
 
-.. math:: X_{mn}({\bf K},{\bf R})\equiv X_{mn}({\bf R})e^{i{\bf K}\cdot{\bf R}} \label{eq:XKR}
+.. math::
+   :label: eq-XKR
 
-and then `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__ reads as
+   X_{mn}({\bf K},{\bf R})\equiv X_{mn}({\bf R})e^{i{\bf K}\cdot{\bf R}} \label{eq:XKR}
 
-.. math:: X_{mn}^{\rm W}({\bf k}={\bf K}+\boldsymbol{\kappa}) = \sum_{\bf R}X_{mn}({\bf K},{\bf R})e^{i\boldsymbol{\kappa}\cdot{\bf R}} \label{eq:XKk}
+and then :eq:`eq-fourier_R_to_k` reads as
+
+.. math::
+   :label: eq-XKk
+
+   X_{mn}^{\rm W}({\bf k}={\bf K}+\boldsymbol{\kappa}) = \sum_{\bf R}X_{mn}({\bf K},{\bf R})e^{i\boldsymbol{\kappa}\cdot{\bf R}} \label{eq:XKk}
 
 The principle idea of mixed Fourier transform consists in performing the
-Fourier transform `[eq:XKk] <#eq:XKk>`__ as FFT, while
-`[eq:XKR] <#eq:XKR>`__ is performed directly. To perform the FFT we put
+Fourier transform :eq:`eq-XKk` as FFT, while
+:eq:`eq-XKR` is performed directly. To perform the FFT we put
 all the :math:`{\bf R}` vectors on a grid
 :math:`N_{\rm FFT}^1\times N_{\rm FFT}^2\times N_{\rm FFT}^3`, and a
 vector :math:`{\bf R}=\sum_{i=1}^3 n_i\mathbf{a}_i` is placed on a slot
@@ -225,15 +257,15 @@ are not placed on the same slot in the grid.
 
 The advantages of this approach are the following. First, the
 computational time scales as :math:`t_1\propto N_{\bf K}N_{\bf R}` for
-`[eq:XKR] <#eq:XKR>`__ and
+:eq:`eq-XKR` and
 :math:`t_2\propto N_{\bf K}N_{\rm FFT}\log N_{\rm FFT}` for
-`[eq:XKk] <#eq:XKk>`__. Because it is required that
+:eq:`eq-XKk`. Because it is required that
 :math:`N_{\rm FFT}\ge N_{\bf R}` (to fit all :math:`{\bf R}`-vectors in
 the FFT box), we have
 :math:`t_1 \le t_2 \propto N_{\bf k}\log N_{\rm FFT}` (in practice it
 occurs that :math:`t_1 \ll t_2`), which scales better then both the Fast
 and ’slow’ Fourier transforms. Next, we can perform
-Eqs. `[eq:XKR] <#eq:XKR>`__ and `[eq:XKk] <#eq:XKk>`__ independently for
+Eqs. :eq:`eq-XKR` and :eq:`eq-XKk` independently for
 different :math:`{\bf K}`-points. This saves us memory, and also offers
 a simple parallelization scheme. Also we can further restrict evaluation
 only to symmetry irreducible :math:`{\bf K}`-points
@@ -263,18 +295,22 @@ points) we obtain the result as a rank-:math:`m` tensor
 vector :math:`\Omega_\gamma` or the conductivity tensor
 :math:`\sigma_{xy}`. Then the BZ integral is expressed as a sum
 
-.. math:: {\cal X}=\sum_{\bf K}^{\rm all}  X({\bf K})w_{\bf K}\label{eq:sumK}
+.. math::
+   :label: eq-sumK
+
+   {\cal X}=\sum_{\bf K}^{\rm all}  X({\bf K})w_{\bf K}\label{eq:sumK}
 
 and we initially set :math:`\{{\bf K}\}` as a regular grid
-`[eq:Kgrid] <#eq:Kgrid>`__ and :math:`w_{\bf K}=1/N_{\bf K}`. Suppose
+:eq:`eq-Kgrid` and :math:`w_{\bf K}=1/N_{\bf K}`. Suppose
 :math:`G` is the magnetic point group of the system. [3]_ We define the
 set of symmetry-irreducible :math:`{\bf K}` points :math:`\rm irr` as a
 a set of points that :math:`\forall {\bf K},{\bf K}'\in{\rm irr}`,
 :math:`\forall g\in G` holds :math:`g{\bf K}\neq{\bf K}'`, unless
 :math:`g=E` (identity). Then we can rewrite the sum
-`[eq:sumK] <#eq:sumK>`__ as
+:eq:`eq-sumK` as
 
 .. math::
+   :label: eq-sumK-split
 
    {\cal X}=\sum_{\bf K}^{\rm all}  g_{\bf K}X(g_{\bf K}^{-1}{\bf K})w_{\bf K}
          \label{eq:sumK-split}
@@ -287,15 +323,21 @@ points need to be evaluated. Next, to make sure that the result respects
 the symmetries, despite possible numerical inaccuracies, we symmetrize
 the result as:
 
-.. math:: {\cal\widetilde X} = \frac{1}{|G|}\sum_f^{G} f {\cal X}.   \label{eq:symmetrize}
+.. math::
+   :label: eq-symmetrize
+
+   {\cal\widetilde X} = \frac{1}{|G|}\sum_f^{G} f {\cal X}.   \label{eq:symmetrize}
 
 Note, that :math:`{\cal\widetilde X}={\cal X}` if the model respects the
 symmetry precisely (e.g. when symmetry-adapted WFs (Sakuma 2013) are
-used). Combining `[eq:sumK-split] <#eq:sumK-split>`__ and
-`[eq:symmetrize] <#eq:symmetrize>`__ and using
+used). Combining :eq:`eq-sumK-split` and
+:eq:`eq-symmetrize` and using
 :math:`\sum_f^{G} f\cdot g_{\bf K}= \sum_f^{G} f` we get
 
-.. math:: {\cal\widetilde X}= \frac{1}{|G|}\sum_f^{G} f \left[\sum_{\bf K}^{\rm irr}  X({\bf K}) \left( \sum_{{\bf K}'}^{G\cdot{\bf K}} w_{{\bf K}'} \right) \right] , \label{eq:symmetrize-final}
+.. math::
+   :label: eq-symmetrize-final
+
+   {\cal\widetilde X}= \frac{1}{|G|}\sum_f^{G} f \left[\sum_{\bf K}^{\rm irr}  X({\bf K}) \left( \sum_{{\bf K}'}^{G\cdot{\bf K}} w_{{\bf K}'} \right) \right] , \label{eq:symmetrize-final}
 
 where :math:`G\cdot{\bf K}` denotes the orbit of :math:`{\bf K}` under
 action of group :math:`G`. The latter equation reflects the
@@ -335,8 +377,9 @@ curvature or orbital moments, one performs integration over
 the major contribution to the integral. Such areas often appear in the
 vicinity of Weyl points, nodal lines, as well as avoided crossings. To
 accelerate convergence with respect to the number of :math:`{\bf k}`
-points, we utilize adaptive mesh refinement similar to Refs. (Yao et al.
-2004; Wang et al. 2006). The authors of (Yao et al. 2004; Wang et al.
+points, we utilize adaptive mesh refinement similar to Refs. (
+`Yao et al. 2004 <https://doi.org/10.1103/PhysRevLett.92.037204.>`_; 
+`Wang et al. 2006 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118>`_). The authors of (Yao et al. 2004; Wang et al.
 2006) assumed a pre-defined threshold, and the :math:`{\bf k}`-points
 yielding Berry curvature above the threshold were refined. This is
 inconvenient because one needs a good intuition to guess an optimal
@@ -390,42 +433,51 @@ iteration, yielding a smooth curve (See :ref:`sec-example` for details).
 Minimal-distance replica selection method
 -------------------------------------------
 
-The MDRS method (Pizzi et al. 2020) allows to obtain a more accurate
+The MDRS method (`Pizzi et al. 2020 <https://doi.org/10.1088/1361-648x/ab51ff.>`_) allows to obtain a more accurate
 Wannier interpolation, in particular when moderate :math:`{\bf q}`-grids
 are used in the *ab initio* calculations. With MDRS method the Fourier
-transform `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__ is modified in
+transform :eq:`eq-fourier_R_to_k` is modified in
 the following way:
 
-.. math:: X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}\frac{1}{{\cal N}_{mn{\bf R}}} X_{mn}({\bf R})\sum_{j=1}^{{\cal N}_{mn{\bf R}}} e^{i{\bf k}\cdot\left({\bf R}+\mathbf{T}_{mn{\bf R}}^{(j)}\right)} ,\label{eq:replica}
+.. math::
+   :label: eq-replica
+
+   X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}\frac{1}{{\cal N}_{mn{\bf R}}} X_{mn}({\bf R})\sum_{j=1}^{{\cal N}_{mn{\bf R}}} e^{i{\bf k}\cdot\left({\bf R}+\mathbf{T}_{mn{\bf R}}^{(j)}\right)} ,\label{eq:replica}
 
 where :math:`\mathbf{T}_{mn{\bf R}}^{(j)}` are
 :math:`{\cal N}_{mn{\bf R}}` lattice vectors that minimise the distance
 :math:`|{\bf r}_m-({\bf r}_n+{\bf R}+{\bf T})|` for a given set
 :math:`m,n,{\bf R}`. However, the evaluation of
-`[eq:replica] <#eq:replica>`__ is quite slower than
-`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__, because every
+:eq:`eq-replica` is quite slower than
+:eq:`eq-fourier_R_to_k`, because every
 :math:`{\bf k},m,n,{\bf R}` an extra loop over :math:`j` is needed.
 Therefore calculations employing MDRS in ``postw90.x`` (which is enabled
 by default) takes more time. Instead it is convenient to re-define the
 modified real-space matrix elements as
 
-.. math:: \widetilde{X}_{mn}({\bf R}) = \sum_{{\bf R}'} \frac{1}{{\cal N}_{mn{\bf R}'}} X_{mn}({\bf R}') \sum_{j=1}^{{\cal N}_{mn{\bf R}'}}   \delta_{{\bf R},{\bf R}'+\mathbf{T}_{mn{\bf R}'}^{(j)}}\label{eq:replica1}
+.. math::
+   :label: eq-replica1
+
+   \widetilde{X}_{mn}({\bf R}) = \sum_{{\bf R}'} \frac{1}{{\cal N}_{mn{\bf R}'}} X_{mn}({\bf R}') \sum_{j=1}^{{\cal N}_{mn{\bf R}'}}   \delta_{{\bf R},{\bf R}'+\mathbf{T}_{mn{\bf R}'}^{(j)}}\label{eq:replica1}
 
 only once for the calculation, and then the transformation to
 :math:`{\bf k}`-space is performed via
 
-.. math:: X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}e^{i{\bf k}{\bf R}} \widetilde{X}_{mn}({\bf R}). \label{eq:replica2}
+.. math::
+   :label: eq-replica2
+
+   X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}e^{i{\bf k}{\bf R}} \widetilde{X}_{mn}({\bf R}). \label{eq:replica2}
 
 Note, that the set of :math:`{\bf R}` vectors in
-`[eq:replica1] <#eq:replica1>`__ is increased compared to the initial
-set of vectors in `[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__ in order
+:eq:`eq-replica1` is increased compared to the initial
+set of vectors in :eq:`eq-fourier_q_to_R` in order
 to fit all nonzero elements :math:`\widetilde{X}_{mn}({\bf R})` Equation
-`[eq:replica2] <#eq:replica2>`__ having essentially same form as
-`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__, can be evaluated via mixed
+:eq:`eq-replica2` having essentially same form as
+:eq:`eq-fourier_R_to_k`, can be evaluated via mixed
 Fourier transform, as described in :ref:`sec-FFT`.
 
 Thus the MDRS method implemented in ``WB`` via
-Eqs. `[eq:replica1] <#eq:replica1>`__-`[eq:replica2] <#eq:replica2>`__,
+Eqs. :eq:`eq-replica1`-:eq:`eq-replica2`,
 and has practically no extra computational cost, while giving notable
 accuracy improvement.
 
@@ -442,24 +494,25 @@ accuracy of the calculation, e.g. sharp spikes may indicate that the
 result is not converged. On the other hand :math:`\epsilon`-dependence
 gives access to the question of the influence of doping and temperature,
 and also allows calculation of anomalous Nernst effect
-`[eq:ANE] <#eq:ANE>`__. As implemented in ``postw90.x``, evaluation of
+:eq:`eq-ANE`. As implemented in ``postw90.x``, evaluation of
 multiple Fermi levels has a large computational cost. However there is a
 way to perform the computation of AHC for multiple Fermi levels without
 extra computational costs. To show this let’s rewrite
-`[eq:Berry-wanint] <#eq:Berry-wanint>`__, `[eq:AHC] <#eq:AHC>`__ as
+:eq:`eq-Berry-wanint`, :eq:`eq-AHC` as
 :math:`\sigma_{\alpha\beta}(\epsilon)=-\epsilon_{\alpha\beta\gamma}\frac{e^2}{\hbar}\Omega_\gamma(\epsilon)`,
 where
 :math:`\Omega_\gamma(\epsilon)=\sum_{\bf K}w_{\bf K}\Omega_\gamma({\bf K},\epsilon)`
 and
 
 .. math::
+   :label: eq-Osum-o-uo
 
    \Omega ({\bf K},\epsilon) = \sum_{\boldsymbol{\kappa}}\left( \sum_n^{O({\bf k},\epsilon)} P_n({\bf k}) + \sum_l^{U({\bf k},\epsilon)}\sum_n^{O({\bf k},\epsilon)} Q_{ln}({\bf k}) \right),
    \label{eq:Osum-o-uo}
 
 where :math:`{\bf k}={\bf K}+\boldsymbol{\kappa}`, the definitions of
 :math:`P_n` and :math:`Q_{ln}` straightly follow from
-`[eq:Berry-wanint] <#eq:Berry-wanint>`__, and we omit the cartesian
+:eq:`eq-Berry-wanint`, and we omit the cartesian
 index :math:`\gamma` further in this subsection. Now suppose we want to
 evaluate :math:`\Omega(\epsilon_i)` for a series of Fermi levels
 :math:`\epsilon_i`. For different :math:`{\bf k}`-points and Fermi
@@ -473,6 +526,7 @@ Let’s denote the set of such :math:`\boldsymbol{\kappa}`-points as
 :math:`\delta \kappa_i` then, the change of the total Berry curvature is
 
 .. math::
+   :label: eq-deltamu
 
    \begin{gathered}
    \delta{\Omega}_i \equiv  \Omega(\epsilon_{i+1})-{\Omega}(\epsilon_i)=\\=
@@ -488,8 +542,8 @@ where
 Note that if the step :math:`\epsilon_{i+1}-\epsilon_i` is small, then
 :math:`\delta \kappa_i` and :math:`\delta O_i({\bf k})` include only few
 elements, if not empty. Hence the evaluation of
-`[eq:deltamu] <#eq:deltamu>`__ will be very fast. Thus, the full
-summation `[eq:Osum-o-uo] <#eq:Osum-o-uo>`__ is needed only for the
+:eq:`eq-deltamu` will be very fast. Thus, the full
+summation :eq:`eq-Osum-o-uo` is needed only for the
 first Fermi level.
 
 In a similar way this approach may be applied to orbital magnetization
@@ -497,6 +551,7 @@ and other Fermi-sea properties. E.g. the orbital magnetization may be
 written as
 
 .. math::
+   :label: eq-Morb-wanint
 
    \begin{aligned}
    M_\gamma ({\bf k}) &=& \sum_n^{\text{occ}}{\rm Re\,}\left[\overline{C}^{\rm H}_{nn,\gamma} + E_n\overline{\Omega}^{\rm H}_{nn,\gamma}  \right] - \nonumber \\
@@ -508,12 +563,12 @@ where
 :math:`C_{mn,\gamma}({\bf R})\equiv\epsilon_{\alpha\beta\gamma}\langle\mathbf{0}m\vert r_\alpha\cdot\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`,
 :math:`B_{mn,\beta}({\bf R})\equiv\langle\mathbf{0}m\vert\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`
 and the other ingredients were explained under
-`[eq:Berry-wanint] <#eq:Berry-wanint>`__.
-Equation `[eq:Morb-wanint] <#eq:Morb-wanint>`__ is written following the
+:eq:`eq-Berry-wanint`.
+Equation :eq:`eq-Morb-wanint` is written following the
 approach of Ref. , but the result has a different form, which can be
 straightforwardly processed by analogy with
-`[eq:Osum-o-uo] <#eq:Osum-o-uo>`__ and `[eq:deltamu] <#eq:deltamu>`__,
-where the first line of `[eq:Morb-wanint] <#eq:Morb-wanint>`__ expresses
+:eq:`eq-Osum-o-uo` and :eq:`eq-deltamu`,
+where the first line of :eq:`eq-Morb-wanint` expresses
 :math:`P_n({\bf k})` while the second and third lines correspond to
 :math:`Q_{ln}({\bf k})`.
 
@@ -526,6 +581,7 @@ where the first line of `[eq:Morb-wanint] <#eq:Morb-wanint>`__ expresses
 .. [3]
    Because :math:`X({\bf K})` is invariant under translations, here we
    are interested in the point group, rather then space group.
+
 
 
 
