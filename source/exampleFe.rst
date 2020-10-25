@@ -1,7 +1,10 @@
 .. _sec-example:
 
-Example: AHC of bcc Fe
+Examples: 
 ====================================
+
+AHC of bcc Fe
+---------------
 
 First let’s consider a simple example - we will calculate a anomalous
 Hall conductivity of bcc iron, and also visualize the Berry curvature
@@ -111,6 +114,10 @@ reasonably sooth curve already starting from a not very dense grid.
 
    AHC of bcc iron after each refinement iteration
 
+
+Tabulating Berry curvature
+---------------------------
+
 Now we wish to visualize the Berry curvature to see, from which parts of
 the BZ mostly contribute for the AHC. For that purpose we employ the
 following method:
@@ -142,14 +149,6 @@ with :math:`x_0=1` ???. Now we can use the ``FermiSurfer`` to produce
 :numref:`figFefrmsf`
 
 
-.. _figFefrmsf:
-.. figure:: imag/figures/Fe-bcc-curv-fermisurf.png
-   :name: fig:Fe-frmsf
-   :width: 600px
-
-   Fermi surface of bcc iron, colored by the Berry curvature
-   :math:`\Omega_z`
-
 This short example demonstrates that that the calculations with
 ``WannierBerri``\ may be run in a few lines.
 Appendix. `[sec:capabilities] <#sec:capabilities>`__ describes all
@@ -158,6 +157,50 @@ are under development or under testing. For more information on all
 available parameters, please read the docstrings of the corresponding
 methods, which are accessible with the python built-in ``help()``
 function.
+
+
+
+
+.. _sec-optconf-example:
+
+Optical conductivity
+--------------------
+
+
+
+The Kubo formula :eq:`optcondform` for the (interband) optical conductivity may be evaluated by adding 'opt_conductivity' 
+to the list of quantities to integrate, for more details see the example below.
+
+The implementation is based on the one in postw90. Thus, with identical input and equivalent parameters, 
+it reproduces the results from postw90. Note, however, that when using the full power of wannier-berri (symmetries, adaptive refinement etc.) 
+small deviations are to be expected. Please refer to :ref:`sec-benchmark`.
+
+In contrast to the other quantities currently implemented, this is an optical quantity and therefore requires a list of frequencies rather than a list of Fermi energies; the relevant argument name for wberri.integrate() is omega and its values are expected to be in eV. Additionally, there are several options (following the usual syntax of wannier-berri) that can be specified:
+
+ - **'mu'** : chemical potential in units of eV
+ - **'kBT'** : temperature in units of eV/kB (can also be 0)
+ - **'smr_fixed_width'** : fixed smearing parameter in units of eV
+ - **'smr_type'** : analytical form of the broadened delta function (must be one of 'Lorentzian' or 'Gaussian')
+
+Here smearing refers to the approximation of the delta function in the Kubo formula.
+
+An example call might look as follows (with appropriate initialization):
+
+.. code:: python
+
+   wberri.integrate(system,
+           grid = grid,
+           omega = np.linspace(0., 7., 701),
+           smearEf = 10,
+           quantities = [ 'opt_conductivity' ],
+           numproc = num_proc,
+           adpt_num_iter = 10,
+           fout_name = 'Fe',
+           restart = False,
+           parameters = { 'mu': 12.6283, 'smr_fixed_width': 0.01, 'smr_type':'Gaussian' }
+   )
+
+
 
 .. |fsurf| image:: https://fermisurfer.osdn.jp/figs/fermisurfer.png
      :target: https://fermisurfer.osdn.jp/

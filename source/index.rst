@@ -29,7 +29,7 @@ Advantages
 
     *  :ref:`fast Fourier transform  <sec-FFT>`  
 
-    *  Recursive adaptive :ref:`refinement   <sec-adaptive>` for enhanced accuracy.
+    *  Recursive adaptive :ref:`refinement   <sec-refine>` for enhanced accuracy.
 
     *  :ref:`Fermi scan <sec-fermisea>`  and :ref:`minimal distance replica selection  <sec-replica>` have no cost
 
@@ -99,6 +99,7 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    documentation
    methods
    install
+   benchmark
    people
    organizations
    contribute

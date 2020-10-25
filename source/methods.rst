@@ -8,7 +8,7 @@ Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature an
 
 Below is given a section from that paper. Sorry for bad formatting. 
 
-.. sec-wanfun:
+.. _sec-wanfun:
 
 General equations for Wannier interpolation
 -------------------------------------------------------
@@ -102,8 +102,7 @@ belonging to the corresponding Wigner-Seitz (WS) supercell. If an
 :math:`{\bf R}` vector belongs to the WS supercell boundary, we include
 all equivalent vectors on the boundary with the corresponding elements
 :math:`X({\bf R})` divided by the degeneracy of the :math:`{\bf R}`
-vector. Further, the MDRS method (see
-Sec. `[sec:replica] <#sec:replica>`__) may also slightly modify the set
+vector. Further, the MDRS method (see :ref:`sec-replica`) may also slightly modify the set
 of :math:`{\bf R}` vectors.
 
 As an example, the total Berry curvature of the occupied manifold is
@@ -122,7 +121,7 @@ eqs. `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__,
 `[eq:rotate_gauge] <#eq:rotate_gauge>`__ starting from
 :math:`D_{nl,\alpha}\equiv\frac{\overline{H}_{nl,\alpha}^{\rm H}}{E_l-E_n}`,
 :math:`H_\alpha^{\rm W}\equiv\partial_\alpha H^{\rm W}`,
-:math:`A_{mn,\alpha}({\bf R})\equiv\langle\bm{0}m\vert\hat{r}_\alpha\vert{\bf R}n\rangle`,
+:math:`A_{mn,\alpha}({\bf R})\equiv\langle\mathbf{0}m\vert\hat{r}_\alpha\vert{\bf R}n\rangle`,
 :math:`\overline{\Omega}_\gamma^{\rm W} \equiv\epsilon_{\alpha\beta\gamma}\partial_\alpha A^{\rm W}_\beta`,
 :math:`\partial_\alpha\equiv \partial/\partial{k_\alpha}`. The anomalous
 Hall conductivity is evaluated as an integral
@@ -147,7 +146,15 @@ as implemented in the Wannier90 code.
 Mixed Fourier transform 
 --------------------------------
 
-|image|
+.. _figrefinement:
+.. figure:: imag/figures/refinement.pdf.svg
+   :width: 100%
+
+   (a-f) Illustration of the procedure of mixed Fourier transform, adaptive refinement and use of symmetries. 
+   2D picture is used for visualization purposes, while the code actually works in 3D.  
+   The area of colored circles corresponds to the weight of the :math:`\mathbf{K}`-point, 
+   gray crosses denote the points with zero weight. See the text for detailed description. 
+   (g) AHC of bcc Fe, evaluated from a grid of :math:`52\times 52\times 52` :math:`\mathbf{k}` points and 20 recursive adaptive refinement iterations.
 
 In this section we will see how the evaluation of
 (`[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__) may be accelerated. It is
@@ -193,7 +200,7 @@ points (`[eq:kgrid] <#eq:kgrid>`__) is equivalent to a set of points
 where :math:`0\le l_i< N_{\bf K}^i`,
 :math:`N_{\bf K}=\prod_i N_{\bf K}^i`, :math:`0\le m_i< N_{\rm FFT}^i`.
 This separation is illustrated in
-Fig `[fig:refinement] <#fig:refinement>`__\ (a), which shows a
+:numref:`figrefinement` (a), which shows a
 2\ :math:`\times`\ 2 :math:`{\bf K}`-grid, each corresponding to
 4\ :math:`\times`\ 4 FFT grid (dots of a certain color). Now for each
 :math:`{\bf K}`-point we can define
@@ -230,15 +237,15 @@ Eqs. `[eq:XKR] <#eq:XKR>`__ and `[eq:XKk] <#eq:XKk>`__ independently for
 different :math:`{\bf K}`-points. This saves us memory, and also offers
 a simple parallelization scheme. Also we can further restrict evaluation
 only to symmetry irreducible :math:`{\bf K}`-points
-(Sec. `[sec:symmetry] <#sec:symmetry>`__) and also perform adaptive
+(:ref:`sec-symmetry`) and also perform adaptive
 refinement over :math:`{\bf K}`-points
-(Sec. `[sec:adaptive] <#sec:adaptive>`__).
+(:ref:`sec-refine`).
 
 Moreover, the evaluation time of a mixed Fourier transform only
 logarithmically depends on the size of the *ab initio* grid (recall that
 :math:`N_{\rm FFT}\sim N_{\bf R}\sim N_{\bf q}`), while for the slow
 Fourier transform, the dependence is linear. However, in practice we
-will see (sec. `[sec:time] <#sec:time>`__) that the Fourier transform in
+will see  (:ref:`sec-timing`) that the Fourier transform in
 the present implementation consumes only a small portion of
 computational time, and therefore the overall computational time is
 practically independent of the size of the *ab initio* grid.
@@ -296,7 +303,7 @@ implementation in the ``WB`` code. Starting from a regular grid of
 :math:`{\bf K}` points we search for pairs of symmetry-equivalent
 points. Whenever such a pair is found, one of the points is excluded and
 it’s weight is transferred to the other point. Compare
-Figs. `[fig:refinement] <#fig:refinement>`__\ (a) and (b): the red
+:numref:`figrefinement` (a) and (b): the red
 points are removed and their weight is moved to green points. Thus we
 end with a set of irreducible :math:`{\bf K}`-point with weights
 :math:`\widetilde{w}_{\bf K}=\sum_{{\bf K}'}^{G\cdot{\bf K}} w_{{\bf K}'}`.
@@ -304,7 +311,7 @@ Next we evaluate :math:`X({\bf K})` (employing the corresponding
 interpolation scheme) only at symmetry-irreducible
 :math:`{\bf K}`-points. Note, that although some :math:`{\bf k}`-points
 corresponding to the same :math:`{\bf K}`-point (same color in
-Fig. `[fig:refinement] <#fig:refinement>`__) are equivalent, we have to
+:numref:`figrefinement` are equivalent, we have to
 evaluate them all to be able to use the FFT. Finally, after summation,
 we symmetrize the result. The described procedure achieves two goals:
 (i) reduce the computational costs and (ii) make the result precisely
@@ -316,7 +323,7 @@ accuracy :math:`\sim 10^{-5}`). However, for complex materials such
 quality of WFs is not always easy to achieve.
 
 
-.. _sec-adaptive:
+.. _sec-refine:
 
 Recursive adaptive refinement  
 -------------------------------
@@ -339,10 +346,10 @@ wants to calculate, and the material considered.
 In ``WB`` it is implemented in a way that does not require initial guess
 from the user. This procedure, in combination with symmetrization
 described above, is illustrated in
-Fig. `[fig:refinement] <#fig:refinement>`__ in two dimensions (2D),
+:numref:`figrefinement` in two dimensions (2D),
 while the actual work in 3D is described below. After excluding
 symmetry-equivalent :math:`{\bf K}`-points
-(Fig. `[fig:refinement] <#fig:refinement>`__\ b) the results are
+(:numref:`figrefinement` (b)) the results are
 evaluated for every :math:`{\bf K}` point and stored. We assume that
 initially each :math:`{\bf K}` point has weight
 :math:`\widetilde{w}_{\bf K}` and corresponds to a volume defined by
@@ -358,7 +365,7 @@ replaced with 8 points around it with coordinates
 .. math:: {\bf K}'={\bf K}\pm\frac{\mathbf{c}_{\bf K}^1}{4}\pm\frac{\mathbf{c}_{\bf K}^2}{4}\pm\frac{\mathbf{c}_{\bf K}^3}{4},
 
 where all combinationgs of :math:`\pm` signs are used. In
-Fig. `[fig:refinement] <#fig:refinement>`__\ c 4 new blue
+:numref:`figrefinement` (c) 4 new blue
 :math:`{\bf K}`-points in the 2D case. The weight and volume of the
 initial point is distributed over the new points, thus
 :math:`w_{{\bf K}'}=\widetilde{w}_{\bf K}/8` and
@@ -372,10 +379,9 @@ refinement. On each iteration any point may be refined, including both
 those from the initial regular grid, and those created during previous
 refinement iterations. The procedure stops after the pre-defined number
 of iterations was performed.
-Figure `[fig:refinement] <#fig:refinement>`__\ (g) shows how undesired
+:numref:`figrefinement` (g) shows how undesired
 artificial peaks of the the AHC curve are removed iteration by
-iteration, yielding a smooth curve (See
-sec. `[sec:example] <#sec:example>`__ for details).
+iteration, yielding a smooth curve (See :ref:`sec-example` for details).
 
 
 
@@ -416,7 +422,7 @@ set of vectors in `[eq:fourier_q_to_R] <#eq:fourier_q_to_R>`__ in order
 to fit all nonzero elements :math:`\widetilde{X}_{mn}({\bf R})` Equation
 `[eq:replica2] <#eq:replica2>`__ having essentially same form as
 `[eq:fourier_R_to_k] <#eq:fourier_R_to_k>`__, can be evaluated via mixed
-Fourier transform, as described in Sec. `[sec:FFT] <#sec:FFT>`__.
+Fourier transform, as described in :ref:`sec-FFT`.
 
 Thus the MDRS method implemented in ``WB`` via
 Eqs. `[eq:replica1] <#eq:replica1>`__-`[eq:replica2] <#eq:replica2>`__,
@@ -499,8 +505,8 @@ written as
    \label{eq:Morb-wanint}\end{aligned}
 
 where
-:math:`C_{mn,\gamma}({\bf R})\equiv\epsilon_{\alpha\beta\gamma}\langle\bm{0}m\vert r_\alpha\cdot\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`,
-:math:`B_{mn,\beta}({\bf R})\equiv\langle\bm{0}m\vert\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`
+:math:`C_{mn,\gamma}({\bf R})\equiv\epsilon_{\alpha\beta\gamma}\langle\mathbf{0}m\vert r_\alpha\cdot\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`,
+:math:`B_{mn,\beta}({\bf R})\equiv\langle\mathbf{0}m\vert\hat{H}\cdot(r_\beta-R_\beta)\vert{\bf R}n\rangle`
 and the other ingredients were explained under
 `[eq:Berry-wanint] <#eq:Berry-wanint>`__.
 Equation `[eq:Morb-wanint] <#eq:Morb-wanint>`__ is written following the
@@ -523,7 +529,8 @@ where the first line of `[eq:Morb-wanint] <#eq:Morb-wanint>`__ expresses
 
 
 
-.. |image| image:: imag/figures/refinement.pdf
+
+
 
 
 

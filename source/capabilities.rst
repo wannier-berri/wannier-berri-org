@@ -69,9 +69,13 @@ as Brillouin zone integrals (by means of the |integrate| function):
       =\tau\int[d{\bf k}]\sum_n^{\rm occ} \partial_\alpha E_{n{\bf k}}\partial_\beta E_{n{\bf k}} \delta(E_{n{\bf k}}-\mu) 
             ; \label{eq:ohmic}
 
--  'opt_conductivity': Kubo-greenwood formula for optical conductivity
+
+-  'opt_conductivity': Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
   
-   .. math:: \sigma_{\alpha\beta}(\hbar\omega)=\frac{ie^2\hbar}{N_k\Omega_c}
+   .. math:: 
+      :label: optcondform
+
+      \sigma_{\alpha\beta}(\hbar\omega)=\frac{ie^2\hbar}{N_k\Omega_c}
       \sum_{\bf k}\sum_{n,m}
       \frac{f_{m{\bf k}}-f_{n{\bf k}}}
       {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}}
