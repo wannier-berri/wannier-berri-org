@@ -26,11 +26,13 @@ Initializing a System
 ======================
 
 The first step in the ``wannierberri`` calculation is initialising the System.  This is done by means of child classes :class:`~wannierberri.__system.System` described below. 
-They all have an important common method :func:`~wannierberri.__system.System.set_symmetry`. 
+They all have an important common method :func:`~wannierberri.System.set_symmetry`. 
 The system may come either from :ref:`Wanier functions <sec-wan-fun>`  constructed by `Wannier90 <http://wannier90.org>`_, or from ref:`tight binding <sec-tb-models>` models. 
 
-.. autoclass:: wannierberri.__system.System
-   :members: set_symmetry
+.. autoclass:: wannierberri.System
+   :members: set_parameters , set_symmetry
+   :undoc-members:
+   :show-inheritance:
 
 .. _sec-wan-fun:
 

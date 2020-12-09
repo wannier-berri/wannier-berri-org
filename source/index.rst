@@ -39,10 +39,9 @@ Please cite
 
     *   Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
 
-    *   Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. “Magnetism and
-        Anomalous Transport in the Weyl Semimetal Pralge: Possible Route
-        to Axial Gauge Fields.” *Npj Quantum Materials* 5 (1): 5.
-        `DOI <https://doi.org/10.1038/s41535-019-0207-7>`_.
+    *   Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. `“Magnetism and
+        Anomalous Transport in the Weyl Semimetal PrAlGe: Possible Route
+        to Axial Gauge Fields.”` `Npj Quantum Materials 5 (1): 5. <https://doi.org/10.1038/s41535-019-0207-7>`_.
 
 
 ##############
