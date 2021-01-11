@@ -6,6 +6,8 @@ Documentation
    :no-members:
    :noindex:
 
+.. autofunction:: print_options
+
 Integrating
 ===============
 
@@ -15,6 +17,12 @@ Tabulating
 ===============
 
 .. autofunction:: tabulate
+
+.. autoclass:: TABresult
+   :members: fermiSurfer, get_data
+   :undoc-members:
+   :show-inheritance:
+
 
 Creating a grid
 ===============
@@ -192,6 +200,17 @@ interpolation of spin.
    :members:
    :no-undoc-members:
    :show-inheritance:
+
+
+Plotting lines and planes (tab_plot)
+=====================================
+
+
+.. automodule:: wannierberri.tab_plot
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
 
 
 .. include:: shortcuts.rst

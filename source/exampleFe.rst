@@ -126,7 +126,7 @@ following method:
 
    wberri.tabulate(system, grid,
                 quantities=["berry"],
-                fout_name="Fe",
+                frmsf_name="Fe",
                 numproc=16,
                 ibands=np.arange(4,10),
                 Ef0=12.6)
@@ -147,6 +147,68 @@ apply a logarithmic scale as
 
 with :math:`x_0=1` ???. Now we can use the ``FermiSurfer`` to produce
 :numref:`figFefrmsf`
+
+
+
+It is often more convinient to get :class:`~wannierberri.TABresult` object, and saving the large formatted files only when needed, e.g.
+
+.. code:: python
+
+    tab_result = wberri.tabulate(system,
+                                 grid,
+                                 quantities=["berry"],
+                                 numproc=num_pric)
+
+
+Ths object can be pickled (saved to disk):
+
+.. code:: python
+
+    pickle.dump(tab_result,open("Te_berry.pickle","wb"))  #Then the result is saved in the file "Te_berry.pickle" now.
+
+and then loaded in another script:
+
+.. code:: python
+
+    tab_result=pickle.load(open("Te_berry.pickle","rb"))
+
+and then get the FermiSurfer files only for specific components and bands, e.g.:
+
+.. code:: python
+
+    open("Te-berry-x.frmsf","w").write(tab_result.fermiSurfer(quantity='berry',component='x',efermi=Ef0,npar=num_proc,iband=np.arange(14,18))) #iband - counts from zero
+    open("Te-E.frmsf","w").write(tab_result.fermiSurfer(efermi=Ef0,npar=num_proc))
+
+One can also extract the data as arrays like this:
+
+.. code:: python
+
+    Energy_CB=tab_result.get_data(iband=18,quantity='E')
+    berry=tab_result.get_data(iband=18,quantity='berry',component='z')
+
+to further process in any other way. 
+
+
+Plotting lines and planes (tab_plot)
+-------------------------------------
+
+
+Once we have the :class:`~wannierberri.TABresult` object, we can plot the band structure with a quantity on a path or a plane of k-points
+
+Path: ::
+
+    python3 -m wannierberri.tab_plot tab_result.pickle type=Line quantity=True kpath=0,0,0,0,0,60 namelist=G,Z qtype=berry component=z
+
+plane: ::
+
+    python3 -m wannierberri.tab_plot tab_result.pickle type=Plane quantity=True Efermi=-0.5 vec1=1,0,0 vec2=0,1,0 qtype=berry component=z
+
+For more comments on the parameters please check :: 
+
+    python3 -m wannierberri.tab_plot -h
+
+
+
 
 
 This short example demonstrates that that the calculations with
