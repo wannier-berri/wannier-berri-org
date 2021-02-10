@@ -157,7 +157,7 @@ It is often more convinient to get :class:`~wannierberri.TABresult` object, and 
     tab_result = wberri.tabulate(system,
                                  grid,
                                  quantities=["berry"],
-                                 numproc=num_pric)
+                                 numproc=num_proc)
 
 
 Ths object can be pickled (saved to disk):
@@ -189,8 +189,8 @@ One can also extract the data as arrays like this:
 to further process in any other way. 
 
 
-Plotting lines and planes (tab_plot)
--------------------------------------
+Plotting lines and planes from the 3D grid(tab_plot)
+-----------------------------------------------------
 
 
 Once we have the :class:`~wannierberri.TABresult` object, we can plot the band structure with a quantity on a path or a plane of k-points
@@ -208,20 +208,54 @@ For more comments on the parameters please check ::
     python3 -m wannierberri.tab_plot -h
 
 
+Plotting along lines 
+---------------------
 
+Since version 0.8.2 it is also possible to tabulate  bands and other properties (e.g. spin or berry curvature) 
+along any arbitrary pathes in the BZ. 
+This feature is not well tested yet, so please try it and report any problems you meet.
+An example for valence band of tellurium along the K-H-K line is given below. 
 
+.. code:: python
 
-This short example demonstrates that that the calculations with
-``WannierBerri``\ may be run in a few lines.
-Appendix. `[sec:capabilities] <#sec:capabilities>`__ describes all
-options available to integrate and tabulate for the moment. Fore options
-are under development or under testing. For more information on all
-available parameters, please read the docstrings of the corresponding
-methods, which are accessible with the python built-in ``help()``
-function.
+    path=wberri.Path(system,
+                     k_nodes=[[1./3,1./3,0],[1./3,1./3,0.5],None,[1./3,1./3,0.5],[1./3,1./3,1],],
+                     labels=["K1","H","H","K2"],
+                     length=1000)
+    path_result=wberri.tabulate(system,
+                     grid=path,
+                     quantities=['berry'],
+                     numproc=num_proc)
 
+now plot the result
 
+.. code:: python
 
+    path_result.plot_path_fat( path,
+                  quantity='berry',
+                  component='z',
+                  save_file="Te-berry-VB.pdf",
+                  Eshift=0,
+                  Emin=5.65,  Emax=5.85,
+                  iband=None,
+                  mode="fatband",
+                  fatfactor=20,
+                  cut_k=True
+                  )
+
+Which should produce a figure like this:
+
+.. _figTeberry:
+.. figure:: imag/figures/Te-berry-VB.pdf.svg
+   :width: 40%
+
+or you may get the data to plot in whatever way you like
+
+.. code:: python
+
+    k=path.getKline()
+    E=path_result.get_data(quantity='E',iband=(16,17,18,19))
+    curv=path_result.get_data(quantity='berry',iband=(16,17,18,19),component="z") 
 
 .. _sec-optconf-example:
 

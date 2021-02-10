@@ -24,8 +24,12 @@ This agreement also should not be affected by how good/bad the Wannier functions
 Conditions for bench-marking:
  + switch off symmetries in wberri
  + no adaptive refinement (both in wberri and postw90 )
- + set NKFFT and NKdiv manually, so that their product yields the same grid as used by postw90. Also make sure that the FFT grid is not smaller then the minimal FFT grid evaluated by wberri given on a line in the output, e.g. : ``Minimal Number of K points: [7 7 7]``
- + consistent use of parameters transl_inv and use_ws/use_ws_distance  
+ + set `NKFFT` and `NKdiv` manually, so that their product yields the same grid as used by postw90.
+   the result will not depend on `NKFFT` and `NKdiv` individually, only on their produuct. However, for optimal performance 
+   of FFT transforms  it is recommended to set NKFFT approximately equal to the ab initio grid.
+   also note, that if you set only `NK`, then it may be changed slightly by the code, to get a better 
+   factorization into `NKFFT` and `NKdiv`
+ + consistent use of parameters `transl_inv` and `use_ws`/`use_ws_distance`.
  + compare the postw90 result to non-smeared result of wberri (first columns in the output)
  + use the version 3.1.0 of postw90.x
 
@@ -34,17 +38,18 @@ For example, the WannierBerri script:
 .. code:: python
 
     import wannierberri as wberri
-    system=wberri.System_w90(seedname='Fe',berry=True,use_ws=True,transl_inv=False )
+    system = wberri.System_w90(seedname='Fe',berry=True,use_ws=True,transl_inv=False )
+    grid   = wberri.Grid ( system,
+                           NKFFT = [10,10,10],
+                           NKdiv = [5,5,5] )
+
     wberri.integrate(system,
-                    NKFFT=[10,10,10],
-                    NKdiv=[5,5,5],
                     Efermi=np.linspace(11,14,301) ,
                     smearEf=300,
                     quantities=['ahc'],
                     numproc=num_proc,
                     adpt_num_iter=0,
                     fout_name='Fe',
-                    symmetry_gen=[],
                     restart=False
                     )
 

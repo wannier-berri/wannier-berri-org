@@ -51,13 +51,30 @@ Contact:
     *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ . 
          It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc ). 
          Also consider searching through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
+    *    | GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_  
+         | |github|
+    *    |github-follow|
     *    contact author: `stepan.tsirkin@uzh.ch <mailto:stepan.tsirkin@uzh.ch>`_ (for private communication, if a public message is not appropriate )
-    *    GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_ 
     *    |twitter-button|
     
 .. |twitter-button| raw:: html
 
    <a href="https://twitter.com/WannierBerri?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @WannierBerri</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+.. |github|    raw:: html
+
+   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/subscription" data-icon="octicon-eye" aria-label="Watch stepan-tsirkin/wannier-berri on GitHub">Watch</a>
+   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue stepan-tsirkin/wannier-berri on GitHub">Issue</a>
+   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/archive/master.zip" data-icon="octicon-download" aria-label="Download stepan-tsirkin/wannier-berri on GitHub">Download</a>
+   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/fork" data-icon="octicon-repo-forked" aria-label="Fork stepan-tsirkin/wannier-berri on GitHub">Fork</a>
+   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri" data-icon="octicon-star" aria-label="Star stepan-tsirkin/wannier-berri on GitHub">Star</a>
+
+.. |github-follow|  raw:: html
+
+   <a class="github-button" href="https://github.com/stepan-tsirkin" aria-label="Follow @stepan-tsirkin on GitHub">Follow @stepan-tsirkin</a>
+
+
 
 ################################################################################################################
 Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
