@@ -16,7 +16,7 @@ Automated documentation will be generated for that wannierberri version which wi
 
 Contributing
 ------------
-You all will be given write acess to the repository. Please use it with caution. If you spot a typo, or have some small changes - do not hesitate to correct it in the master branch. However, if you make more extensive changes, first try them on another branch. 
+You all will be given write acess to the repository , but master branch is protected. Please, create a branch and make a PR for any change.
 
 PDF images
 ----------
