@@ -8,8 +8,8 @@ Author
 
 Stepan Tsirkin, University of Zurich
 
-.. image:: imag/photo/stepantsirkin.jpg.jpg
-   :width: 200px
+.. image:: imag/photo/stepan-kaffeberri-mask.jpg
+   :width: 300px
    :alt: Stepan Tsirkin
    :target: https://www.physik.uzh.ch/en/groups/neupert/team/tsirkin.html
 
@@ -29,7 +29,7 @@ Contributed
 
        Switzerland
 
-       .. image:: imag/photo/Xiaoxiong_Liu.jpg.jpg
+       .. image:: imag/photo/Xiaoxiong_Liu.jpg
           :width: 200px
           :alt: Xiaoxiong Liu
           :target: https://www.physik.uzh.ch/en/groups/neupert/team/Xiaoxiong-Liu.html
@@ -51,7 +51,7 @@ Contributed
        
        Switzerland
 
-       .. image:: imag/photo/photo_patrick_lenggenhager_1.jpg.jpg
+       .. image:: imag/photo/patrick.jpg
           :width: 200px
           :alt: Patrick
           :target: https://www.psi.ch/en/lsm/people/patrick-mario-lenggenhager 
@@ -76,6 +76,7 @@ Contributed
         .. image:: imag/photo/minsu.jpg
            :width: 200px
            :alt: Minsu Ghim
+
       -
 
 
@@ -144,7 +145,7 @@ Consultants
 
         Seoul National University
 
-        .. image:: imag/photo/cheol-hwan.png
+        .. image:: imag/photo/cheol-hwan.jpg
            :width: 200px
            :alt: Cheol Hwan Park
            :target: https://physics.snu.ac.kr/en/research-faculty/faculty/fulltime?mode=view&profidx=16
@@ -182,7 +183,7 @@ Active bug reporters:
 
 
 
-.. |rafael| image:: imag/photo/rafael_gonzalez.png
+.. |rafael| image:: imag/photo/rafael_gonzalez.jpg
     :width: 150px
     :alt: Rafael Gonzalez
     :target: https://www.uninorte.edu.co/web/departamento-de-fisica/profesores?p_p_id=InformacionDocenteUninorte2_WAR_InformacionDocenteV3&docenteID=7178063

@@ -253,16 +253,19 @@ An example call might look as follows (with appropriate initialization):
    wberri.integrate(system,
            grid = grid,
            omega = np.linspace(0., 7., 701),
-           smearEf = 10,
+           Efermi=np.linspace(12.,13.,21), 
+           smearEf = 100,
            quantities = [ 'opt_conductivity' ],
            numproc = num_proc,
            adpt_num_iter = 10,
            fout_name = 'Fe',
            restart = False,
-           parameters = { 'mu': 12.6283, 'smr_fixed_width': 0.01, 'smr_type':'Gaussian' }
+           parameters = { 'smr_fixed_width': 0.01, 'smr_type':'Gaussian' }
    )
 
-
+However, note that `smearEf` parameter has a sence only when many Fermi levels are considered, 
+(when difference between Fermi levels is smaller then `smearEf` in eV) otherwise ` 'kBT':<value in eV> ` shoould be added to the 
+`parameters` dictionary. But do not use both `kBT` and `smearEf` at the same time.
 
 .. |fsurf| image:: https://fermisurfer.osdn.jp/figs/fermisurfer.png
      :target: https://fermisurfer.osdn.jp/
