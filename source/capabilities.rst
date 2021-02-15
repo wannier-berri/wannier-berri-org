@@ -73,7 +73,7 @@ as Brillouin zone integrals (by means of the |integrate| function):
             ; \label{eq:ohmic}
 
 
--  ``'opt_conductivity'``: Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
+-  ``’opt_conductivity’``: Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
   
    .. math:: 
       :label: optcondform
@@ -86,7 +86,7 @@ as Brillouin zone integrals (by means of the |integrate| function):
       \langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
       {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-(\hbar\omega+i\eta)}.
 
--  ``'opt_SHCryoo'`` and ``'opt_SHCqiao'``: Kubo-greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
+-  ``’opt_SHCryoo’`` and ``’opt_SHCqiao’``: Kubo-greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
   
    .. math::
 
