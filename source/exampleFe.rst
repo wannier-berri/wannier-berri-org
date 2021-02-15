@@ -311,7 +311,7 @@ Utilizing the similar formula as the optical conductivity, the intrinsic spin Ha
 while the latter does not and instead uses an approximation :math:`\mathbf{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`.
 
 There are more additional quantities than optical conductivity that can be specified.
-Note that if none of these is specified, the module will calculate all the 27 components of SHC.
+Note that if one of these is not specified, the module will calculate all the 27 components of SHC.
 
  - **'shc_alpha'** : direction of spin current (1, 2, 3)
  - **'shc_beta'** : direction of applied electric field (1, 2, 3)
