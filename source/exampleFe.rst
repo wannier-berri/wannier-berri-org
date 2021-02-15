@@ -323,13 +323,13 @@ You can check which component to calculate by the code below, considering the po
 
   wberri.symmetry.Group(['Inversion', 'C4x', 'C4y', 'C4z']).get_symmetric_components(3, False, False) 
 
-and apply symmetry before integrating. However, it has been tested only for cubic groups.
+and apply symmetry before integrating. However, specification of ``shc_alpha``, ``shc_beta``, and ``shc_gamma`` does not work with symmetry.
 
 .. code:: python
 
    system=wberri.System_w90(seedname='pt', SHCryoo=True, SHCqiao=True, use_ws=True, transl_inv=False)
 
-   generators=[SYM.Inversion, SYM.C4z, SYM.C4x, SYM.C4y] # tested only for cubic groups
+   generators=[SYM.Inversion, SYM.C4z, SYM.C4x, SYM.C4y]
    system.set_symmetry(generators)
 
    wberri.integrate(system,
