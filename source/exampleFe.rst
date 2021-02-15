@@ -301,6 +301,51 @@ However, note that `smearEf` parameter has a sence only when many Fermi levels a
 (when difference between Fermi levels is smaller then `smearEf` in eV) otherwise ` 'kBT':<value in eV> ` shoould be added to the 
 `parameters` dictionary. But do not use both `kBT` and `smearEf` at the same time.
 
+
+Spin Hall conductivity
+----------------------
+
+
+Utilizing the similar formula as the optical conductivity, the intrinsic spin Hall conductivity(SHC) can be calculated. Two methods are available:
+``SHCryoo`` and ``SHCqiao``. The former requires ``.sHu`` and ``.sIu`` files from pw2wannier90.x(see :ref:`mmn2uHu <sec-mmn2uHu>`),
+while the latter does not and instead uses an approximation :math:`\mathbf{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`.
+
+There are more additional quantities than optical conductivity that can be specified.
+Note that if none of these is specified, the module will calculate all the 27 components of SHC.
+
+ - **'shc_alpha'** : direction of spin current (1, 2, 3)
+ - **'shc_beta'** : direction of applied electric field (1, 2, 3)
+ - **'shc_gamma'** : direction of spin polarization (1, 2, 3)
+
+You can check which component to calculate by the code below, considering the point group your material belongs to.
+
+.. code:: python
+
+  wberri.symmetry.Group(['Inversion', 'C4x', 'C4y', 'C4z']).get_symmetric_components(3, False, False) 
+
+and apply symmetry before integrating. However, it has been tested only for cubic groups.
+
+.. code:: python
+
+   system=wberri.System_w90(seedname='pt', SHCryoo=True, SHCqiao=True, use_ws=True, transl_inv=False)
+
+   generators=[SYM.Inversion, SYM.C4z, SYM.C4x, SYM.C4y] # tested only for cubic groups
+   system.set_symmetry(generators)
+
+   wberri.integrate(system,
+           grid = grid,
+           omega = np.linspace(0., 7., 701),
+           Efermi=np.linspace(12.,13.,21), 
+           smearEf = 100,
+           quantities = ['SHC_ryoo', 'SHC_qiao'],
+           numproc = num_proc,
+           adpt_num_iter = 10,
+           fout_name = 'pt',
+           restart = False,
+           parameters = { 'smr_fixed_width': 0.01, 'smr_type':'Gaussian', 'shc_alpha':1, 'shc_beta':2, 'shc_gamma':3 }
+   )
+
+
 .. |fsurf| image:: https://fermisurfer.osdn.jp/figs/fermisurfer.png
      :target: https://fermisurfer.osdn.jp/
      :alt: FermiSurfer
