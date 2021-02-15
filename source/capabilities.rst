@@ -73,7 +73,7 @@ as Brillouin zone integrals (by means of the |integrate| function):
             ; \label{eq:ohmic}
 
 
--  'opt_conductivity': Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
+-  ``’opt_conductivity’``: Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
   
    .. math:: 
       :label: optcondform
@@ -86,6 +86,17 @@ as Brillouin zone integrals (by means of the |integrate| function):
       \langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
       {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-(\hbar\omega+i\eta)}.
 
+-  ``’opt_SHCryoo’`` and ``’opt_SHCqiao’``: Kubo-greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
+  
+   .. math::
+
+      \sigma^{\gamma}_{\alpha\beta}(\hbar\omega)=\frac{ie\hbar}{N_k\Omega_c}
+      \sum_{\bf k}\sum_{n,m}
+      \frac{f_{m{\bf k}}-f_{n{\bf k}}}
+      {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}}
+      \frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2}\{ s^{\gamma}, v_\alpha \} \vert\psi_{m{\bf k}}\rangle
+      \langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
+      {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-(\hbar\omega+i\eta)}.
 
 -  ``’dos’ :`` density of states :math:`n(E)`;
 
@@ -163,6 +174,16 @@ on the basis of the ``.mmn`` and ``.eig`` files by means of the sum-over-states 
 .. math::
 
     C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})\approx\sum_l^{l_{\rm max}}  \left(M_{lm}^{\mathbf{b}_1}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}_2}({\bf q}).
+
+and the (``.sHu`` and ``.sIu`` file) containing the matrix elements needed for Ryoo's spin current calculations(`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_)
+on the basis of the ``.mmn``, ``.spn`` and ``.eig`` files by means of the sum-over-states formula
+
+.. math::
+
+    \langle u_{m{\bf q}}\vert\hat{s}\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}}({\bf q}).
+.. math::
+
+    \langle u_{m{\bf q}}\vert\hat{s}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^*   M_{ln}^{\mathbf{b}}({\bf q}).  
 
 see :ref:`sec-mmn2uHu` for more details
 

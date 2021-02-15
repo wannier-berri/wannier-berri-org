@@ -131,7 +131,7 @@ enable the study of properties related to the orbital moment with other
 *ab initio* codes, the following workaround may be employed. By
 inserting a complete set of Bloch states at a particular :math:`{\bf q}`
 point
-:math:`\mathbbm{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`
+:math:`\mathbf{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`
 we can rewrite :eq:`Cmnq` as
 
 .. math::
@@ -139,9 +139,20 @@ we can rewrite :eq:`Cmnq` as
 
     C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})\approx\sum_l^{l_{\rm max}}  \left(M_{lm}^{\mathbf{b}_1}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}_2}({\bf q}).
 
-This equation is implemented within the |mmn2uHu|
-submodule, which allows to generate the ``.uHu`` file out of ``.mmn``
-and ``.eig`` files. The equality in :eq:`Cmnqsum` is
+Similarly, the two quantities below allows to interpolate spin currnet matrices to calculate spin Hall conductivity. In Ryoo's scheme (`Ryoo et al. 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_)
+, they are required as input data (``.sHu`` and ``.sIu``)
+
+.. math::
+    :label: Smnqsum
+
+    \langle u_{m{\bf q}}\vert\hat{s}\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}}({\bf q}).
+
+    \langle u_{m{\bf q}}\vert\hat{s}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^*   M_{ln}^{\mathbf{b}}({\bf q}).
+
+
+These equations are implemented within the |mmn2uHu|
+submodule, which allows to generate the ``.uHu``, ``.sHu``, and ``.sIu`` file out of ``.mmn``, ``.spn``, 
+and ``.eig`` files. The equality in :eq:`Cmnqsum` and :eq:`Smnqsum` is
 exact only in the limit :math:`l_{\rm max}\to\infty` and infinitely
 large basis set for the wavefunctions representation. So in practice one
 has to check convergence for a particular system. As an example the
