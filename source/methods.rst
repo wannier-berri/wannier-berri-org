@@ -2,11 +2,11 @@
 Methods 
 *********************
 
-Methods implemented in WannierBerri and allowing the performance boost are best described in the following preprint: 
+Methods implemented in WannierBerri and allowing the performance boost are described in the following preprint article 
 
-Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
+Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code", `npj Comput Mater 7, 33 (2021).  <https://www.nature.com/articles/s41524-021-00498-5>`_ (Open Access).
 
-Below is given a section from that paper. 
+Below is given a section from that paper, just for reference.
 
 .. _sec-wanfun:
 

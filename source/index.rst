@@ -37,7 +37,7 @@ Advantages
 Please cite
 #############
 
-    *   Stepan S. Tsirkin. "High performance Wannier interpolation of Berry curvature and related quantities: WannierBerri code",   `arXiv:2008.07992 [cond-mat.mtrl-sci] <https://arxiv.org/abs/2008.07992>`_
+    *   Stepan S. Tsirkin. High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code. `npj Comput Mater 7, 33 (2021).  <https://www.nature.com/articles/s41524-021-00498-5>`_ (Open Access).
 
     *   Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. `“Magnetism and
         Anomalous Transport in the Weyl Semimetal PrAlGe: Possible Route
@@ -54,7 +54,6 @@ Contact:
     *    | GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_  
          | |github|
     *    |github-follow|
-    *    contact author: `stepan.tsirkin@uzh.ch <mailto:stepan.tsirkin@uzh.ch>`_ (for private communication, if a public message is not appropriate )
     *    |twitter-button|
     
 .. |twitter-button| raw:: html

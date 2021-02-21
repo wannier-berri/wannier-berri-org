@@ -2,3 +2,5 @@
 .. |vaspspn| replace:: :obj:`wannierberri.vaspspn`
 .. |integrate| replace:: :obj:`wannierberri.integrate`
 .. |tabulate| replace:: :obj:`wannierberri.tabulate`
+
+.. role:: red

@@ -20,8 +20,8 @@ colorful output in the terminal.
 
 Parallelization
 ----------------
-One note should be mentioned about the parallel run. numpy already
-includes parallelization over threads. However, if ``WannierBerri``\ is
+One note should be mentioned about the parallel run. ``numpy`` already
+includes parallelization over threads. However, if ``wannierberri``\ is
 running with the number of processes equal to the number of physical
 cores, obviously extra threading may only slow down the calculation.
 Generally I recommend to switch off the threading in numpy by setting
@@ -41,7 +41,7 @@ or
 
 Depending whether numpy is linked with openblas or MKL libraries. Note,
 this should be done in the beginning of the script, before importing
-numpy for the first time.
+``numpy`` or ``wannierberri`` for the first time.
 
 
 Windows OS
