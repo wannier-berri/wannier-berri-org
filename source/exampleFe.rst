@@ -308,7 +308,7 @@ Spin Hall conductivity
 
 Utilizing the similar formula as the optical conductivity, the intrinsic spin Hall conductivity(SHC) can be calculated. Two methods are available:
 ``SHCryoo`` and ``SHCqiao``. The former requires ``.sHu`` and ``.sIu`` files from pw2wannier90.x(see :ref:`mmn2uHu <sec-mmn2uHu>`),
-while the latter does not and instead uses an approximation :math:`\mathbf{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`.
+while the latter does not and instead uses an approximation :math:`\mathbf{1}=\sum_{l\in \it{ab\,initio}} \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert`.
 
 There are more additional quantities than optical conductivity that can be specified.
 Note that if one of these is not specified, the module will calculate all the 27 components of SHC.
