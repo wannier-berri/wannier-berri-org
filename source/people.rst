@@ -56,28 +56,52 @@ Contributed
           :alt: Patrick
           :target: https://www.psi.ch/en/lsm/people/patrick-mario-lenggenhager 
 
-   *  - Jae-Mo Lihm, 
+   * - Jae-Mo Lihm, 
 
-        Seoul National University
+       Seoul National University
 
-        Republic of Korea
+       Republic of Korea
 
-        .. image:: imag/photo/jaemo-lihm.jpeg
-           :width: 200px
-           :alt: Jae-Mo
+       .. image:: imag/photo/jaemo-lihm.jpeg
+          :width: 200px
+          :alt: Jae-Mo
 
 
-      - Minsu Ghim,
+     - Minsu Ghim,
       
-        Seoul National University
+       Seoul National University
        
-        Republic of Korea
+       Republic of Korea
 
-        .. image:: imag/photo/minsu.jpg
+       .. image:: imag/photo/minsu.jpg
            :width: 200px
            :alt: Minsu Ghim
 
-      -
+     - Ji Hoon Ryoo, 
+      
+       Seoul National University
+       
+       Republic of Korea
+
+       .. image:: imag/photo/jihoon.png
+           :width: 200px
+           :alt: Ji Hoon
+
+
+   * - Julen Ibañez Azpiroz 
+
+       Centro de Física de Materiales
+
+       San Sebastián, Spain
+
+       .. image:: https://cfm.ehu.es/view/files/julen_Iba%C3%B1ez.jpg
+           :width: 200px
+           :alt: Julen
+           :target: https://cfm.ehu.es/team/julen-ibanez-azpiroz/
+
+     - 
+
+     - 
 
 
 
@@ -89,29 +113,9 @@ Working on
    :widths: 33 33 33
    :header-rows: 0
 
-   *  - Ji Hoon Ryoo, 
-      
-        Seoul National University
-       
-        Republic of Korea
-
-        .. image:: imag/photo/jihoon.png
-           :width: 200px
-           :alt: Ji Hoon
 
 
-      - Julen Ibañez Azpiroz 
-
-        Centro de Física de Materiales
-
-        San Sebastián, Spain
-
-        .. image:: https://cfm.ehu.es/view/files/julen_Iba%C3%B1ez.jpg
-           :width: 200px
-           :alt: Julen
-           :target: https://cfm.ehu.es/team/julen-ibanez-azpiroz/
-
-      - Iñigo Robredo Magro
+   *  - Iñigo Robredo Magro
 
         Donostia International Physics Center
 
@@ -121,7 +125,9 @@ Working on
            :width: 200px
            :alt: Inigo Robredo
 
+      -
 
+      -
 
 
 

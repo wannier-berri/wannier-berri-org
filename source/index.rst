@@ -15,6 +15,13 @@
 is a code to calculate different properties by means of Wannier interpolation. 
 It may be considered as a strongly improved version of ``postw90.x`` part of `Wannier90 <https://wannier.org>`_.  
 
+###############################
+Total Energy and Force Methods
+###############################
+
+`Presentation slides are here <slides-TotalEnergy.pdf>`_
+
+
 #############
 Advantages
 #############
@@ -51,7 +58,7 @@ Contact:
     *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ . 
          It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc ). 
          Also consider searching through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
-    *    | GitHub repository: `<https://github.com/stepan-tsirkin/wannier-berri>`_  
+    *    | GitHub repository: `<https://github.com/wannier-berri/wannier-berri>`_  
          | |github|
     *    |github-follow|
     *    |twitter-button|
@@ -63,15 +70,15 @@ Contact:
 
 .. |github|    raw:: html
 
-   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/subscription" data-icon="octicon-eye" aria-label="Watch stepan-tsirkin/wannier-berri on GitHub">Watch</a>
-   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue stepan-tsirkin/wannier-berri on GitHub">Issue</a>
-   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/archive/master.zip" data-icon="octicon-download" aria-label="Download stepan-tsirkin/wannier-berri on GitHub">Download</a>
-   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri/fork" data-icon="octicon-repo-forked" aria-label="Fork stepan-tsirkin/wannier-berri on GitHub">Fork</a>
-   <a class="github-button" href="https://github.com/stepan-tsirkin/wannier-berri" data-icon="octicon-star" aria-label="Star stepan-tsirkin/wannier-berri on GitHub">Star</a>
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/subscription" data-icon="octicon-eye" aria-label="Watch wannier-berri/wannier-berri on GitHub">Watch</a>
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Issue</a>
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/archive/master.zip" data-icon="octicon-download" aria-label="Download wannier-berri/wannier-berri on GitHub">Download</a>
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/fork" data-icon="octicon-repo-forked" aria-label="Fork wannier-berri/wannier-berri on GitHub">Fork</a>
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri" data-icon="octicon-star" aria-label="Star wannier-berri/wannier-berri on GitHub">Star</a>
 
 .. |github-follow|  raw:: html
 
-   <a class="github-button" href="https://github.com/stepan-tsirkin" aria-label="Follow @stepan-tsirkin on GitHub">Follow @stepan-tsirkin</a>
+   <a class="github-button" href="https://github.com/wannier-berri" aria-label="Follow @wannier-berri on GitHub">Follow @wannier-berri</a>
 
 
 

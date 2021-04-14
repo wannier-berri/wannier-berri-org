@@ -119,6 +119,11 @@ html_show_sourcelink = False
 
 bred='#D62618' 
 bgreen= '#009C46'
+
+
+red='#a00000'
+green='#008880'
+
 html_theme_options = {
     'canonical_url': '',
 #    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
@@ -127,7 +132,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     'style_external_links': True,
 #    'vcs_pageview_mode': '',
-    'style_nav_header_background':  bgreen , # '#009C46', #  'white',
+    'style_nav_header_background':  green , # '#009C46', #  'white',
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
