@@ -323,14 +323,33 @@ You can check which component to calculate by the code below, considering the po
 
   wberri.symmetry.Group(['Inversion', 'C4x', 'C4y', 'C4z']).get_symmetric_components(3, False, False) 
 
-and apply symmetry before integrating. However, specification of ``shc_alpha``, ``shc_beta``, and ``shc_gamma`` does not work with symmetry.
+You can also set symmetry before integrating, but note that specification of ``shc_alpha``, ``shc_beta``, and ``shc_gamma`` may not work with symmetry when the point group does not belong to the Laue group cubic I, so it is not recommended to use specification and symmetry at the same time.
 
 .. code:: python
 
+   # with symmetry
    system=wberri.System_w90(seedname='pt', SHCryoo=True, SHCqiao=True, use_ws=True, transl_inv=False)
 
    generators=[SYM.Inversion, SYM.C4z, SYM.C4x, SYM.C4y]
    system.set_symmetry(generators)
+
+   wberri.integrate(system,
+           grid = grid,
+           omega = np.linspace(0., 7., 701),
+           Efermi=np.linspace(12.,13.,21),
+           smearEf = 100,
+           quantities = ['SHC_ryoo', 'SHC_qiao'],
+           numproc = num_proc,
+           adpt_num_iter = 10,
+           fout_name = 'pt',
+           restart = False,
+           parameters = { 'smr_fixed_width': 0.01, 'smr_type':'Gaussian'}
+   )
+
+.. code:: python
+
+   # with specification of shc_alpha, shc_beta, and shc_gamma
+   system=wberri.System_w90(seedname='pt', SHCryoo=True, SHCqiao=True, use_ws=True, transl_inv=False)
 
    wberri.integrate(system,
            grid = grid,
