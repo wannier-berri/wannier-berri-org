@@ -19,7 +19,7 @@ import wannierberri
 # -- Project information -----------------------------------------------------
 
 project = 'Wannier Berri'
-copyright = '2020, Stepan Tsirkin'
+copyright = '2021, Stepan Tsirkin' 
 author = 'Stepan Tsirkin'
 numfig = True
 

@@ -12,14 +12,7 @@
 
 |
 
-is a code to calculate different properties by means of Wannier interpolation. 
-It may be considered as a strongly improved version of ``postw90.x`` part of `Wannier90 <https://wannier.org>`_.  
-
-###############################
-Total Energy and Force Methods
-###############################
-
-`Presentation slides are here <slides-TotalEnergy.pdf>`_
+a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.
 
 
 #############
@@ -90,6 +83,11 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
    pip3 install wannierberri
 
 
+#########################
+Author
+#########################
+`Stepan Tsirkin  <https://www.physik.uzh.ch/en/groups/neupert/team/tsirkin.html>`_,   
+`Condensed Matter Theory <https://www.physik.uzh.ch/en/groups/neupert.html>`_ group ay the University of Zurich
 
 .. toctree:: 
    :maxdepth: 3

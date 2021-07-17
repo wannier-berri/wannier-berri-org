@@ -38,7 +38,7 @@ tight-binding model. This can be done by the following line:
 
 .. code:: python
 
-   system=wberri.System_tb('Fe_tb.dat',getAA=True)
+   system=wberri.System_tb('Fe_tb.dat',berry=True)
 
 Next, we define the symmetries of the system that we wish to take into
 account:

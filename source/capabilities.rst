@@ -93,6 +93,21 @@ as Brillouin zone integrals (by means of the |integrate| function):
       \langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
       {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-(\hbar\omega+i\eta)}.
 
+
+-  ``’opt_shiftcurrent’``: shift photocurrent (`PRB 2018 <https://doi.org/10.1103/PhysRevB.97.245143>`_)
+  
+   .. math:: 
+      :label: shiftcurrent
+
+      \sigma^{abc}(0;\omega,-\omega) = -\frac{i\pi e^3}{4\hbar^2}
+      \sum_{\bf k}\sum_{n,m}\left( f_{n{\bf k}}-f_{m{\bf k}} \right)
+      \left(I^{abc}_{mn}+I^{acb}_{mn}\right)
+      \times \left[\delta(\omega_{mn}-\omega)+\delta(\omega_{nm}-\omega)\right].
+
+   where :math:`I^{abc}_{mn}=r^b_{mn}r^{c;a}_{nm}`;  :math:`r^a_{\mathbf{k}nm}=(1-\delta_{nm})A^a_{\mathbf{k} nm}`; 
+   :math:`r^{a;b}_{\mathbf{k} nm}=\partial_b r^a_{\mathbf{k} nm} -i\left(A^b_{\mathbf{k}nn}-A^b_{\mathbf{k} mm}\right)r^a_{\mathbf{k} nm}`; 
+   :math:`A^a_{\mathbf{k} nm}=i\langle{u_{\mathbf{k} n}}|{\partial_a u_{\mathbf{k} m}}\rangle`.
+
 -  ``’opt_SHCryoo’`` and ``’opt_SHCqiao’``: Kubo-greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
   
    .. math::
