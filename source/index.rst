@@ -48,9 +48,10 @@ Please cite
 Contact:
 ##############
 
-    *    Subscribe to `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ . 
-         It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc ). 
-         Also consider searching through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
+    *    Please, ask any questions to the `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ .
+         Also updates to the code are announced there.
+         It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc. 
+         Also please search through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
     *    | GitHub repository: `<https://github.com/wannier-berri/wannier-berri>`_  
          | |github|
     *    |github-follow|
@@ -87,7 +88,7 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
 Author
 #########################
 `Stepan Tsirkin  <https://www.physik.uzh.ch/en/groups/neupert/team/tsirkin.html>`_,   
-`Condensed Matter Theory <https://www.physik.uzh.ch/en/groups/neupert.html>`_ group ay the University of Zurich
+`Condensed Matter Theory <https://www.physik.uzh.ch/en/groups/neupert.html>`_ group at the University of Zurich
 
 .. toctree:: 
    :maxdepth: 3
