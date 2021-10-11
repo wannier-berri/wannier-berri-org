@@ -487,6 +487,8 @@ accuracy improvement.
 Scanning multiple Fermi levels 
 ---------------------------------------------
 
+**Note : the implementation described below is replaced in the code by a better one**
+
 It is often needed to study anomalous Hall conductivity (AHC) not only
 for the pristine Fermi level :math:`E_F`, but considering it as a free
 parameter :math:`\epsilon`. On the one hand it gives an estimate of the
