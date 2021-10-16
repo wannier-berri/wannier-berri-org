@@ -42,6 +42,6 @@ For example, after a run
 
 
 In addition, there is a dictionary of parameters `parameters_K` that will de passed to the constructor of the 
-:class:`~wannierberri.__Data_K.Data_K` object. Therefore, these parameters will be common for all quantities calculated
+:class:`~wannierberri.data_K.Data_K` object. Therefore, these parameters will be common for all quantities calculated
 
 

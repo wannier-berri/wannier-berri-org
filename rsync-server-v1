@@ -1,0 +1,1 @@
+rsync -aiv html/* wannierb@50.87.186.73:~/public_html/version-1-0-0

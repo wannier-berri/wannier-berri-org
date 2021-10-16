@@ -15,6 +15,32 @@
 a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.
 
 
+|NEW| This page describes the new version 1.0.0.  Both the version and the documentation are under construction, use on your own risk and fun.
+
+
+###################################
+New features in version-1.0.0
+###################################
+[ links to documentation will be added here ]
+
+    * Multi-node parallelization
+
+    * Fermi-sea formulas for many quantities
+
+    * External vs internal terms
+
+    * Tetrahedron method
+
+    * One quantity with differnet parameters in one run
+
+    * user-defined quantities
+
+    * two conventions for the Bloch sums
+
+    * more quantities to tabulate
+
+    * pre-defined TB models for illustration
+
 #############
 Advantages
 #############
@@ -110,3 +136,6 @@ Author
    literature
 
 
+.. |NEW| image:: imag/NEW.jpg
+   :width: 100px
+   :alt: NEW!
