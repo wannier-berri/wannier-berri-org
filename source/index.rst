@@ -94,6 +94,7 @@ Author
    :maxdepth: 3
    :hidden:
 
+   newfeatures
    news
    capabilities
    timing
