@@ -22,6 +22,7 @@ Documentation
    docs/vaspspn
    docs/tab_plot
    docs/data_K
+   docs/models
 
 
 .. include:: shortcuts.rst

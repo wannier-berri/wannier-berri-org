@@ -1,5 +1,8 @@
+.. _doc-parameters:
+
 Specifyiung parameters
 =======================
+
 
 While the basic parameters of the calculation in the :func:`~wannierberri.integrate` and :func:`~wannierberri.tabulte` 
 methods determine the general behaviour of the calculation (grid, refinement etc.) , the specific evauation of each 
@@ -25,14 +28,14 @@ For example, after a run
 
 .. code:: python
 
-    wberri.integrate(system,
-            grid=grid,
-            Efermi=Efermi, 
-            quantities=['ahc^int',`ahc^ext`],
-            parameters = {'tetra':True,`internal_terms':False,'external_terms':False},
-            specific_parameters = {'ahc^int':{'internal_terms':True},'ahc^ext':{'external_terms':True}},
-            fout_name='Fe',
-            )
+   wberri.integrate(system,
+             grid=grid,
+             Efermi=Efermi, 
+             quantities=['ahc^int','ahc^ext'],
+             parameters = {'tetra':True,'internal_terms':False,'external_terms':False},
+             specific_parameters = {'ahc^int':{'internal_terms':True},'ahc^ext':{'external_terms':True}},
+             fout_name='Fe',
+             )
 
 `Fe-ahc^int_iter-0000.dat` will contain contributions from internal terms only, and 
 `Fe-ahc^ext_iter-0000.dat` will contain contributions from external terms.
