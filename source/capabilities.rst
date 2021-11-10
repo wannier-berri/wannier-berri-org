@@ -15,6 +15,9 @@ Integration
 The code may be used to evaluate the following quantities, represented
 as Brillouin zone integrals (by means of the |integrate| function):
 
+Static (frequency-independent) quantities
+++++++++++++++++++++++++++++++++++++++++++
+
 -  ``'ahc'`` :  intrinsic anomalous Hall conductivity
    :math:`\sigma_{\alpha\beta}^{\rm AHE}` (`Nagaosa et al. 2010 <https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.82.1539>`_) via
 
@@ -79,6 +82,18 @@ as Brillouin zone integrals (by means of the |integrate| function):
       =\tau\int[d{\bf k}]\sum_n^{\rm occ} \partial_\alpha E_{n{\bf k}}\partial_\beta E_{n{\bf k}} \delta(E_{n{\bf k}}-\mu) 
             ; \label{eq:ohmic}
 
+-  ``'dos'``: density of states :math:`n(E)`
+
+-  ``'cumdos'``: cumulative density of states
+
+   .. math::
+
+      N(E) = \int\limits_{-\infty}^En(\epsilon)d\epsilon.
+          \label{eq:cDOS}
+
+
+Dynamic (frequency-dependent) quantities
+++++++++++++++++++++++++++++++++++++++++++
 
 -  ``'opt_conductivity'``: Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
   
@@ -119,15 +134,6 @@ as Brillouin zone integrals (by means of the |integrate| function):
       \frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2}\{ s^{\gamma}, v_\alpha \} \vert\psi_{m{\bf k}}\rangle
       \langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
       {\varepsilon_{m{\bf k}}-\varepsilon_{n{\bf k}}-(\hbar\omega+i\eta)}.
-
--  ``'dos'``: density of states :math:`n(E)`
-
--  ``'cumdos'``: cumulative density of states
-
-   .. math::
-
-      N(E) = \int\limits_{-\infty}^En(\epsilon)d\epsilon.
-          \label{eq:cDOS}
 
 
 
