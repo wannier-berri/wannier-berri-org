@@ -91,13 +91,30 @@ Static (frequency-independent) quantities
       N(E) = \int\limits_{-\infty}^En(\epsilon)d\epsilon.
           \label{eq:cDOS}
 
+-  ``'shc_static_ryoo'`` and ``'shc_static_qiao'``: Kubo-Greenwood formula for static spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_). Equivalent to setting :math:`\omega=0` in  ``'opt_SHCryoo'`` and ``'opt_SHCqiao'``.
+
+   .. math::
+
+      \sigma^{\gamma}_{\alpha\beta}(\mu) =
+      \frac{e\hbar}{N_k\Omega_c} \sum_{\bf k} \sum_n^{\rm occ}
+      \Omega^{{\rm spin};\,\gamma}_{\alpha\beta, n}({\bf k}),
+
+   where
+
+   .. math::
+
+      \Omega^{{\rm spin};\,\gamma}_{\alpha\beta, n}({\bf k}) = -2 {\rm Im} \sum_l^{\rm unocc}
+      \frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2} \{ s^{\gamma}, v_\alpha \} \vert\psi_{l{\bf k}}\rangle
+      \langle\psi_{l{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
+      {(\varepsilon_{n{\bf k}}-\varepsilon_{l{\bf k}})^2}.
+
 
 Dynamic (frequency-dependent) quantities
 ++++++++++++++++++++++++++++++++++++++++++
 
 -  ``'opt_conductivity'``: Kubo-greenwood formula for optical conductivity (:ref:`example <sec-optconf-example>`)
-  
-   .. math:: 
+
+   .. math::
       :label: optcondform
 
       \sigma_{\alpha\beta}(\hbar\omega)=\frac{ie^2\hbar}{N_k\Omega_c}
@@ -110,8 +127,8 @@ Dynamic (frequency-dependent) quantities
 
 
 -  ``'opt_shiftcurrent'``: shift photocurrent (`PRB 2018 <https://doi.org/10.1103/PhysRevB.97.245143>`_)
-  
-   .. math:: 
+
+   .. math::
       :label: shiftcurrent
 
       \sigma^{abc}(0;\omega,-\omega) = -\frac{i\pi e^3}{4\hbar^2}
@@ -119,12 +136,12 @@ Dynamic (frequency-dependent) quantities
       \left(I^{abc}_{mn}+I^{acb}_{mn}\right)
       \times \left[\delta(\omega_{mn}-\omega)+\delta(\omega_{nm}-\omega)\right].
 
-   where :math:`I^{abc}_{mn}=r^b_{mn}r^{c;a}_{nm}`;  :math:`r^a_{\mathbf{k}nm}=(1-\delta_{nm})A^a_{\mathbf{k} nm}`; 
-   :math:`r^{a;b}_{\mathbf{k} nm}=\partial_b r^a_{\mathbf{k} nm} -i\left(A^b_{\mathbf{k}nn}-A^b_{\mathbf{k} mm}\right)r^a_{\mathbf{k} nm}`; 
+   where :math:`I^{abc}_{mn}=r^b_{mn}r^{c;a}_{nm}`;  :math:`r^a_{\mathbf{k}nm}=(1-\delta_{nm})A^a_{\mathbf{k} nm}`;
+   :math:`r^{a;b}_{\mathbf{k} nm}=\partial_b r^a_{\mathbf{k} nm} -i\left(A^b_{\mathbf{k}nn}-A^b_{\mathbf{k} mm}\right)r^a_{\mathbf{k} nm}`;
    :math:`A^a_{\mathbf{k} nm}=i\langle{u_{\mathbf{k} n}}|{\partial_a u_{\mathbf{k} m}}\rangle`.
 
--  ``'opt_SHCryoo'`` and ``'opt_SHCqiao'``: Kubo-greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
-  
+-  ``'opt_SHCryoo'`` and ``'opt_SHCqiao'``: Kubo-Greenwood formula for spin Hall conductivity (SHC) (`Ryoo, Park, and Souza 2019 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113>`_) or (`Qiao, Zhou, Yuan, and Zhao 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402>`_)
+
    .. math::
 
       \sigma^{\gamma}_{\alpha\beta}(\hbar\omega)=\frac{ie\hbar}{N_k\Omega_c}
