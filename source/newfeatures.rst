@@ -1,4 +1,4 @@
-|NEW| New features in version-1.0.0
+|NEW| New features in version-0.10.0
 #######################################
 
 [ new features will be illustrated here with links to documentation ]
@@ -100,8 +100,12 @@ Basis functions for Bloch states maybe written in one of the two ways:
         \sum_{\mathbf{R}} e^{i\mathbf{k}\cdot \mathbf{R}} 
             | \mathbf{R}j \rangle
 
-The default is Convention II, while Convention I is activated by ``use_wcc_phase=True`` in 
-in :class:`wannierberri.System` 
+The default (so far) is Convention II (follwoing the tradition of Wannier90), 
+while Convention I is activated by ``use_wcc_phase=True`` in :class:`wannierberri.System` 
+The two conventions give the same result, but different distribution between internal 
+and external terms (see above) With ``use_wcc_phase=True`` the external terms usually become
+smaller (or even vanish for the tight-binding models), therefore it is a preferred way
+(however, not implemented for all quantities yet)
 
 
 pre-defined TB models for illustration and testing

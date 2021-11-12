@@ -1,6 +1,6 @@
 .. _doc-parameters:
 
-Specifyiung parameters
+Specifying parameters
 =======================
 
 

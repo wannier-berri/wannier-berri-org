@@ -15,11 +15,14 @@
 a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.
 
 
-|NEW| This page describes the new version 1.0.0.  Both the version and the documentation are under construction, use on your own risk and fun.
+##########################################
+Postdoc positionb availabele Now:
+##########################################
 
+A postdoc position availabel to work on WannierBerri immediately. See details `here <https://psi-k.net/jobs/postdoc-position-on-the-development-and-applicatio/>`__
 
 ###################################
-New features in version-1.0.0
+New features in version-0.10.0
 ###################################
 [ links to documentation will be added here ]
 
