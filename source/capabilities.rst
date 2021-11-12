@@ -23,7 +23,6 @@ Static (frequency-independent) quantities
 
    .. math:: \sigma_{\alpha\beta}^{\rm AHE}=-\frac{e^2}{\hbar}\epsilon_{\alpha\beta\gamma}\int \frac{d{\bf k}}{(2\pi)^3}\Omega_\gamma({\bf k}).
 
-   :green:`New!` : ``'ahc_ocean'`` : a new "Fermi Ocean" imnplementation
 
 -  Anomalous Nernst conductivity (`Xiao et al. 2006 <https://doi.org/10.1103/PhysRevLett.97.026603>`_)
    :math:`\alpha_{\alpha\beta}^{\rm ANE}` may be obtained from
@@ -52,8 +51,6 @@ Static (frequency-independent) quantities
       D_{\alpha\beta}(\mu)=\int[d{\bf k}]\sum_n^{\rm occ} \partial_\alpha \Omega_n^{\beta}= \int[d{\bf k}]\sum_n^{\rm occ} \partial_\alpha E_{n\mathbf{k}} \Omega_n^{\beta} \delta(E_{n\mathbf{k}}-\mu) 
 
    which describes nonlinear Hall effect (`Sodemann and Fu 2015 <https://link.aps.org/doi/10.1103/PhysRevLett.115.216806>`_);
-
-   :green:`New!` : ``''berry_dipole_ocean''`` : a new more efficient "Fermi Ocean" imnplementation
 
 
 -  ``'gyrotropic_Korb'`` and ``'gyrotropic_Kspin' :`` gyrotropic

@@ -69,6 +69,16 @@ the spacing of :math:`k`-points will be
 a grid of :math:`52\times52\times52` will be generated, but that
 is dependent on the size of the unit cell.
 
+To determine all parameters of parallel execution we define an object 
+of class :class:`~wannierberri.Parallel`
+
+
+.. code:: python
+
+    parallel=wberri.Parallel(method="ray",num_cpus=num_proc)
+
+Or, if for a serial execution just set `paralle=None`. 
+
 Next, we want to integrate the Berry curvature to get the AHC. This is
 done by the ``wberri.integrate`` method.
 
@@ -78,7 +88,7 @@ done by the ``wberri.integrate`` method.
                Efermi=np.linspace(12.,13.,1001), 
                smearEf=10, # 10K
                quantities=["ahc","dos","cumdos"],
-               numproc=16,
+               parallel = parallel,
                adpt_num_iter=10,
                fout_name="Fe")
 
@@ -127,7 +137,7 @@ following method:
    wberri.tabulate(system, grid,
                 quantities=["berry"],
                 frmsf_name="Fe",
-                numproc=16,
+                parallel = parallel,
                 ibands=np.arange(4,10),
                 Ef0=12.6)
 

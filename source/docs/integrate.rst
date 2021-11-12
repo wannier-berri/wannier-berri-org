@@ -1,0 +1,4 @@
+Integrating
+===============
+
+.. autofunction:: wannierberri.integrate
