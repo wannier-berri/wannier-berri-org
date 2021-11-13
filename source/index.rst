@@ -16,10 +16,10 @@ a code to calculate different properties by means of Wannier interpolation: Berr
 
 
 ##########################################
-Postdoc positionb availabele Now:
+Postdoc position available Now:
 ##########################################
 
-A postdoc position availabel to work on WannierBerri immediately. See details `here <https://psi-k.net/jobs/postdoc-position-on-the-development-and-applicatio/>`__
+A postdoc position available to work on WannierBerri immediately. See details `here <https://psi-k.net/jobs/postdoc-position-on-the-development-and-applicatio/>`__
 
 ###################################
 New features in version-0.10.0
@@ -133,7 +133,6 @@ Author
    install
    benchmark
    people
-   organizations
    contribute
    software
    literature
