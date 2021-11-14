@@ -1,7 +1,5 @@
 # wannier-berri.org
-Web page of Wannier Berri 
-
-This is a private repository, for maintainers of the wannier-berri.org web page. I (Stepan) will regulary upload the master branch to the hosting server. 
+Web page of Wannier Berri. I (Stepan) regulary upload the master branch to the hosting server. 
 
 Compling
 ---------
