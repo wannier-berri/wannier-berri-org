@@ -12,11 +12,22 @@ The system may come either from :ref:`Wanier functions <sec-wan-fun>`  construct
 
 .. _sec-wan-fun:
 
-From Wannier functions
-----------------------
+From Wannier functions 
+-----------------------------
+
+Wannier90
++++++++++++++++++++++++++
 
 .. autoclass:: wannierberri.System_w90
    :show-inheritance:
+
+FPLO
++++++++++++++++++++++++++
+
+.. autoclass:: wannierberri.System_fplo
+   :show-inheritance:
+
+
 
 .. _sec-tb-models:
 
