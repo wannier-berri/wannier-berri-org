@@ -34,16 +34,17 @@ Contributed
           :alt: Xiaoxiong Liu
           :target: https://www.physik.uzh.ch/en/groups/neupert/team/Xiaoxiong-Liu.html
 
-     - Miguel Ángel Jiménez Herrera
 
-       University of the Basque Country
+     - Jae-Mo Lihm, 
 
-       San Seabstian, Spain
-       
-       .. image:: imag/photo/Miguel_Angel_Jimenez.jpg 
+       Seoul National University
+
+       Republic of Korea
+
+       .. image:: imag/photo/jaemo-lihm.jpeg
           :width: 200px
-          :alt: Miguel Angel Jimenez Herrera
-          :target: https://cfm.ehu.es/team/miguel-angel-jimenez-herrera/
+          :alt: Jae-Mo
+
 
      - Patrick Lenggenhager
 
@@ -56,18 +57,7 @@ Contributed
           :alt: Patrick
           :target: https://www.psi.ch/en/lsm/people/patrick-mario-lenggenhager 
 
-   * - Jae-Mo Lihm, 
-
-       Seoul National University
-
-       Republic of Korea
-
-       .. image:: imag/photo/jaemo-lihm.jpeg
-          :width: 200px
-          :alt: Jae-Mo
-
-
-     - Minsu Ghim,
+   * - Minsu Ghim,
       
        Seoul National University
        
@@ -76,6 +66,17 @@ Contributed
        .. image:: imag/photo/minsu.jpg
            :width: 200px
            :alt: Minsu Ghim
+
+     - Miguel Ángel Jiménez Herrera
+
+       University of the Basque Country
+
+       San Seabstian, Spain
+       
+       .. image:: imag/photo/Miguel_Angel_Jimenez.jpg 
+          :width: 200px
+          :alt: Miguel Angel Jimenez Herrera
+          :target: https://cfm.ehu.es/team/miguel-angel-jimenez-herrera/
 
      - Ji Hoon Ryoo, 
       
