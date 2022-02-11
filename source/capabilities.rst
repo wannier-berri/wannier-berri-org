@@ -194,6 +194,15 @@ Currently the following quantities are available to tabulate:
 
 -  ``'V'``: the band gradients :math:`\nabla_{\bf k}E_{n{\bf k}}`.
 
+- ``'spin_berry'``: Spin Berry curvature. Requires an additional parameter ``spin_current_type`` which can be ``"ryoo"`` or ``"qiao"``.
+
+   .. math::
+
+      \Omega^{{\rm spin};\,\gamma}_{\alpha\beta, n}({\bf k}) = -2 {\rm Im} \sum_{\substack{l \\ \varepsilon_{l{\bf k}} \neq \varepsilon_{n{\bf k}}}}
+      \frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2} \{ s^{\gamma}, v_\alpha \} \vert\psi_{l{\bf k}}\rangle
+      \langle\psi_{l{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
+      {(\varepsilon_{n{\bf k}}-\varepsilon_{l{\bf k}})^2}.
+
 
 Evaluation of additional matrix elements 
 -----------------------------------------
