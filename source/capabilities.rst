@@ -180,19 +180,28 @@ visualization software is straightforward.
 
 Currently the following quantities are available to tabulate:
 
--  ``'berry'``: Berry curvature
+-  ``'berry'``: Berry curvature [Å\ :sup:`2`\]
 
    .. math:: \Omega^\gamma_n({\bf k})=-\epsilon_{\alpha\beta\gamma}{\rm Im\,}\langle\partial_\alpha u_{n{\bf k}}\vert\partial_\beta u_{n{\bf k}}\rangle;
 
--  ``'morb'``: orbital moment of Bloch states
+-  ``'morb'``: orbital moment of Bloch states [eV·Å\ :sup:`2`\]
 
    .. math:: m^\gamma_n({\bf k})=\frac{e}{2\hbar}\epsilon_{\alpha\beta\gamma}{\rm Im\,}\langle\partial_\alpha u_{n{\bf k}}\vert H_{\bf k}-E_{n{\bf k}}\vert\partial_\beta u_{n{\bf k}}\rangle;
 
--  ``'spin'``: the expectation value of the Pauli operator
+-  ``'spin'``: the expectation value of the Pauli operator [ħ]
 
    .. math:: \mathbf{s}_n({\bf k})=\langle u_{n{\bf k}}\vert\hat{\bf \sigma}\vert u_{n{\bf k}}\rangle;
 
--  ``'V'``: the band gradients :math:`\nabla_{\bf k}E_{n{\bf k}}`.
+-  ``'V'``: the band gradients [eV·Å] :math:`\nabla_{\bf k}E_{n{\bf k}}`.
+
+- ``'spin_berry'``: Spin Berry curvature [ħ·Å\ :sup:`2`\]. Requires an additional parameter ``spin_current_type`` which can be ``"ryoo"`` or ``"qiao"``.
+
+   .. math::
+
+      \Omega^{{\rm spin};\,\gamma}_{\alpha\beta, n}({\bf k}) = -2 {\rm Im} \sum_{\substack{l \\ \varepsilon_{l{\bf k}} \neq \varepsilon_{n{\bf k}}}}
+      \frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2} \{ s^{\gamma}, v_\alpha \} \vert\psi_{l{\bf k}}\rangle
+      \langle\psi_{l{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
+      {(\varepsilon_{n{\bf k}}-\varepsilon_{l{\bf k}})^2}.
 
 
 Evaluation of additional matrix elements 
