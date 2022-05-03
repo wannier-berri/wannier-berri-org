@@ -119,6 +119,7 @@ Author
 
    newfeatures
    news
+   Wannier2022
    capabilities
    timing
    exampleFe

@@ -13,6 +13,7 @@ Documentation
 
    docs/integrate
    docs/tabulate
+   docs/run
    docs/parallel
    docs/parameters
    docs/grid
