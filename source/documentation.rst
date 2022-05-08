@@ -11,13 +11,12 @@ Documentation
 .. toctree::
    :maxdepth: 2
 
-   docs/integrate
-   docs/tabulate
+   docs/system
    docs/run
+   docs/old_inteface
    docs/parallel
    docs/parameters
    docs/grid
-   docs/system
    docs/symmetries
    docs/mmn2uHu
    docs/vaspspn
