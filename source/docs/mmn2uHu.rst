@@ -85,10 +85,10 @@ failed to reach convergence even with :math:`l_{\rm max}=600`.
 
 
 
-.. automodule:: wannierberri.mmn2uHu
+.. automodule:: wannierberri.utils.mmn2uHu
    :members:
    :no-undoc-members:
    :show-inheritance:
 
 
-.. |mmn2uHu| replace:: :obj:`wannierberri.mmn2uHu`
+.. |mmn2uHu| replace:: :obj:`wannierberri.utils.mmn2uHu`

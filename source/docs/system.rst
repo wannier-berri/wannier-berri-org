@@ -5,7 +5,7 @@ The first step in the ``wannierberri`` calculation is initialising the System.  
 They all have an important common method :func:`~wannierberri.System.set_symmetry`. 
 The system may come either from :ref:`Wanier functions <sec-wan-fun>`  constructed by `Wannier90 <http://wannier90.org>`_, or from ref:`tight binding <sec-tb-models>` models. 
 
-.. autoclass:: wannierberri.System
+.. autoclass:: wannierberri.system.System
    :members: set_parameters , set_symmetry
    :undoc-members:
    :show-inheritance:
@@ -18,13 +18,20 @@ From Wannier functions
 Wannier90
 +++++++++++++++++++++++++
 
-.. autoclass:: wannierberri.System_w90
+.. autoclass:: wannierberri.system.System_w90
    :show-inheritance:
 
 FPLO
 +++++++++++++++++++++++++
 
-.. autoclass:: wannierberri.System_fplo
+.. autoclass:: wannierberri.system.System_fplo
+   :show-inheritance:
+
+
+ASE
++++++++++++++++++++++++++
+
+.. autoclass:: wannierberri.system.System_ASE
    :show-inheritance:
 
 
@@ -38,17 +45,17 @@ From tight-binding models
 ``wannier90_tb.dat`` file
 +++++++++++++++++++++++++
 
-.. autoclass:: wannierberri.System_tb
+.. autoclass:: wannierberri.system.System_tb
    :show-inheritance:
 
 PythTB
 +++++++++
 
-.. autoclass:: wannierberri.System_PythTB
+.. autoclass:: wannierberri.system.System_PythTB
    :show-inheritance:
 
 TBmodels
 +++++++++
 
-.. autoclass:: wannierberri.System_TBmodels
+.. autoclass:: wannierberri.system.System_TBmodels
    :show-inheritance:

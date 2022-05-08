@@ -207,15 +207,15 @@ Once we have the :class:`~wannierberri.TABresult` object, we can plot the band s
 
 Path: ::
 
-    python3 -m wannierberri.tab_plot tab_result.pickle type=Line quantity=True kpath=0,0,0,0,0,60 namelist=G,Z qtype=berry component=z
+    python3 -m wannierberri.utils.tab_plot tab_result.pickle type=Line quantity=True kpath=0,0,0,0,0,60 namelist=G,Z qtype=berry component=z
 
 plane: ::
 
-    python3 -m wannierberri.tab_plot tab_result.pickle type=Plane quantity=True Efermi=-0.5 vec1=1,0,0 vec2=0,1,0 qtype=berry component=z
+    python3 -m wannierberri.utils.tab_plot tab_result.pickle type=Plane quantity=True Efermi=-0.5 vec1=1,0,0 vec2=0,1,0 qtype=berry component=z
 
 For more comments on the parameters please check :: 
 
-    python3 -m wannierberri.tab_plot -h
+    python3 -m wannierberri.utils.tab_plot -h
 
 
 Plotting along lines 
