@@ -59,3 +59,8 @@ TBmodels
 
 .. autoclass:: wannierberri.system.System_TBmodels
    :show-inheritance:
+
+
+
+Symmetrization of the system
+-----------------------------

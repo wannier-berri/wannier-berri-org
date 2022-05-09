@@ -15,6 +15,7 @@ Documentation
    docs/run
    docs/calculators
    docs/formula
+   docs/result
    docs/oldAPI
    docs/parallel
    docs/grid
