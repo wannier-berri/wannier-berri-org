@@ -1,5 +1,5 @@
-NEW advanced API
-==================
+running a calculation
+======================
 
 In the new API with the `run` method one can do integration and tabulating
 in one run. Also, different parameters may be used for different quantities 

@@ -13,14 +13,13 @@ Documentation
 
    docs/system
    docs/run
-   docs/old_inteface
+   docs/calculators
+   docs/formula
+   docs/oldAPI
    docs/parallel
-   docs/parameters
    docs/grid
    docs/symmetries
-   docs/mmn2uHu
-   docs/vaspspn
-   docs/tab_plot
+   docs/utils
    docs/data_K
    docs/models
 
