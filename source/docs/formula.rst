@@ -27,7 +27,18 @@ Basic classes:
 Some implemented formulae:
 ---------------------------
 
-.. autoclass:: wannierberri.covariant_formulak.Identity
+.. automodule:: wannierberri.formula.covariant
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
+Some extra formulae (for testiing):
+------------------------------------
+
+.. automodule:: wannierberri.formula.covariant_basic
+   :members:
    :undoc-members:
    :show-inheritance:
 

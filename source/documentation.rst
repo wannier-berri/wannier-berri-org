@@ -6,8 +6,6 @@ Documentation
    :no-members:
    :noindex:
 
-.. autofunction:: print_options
-
 .. toctree::
    :maxdepth: 2
 
@@ -16,13 +14,13 @@ Documentation
    docs/calculators
    docs/formula
    docs/result
-   docs/oldAPI
    docs/parallel
    docs/grid
    docs/symmetries
    docs/utils
    docs/data_K
    docs/models
+   docs/oldAPI
 
 
 .. include:: shortcuts.rst
