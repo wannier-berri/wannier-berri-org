@@ -18,7 +18,7 @@ Static (dependent only on Fermi level)
 +++++++++++++++++++++++++++++++++++++++
 
 .. automodule:: wannierberri.calculators.static
-   :members: AHC, Ohmic, _DOS ,DOS, CumDOS, BerryDipole_FermiSurf, BerryDipole_FermiSea
+   :members: DOS, CumDOS, Spin, Morb, AHC, Ohmic_FermiSea, Ohmic_FermiSurf, Hall_classic_FermiSurf,BerryDipole_FermiSea, BerryDipole_FermiSurf, NLAHC_FermiSea, NLAHC_FermiSurf, NLDrude_FermiSea, NLDrude_FermiSurf, NLDrude_Fermider2, Spin_Hall, GME_orb_FermiSea, GME_orb_FermiSurf, GME_spin_FermiSea, GME_spin_FermiSurf
    :undoc-members:
    :show-inheritance:
 
