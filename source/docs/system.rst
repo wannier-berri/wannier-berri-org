@@ -6,9 +6,10 @@ They all have an important common method :func:`~wannierberri.System.set_symmetr
 The system may come either from :ref:`Wanier functions <sec-wan-fun>`  constructed by `Wannier90 <http://wannier90.org>`_, or from ref:`tight binding <sec-tb-models>` models. 
 
 .. autoclass:: wannierberri.system.System
-   :members: set_parameters , set_symmetry
+   :members: set_parameters, set_symmetry, set_structure, set_symmetry_from_structure
    :undoc-members:
    :show-inheritance:
+   :member-order: bysource
 
 .. _sec-wan-fun:
 
