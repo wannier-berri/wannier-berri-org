@@ -1,7 +1,7 @@
 Smoother
 ==========
 
-.. autofunction:: wannierberri.smoother.getSmoother
+.. autofunction:: wannierberri.smoother.get_smoother
 
 .. autoclass:: wannierberri.smoother.FermiDiracSmoother
    :undoc-members:
