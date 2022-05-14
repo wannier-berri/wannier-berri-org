@@ -64,3 +64,9 @@ TBmodels
 
 Symmetrization of the system
 -----------------------------
+
+SymWann
++++++++++
+
+.. autoclass:: wannierberri.system.sym_wann.SymWann
+   :show-inheritance:

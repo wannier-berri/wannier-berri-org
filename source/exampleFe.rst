@@ -167,7 +167,7 @@ It is often more convinient to get :class:`~wannierberri.TABresult` object, and 
     tab_result = wberri.tabulate(system,
                                  grid,
                                  quantities=["berry"],
-                                 numproc=num_proc)
+                                 )
 
 
 Ths object can be pickled (saved to disk):
@@ -193,7 +193,7 @@ One can also extract the data as arrays like this:
 
 .. code:: python
 
-    Energy_CB=tab_result.get_data(iband=18,quantity='E')
+    Energy_CB=tab_result.get_data(iband=18,quantity='Energy')
     berry=tab_result.get_data(iband=18,quantity='berry',component='z')
 
 to further process in any other way. 
@@ -235,7 +235,7 @@ An example for valence band of tellurium along the K-H-K line is given below.
     path_result=wberri.tabulate(system,
                      grid=path,
                      quantities=['berry'],
-                     numproc=num_proc)
+                     )
 
 now plot the result
 
@@ -264,7 +264,7 @@ or you may get the data to plot in whatever way you like
 .. code:: python
 
     k=path.getKline()
-    E=path_result.get_data(quantity='E',iband=(16,17,18,19))
+    E=path_result.get_data(quantity='Energy',iband=(16,17,18,19))
     curv=path_result.get_data(quantity='berry',iband=(16,17,18,19),component="z") 
 
 .. _sec-optconf-example:
@@ -300,7 +300,6 @@ An example call might look as follows (with appropriate initialization):
            Efermi=np.linspace(12.,13.,21), 
            smearEf = 100,
            quantities = [ 'opt_conductivity' ],
-           numproc = num_proc,
            adpt_num_iter = 10,
            fout_name = 'Fe',
            restart = False,
@@ -349,7 +348,6 @@ You can also set symmetry before integrating, but note that specification of ``s
            Efermi=np.linspace(12.,13.,21),
            smearEf = 100,
            quantities = ['SHC_ryoo', 'SHC_qiao'],
-           numproc = num_proc,
            adpt_num_iter = 10,
            fout_name = 'pt',
            restart = False,
@@ -367,7 +365,6 @@ You can also set symmetry before integrating, but note that specification of ``s
            Efermi=np.linspace(12.,13.,21), 
            smearEf = 100,
            quantities = ['SHC_ryoo', 'SHC_qiao'],
-           numproc = num_proc,
            adpt_num_iter = 10,
            fout_name = 'pt',
            restart = False,
