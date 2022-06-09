@@ -10,7 +10,7 @@ Static (dependent only on Fermi level)
 +++++++++++++++++++++++++++++++++++++++
 
 .. autoclass:: wannierberri.calculators.static.StaticCalculator
-   :members: __inti__, __call__
+   :members: __init__, __call__
 
 In the following `**kwargs` refer to the arguments of :class:`~wannierberri.calculators.static.StaticCalculator`
 

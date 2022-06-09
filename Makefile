@@ -43,4 +43,5 @@ clean_fig_svg :
 
 clean_html :
 	rm html/*.html
+	rm -r doctrees
 

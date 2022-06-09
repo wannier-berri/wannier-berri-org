@@ -36,7 +36,9 @@ release = wannierberri.__version__
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon',
+    'nbsphinx',
 ]
+
 
 html_baseurl = 'https://wannier-berri.org'
 # Add any paths that contain templates here, relative to this directory.
