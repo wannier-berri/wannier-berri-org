@@ -119,6 +119,7 @@ html_favicon = 'imag/logo-WB/WB-logo.ico'
 html_logo = 'imag/logo-WB/WANNIERBERRI-redblack.png'
 html_show_sourcelink = False
 
+# True Basque colors
 bred='#D62618' 
 bgreen= '#009C46'
 
@@ -134,7 +135,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     'style_external_links': True,
 #    'vcs_pageview_mode': '',
-    'style_nav_header_background':  green , # '#009C46', #  'white',
+    'style_nav_header_background':  bgreen , # '#009C46', #  'white',
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
