@@ -119,9 +119,9 @@ Author
 
    newfeatures
    news
-   Wannier2022
    capabilities
    timing
+   tutorials/index
    exampleFe
    documentation
    methods

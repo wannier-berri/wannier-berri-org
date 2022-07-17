@@ -2,10 +2,14 @@
 
 Parallel execution
 ===================
-To perform execution in parallel, first one needs to create a :class:`~wannierberri.Parallel` object 
+To perform execution in parallel, first one needs to create a :class:`~wannierberri.parallel.Parallel` object 
 that will describe the parameters of the calculation.
 
-.. autoclass:: wannierberri.Parallel
+.. autoclass:: wannierberri.parallel.Parallel
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: wannierberri.parallel.Serial
    :undoc-members:
    :show-inheritance:
 

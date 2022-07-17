@@ -14,11 +14,6 @@ Tabulating
 
 .. autofunction:: wannierberri.tabulate
 
-.. autoclass:: wannierberri.TABresult
-   :members: fermiSurfer, get_data
-   :undoc-members:
-   :show-inheritance:
-
 
 .. _doc-parameters:
 
@@ -35,7 +30,7 @@ quantity are determined by the dictionaries `parameters` and `specific_parameter
 
 a dictionary like `{'parameter1':value1, 'parameter2':value2, ...}`. Each quantity will look for parameters that it can recognize,
 and take the corresponding values from the dictionary. The unrecognized paremeters will be ignored. A complete list of available 
-options for each quantity may be obtained by running `wannierberri.print_options()`
+options for each quantity may be obtained by running `wannierberri.__old_API.__main.print_options()`
 
 `specific_parameters` -- same quantity with different parameters in one run
 -----------------------------------------------------------------------------

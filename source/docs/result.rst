@@ -1,20 +1,20 @@
 Result
 =============
 
-.. autoclass:: wannierberri.__result.Result
+.. autoclass:: wannierberri.result.Result
 
 
-.. autoclass:: wannierberri.__result.ResultDict 
+.. autoclass:: wannierberri.result.ResultDict 
    :show-inheritance:
 
 
-.. autoclass:: wannierberri.__result.EnergyResult 
+.. autoclass:: wannierberri.result.EnergyResult 
    :show-inheritance:
 
 
-.. autoclass:: wannierberri.__result.KBandResult 
+.. autoclass:: wannierberri.result.KBandResult 
    :show-inheritance:
 
-.. autoclass:: wannierberri.__tabulate.TABresult 
+.. autoclass:: wannierberri.result.TABresult 
    :show-inheritance:
 

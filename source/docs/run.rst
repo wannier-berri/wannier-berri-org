@@ -1,4 +1,4 @@
-running a calculation
+Running a calculation
 ======================
 
 In the new API with the `run` method one can do integration and tabulating
