@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preliminary notes &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/tutorials/basic/tutorial-wb-basic.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Fermi surface and Fermi sea calculation of the Berry curvature dipole" href="../fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html" />
+    <link rel="prev" title="Tutorials" href="../index.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../../index.html">
+            <img src="../../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timing.html">Speed</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preliminary notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Do-not-be-afraid-of-python">1. Do not be afraid of python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Jupyter-Notebooks">2. Jupyter Notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-Documentation">3. Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4.-New-interface">4. New interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#5.-Feedback">5. Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#We-can-use-the-same-tabulators,-but-now-we-pack-them-into-TabulatorAll-in-&quot;grid&quot;-mode">We can use the same tabulators, but now we pack them into TabulatorAll in “grid” mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#And-we-run-the-calculation-in-the-same-way">And we run the calculation in the same way</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Analyze-the-tabulated-data">Analyze the tabulated data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-2-:">Problem 2 :</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fill-the-missing-parts-and-evaluate-the-Berry-curvature-summed-over-all-states-below-EF-=-12.6-eV.-Plot-in-on-a-plane-k3=const-(in-reduced-coordinates)">fill the missing parts and evaluate the Berry curvature summed over all states below EF = 12.6 eV. Plot in on a plane k3=const (in reduced coordinates)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Integration-on-a-grid:-anomalous-Hall-conductivity">Integration on a grid: anomalous Hall conductivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-3-:">Problem 3 :</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#start-from-a-denser-grid-(length=100-or-200)-and-do-the-integration-again-with-20-iterations.-Plot-the-results">start from a denser grid (length=100 or 200) and do the integration again with 20 iterations. Plot the results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Tetrahedron-method">Tetrahedron method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Optical-conductivity">Optical conductivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#All-in-one">All in one</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html">Fermi surface and Fermi sea calculation of the Berry curvature dipole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../symmetrization/Symmetrization_tutorial.html">Symmetrization of Wannier Hamiltonian and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spin_hall/tutorial_spin_hall.html">Spin Hall conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DIY/tutorial-wb-DIY.html">DIY tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      <li>Preliminary notes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Preliminary-notes">
+<h1>Preliminary notes<a class="headerlink" href="#Preliminary-notes" title="Permalink to this heading"></a></h1>
+<section id="1.-Do-not-be-afraid-of-python">
+<h2>1. Do not be afraid of python<a class="headerlink" href="#1.-Do-not-be-afraid-of-python" title="Permalink to this heading"></a></h2>
+<p>WannierBerri is provided as a python module. This means that unlike QE or Wannier90, there is no distinction between “program” and input files. All input parameters are provided as arguments to calls of functions and class constructors. (While Wannier function’s data is read from the files provided by Wanier90. This may sound (and look) scary to those who never used python (or never coded at all). But please, do not stand up and leave the classroom :)</p>
+<p>At first, you may use the templates given in the tutorials and modify only those parameters that you understand. The more you learn python, the more advantages you may get from the code.</p>
+<p>In fact, the border between “using” and “coding” becomes smeared. In one of the advanced tutorials, it is demonstrated how one can compute quantities that are not yet implemented in WannierBerri, without actually modifying the source code of the package itself.</p>
+</section>
+<section id="2.-Jupyter-Notebooks">
+<h2>2. Jupyter Notebooks<a class="headerlink" href="#2.-Jupyter-Notebooks" title="Permalink to this heading"></a></h2>
+<p>In this tutorial, we work with a Jupyter notebook. This is a convenient interactive environment that allows you to play with the code. For production runs, you may want to combine your workflow in one python script and execute it on a (super)computer</p>
+</section>
+<section id="3.-Documentation">
+<h2>3. Documentation<a class="headerlink" href="#3.-Documentation" title="Permalink to this heading"></a></h2>
+<p>A detailed description of parameters is in <a class="reference external" href="https://wannier-berri.org/documentation.html">https://wannier-berri.org/documentation.html</a></p>
+<p>Note : also check the parameters of a parent class!</p>
+</section>
+<section id="4.-New-interface">
+<h2>4. New interface<a class="headerlink" href="#4.-New-interface" title="Permalink to this heading"></a></h2>
+<p>Those who are already familiar with WB, know that one should use <a class="reference external" href="https://wannier-berri.org/docs/oldAPI.html#wannierberri.integrate">integrate()</a> or <a class="reference external" href="https://wannier-berri.org/docs/oldAPI.html#wannierberri.tabulate">tabulate()</a> functions to run calculations. In the new version, they are substituted by the <a class="reference external" href="https://wannier-berri.org/docs/run.html">run()</a>. This interface looks to be less laconic for basic calculations, but for advanced uses, it provides a powerful tool to pass different
+parameters to different calculations.</p>
+</section>
+<section id="5.-Feedback">
+<h2>5. Feedback<a class="headerlink" href="#5.-Feedback" title="Permalink to this heading"></a></h2>
+<p>If you have questions or comments after this tutorial is over, use the following ways of communication:</p>
+<ul class="simple">
+<li><p>Discussions or Issues on GitHub : <a class="reference external" href="https://github.com/wannier-berri/wannier-berri/discussions">https://github.com/wannier-berri/wannier-berri/discussions</a></p></li>
+<li><p>mailing list : <a class="reference external" href="https://physik.lists.uzh.ch/sympa/info/wannier-berri">https://physik.lists.uzh.ch/sympa/info/wannier-berri</a></p></li>
+</ul>
+</section>
+</section>
+<section id="Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">
+<h1>Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them<a class="headerlink" href="#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them" title="Permalink to this heading"></a></h1>
+<p>In this tutorial we will see how to compute band energies, Berry curvature, spins and anomalous Hall conductivity using WannierBerri code and further integrate them over the Brillouin zone to obtain Anomalous Hall conductivity, and other quantities of interest.</p>
+<ul class="simple">
+<li><p>import the needed modules</p></li>
+<li><p>initialize a <a class="reference external" href="https://wannier-berri.org/docs/parallel.html">Parallel() or Serial()</a> class</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preliminary</span>
+
+<span class="c1"># Set environment variables - not mandatory but recommended if you use Parallel()</span>
+<span class="c1">#import os</span>
+<span class="c1">#os.environ[&#39;OPENBLAS_NUM_THREADS&#39;] = &#39;1&#39;</span>
+<span class="c1">#os.environ[&#39;MKL_NUM_THREADS&#39;] = &#39;1&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">wannierberri</span> <span class="k">as</span> <span class="nn">wberri</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using WannierBerri version </span><span class="si">{</span><span class="n">wberri</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">cprint</span>
+
+<span class="c1">#  This block is needed if you run this cell for a second time</span>
+<span class="c1">#  because one cannot initiate two parallel environments at a time</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">parallel</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Chiose one of the options:</span>
+
+<span class="n">parallel</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">num_cpus</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#parallel = wberri.Parallel()  # automatic detection</span>
+<span class="c1">#parallel = wberri.Serial()</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using WannierBerri version 0.13.2
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-06-09 20:21:09,475 INFO services.py:1456 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">http://127.0.0.1:8265</span>
+</pre></div></div>
+</div>
+<p>Now we need to define the system that we are working on. Wannierberri can equally work with Wannier functions obtained by Wannier90 or other code (e.g. ASE or FPLO), as well as tight-binding models. This is done by constructing a <a class="reference external" href="https://wannier-berri.org/docs/system.html">System()</a> class or one of its subclasses. Below, an example for Wannier90 is given; in advanced tutorials, some tight-binding models are also used.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing data from wannier90</span>
+
+<span class="n">system</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span>
+                        <span class="n">seedname</span><span class="o">=</span><span class="s1">&#39;w90_files/Fe&#39;</span><span class="p">,</span>
+                        <span class="n">berry</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   <span class="c1"># needed to calculate &quot;external terms&quot; of Berry connection or curvature , reads &quot;.mmn&quot; file</span>
+                        <span class="n">spin</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">,</span> <span class="c1"># needed for spin properties, reads &quot;.spn&quot; file</span>
+                        <span class="n">use_wcc_phase</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># include the fphase actors e^(i*k*r_a) in the Bloch basis state definition</span>
+                        <span class="p">)</span>
+
+<span class="n">generators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Inversion&quot;</span><span class="p">,</span><span class="s2">&quot;C4z&quot;</span><span class="p">,</span><span class="s2">&quot;TimeReversal*C2x&quot;</span><span class="p">]</span>
+<span class="n">system</span><span class="o">.</span><span class="n">set_symmetry</span><span class="p">(</span><span class="n">generators</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+using fortio to read
+Reading restart information from file w90_files/Fe.chk :
+Time to read .chk : 0.32897067070007324
+Time for MMN.__init__() : 1.0343718528747559 , read : 1.004758596420288 , headstring 0.029613256454467773
+----------
+ SPN
+---------
+
+using fortio to read
+reading w90_files/Fe.spn : Created on  7May2022 at 16: 2:47
+----------
+ SPN OK
+---------
+
+time for FFT_q_to_R : 0.16951322555541992 s
+using ws_distance
+irvec_new_all shape (89,)
+using ws_dist for Ham_R
+using ws_dist for AA_R
+using ws_dist for SS_R
+Number of wannier functions: 18
+Number of R points: 89
+Recommended size of FFT grid [4 4 4]
+Real-space lattice:
+ [[ 1.4349963  1.4349963  1.4349963]
+ [-1.4349963  1.4349963  1.4349963]
+ [-1.4349963 -1.4349963  1.4349963]]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate bands, Berry curvature, and spin along a path GHPNG</span>
+
+
+<span class="c1"># all kpoints given in reduced coordinates</span>
+<span class="n">path</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                 <span class="n">k_nodes</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span> <span class="p">],</span>   <span class="c1">#  G</span>
+        <span class="p">[</span><span class="mf">0.500</span> <span class="p">,</span><span class="o">-</span><span class="mf">0.5000</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5000</span><span class="p">],</span>   <span class="c1">#  H</span>
+        <span class="p">[</span><span class="mf">0.7500</span><span class="p">,</span> <span class="mf">0.2500</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2500</span><span class="p">],</span>   <span class="c1">#  P</span>
+        <span class="p">[</span><span class="mf">0.5000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5000</span><span class="p">],</span>   <span class="c1">#  N</span>
+        <span class="p">[</span><span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.000</span>  <span class="p">]</span> <span class="p">]</span> <span class="p">,</span> <span class="c1">#  G</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="s2">&quot;H&quot;</span><span class="p">,</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="s2">&quot;N&quot;</span><span class="p">,</span><span class="s2">&quot;G&quot;</span><span class="p">],</span>
+                 <span class="n">length</span><span class="o">=</span><span class="mi">200</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="c1"># uncomment some of these lines to see what path you have generated</span>
+
+<span class="c1">#print (path)</span>
+
+<span class="c1">#print (path.getKline())</span>
+
+<span class="c1">#for K in path.get_K_list():</span>
+<span class="c1">#    print (K)</span>
+
+<span class="c1">#print (np.array([K.K for K in path.get_K_list()]))</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<p>The calculation is called using the function <code class="docutils literal notranslate"><span class="pre">`run()</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/run.html">https://wannier-berri.org/docs/run.html</a>&gt;`__ :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>result=wberri.run(system,
+                  grid=path,
+                  calculators = {&quot;key&quot; : calculator},
+                  parallel = parallel,
+                  print_Kpoints = False)
+</pre></div>
+</div>
+<p>Here, apart from the already known ingredients, we need to define objects of some subclass of <code class="docutils literal notranslate"><span class="pre">`Calculator</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator">https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator</a>&gt;`__. A Calculator is a callable object which returns some <code class="docutils literal notranslate"><span class="pre">`Result</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/result.html">https://wannier-berri.org/docs/result.html</a>&gt;`__. If you code another calculator, you can calculate other things using the machinery of WannierBerri, but that is not a part of this basic tutorial.</p>
+<p>Further, results are packed into <code class="docutils literal notranslate"><span class="pre">`ResultDict</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/result.html#wannierberri.result.ResultDict">https://wannier-berri.org/docs/result.html#wannierberri.result.ResultDict</a>&gt;`__ and returned.</p>
+<p>To run a tabulation one needs to compose a dictionary, where keys are any arbitrary strings to label further tabulation results, and the values are subclasses of <code class="docutils literal notranslate"><span class="pre">`Tabulator</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.tabulate.Tabulator">https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.tabulate.Tabulator</a>&gt;`__</p>
+<p>Next, we pack them into another class called <code class="docutils literal notranslate"><span class="pre">`TabulatorAll</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.TabulatorAll">https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.TabulatorAll</a>&gt;`__, which represents a complex <code class="docutils literal notranslate"><span class="pre">`Calculator</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator">https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator</a>&gt;`__</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">tabulators</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">Energy</span><span class="p">(),</span>
+               <span class="s2">&quot;berry&quot;</span> <span class="p">:</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">BerryCurvature</span><span class="p">(),</span>
+             <span class="p">}</span>
+
+<span class="n">tab_all_path</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">TabulatorAll</span><span class="p">(</span>
+                    <span class="n">tabulators</span><span class="p">,</span>
+                    <span class="n">ibands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;path&quot;</span>
+                        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+</pre></div></div>
+</div>
+<p>Now run the calculation using the function <code class="docutils literal notranslate"><span class="pre">`run()</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/run.html">https://wannier-berri.org/docs/run.html</a>&gt;`__ . This will return an object of class <code class="docutils literal notranslate"><span class="pre">`ResultDict()</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/result.html#wannierberri.result.ResultDict">https://wannier-berri.org/docs/result.html#wannierberri.result.ResultDict</a>&gt;`__ This object contains all results of the calculations, but in this case we have only one, which is marked <code class="docutils literal notranslate"><span class="pre">&quot;tabulate&quot;</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                  <span class="n">grid</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+                  <span class="n">calculators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tabulate&quot;</span> <span class="p">:</span> <span class="n">tab_all_path</span><span class="p">},</span>
+                  <span class="n">parallel</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">,</span>
+                  <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<span class="n">path_result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Calculation along a path - checking calculators for compatibility
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fef6026fb50&gt;
+All calculators are compatible
+Symmetrization switched off for Path
+The set of k points is a Path() with 215 points and labels {0: &#39;G&#39;, 70: &#39;H&#39;, 130: &#39;P&#39;, 165: &#39;N&#39;, 214: &#39;G&#39;}
+WARNING : symmetry is not used for a tabulation along path
+generating K_list
+Done
+Done, sum of weights:215.0
+symgroup : None
+processing 215 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              1.6                 168.4
+                   4              1.6                  85.0
+                   6              1.7                  57.6
+                   8              1.7                  43.7
+                  10              1.7                  35.6
+                  12              1.8                  30.0
+                  14              1.8                  25.9
+                  16              1.9                  23.1
+                  18              1.9                  20.8
+                  20              1.9                  18.9
+                  22              2.0                  17.4
+                  24              2.0                  16.2
+                  26              2.1                  15.1
+                  28              2.1                  14.1
+                  30              2.2                  13.3
+                  32              2.2                  12.7
+                  34              2.3                  12.0
+                  36              2.3                  11.4
+                  38              2.3                  10.9
+                  40              2.4                  10.5
+                  42              2.4                  10.1
+                  44              2.5                   9.7
+                  46              2.6                   9.4
+                  48              2.6                   9.1
+                  50              2.7                   8.8
+                  52              2.7                   8.4
+                  54              2.7                   8.1
+                  56              2.8                   7.8
+                  58              2.8                   7.6
+                  60              2.9                   7.4
+                  62              2.9                   7.2
+                  64              3.0                   7.0
+                  66              3.0                   6.8
+                  68              3.1                   6.6
+                  70              3.1                   6.4
+                  72              3.2                   6.3
+                  74              3.2                   6.1
+                  76              3.2                   5.9
+                  78              3.3                   5.8
+                  80              3.3                   5.6
+                  82              3.4                   5.5
+                  84              3.4                   5.4
+                  86              3.5                   5.2
+                  88              3.5                   5.1
+                  90              3.6                   5.0
+                  92              3.6                   4.8
+                  94              3.7                   4.7
+                  96              3.7                   4.6
+                  98              3.8                   4.5
+                 100              3.8                   4.4
+                 102              3.9                   4.3
+                 104              3.9                   4.2
+                 106              3.9                   4.1
+                 108              4.0                   4.0
+                 110              4.1                   3.9
+                 112              4.1                   3.8
+                 114              4.1                   3.7
+                 116              4.2                   3.6
+                 118              4.2                   3.5
+                 120              4.3                   3.4
+                 122              4.3                   3.3
+                 124              4.4                   3.2
+                 126              4.4                   3.1
+                 128              4.5                   3.0
+                 130              4.5                   3.0
+                 132              4.6                   2.9
+                 134              4.6                   2.8
+                 136              4.7                   2.7
+                 138              4.7                   2.6
+                 140              4.7                   2.5
+                 142              4.8                   2.5
+                 144              4.8                   2.4
+                 146              4.9                   2.3
+                 148              4.9                   2.2
+                 150              5.0                   2.2
+                 152              5.0                   2.1
+                 154              5.1                   2.0
+                 156              5.1                   1.9
+                 158              5.1                   1.9
+                 160              5.2                   1.8
+                 162              5.2                   1.7
+                 164              5.3                   1.6
+                 166              5.3                   1.6
+                 168              5.4                   1.5
+                 170              5.4                   1.4
+                 172              5.5                   1.4
+                 174              5.5                   1.3
+                 176              5.5                   1.2
+                 178              5.6                   1.2
+                 180              5.6                   1.1
+                 182              5.7                   1.0
+                 184              5.7                   1.0
+                 186              5.8                   0.9
+                 188              5.8                   0.8
+                 190              5.9                   0.8
+                 192              5.9                   0.7
+                 194              6.0                   0.6
+                 196              6.0                   0.6
+                 198              6.0                   0.5
+                 200              6.1                   0.5
+                 202              6.1                   0.4
+                 204              6.2                   0.3
+                 206              6.2                   0.3
+                 208              6.3                   0.2
+                 210              6.3                   0.2
+                 212              6.4                   0.1
+                 214              6.4                   0.0
+time for processing    215 K-points on   2 processes:     6.4549 ; per K-point          0.0300 ; proc-sec per K-point          0.0600
+time1 =  0.025644779205322266
+Totally processed 215 K-points
+{&#39;tabulate&#39;: &lt;wannierberri.result.__tabresult.TABresult object at 0x7fef263a8f10&gt;}
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">`TABresult</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/result.html#wannierberri.result.TABresult">https://wannier-berri.org/docs/result.html#wannierberri.result.TABresult</a>&gt;`__ object already provides methods to plot the results. (As well as one can extract the data and plot them by other means). Below let’s plot the interpolated bands and compare with those obtained in QE. (file “bands/Fe_bands_pw.dat” is already provided)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the bands and compare with QuantumEspresso</span>
+<span class="n">EF</span> <span class="o">=</span> <span class="mf">12.6</span>
+<span class="n">path_result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span>
+<span class="c1"># Import the pre-computed bands from quantum espresso</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bands/Fe_bands_pw.dat&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">))</span>
+<span class="n">bohr_ang</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">physical_constants</span><span class="p">[</span><span class="s1">&#39;Bohr radius&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e-10</span>
+<span class="n">alatt</span> <span class="o">=</span> <span class="mf">5.4235</span><span class="o">*</span> <span class="n">bohr_ang</span>
+<span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">alatt</span>
+<span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">-=</span><span class="n">EF</span>
+<span class="c1"># plot it as dots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;QE&quot;</span><span class="p">)</span>
+
+
+<span class="n">path_result</span><span class="o">.</span><span class="n">plot_path_fat</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span>
+              <span class="n">quantity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">save_file</span><span class="o">=</span><span class="s2">&quot;Fe_bands+QE.pdf&quot;</span><span class="p">,</span>
+              <span class="n">Eshift</span><span class="o">=</span><span class="n">EF</span><span class="p">,</span>
+              <span class="n">Emin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span>  <span class="n">Emax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+              <span class="n">iband</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fatband&quot;</span><span class="p">,</span>
+              <span class="n">fatfactor</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+              <span class="n">cut_k</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">close_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">show_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;WB&quot;</span>
+              <span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_basic_tutorial-wb-basic_12_0.png" src="../../_images/tutorials_basic_tutorial-wb-basic_12_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the bands and compare with wannier90</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;bands/Fe_bands_w90.dat&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;W90&quot;</span><span class="p">)</span>
+
+<span class="n">path_result</span><span class="o">.</span><span class="n">plot_path_fat</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span>
+              <span class="n">quantity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">save_file</span><span class="o">=</span><span class="s2">&quot;Fe_bands+w90.pdf&quot;</span><span class="p">,</span>
+              <span class="n">Eshift</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">Emin</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="n">Emax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+              <span class="n">iband</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fatband&quot;</span><span class="p">,</span>
+              <span class="n">fatfactor</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+              <span class="n">cut_k</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">close_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">show_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;WB&quot;</span>
+              <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_basic_tutorial-wb-basic_13_0.png" src="../../_images/tutorials_basic_tutorial-wb-basic_13_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the Berry curvature</span>
+<span class="n">path_result</span><span class="o">.</span><span class="n">plot_path_fat</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span>
+              <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span>
+              <span class="n">component</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span>
+              <span class="n">save_file</span><span class="o">=</span><span class="s2">&quot;Fe_bands+berry.pdf&quot;</span><span class="p">,</span>
+              <span class="n">Eshift</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">Emin</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="n">Emax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+              <span class="n">iband</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fatband&quot;</span><span class="p">,</span>
+              <span class="n">fatfactor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+              <span class="n">cut_k</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">close_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">show_fig</span><span class="o">=</span><span class="kc">True</span>
+              <span class="p">)</span>
+
+<span class="c1"># The size of the dots corresponds to the magnitude of BC on a logarithmic scale</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_basic_tutorial-wb-basic_14_0.png" src="../../_images/tutorials_basic_tutorial-wb-basic_14_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>modify the path</p></li>
+<li><p>plot the “z” component of spin along it (without .</p></li>
+<li><p>do <strong>not</strong> plot QE or W90 bands in this case</p></li>
+</ul>
+<p>Hint : look here for a proper Calculator <a class="reference external" href="https://wannier-berri.org/docs/calculators.html#tabulating">https://wannier-berri.org/docs/calculators.html#tabulating</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put the necessary code here</span>
+<br/><br/><br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">getKline</span><span class="p">()</span>
+<span class="n">E</span><span class="o">=</span><span class="n">path_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span><span class="n">iband</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">curv</span><span class="o">=</span><span class="n">path_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">iband</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span><span class="n">component</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">curv</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(215,) (215, 2) (215, 2)
+</pre></div></div>
+</div>
+<p>Now let’s investigate how Berry curvature behaves in the 3D Brillouin zone. For that we need to set a grid, which can be done in several ways, see input parameters <a class="reference external" href="file:///home/stepan/github/wannier-berri-org/html/docs/grid.html">here</a></p>
+<p>Most important to recall, is that in WB one sets two grids : the FFT grid and the K-grid (NKdiv). this is important for running the calculation. However, the final; result depends only on their product.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+<span class="c1">#grid = wberri.Grid(system, NK=[24,24,24], NKFFT=4)</span>
+<span class="c1">#grid = wberri.Grid(system, NKdiv=6, NKFFT=4)</span>
+<br/><br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=None (&lt;class &#39;NoneType&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+length=50 was converted into NK=[25 25 25]
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+</pre></div></div>
+</div>
+<section id="We-can-use-the-same-tabulators,-but-now-we-pack-them-into-TabulatorAll-in-&quot;grid&quot;-mode">
+<h2>We can use the same tabulators, but now we pack them into TabulatorAll in “grid” mode<a class="headerlink" href="#We-can-use-the-same-tabulators,-but-now-we-pack-them-into-TabulatorAll-in-"grid"-mode" title="Permalink to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabulators</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">Energy</span><span class="p">(),</span>
+               <span class="s2">&quot;berry&quot;</span> <span class="p">:</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">BerryCurvature</span><span class="p">(),</span>
+             <span class="p">}</span>
+
+<span class="n">tab_all_grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">TabulatorAll</span><span class="p">(</span>
+                    <span class="n">tabulators</span><span class="p">,</span>
+                    <span class="n">ibands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+                    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;grid&quot;</span>
+                        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+</pre></div></div>
+</div>
+</section>
+<section id="And-we-run-the-calculation-in-the-same-way">
+<h2>And we run the calculation in the same way<a class="headerlink" href="#And-we-run-the-calculation-in-the-same-way" title="Permalink to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                  <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+                  <span class="n">calculators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tabulate&quot;</span> <span class="p">:</span> <span class="n">tab_all_grid</span><span class="p">},</span>
+                  <span class="n">parallel</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">,</span>
+                  <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<span class="n">grid_result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Grid is regular
+The set of k points is a Grid() with NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+generating K_list
+Done in 0.002190113067626953 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.016268014907836914 s
+Done in 0.016317367553710938 s
+K_list contains 18 Irreducible points(14.4%) out of initial 5x5x5=125 grid
+Done, sum of weights:1.0000000000000004
+iteration 0 - 18 points. New points are:
+ K-point 0 : coord in rec.lattice = [   0.000000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 1 : coord in rec.lattice = [   0.000000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 2 : coord in rec.lattice = [   0.000000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 3 : coord in rec.lattice = [   0.200000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 4 : coord in rec.lattice = [   0.200000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 5 : coord in rec.lattice = [   0.200000  ,   0.600000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 6 : coord in rec.lattice = [   0.400000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 7 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 8 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 9 : coord in rec.lattice = [   0.400000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 10 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 11 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 12 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 13 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 14 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 15 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 16 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 17 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 18 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.7                   5.8
+                   4              1.4                   5.0
+                   6              2.1                   4.1
+                   8              2.8                   3.5
+                  10              3.4                   2.7
+                  12              4.1                   2.0
+                  14              4.7                   1.3
+                  16              5.3                   0.7
+time for processing     18 K-points on   2 processes:     6.8316 ; per K-point          0.3795 ; proc-sec per K-point          0.7591
+time1 =  0.019936084747314453
+setting the grid
+setting new kpoints
+finding equivalent kpoints
+collecting
+collecting: to_grid  : 0.3238046169281006
+collecting: TABresult  : 0.0018298625946044922
+collecting - OK : 0.32567477226257324 (4.029273986816406e-05)
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+using a pool of 8 processes to write txt frmsf of 35157 points per process
+Totally processed 18 K-points
+{&#39;tabulate&#39;: &lt;wannierberri.result.__tabresult.TABresult object at 0x7fee5a5bc2e0&gt;}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we got some .frmsf files</span>
+<span class="o">!</span>ls -al *.frmsf
+<span class="c1">#!rm *.frmsf</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-rw-rw-r-- 1 stepan stepan 6593508 Jun  9 20:21 result-tabulate_berry-x.frmsf
+-rw-rw-r-- 1 stepan stepan 6593394 Jun  9 20:21 result-tabulate_berry-y.frmsf
+-rw-rw-r-- 1 stepan stepan 6595943 Jun  9 20:21 result-tabulate_berry-z.frmsf
+-rw-rw-r-- 1 stepan stepan 3335355 Jun  9 20:21 result-tabulate_E.frmsf
+-rw-rw-r-- 1 stepan stepan 6670549 Jun  9 20:21 result-tabulate_Energy-.frmsf
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s look at them using the Fermisurfer! (https://fermisurfer.osdn.jp/)</span>
+<span class="c1">#&gt; fermisurfer Fe_berry_z.frmsf</span>
+</pre></div>
+</div>
+</div>
+<section id="Analyze-the-tabulated-data">
+<h3>Analyze the tabulated data<a class="headerlink" href="#Analyze-the-tabulated-data" title="Permalink to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You may get the data as numpy arrays via:</span>
+<span class="n">Energy</span> <span class="o">=</span> <span class="n">grid_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+<span class="n">berry</span>  <span class="o">=</span> <span class="n">grid_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">component</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">berry</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">Energy</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(25, 25, 25) (25, 25, 25)
+</pre></div></div>
+</div>
+</section>
+<section id="Problem-2-:">
+<h3>Problem 2 :<a class="headerlink" href="#Problem-2-:" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="fill-the-missing-parts-and-evaluate-the-Berry-curvature-summed-over-all-states-below-EF-=-12.6-eV.-Plot-in-on-a-plane-k3=const-(in-reduced-coordinates)">
+<h2>fill the missing parts and evaluate the Berry curvature summed over all states below EF = 12.6 eV. Plot in on a plane k3=const (in reduced coordinates)<a class="headerlink" href="#fill-the-missing-parts-and-evaluate-the-Berry-curvature-summed-over-all-states-below-EF-=-12.6-eV.-Plot-in-on-a-plane-k3=const-(in-reduced-coordinates)" title="Permalink to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example : find the total Berry curvature of occupied states</span>
+<span class="c1"># on the plane (k1,k2), k3=const (in reduced coordinates)</span>
+<span class="n">Berry_occ</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">k3</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">EF</span><span class="o">=</span><span class="mf">12.4</span>
+<span class="k">for</span> <span class="n">ib</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">):</span>
+    <span class="n">Energy</span> <span class="o">=</span> <span class="n">grid_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="n">ib</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;Energy&#39;</span><span class="p">)[:,:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">berry</span>  <span class="o">=</span> <span class="n">grid_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="n">ib</span><span class="p">,</span> <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">component</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">)[:,:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">berry</span> <span class="p">[</span><span class="n">Energy</span><span class="o">&gt;</span><span class="n">EF</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Berry_occ</span> <span class="o">+=</span> <span class="n">berry</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">Energy</span><span class="p">,</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">EF</span><span class="p">],</span><span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">shw</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Berry_occ</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/tmp/ipykernel_395236/2830663145.py:11: UserWarning: No contour levels were found within the data range.
+  plt.contour(Energy,levels = [EF],linewidths=0.5,colors=&#39;black&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_basic_tutorial-wb-basic_30_1.png" src="../../_images/tutorials_basic_tutorial-wb-basic_30_1.png" />
+</div>
+</div>
+<section id="Integration-on-a-grid:-anomalous-Hall-conductivity">
+<h3>Integration on a grid: anomalous Hall conductivity<a class="headerlink" href="#Integration-on-a-grid:-anomalous-Hall-conductivity" title="Permalink to this heading"></a></h3>
+<p>Now, after we saw that the Berry curvature changes rapidly in the k-space, we understand that to get the precise value of AHC (<span class="math">\ref{eq:ahc}</span>) defined as a Fermi-sea integral of Berry curvature</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\sigma^{\rm AHC}_{xy} = -\frac{e^2}{\hbar} \sum_n^{\rm occ} \int\frac{d\mathbf{k}}{(2\pi)^3} \Omega^n_\gamma
+\label{eq:ahc}\tag{1}
+\end{equation}</div><p>we need a very dense grid. The calculation is done again, by using the calculators. AHC may be viewed as a function of the Fermi level. Such calculators are called <a class="reference external" href="https://wannier-berri.org/docs/calculators.html#static-dependent-only-on-fermi-level">StaticCalculator</a> , because the corresponding effects can be measured in static fields. (as opposed to dynamic calculators, see below).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">Efermi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;ahc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">AHC</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">)</span>
+
+<span class="n">result_run</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">file_Klist</span><span class="o">=</span><span class="s2">&quot;Klist_ahc.pickle&quot;</span>  <span class="c1"># needed to restart a calculation in future</span>
+            <span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=None (&lt;class &#39;NoneType&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+length=50 was converted into NK=[25 25 25]
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+<span class="ansi-cyan-intense-fg ansi-bold">Anomalous Hall conductivity (:math:`s^3 \cdot A^2 / (kg \cdot m^3) = S/m`)
+
+        | With Fermi sea integral Eq(11) in `Ref &lt;https://www.nature.com/articles/s41524-021-00498-5&gt;`_
+        | Output: :math:`O = -e^2/\hbar \int [dk] \Omega f`
+        | Instruction: :math:`j_\alpha = \sigma_{\alpha\beta} E_\beta = \epsilon_{\alpha\beta\delta} O_\delta E_\beta`
+</span>
+Grid is regular
+The set of k points is a Grid() with NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+generating K_list
+Done in 0.0023527145385742188 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.0242917537689209 s
+Done in 0.024440526962280273 s
+K_list contains 18 Irreducible points(14.4%) out of initial 5x5x5=125 grid
+Done, sum of weights:1.0000000000000004
+iteration 0 - 18 points. New points are:
+ K-point 0 : coord in rec.lattice = [   0.000000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 1 : coord in rec.lattice = [   0.000000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 2 : coord in rec.lattice = [   0.000000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 3 : coord in rec.lattice = [   0.200000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 4 : coord in rec.lattice = [   0.200000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 5 : coord in rec.lattice = [   0.200000  ,   0.600000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 6 : coord in rec.lattice = [   0.400000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 7 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 8 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 9 : coord in rec.lattice = [   0.400000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 10 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 11 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 12 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 13 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 14 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 15 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 16 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 17 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 18 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.3                   2.1
+                   4              0.5                   1.7
+                   6              0.7                   1.4
+                   8              1.0                   1.2
+                  10              1.1                   0.9
+                  12              1.4                   0.7
+                  14              1.6                   0.5
+                  16              1.8                   0.2
+time for processing     18 K-points on   2 processes:     2.0729 ; per K-point          0.1152 ; proc-sec per K-point          0.2303
+time1 =  0.0012836456298828125
+time2 =  0.00812673568725586
+checking for equivalent points in all points (of new  7 points)
+ excluded 0 points
+sum of weights now :1.0000000000000004
+iteration 1 - 7 points. New points are:
+ K-point 18 : coord in rec.lattice = [   0.350000  ,  -0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 19 : coord in rec.lattice = [   0.350000  ,  -0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 20 : coord in rec.lattice = [   0.350000  ,   0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 21 : coord in rec.lattice = [   0.350000  ,   0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 22 : coord in rec.lattice = [   0.450000  ,  -0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 23 : coord in rec.lattice = [   0.450000  ,  -0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 24 : coord in rec.lattice = [   0.450000  ,   0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 7 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.3                   0.6
+                   4              0.5                   0.4
+                   6              0.7                   0.1
+time for processing      7 K-points on   2 processes:     0.9025 ; per K-point          0.1289 ; proc-sec per K-point          0.2579
+time1 =  0.0023543834686279297
+time2 =  0.00754547119140625
+checking for equivalent points in all points (of new  6 points)
+ excluded 0 points
+sum of weights now :1.0000000000000004
+iteration 2 - 6 points. New points are:
+ K-point 25 : coord in rec.lattice = [   0.150000  ,   0.550000 ,    0.150000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 26 : coord in rec.lattice = [   0.150000  ,   0.550000 ,    0.250000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 27 : coord in rec.lattice = [   0.150000  ,   0.650000 ,    0.150000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 28 : coord in rec.lattice = [   0.150000  ,   0.650000 ,    0.250000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 29 : coord in rec.lattice = [   0.250000  ,   0.550000 ,    0.250000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 30 : coord in rec.lattice = [   0.250000  ,   0.650000 ,    0.250000 ], refinement level:1, dK=[0.1 0.1 0.1]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 6 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.3                   0.5
+                   4              0.5                   0.2
+time for processing      6 K-points on   2 processes:     0.7085 ; per K-point          0.1181 ; proc-sec per K-point          0.2362
+time1 =  0.0015022754669189453
+time2 =  0.0043561458587646484
+checking for equivalent points in all points (of new  6 points)
+ excluded 0 points
+sum of weights now :1.0000000000000004
+iteration 3 - 6 points. New points are:
+ K-point 31 : coord in rec.lattice = [   0.550000  ,   0.350000 ,    0.350000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 32 : coord in rec.lattice = [   0.550000  ,   0.350000 ,    0.450000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 33 : coord in rec.lattice = [   0.550000  ,   0.450000 ,    0.350000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 34 : coord in rec.lattice = [   0.550000  ,   0.450000 ,    0.450000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 35 : coord in rec.lattice = [   0.650000  ,   0.350000 ,    0.350000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 36 : coord in rec.lattice = [   0.650000  ,   0.350000 ,    0.450000 ], refinement level:1, dK=[0.1 0.1 0.1]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 6 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.2                   0.4
+                   4              0.4                   0.2
+time for processing      6 K-points on   2 processes:     0.6202 ; per K-point          0.1034 ; proc-sec per K-point          0.2067
+time1 =  0.005711078643798828
+time2 =  0.010697603225708008
+checking for equivalent points in all points (of new  5 points)
+ excluded 0 points
+sum of weights now :1.0000000000000004
+iteration 4 - 4 points. New points are:
+ K-point 36 : coord in rec.lattice = [   0.350000  ,   0.350000 ,    0.350000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 37 : coord in rec.lattice = [   0.350000  ,   0.350000 ,    0.450000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 38 : coord in rec.lattice = [   0.350000  ,   0.450000 ,    0.350000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 40 : coord in rec.lattice = [   0.450000  ,   0.450000 ,    0.450000 ], refinement level:1, dK=[0.1 0.1 0.1]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 4 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.3                   0.3
+time for processing      4 K-points on   2 processes:     0.4334 ; per K-point          0.1083 ; proc-sec per K-point          0.2167
+time1 =  0.004769563674926758
+time2 =  0.01151728630065918
+checking for equivalent points in all points (of new  12 points)
+ excluded 0 points
+sum of weights now :1.0000000000000002
+iteration 5 - 11 points. New points are:
+ K-point 40 : coord in rec.lattice = [   0.425000  ,   0.425000 ,    0.425000 ], refinement level:2, dK=[0.05 0.05 0.05]
+ K-point 41 : coord in rec.lattice = [   0.425000  ,   0.425000 ,    0.475000 ], refinement level:2, dK=[0.05 0.05 0.05]
+ K-point 42 : coord in rec.lattice = [   0.425000  ,   0.475000 ,    0.425000 ], refinement level:2, dK=[0.05 0.05 0.05]
+ K-point 43 : coord in rec.lattice = [   0.475000  ,   0.425000 ,    0.475000 ], refinement level:2, dK=[0.05 0.05 0.05]
+ K-point 44 : coord in rec.lattice = [   0.475000  ,   0.475000 ,    0.475000 ], refinement level:2, dK=[0.05 0.05 0.05]
+ K-point 45 : coord in rec.lattice = [   0.150000  ,  -0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 46 : coord in rec.lattice = [   0.150000  ,   0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 47 : coord in rec.lattice = [   0.150000  ,   0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 48 : coord in rec.lattice = [   0.250000  ,  -0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 50 : coord in rec.lattice = [   0.250000  ,   0.050000 ,   -0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+ K-point 51 : coord in rec.lattice = [   0.250000  ,   0.050000 ,    0.050000 ], refinement level:1, dK=[0.1 0.1 0.1]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 11 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.2                   0.9
+                   4              0.4                   0.8
+                   6              0.6                   0.5
+                   8              0.8                   0.3
+                  10              1.1                   0.1
+time for processing     11 K-points on   2 processes:     1.2562 ; per K-point          0.1142 ; proc-sec per K-point          0.2284
+time1 =  0.0042150020599365234
+Totally processed 52 K-points
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot results from different iterations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fe-ahc_iter-</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">.dat&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;iteration-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#plt.ylim(-1000,1000)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_run</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">file_Klist</span><span class="o">=</span><span class="s2">&quot;Klist_ahc.pickle&quot;</span>  <span class="c1"># needed to restart a calculation</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot results from different iterations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fe-ahc_iter-</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">.dat&quot;</span><span class="p">)</span>
+    <span class="n">ef</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ahc_xy</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="c1"># alternatively:</span>
+    <span class="c1">#res = np.load(f&quot;Fe-ahc_iter-{i:04d}.npz&quot;)</span>
+    <span class="c1">#print (list(res.keys()))</span>
+    <span class="c1">#ef = res[&quot;Energies_0&quot;]</span>
+    <span class="c1">#ahc_xy = res[&quot;data&quot;][:,2]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ef</span><span class="p">,</span><span class="n">ahc_xy</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;iteration-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#plt.ylim(-1000,1000)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Problem-3-:">
+<h3>Problem 3 :<a class="headerlink" href="#Problem-3-:" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="start-from-a-denser-grid-(length=100-or-200)-and-do-the-integration-again-with-20-iterations.-Plot-the-results">
+<h2>start from a denser grid (length=100 or 200) and do the integration again with 20 iterations. Plot the results<a class="headerlink" href="#start-from-a-denser-grid-(length=100-or-200)-and-do-the-integration-again-with-20-iterations.-Plot-the-results" title="Permalink to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># insert the needed code below</span>
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<section id="Tetrahedron-method">
+<h3>Tetrahedron method<a class="headerlink" href="#Tetrahedron-method" title="Permalink to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">Efermi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;dos_notetra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">DOS</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;dos_tetra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">DOS</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">result_run</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;run2&quot;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">print_Kpoints</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fe-dos_notetra-run2_iter-0000.dat&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;no tetra&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fe-dos_tetra-run2_iter-0000.dat&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;tetra&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+<br/></pre></div>
+</div>
+</div>
+</section>
+<section id="Optical-conductivity">
+<h3>Optical conductivity<a class="headerlink" href="#Optical-conductivity" title="Permalink to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">Efermi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span><span class="p">[</span><span class="s2">&quot;opt_conductivity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">OpticalConductivity</span><span class="p">(</span>
+                            <span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">omega</span><span class="o">=</span><span class="n">omega</span><span class="p">)</span>
+
+
+<span class="n">result_run_opt</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;run3&quot;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=None (&lt;class &#39;NoneType&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+length=50 was converted into NK=[25 25 25]
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+Grid is regular
+The set of k points is a Grid() with NKdiv=[5 5 5], NKFFT=[5 5 5], NKtot=[25 25 25]
+generating K_list
+Done in 0.0008444786071777344 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.015703439712524414 s
+Done in 0.01574254035949707 s
+K_list contains 18 Irreducible points(14.4%) out of initial 5x5x5=125 grid
+Done, sum of weights:1.0000000000000004
+iteration 0 - 18 points. New points are:
+ K-point 0 : coord in rec.lattice = [   0.000000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 1 : coord in rec.lattice = [   0.000000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 2 : coord in rec.lattice = [   0.000000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 3 : coord in rec.lattice = [   0.200000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 4 : coord in rec.lattice = [   0.200000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 5 : coord in rec.lattice = [   0.200000  ,   0.600000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 6 : coord in rec.lattice = [   0.400000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 7 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 8 : coord in rec.lattice = [   0.400000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 9 : coord in rec.lattice = [   0.400000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 10 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 11 : coord in rec.lattice = [   0.600000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 12 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 13 : coord in rec.lattice = [   0.600000  ,   0.400000 ,    0.400000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 14 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 15 : coord in rec.lattice = [   0.800000  ,   0.200000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 16 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.000000 ], refinement level:0, dK=[0.2 0.2 0.2]
+ K-point 17 : coord in rec.lattice = [   0.800000  ,   0.400000 ,    0.200000 ], refinement level:0, dK=[0.2 0.2 0.2]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fef2a3a7b80&gt;
+processing 18 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              2.5                  20.3
+                   4              4.9                  17.3
+                   6              7.3                  14.6
+                   8              9.6                  12.0
+                  10             11.9                   9.5
+                  12             14.2                   7.1
+                  14             16.4                   4.7
+                  16             18.2                   2.3
+time for processing     18 K-points on   2 processes:    21.9609 ; per K-point          1.2201 ; proc-sec per K-point          2.4401
+time1 =  0.02203655242919922
+Totally processed 18 K-points
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot results from new iterations</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">result_run_opt</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;opt_conductivity&quot;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Efermi</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># omega</span>
+
+<span class="c1"># plot at fixed omega</span>
+<span class="n">iw</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="n">iw</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># plot at fixed Efermi</span>
+<span class="n">ief</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">data</span><span class="p">[</span><span class="n">ief</span><span class="p">,:,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(101, 101, 3, 3)
+[12.   12.01 12.02 12.03 12.04 12.05 12.06 12.07 12.08 12.09 12.1  12.11
+ 12.12 12.13 12.14 12.15 12.16 12.17 12.18 12.19 12.2  12.21 12.22 12.23
+ 12.24 12.25 12.26 12.27 12.28 12.29 12.3  12.31 12.32 12.33 12.34 12.35
+ 12.36 12.37 12.38 12.39 12.4  12.41 12.42 12.43 12.44 12.45 12.46 12.47
+ 12.48 12.49 12.5  12.51 12.52 12.53 12.54 12.55 12.56 12.57 12.58 12.59
+ 12.6  12.61 12.62 12.63 12.64 12.65 12.66 12.67 12.68 12.69 12.7  12.71
+ 12.72 12.73 12.74 12.75 12.76 12.77 12.78 12.79 12.8  12.81 12.82 12.83
+ 12.84 12.85 12.86 12.87 12.88 12.89 12.9  12.91 12.92 12.93 12.94 12.95
+ 12.96 12.97 12.98 12.99 13.  ]
+[0.   0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1  0.11 0.12 0.13
+ 0.14 0.15 0.16 0.17 0.18 0.19 0.2  0.21 0.22 0.23 0.24 0.25 0.26 0.27
+ 0.28 0.29 0.3  0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4  0.41
+ 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5  0.51 0.52 0.53 0.54 0.55
+ 0.56 0.57 0.58 0.59 0.6  0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69
+ 0.7  0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8  0.81 0.82 0.83
+ 0.84 0.85 0.86 0.87 0.88 0.89 0.9  0.91 0.92 0.93 0.94 0.95 0.96 0.97
+ 0.98 0.99 1.  ]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [24]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 9&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> <span style="color: rgb(95,135,135)"># plot at fixed omega</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> iw <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">10</span>
+<span class="ansi-green-fg">----&gt; 9</span> plt<span style="color: rgb(98,98,98)">.</span>plot(res<span style="color: rgb(98,98,98)">.</span>Energies[<span style="color: rgb(98,98,98)">0</span>],<span class="ansi-yellow-bg">data</span>[:,iw,<span style="color: rgb(98,98,98)">2</span>,<span style="color: rgb(98,98,98)">2</span>]<span style="color: rgb(98,98,98)">.</span>imag)
+<span class="ansi-green-intense-fg ansi-bold">     10</span> plt<span style="color: rgb(98,98,98)">.</span>show()
+<span class="ansi-green-intense-fg ansi-bold">     12</span> <span style="color: rgb(95,135,135)"># plot at fixed Efermi</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;data&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+</section>
+<section id="All-in-one">
+<h3>All in one<a class="headerlink" href="#All-in-one" title="Permalink to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">Efermi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;ahc_notetra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">AHC</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;ahc_tetra&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">AHC</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">TabulatorAll</span><span class="p">({</span>
+                            <span class="s2">&quot;Energy&quot;</span><span class="p">:</span><span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">Energy</span><span class="p">(),</span>
+                            <span class="s2">&quot;berry&quot;</span><span class="p">:</span><span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">BerryCurvature</span><span class="p">(),</span>
+                                  <span class="p">},</span>
+                            <span class="n">ibands</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">calculators</span><span class="p">[</span><span class="s2">&quot;opt_conductivity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">OpticalConductivity</span><span class="p">(</span>
+                            <span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">omega</span><span class="o">=</span><span class="n">omega</span><span class="p">)</span>
+
+
+<span class="n">result_run</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html" class="btn btn-neutral float-right" title="Fermi surface and Fermi sea calculation of the Berry curvature dipole" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

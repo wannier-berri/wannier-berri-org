@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formula &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/docs/formula.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Result" href="result.html" />
+    <link rel="prev" title="Calculators" href="calculators.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system.html">Initializing a System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">Running a calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculators.html">Calculators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Formula</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-classes">Basic classes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wannierberri.formula.covariant">Some implemented formulae:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wannierberri.formula.covariant_basic">Some extra formulae (for testiing):</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Creating a grid or Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetries.html">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoother.html">Smoother</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_K.html">Data_K class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oldAPI.html">Old interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
+      <li>Formula</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="formula">
+<h1>Formula<a class="headerlink" href="#formula" title="Permalink to this heading"></a></h1>
+<section id="basic-classes">
+<h2>Basic classes:<a class="headerlink" href="#basic-classes" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.Formula_ln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.</span></span><span class="sig-name descname"><span class="pre">Formula_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internal_terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction_wcc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dT_wcc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula.html#Formula_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.Formula_ln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>A “Formula” is a ground concept of our calculation. Assume that we have divided
+all our Wannierised states into two subspaces, called “inn” and “out”.
+We call a matrix “covariant” if it is covariant under gauge transformations
+inside the “inn” or “out” subspaces but do not intermix them.
+A <cite>Formula_ln</cite> object has methods that returns submatrices of the covariant matrix.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.Matrix_ln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.</span></span><span class="sig-name descname"><span class="pre">Matrix_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Iodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula.html#Matrix_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.Matrix_ln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<p>anything that can be called just as elements of a matrix</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.Matrix_GenDer_ln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.</span></span><span class="sig-name descname"><span class="pre">Matrix_GenDer_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix_comader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Iodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula.html#Matrix_GenDer_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.Matrix_GenDer_ln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<p>generalized erivative of MAtrix_ln</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.FormulaProduct">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermitian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula.html#FormulaProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.FormulaProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<p>a class to store a product of several formulae</p>
+</dd></dl>
+
+</section>
+<section id="module-wannierberri.formula.covariant">
+<span id="some-implemented-formulae"></span><h2>Some implemented formulae:<a class="headerlink" href="#module-wannierberri.formula.covariant" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DEinv_ln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DEinv_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DEinv_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DEinv_ln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+<p>DEinv_ln.matrix[ik, m, n] = 1 / (E_mk - E_nk)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DEinv_ln.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DEinv_ln.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DEinv_ln.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Dcov">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Dcov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Dcov"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Dcov" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Dcov.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Dcov.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Dcov.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Der3E">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Der3E</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Der3E"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Der3E" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Der3E.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Der3E.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Der3E.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Der3E.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Der3E.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Der3E.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerDcov">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DerDcov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerDcov"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerDcov" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant.Dcov" title="wannierberri.formula.covariant.Dcov"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dcov</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerDcov.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerDcov.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerDcov.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerMorb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DerMorb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerMorb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerMorb" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerMorb.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant.DerMorb.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerMorb.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerMorb.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerMorb.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerMorb.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerMorb.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerMorb.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerOmega">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DerOmega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerOmega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerOmega" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerOmega.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerOmega.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerOmega.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerOmega.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerOmega.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerOmega.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerSpin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DerSpin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerSpin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerSpin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_GenDer_ln" title="wannierberri.formula.Matrix_GenDer_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_GenDer_ln</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.DerWln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">DerWln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#DerWln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.DerWln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_GenDer_ln" title="wannierberri.formula.Matrix_GenDer_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_GenDer_ln</span></code></a></p>
+<p><span class="math notranslate nohighlight">\(\overline{W}^{bc:d}\)</span></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Eavln">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Eavln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Eavln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Eavln" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+<p>be careful : this is not a covariant matrix</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Identity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Identity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Identity.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Identity.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Identity.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Identity.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Identity.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Identity.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.InvMass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">InvMass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#InvMass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.InvMass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_GenDer_ln" title="wannierberri.formula.Matrix_GenDer_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_GenDer_ln</span></code></a></p>
+<p><span class="math notranslate nohighlight">\(\overline{V}^{b:d}\)</span></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.MassMass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">MassMass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#MassMass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.MassMass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.MassVel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">MassVel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#MassVel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.MassVel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_H">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Morb_H</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_H" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_H.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant.Morb_H.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_H.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_H.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_H.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_H.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_H.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_H.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_Hpm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Morb_Hpm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_Hpm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_Hpm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_Hpm.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant.Morb_Hpm.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_Hpm.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_Hpm.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_Hpm.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Morb_Hpm.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Morb_Hpm.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Morb_Hpm.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Omega">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Omega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Omega" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Omega.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Omega.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Omega.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Omega.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Omega.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Omega.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.OmegaHplus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">OmegaHplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#OmegaHplus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.OmegaHplus" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.OmegaOmega">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">OmegaOmega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#OmegaOmega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.OmegaOmega" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.OmegaS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">OmegaS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#OmegaS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.OmegaS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Spin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Spin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Spin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Spin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.SpinOmega">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">SpinOmega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin_current_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ryoo'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#SpinOmega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.SpinOmega" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<p>spin Berry curvature</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.SpinOmega.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#SpinOmega.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.SpinOmega.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.SpinOmega.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#SpinOmega.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.SpinOmega.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.SpinVelocity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">SpinVelocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spin_current_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#SpinVelocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.SpinVelocity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+<p>spin current matrix elements. SpinVelocity.matrix[ik, m, n, a, s] = &lt;u_mk|{v^a S^s}|u_nk&gt; / 2</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelHplus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelHplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelHplus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelHplus" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelMassVel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelMassVel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelMassVel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelMassVel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelOmega">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelOmega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelOmega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelOmega" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelSpin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelSpin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelSpin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelSpin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelVel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelVel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelVel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelVel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.VelVelVel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">VelVelVel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs_formula</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#VelVelVel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.VelVelVel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.FormulaProduct" title="wannierberri.formula.FormulaProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">FormulaProduct</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.Velocity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">Velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#Velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.Velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Matrix_ln" title="wannierberri.formula.Matrix_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix_ln</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant.morb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant.</span></span><span class="sig-name descname"><span class="pre">morb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant.html#morb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant.morb" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant.Morb_Hpm" title="wannierberri.formula.covariant.Morb_Hpm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morb_Hpm</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="module-wannierberri.formula.covariant_basic">
+<span id="some-extra-formulae-for-testiing"></span><h2>Some extra formulae (for testiing):<a class="headerlink" href="#module-wannierberri.formula.covariant_basic" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.AntiSymmetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">AntiSymmetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#AntiSymmetric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.AntiSymmetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.AntiSymmetric.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#AntiSymmetric.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.AntiSymmetric.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.AntiSymmetric.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#AntiSymmetric.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.AntiSymmetric.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.Der_morb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">Der_morb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#Der_morb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.Der_morb" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant_basic.tildeHGc_d" title="wannierberri.formula.covariant_basic.tildeHGc_d"><code class="xref py py-class docutils literal notranslate"><span class="pre">tildeHGc_d</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.Symmetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">Symmetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#Symmetric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.Symmetric" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.Symmetric.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#Symmetric.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.Symmetric.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.Symmetric.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#Symmetric.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.Symmetric.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeFab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab_d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeFab_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab_d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab_d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab_d.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab_d.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab_d.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFab_d.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFab_d.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFab_d.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeFc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant_basic.AntiSymmetric" title="wannierberri.formula.covariant_basic.AntiSymmetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">AntiSymmetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeFc_d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeFc_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeFc_d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeFc_d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant_basic.AntiSymmetric" title="wannierberri.formula.covariant_basic.AntiSymmetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">AntiSymmetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHGab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab_d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHGab_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab_d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab_d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab_d.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab_d.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab_d.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab_d.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab_d.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGab_d.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGab_d.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGab_d.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHGc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant_basic.AntiSymmetric" title="wannierberri.formula.covariant_basic.AntiSymmetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">AntiSymmetric</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGc.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGc.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGc_d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHGc_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHGc_d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGc_d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.covariant_basic.AntiSymmetric" title="wannierberri.formula.covariant_basic.AntiSymmetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">AntiSymmetric</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHGc_d.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHGc_d.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab_d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.formula.covariant_basic.</span></span><span class="sig-name descname"><span class="pre">tildeHab_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dT_wcc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab_d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab_d" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab_d.additive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">additive</span></span><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab_d.additive" title="Permalink to this definition"></a></dt>
+<dd><p>if Trace_A+Trace_B = Trace_{A+B} holds.
+needs override for quantities that do not obey this rule (e.g. Orbital magnetization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab_d.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab_d.ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab_d.ln" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{ln}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(l \in \mathrm{out}\)</span> and <span class="math notranslate nohighlight">\(n \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.formula.covariant_basic.tildeHab_d.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/formula/covariant_basic.html#tildeHab_d.nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.formula.covariant_basic.tildeHab_d.nn" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the submatrix <span class="math notranslate nohighlight">\(X_{nn'}\)</span> at point <cite>ik</cite>, where
+<span class="math notranslate nohighlight">\(n, n' \in \mathrm{inn}\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calculators.html" class="btn btn-neutral float-left" title="Calculators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="result.html" class="btn btn-neutral float-right" title="Result" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

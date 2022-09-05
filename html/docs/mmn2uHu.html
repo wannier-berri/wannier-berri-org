@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mmn2uHu &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/docs/mmn2uHu.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vaspspn" href="vaspspn.html" />
+    <link rel="prev" title="Utilities" href="utils.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system.html">Initializing a System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">Running a calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculators.html">Calculators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html">Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Creating a grid or Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetries.html">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoother.html">Smoother</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="utils.html">Utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mmn2uHu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vaspspn.html">vaspspn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tab_plot.html">Plotting lines and planes (tab_plot)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_K.html">Data_K class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oldAPI.html">Old interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
+          <li><a href="utils.html">Utilities</a> &raquo;</li>
+      <li>mmn2uHu</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="mmn2uhu">
+<span id="sec-mmn2uhu"></span><h1>mmn2uHu<a class="headerlink" href="#mmn2uhu" title="Permalink to this heading"></a></h1>
+<p>Wannier interpolation starts from certain matrix elements defined on the
+<em>ab initio</em> (<span class="math notranslate nohighlight">\({\bf q}\)</span>) grid. Those matrix elements should be
+evaluated within the <em>ab initio</em> code, namely within its interface to
+Wannier90. However, only <a class="reference external" href="https://www.quantum-espresso.org/">QuantumEspresso</a> has the
+most complete interface <code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code>. The other codes provide only
+the basic interface, which includes the eigenenergies
+<span class="math notranslate nohighlight">\(E_{n{\bf q}}\)</span> (<code class="docutils literal notranslate"><span class="pre">.eig</span></code> file) and overlaps</p>
+<div class="math notranslate nohighlight">
+\[M_{mn}^{\mathbf{b}}({\bf q})=\langle u_{m{\bf q}}\vert u_{n{\bf q}+\mathbf{b}}\rangle\]</div>
+<p>(file <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>), where <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> vector connects neighbouring
+<span class="math notranslate nohighlight">\({\bf q}\)</span>-points. This information allows to interpolate the band
+energies (and their derivatives of any order) as well as Berry
+connections (<a class="reference external" href="https://doi.org/10.1103/PhysRevB.75.195121">Yates et al. 2007</a>) and Berry curvature (<a class="reference external" href="https://doi.org/10.1103/PhysRevB.74.195118.">Wang et al. 2006</a>).
+However, to evaluate the orbital moment of a Bloch state, one needs
+matrix elements of the Hamiltonian (<a class="reference external" href="https://doi.org/10.1103/PhysRevB.85.014435.">Lopez et al. 2012</a>) (<code class="docutils literal notranslate"><span class="pre">.uHu</span></code> file)</p>
+<div class="math notranslate nohighlight" id="equation-cmnq">
+<span class="eqno">(4)<a class="headerlink" href="#equation-cmnq" title="Permalink to this equation"></a></span>\[C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})=\langle u_{m{\bf q}+\mathbf{b}_1}\vert\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}_2}\rangle.\]</div>
+<p>The evaluation of <a class="reference internal" href="#equation-cmnq">(4)</a> is very specific to the
+details of the <em>ab initio</em> code, and implemented only in
+<code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code> and only for norm-conserving pseudopotentials. To
+enable the study of properties related to the orbital moment with other
+<em>ab initio</em> codes, the following workaround may be employed. By
+inserting a complete set of Bloch states at a particular <span class="math notranslate nohighlight">\({\bf q}\)</span>
+point
+<span class="math notranslate nohighlight">\(\mathbf{1}=\sum_l^\infty \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert\)</span>
+we can rewrite <a class="reference internal" href="#equation-cmnq">(4)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-cmnqsum">
+<span class="eqno">(5)<a class="headerlink" href="#equation-cmnqsum" title="Permalink to this equation"></a></span>\[C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})\approx\sum_l^{l_{\rm max}}  \left(M_{lm}^{\mathbf{b}_1}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}_2}({\bf q}).\]</div>
+<p>Similarly, the two quantities below allows to interpolate spin currnet matrices to calculate spin Hall conductivity. In Ryoo’s scheme (<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113">Ryoo et al. 2019</a>)
+, they are required as input data (<code class="docutils literal notranslate"><span class="pre">.sHu</span></code> and <code class="docutils literal notranslate"><span class="pre">.sIu</span></code>)</p>
+<div class="math notranslate nohighlight" id="equation-smnqsum">
+<span class="eqno">(6)<a class="headerlink" href="#equation-smnqsum" title="Permalink to this equation"></a></span>\[ \begin{align}\begin{aligned}\langle u_{m{\bf q}}\vert\hat{s}\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}}({\bf q}).\\\langle u_{m{\bf q}}\vert\hat{s}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^*   M_{ln}^{\mathbf{b}}({\bf q}).\end{aligned}\end{align} \]</div>
+<p>These equations are implemented within the <a class="reference internal" href="#module-wannierberri.utils.mmn2uHu" title="wannierberri.utils.mmn2uHu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code></a>
+submodule, which allows to generate the <code class="docutils literal notranslate"><span class="pre">.uHu</span></code>, <code class="docutils literal notranslate"><span class="pre">.sHu</span></code>, and <code class="docutils literal notranslate"><span class="pre">.sIu</span></code> file out of <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">.spn</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">.eig</span></code> files. The equality in <a class="reference internal" href="#equation-cmnqsum">(5)</a> and <a class="reference internal" href="#equation-smnqsum">(6)</a> is
+exact only in the limit <span class="math notranslate nohighlight">\(l_{\rm max}\to\infty\)</span> and infinitely
+large basis set for the wavefunctions representation. So in practice one
+has to check convergence for a particular system. As an example the
+bandstructure of bcc Fe was calculated based on the QE code and a
+norm-sonserving pseudopotential from the PseudoDojo library(van Setten
+et al. 2018; Hamann 2013). Next, the orbital magnetization was
+calculated using the <code class="docutils literal notranslate"><span class="pre">.uHu</span></code> file computed with <code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code> and
+using the <a class="reference internal" href="#module-wannierberri.utils.mmn2uHu" title="wannierberri.utils.mmn2uHu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code></a> interface with different summation
+limit <span class="math notranslate nohighlight">\(l_{\rm max}\)</span> in <a class="reference internal" href="#equation-cmnqsum">(5)</a>. As can be
+seen in <a class="reference internal" href="#figmmn2uhu"><span class="std std-numref">Fig. 5</span></a> already <span class="math notranslate nohighlight">\(l_{\rm max}=200\)</span>
+(corresponding energy <span class="math notranslate nohighlight">\(\sim 230\)</span> eV) yields a result very close to
+that of <code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code>. However one should bear in mind that
+convergence depends on many factors, such as as choice of WFs and
+pseudopotentials. In particular, for tellurium we observed (Tsirkin,
+Puente, and Souza 2018) that including only a few bands above the
+highest <span class="math notranslate nohighlight">\(p\)</span>-band is enough to obtain accurate results. However for
+iron, using a pseudopotential shipped with the examples of Wannier90, we
+failed to reach convergence even with <span class="math notranslate nohighlight">\(l_{\rm max}=600\)</span>.</p>
+<figure class="align-default" id="id1">
+<span id="figmmn2uhu"></span><img alt="../_images/Fe-Morb.pdf.svg" src="../_images/Fe-Morb.pdf.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Orbital magntization of bcc Fe as a function of the Fermi level
+<span class="math notranslate nohighlight">\(E_F\)</span> reative to the pristine Fermi level <span class="math notranslate nohighlight">\(E_F^0\)</span>,
+evaluated using the <code class="docutils literal notranslate"><span class="pre">.uHu</span></code> file computed with <code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code>
+(dashed line) and using the <a class="reference internal" href="#module-wannierberri.utils.mmn2uHu" title="wannierberri.utils.mmn2uHu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code></a> interface (solid
+lines) with different summation limit <span class="math notranslate nohighlight">\(l_{\rm max}\)</span> in
+<a class="reference internal" href="#equation-cmnqsum">(5)</a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<span class="target" id="module-wannierberri.utils.mmn2uHu"></span><p>This utility calculates the matrices .uHu, .uIu, .sHu, and/or .sIu from the .mmn, .spn matrices, and also reduces the number of bands in .amn, .mmn, .eig  and .spn files</p>
+<p>Usage example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">wannierberri</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">mmn2uHu</span> <span class="n">seedname</span> <span class="n">NBout</span><span class="o">=</span><span class="mi">10</span> <span class="n">NBsum</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span>  <span class="n">targets</span><span class="o">=</span><span class="n">mmn</span><span class="p">,</span><span class="n">uHu</span> <span class="n">formatted</span><span class="o">=</span><span class="n">uHu</span>
+</pre></div>
+</div>
+<dl>
+<dt>Options</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">-h</span></kbd></dt>
+<dd><div class="line-block">
+<div class="line">print the help message</div>
+</div>
+</dd>
+</dl>
+<dl>
+<dt>IBstart</dt><dd><div class="line-block">
+<div class="line">the first band in the output file (counting starts from 1).</div>
+<div class="line">default: 1</div>
+</div>
+</dd>
+<dt>IBstartSum</dt><dd><div class="line-block">
+<div class="line">the first band in the sum         (counting starts from 1).</div>
+<div class="line">default: 1</div>
+</div>
+</dd>
+<dt>NBout</dt><dd><div class="line-block">
+<div class="line">the number of bands in the output files.</div>
+<div class="line">Default : all bands</div>
+</div>
+</dd>
+<dt>NBsum</dt><dd><div class="line-block">
+<div class="line">the number of bands in the summation. (one may specify several numbers, usefull to test convergence with the number of bands).</div>
+<div class="line">Default:all bands</div>
+</div>
+</dd>
+<dt>input</dt><dd><div class="line-block">
+<div class="line">path to the input files.</div>
+<div class="line">Default: ./</div>
+</div>
+</dd>
+<dt>output</dt><dd><div class="line-block">
+<div class="line">path to the output files</div>
+</div>
+</dd>
+<dt>targets</dt><dd><div class="line-block">
+<div class="line">files to write : <code class="docutils literal notranslate"><span class="pre">amn</span></code>, <code class="docutils literal notranslate"><span class="pre">mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">spn</span></code>, <code class="docutils literal notranslate"><span class="pre">uHu</span></code>, <code class="docutils literal notranslate"><span class="pre">uIu</span></code>,  <code class="docutils literal notranslate"><span class="pre">sHu</span></code>, <code class="docutils literal notranslate"><span class="pre">sIu</span></code>, <code class="docutils literal notranslate"><span class="pre">eig</span></code></div>
+<div class="line">default: <code class="docutils literal notranslate"><span class="pre">amn</span></code>,``mmn``,``eig``,``uHu``</div>
+</div>
+</dd>
+<dt>formatted</dt><dd><div class="line-block">
+<div class="line">files to write as formatted  <code class="docutils literal notranslate"><span class="pre">uHu</span></code>, <code class="docutils literal notranslate"><span class="pre">uIu</span></code> , <code class="docutils literal notranslate"><span class="pre">sHu</span></code>, <code class="docutils literal notranslate"><span class="pre">sIu</span></code>, <code class="docutils literal notranslate"><span class="pre">spn</span></code>, <code class="docutils literal notranslate"><span class="pre">spn_in</span></code>, <code class="docutils literal notranslate"><span class="pre">spn_out</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code></div>
+<div class="line">default: none</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vaspspn.html" class="btn btn-neutral float-right" title="vaspspn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

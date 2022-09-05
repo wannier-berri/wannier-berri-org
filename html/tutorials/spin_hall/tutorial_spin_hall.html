@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Hall conductivity &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/tutorials/spin_hall/tutorial_spin_hall.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DIY tutorial" href="../DIY/tutorial-wb-DIY.html" />
+    <link rel="prev" title="Symmetrization of Wannier Hamiltonian and matrices" href="../symmetrization/Symmetrization_tutorial.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../../index.html">
+            <img src="../../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timing.html">Speed</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic/tutorial-wb-basic.html">Preliminary notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/tutorial-wb-basic.html#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html">Fermi surface and Fermi sea calculation of the Berry curvature dipole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../symmetrization/Symmetrization_tutorial.html">Symmetrization of Wannier Hamiltonian and matrices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spin Hall conductivity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Model,-band-structure">Model, band structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Static-spin-Hall-conductivity">Static spin Hall conductivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Dynamic-spin-Hall-conductivity">Dynamic spin Hall conductivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Spin-Berry-curvature">Spin Berry curvature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Generating-.sHu-and-.sIu-from-.mmn-and-.spn:-mmn2uHu">Generating .sHu and .sIu from .mmn and .spn: mmn2uHu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem:-Compare-the-SHC-computed-using-the-sHu-files-from-pw2wannier90-and-mmn2uHu.">Problem: Compare the SHC computed using the sHu files from pw2wannier90 and mmn2uHu.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Further-questions">Further questions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../DIY/tutorial-wb-DIY.html">DIY tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      <li>Spin Hall conductivity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Spin-Hall-conductivity">
+<h1>Spin Hall conductivity<a class="headerlink" href="#Spin-Hall-conductivity" title="Permalink to this heading"></a></h1>
+<p>author: Jae-Mo Lihm (<a class="reference external" href="mailto:jaemo&#46;lihm&#37;&#52;&#48;gmail&#46;com">jaemo<span>&#46;</span>lihm<span>&#64;</span>gmail<span>&#46;</span>com</a>) and Minsu Ghim (<a class="reference external" href="mailto:minsu&#46;ghim&#46;physics&#37;&#52;&#48;gmail&#46;com">minsu<span>&#46;</span>ghim<span>&#46;</span>physics<span>&#64;</span>gmail<span>&#46;</span>com</a>)</p>
+<p>In this tutorial, we calculate the spin Berry curvature and the spin Hall conductivity of bcc Platinum. We compare the two methods for calculating the spin velocity matrix, which we call the “Qiao” method [1] and the “Ryoo” method [2].</p>
+<p>[1] [J. Qiao et al, Phys. Rev. B 98, 214402 (2018)](<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402">https://journals.aps.org/prb/abstract/10.1103/PhysRevB.98.214402</a>) [2] [J. H. Ryoo et al, Phys. Rev. B 99, 235113 (2019)](<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113">https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113</a>)</p>
+<p>Both methods use the Kubo formula to calculate spin Hall conductivity under time-reversal symmetry:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\sigma^{{\rm SHC}, \gamma}_{\alpha\beta} = \frac{-e\hbar}{N_k V_c}\sum_{\bf k}\sum_{n,m}\left(f_{n{\bf k}}-f_{m{\bf k}}\right)\frac{\textrm{Im}\left[\langle\psi_{n{\bf k}}\vert \frac{1}{2}\{ s^{\gamma}, v_\alpha \} \vert\psi_{m{\bf k}}\rangle\langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle\right]}{(\varepsilon_{n{\bf k}}-\varepsilon_{m{\bf k}})^2-(\hbar\omega+i\eta)^2}\,,
+\label{eq:shc}\tag{1}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>, <span class="math notranslate nohighlight">\(\gamma\)</span> are respectively the direction of spin current, applied electric field, and spin polarisation.</p>
+<p>The “Ryoo” method requires <code class="docutils literal notranslate"><span class="pre">.chk</span></code>, <code class="docutils literal notranslate"><span class="pre">.eig</span></code>, <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">.spn</span></code>, <code class="docutils literal notranslate"><span class="pre">.sHu</span></code>, and <code class="docutils literal notranslate"><span class="pre">.sIu</span></code> files to calculate the spin velocity matrix in (<span class="math">\ref{eq:shc}</span>), <span class="math notranslate nohighlight">\(\langle\psi_{n{\bf k}}\vert \frac{1}{2}\{ s^{\gamma}, v_\alpha \} \vert\psi_{m{\bf k}}\rangle\)</span>,from pw2wannier90.x, while the “Qiao” method does not use the last two files, and instead applies an approximation <span class="math notranslate nohighlight">\(\mathbf{1}=\sum_{l\in \it{ab\,initio}} \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert\)</span>. The <code class="docutils literal notranslate"><span class="pre">sHu</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sIu</span></code> files are calculated by setting <code class="docutils literal notranslate"><span class="pre">write_sHu</span> <span class="pre">=</span> <span class="pre">.true.</span></code> and <code class="docutils literal notranslate"><span class="pre">write_sIu</span> <span class="pre">=</span> <span class="pre">.true.</span></code> to the <code class="docutils literal notranslate"><span class="pre">pw2wannier90.x</span></code> input file: see <code class="docutils literal notranslate"><span class="pre">data_Pt/pw2wan.in</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preliminary (Do only once)</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="c1"># Set environment variables - not mandatory but recommended</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;OPENBLAS_NUM_THREADS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MKL_NUM_THREADS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">wannierberri</span> <span class="k">as</span> <span class="nn">wberri</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#  This block is needed if you run this cell for a second time</span>
+<span class="c1">#  because one cannot initiate two parallel environments at a time</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">parallel</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">parallel</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">num_cpus</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">progress_step_percent</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-09-05 13:58:44,098 INFO worker.py:1509 -- Started a local Ray instance. View the dashboard at <span class="ansi-green-intense-fg ansi-bold">127.0.0.1:8265 </span>
+</pre></div></div>
+</div>
+<section id="Model,-band-structure">
+<h2>Model, band structure<a class="headerlink" href="#Model,-band-structure" title="Permalink to this heading"></a></h2>
+<p>We load the system from a Wannier90 output. Note the arguments <code class="docutils literal notranslate"><span class="pre">SHCryoo=True</span></code> and <code class="docutils literal notranslate"><span class="pre">SHCqiao=True</span></code> which are required to compute spin Hall conductivity using the Ryoo and Qiao methods, respectively.</p>
+<p>We set symmetry using the <code class="docutils literal notranslate"><span class="pre">set_symmetry_from_structure</span></code> method, which calls spglib to automatically determine the symmetry of the system.</p>
+<!-- We also symmetrize the system. See `data_Pt/Pt.win` file and check that the initial projections are correct. For details, refer to the symmetrization tutorial. --><div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span><span class="s2">&quot;data_Pt/Pt&quot;</span><span class="p">,</span> <span class="n">berry</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCryoo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCqiao</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">set_structure</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]],</span> <span class="p">[</span><span class="s2">&quot;Pt&quot;</span><span class="p">])</span>
+<span class="n">system</span><span class="o">.</span><span class="n">set_symmetry_from_structure</span><span class="p">()</span>
+
+<span class="n">efermi</span> <span class="o">=</span> <span class="mf">18.1605</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+using fortio to read
+Reading restart information from file data_Pt/Pt.chk :
+Time to read .chk : 0.17993760108947754
+Time for MMN.__init__() : 0.38483357429504395 , read : 0.3754091262817383 , headstring 0.009424448013305664
+----------
+ SPN
+---------
+
+using fortio to read
+reading data_Pt/Pt.spn : Created on 13May2022 at 15:23:23
+----------
+ SPN OK
+---------
+
+----------
+  sIu
+---------
+using fortio to read
+reading data_Pt/Pt.sIu : &lt;Created on 13May2022 at 15:23:23&gt;
+----------
+ sIu OK
+---------
+
+----------
+  sHu
+---------
+using fortio to read
+reading data_Pt/Pt.sHu : &lt;Created on 13May2022 at 15:23:23&gt;
+----------
+ sHu OK
+---------
+
+time for FFT_q_to_R : 0.5727553367614746 s
+using ws_distance
+irvec_new_all shape (93,)
+using ws_dist for Ham_R
+using ws_dist for AA_R
+using ws_dist for SS_R
+using ws_dist for SA_R
+using ws_dist for SHA_R
+using ws_dist for SR_R
+using ws_dist for SH_R
+using ws_dist for SHR_R
+Number of wannier functions: 18
+Number of R points: 93
+Recommended size of FFT grid [4 4 4]
+Real-space lattice:
+ [[-1.95599772  0.          1.95599772]
+ [ 0.          1.95599772  1.95599772]
+ [-1.95599772  1.95599772  0.        ]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">k_nodes</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># W</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># L</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span> <span class="c1"># Gamma</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># X</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="c1"># W</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span> <span class="c1"># Gamma</span>
+    <span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;$\Gamma$&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;$\Gamma$&quot;</span><span class="p">],</span>
+    <span class="n">length</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">wannierberri</span> <span class="kn">import</span> <span class="n">calculators</span> <span class="k">as</span> <span class="n">calc</span>
+<span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">calculators</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">TabulatorAll</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="n">calc</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">Energy</span><span class="p">()},</span>
+    <span class="n">ibands</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">system</span><span class="o">.</span><span class="n">num_wann</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;path&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">path_result</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+    <span class="n">calculators</span><span class="o">=</span><span class="n">calculators</span><span class="p">,</span>
+    <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+    <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+Calculation along a path - checking calculators for compatibility
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7f00f8b57190&gt;
+All calculators are compatible
+Symmetrization switched off for Path
+The set of k points is a Path() with 322 points and labels {0: &#39;W&#39;, 54: &#39;L&#39;, 120: &#39;$\\Gamma$&#39;, 197: &#39;X&#39;, 235: &#39;W&#39;, 321: &#39;$\\Gamma$&#39;}
+WARNING : symmetry is not used for a tabulation along path
+generating K_list
+Done
+Done, sum of weights:322.0
+symgroup : None
+processing 322 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                  32              3.0                  27.1
+                  64              3.4                  13.6
+                  96              3.7                   8.7
+                 128              4.0                   6.1
+                 160              4.3                   4.4
+                 192              4.6                   3.1
+                 224              4.9                   2.2
+                 256              5.2                   1.4
+                 288              5.6                   0.7
+                 320              5.9                   0.0
+time for processing    322 K-points on   4 processes:     5.8867 ; per K-point          0.0183 ; proc-sec per K-point          0.0731
+time1 =  0.014103412628173828
+Totally processed 322 K-points
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">path_result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot_path_fat</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">close_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">efermi</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_8_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_8_0.png" />
+</div>
+</div>
+<section id="Static-spin-Hall-conductivity">
+<h3>Static spin Hall conductivity<a class="headerlink" href="#Static-spin-Hall-conductivity" title="Permalink to this heading"></a></h3>
+<p>We calculate the static (i.e. DC) spin Hall conductivity. We fix <span class="math notranslate nohighlight">\(\omega\)</span> to 0 and scan the Fermi energy.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wannierberri</span> <span class="kn">import</span> <span class="n">calculators</span> <span class="k">as</span> <span class="n">calc</span>
+
+<span class="n">efermi_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">efermi</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">efermi</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">Efermi</span><span class="o">=</span><span class="n">efermi_list</span><span class="p">,</span>
+    <span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">smr_fixed_width</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="c1"># Smearing for frequency in eV</span>
+    <span class="n">kBT</span> <span class="o">=</span> <span class="mf">0.026</span><span class="p">,</span> <span class="c1"># Smearing for Fermi level (Fermi-Dirac factor) in eV (not Kelvin)</span>
+<span class="p">)</span>
+
+<span class="n">calculators</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">SHC_ryoo</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">SHC</span><span class="p">(</span><span class="n">SHC_type</span><span class="o">=</span><span class="s2">&quot;ryoo&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+    <span class="n">SHC_qiao</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">SHC</span><span class="p">(</span><span class="n">SHC_type</span><span class="o">=</span><span class="s2">&quot;qiao&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">NK</span><span class="o">=</span><span class="n">nk</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+    <span class="n">calculators</span><span class="o">=</span><span class="n">calculators</span><span class="p">,</span>
+    <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+    <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=30 (&lt;class &#39;int&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+Grid is regular
+The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+generating K_list
+Done in 0.0017781257629394531 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.0700674057006836 s
+Done in 0.0701901912689209 s
+K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
+Done, sum of weights:0.9999999999999997
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7f01489f58e0&gt;
+processing 16 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   4             11.4                  34.2
+                   8             21.6                  21.6
+                  12             31.2                  10.4
+time for processing     16 K-points on   4 processes:    41.6659 ; per K-point          2.6041 ; proc-sec per K-point         10.4165
+time1 =  0.0020895004272460938
+Totally processed 16 K-points
+</pre></div></div>
+</div>
+<p>The SHC data has 5 indices: 1. The Fermi level index, 2. The frequency index, 3. The spin current direction index, 4. The electric field direction index, and 5. The spin polarization index.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result.results[</span><span class="se">\&quot;</span><span class="s2">SHC_ryoo</span><span class="se">\&quot;</span><span class="s2">].data.shape = &quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;SHC_ryoo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+result.results[&#34;SHC_ryoo&#34;].data.shape =  (101, 1, 3, 3, 3)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shc_ryoo</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;SHC_ryoo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">shc_qiao</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;SHC_qiao&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">efermi_list</span><span class="p">,</span> <span class="n">shc_ryoo</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ryoo&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">efermi_list</span><span class="p">,</span> <span class="n">shc_qiao</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Qiao&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">efermi_list</span><span class="p">,</span> <span class="n">shc_ryoo</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">efermi_list</span><span class="p">,</span> <span class="n">shc_qiao</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Efermi (eV)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Re(SHC)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Im(SHC)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_14_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_14_0.png" />
+</div>
+</div>
+</section>
+<section id="Dynamic-spin-Hall-conductivity">
+<h3>Dynamic spin Hall conductivity<a class="headerlink" href="#Dynamic-spin-Hall-conductivity" title="Permalink to this heading"></a></h3>
+<p>We calculate the dynamic (i.e. frequency-dependent, AC) spin Hall conductivity. We fix the Fermi energy to the value <code class="docutils literal notranslate"><span class="pre">efermi</span></code> and scan the frequency in the range <code class="docutils literal notranslate"><span class="pre">omega</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">smr_fixed_width</span></code> parameter controls the smearing of the frequency-dependent terms (delta functions and principal values).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wannierberri</span> <span class="kn">import</span> <span class="n">calculators</span> <span class="k">as</span> <span class="n">calc</span>
+
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">Efermi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">efermi</span><span class="p">]),</span>
+    <span class="n">omega</span><span class="o">=</span><span class="n">omega</span><span class="p">,</span>
+    <span class="n">smr_fixed_width</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="c1"># Smearing for frequency in eV</span>
+    <span class="n">kBT</span> <span class="o">=</span> <span class="mf">0.026</span><span class="p">,</span> <span class="c1"># Smearing for Fermi level (Fermi-Dirac factor)</span>
+<span class="p">)</span>
+
+<span class="n">calculators</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">SHC_ryoo</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">SHC</span><span class="p">(</span><span class="n">SHC_type</span><span class="o">=</span><span class="s2">&quot;ryoo&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+    <span class="n">SHC_qiao</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">SHC</span><span class="p">(</span><span class="n">SHC_type</span><span class="o">=</span><span class="s2">&quot;qiao&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">NK</span><span class="o">=</span><span class="n">nk</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+    <span class="n">calculators</span><span class="o">=</span><span class="n">calculators</span><span class="p">,</span>
+    <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+    <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=30 (&lt;class &#39;int&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+Grid is regular
+The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+generating K_list
+Done in 0.0016331672668457031 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.06915020942687988 s
+Done in 0.06923556327819824 s
+K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
+Done, sum of weights:0.9999999999999997
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7f01489f58e0&gt;
+processing 16 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   4              8.9                  26.8
+                   8             16.8                  16.8
+                  12             24.7                   8.2
+time for processing     16 K-points on   4 processes:    31.4490 ; per K-point          1.9656 ; proc-sec per K-point          7.8623
+time1 =  0.0019664764404296875
+Totally processed 16 K-points
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shc_ryoo</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;SHC_ryoo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">shc_qiao</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;SHC_qiao&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">shc_ryoo</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ryoo&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">shc_qiao</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Qiao&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">shc_ryoo</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">shc_qiao</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;omega (eV)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Re(SHC)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Im(SHC)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_18_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_18_0.png" />
+</div>
+</div>
+</section>
+<section id="Spin-Berry-curvature">
+<h3>Spin Berry curvature<a class="headerlink" href="#Spin-Berry-curvature" title="Permalink to this heading"></a></h3>
+<p>To understand the microscopic origin of the spin Hall conductivity, one may inspect the k-resolved spin Berry curvature. Eq. (<span class="math">\ref{eq:shc}</span>) is recast into the sum of a Berry-curvature-like term, the spin Berry curvature.</p>
+<p>The spin Berry curvature is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+  \Omega^{n, \gamma}_{\alpha\beta}({\bf k}) = -\sum_{m \neq n}\frac{2\textrm{Im}\left[\langle\psi_{n{\bf k}}\vert \frac{1}{2}\{ s^{\gamma}, v_\alpha \} \vert\psi_{m{\bf k}}\rangle\langle\psi_{m{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle\right]}{(\varepsilon_{n{\bf k}}-\varepsilon_{m{\bf k}})^2-(i\eta)^2}\,,
+  \label{eq:sbc}\tag{2}
+\end{equation}</div><p>and the k-resolved spin Berry curvature summed over the band index is</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+  \Omega^{\gamma}_{\alpha\beta}({\bf k}) = \sum_{n}f_{n{\bf k}}\Omega^{n, \gamma}_{\alpha\beta}({\bf k})\,.
+  \label{eq:sbc_k_resolved}\tag{3}
+\end{equation}\begin{equation}
+  \sigma^{{\rm SHC}, \gamma}_{\alpha\beta} = \frac{-e\hbar}{N_k\Omega_c}\sum_{\bf k}\Omega^{\gamma}_{\alpha\beta}({\bf k})
+  \label{eq:shc_sbc}\tag{4}
+\end{equation}</div><p>Therefore, where in the k-space contributes to the total SHC can be investigated using the k-resolved spin Berry curvature.</p>
+<p>Here, we compute the spin Berry curvature again using the Ryoo method and the Qiao method. Note that we pass the spin curren type as a <code class="docutils literal notranslate"><span class="pre">kwargs_formula</span></code> to the calculator, e.g. <code class="docutils literal notranslate"><span class="pre">kwargs_formula=dict(spin_current_type=&quot;ryoo&quot;)</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wannierberri</span> <span class="kn">import</span> <span class="n">calculators</span> <span class="k">as</span> <span class="n">calc</span>
+<span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">calculators</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">TabulatorAll</span><span class="p">(</span>
+     <span class="p">{</span>
+         <span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="n">calc</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">Energy</span><span class="p">(),</span>
+         <span class="s1">&#39;spin_berry_ryoo&#39;</span><span class="p">:</span> <span class="n">calc</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">SpinBerry</span><span class="p">(</span><span class="n">kwargs_formula</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">spin_current_type</span><span class="o">=</span><span class="s2">&quot;ryoo&quot;</span><span class="p">),</span> <span class="n">degen_thresh</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+         <span class="s1">&#39;spin_berry_qiao&#39;</span><span class="p">:</span> <span class="n">calc</span><span class="o">.</span><span class="n">tabulate</span><span class="o">.</span><span class="n">SpinBerry</span><span class="p">(</span><span class="n">kwargs_formula</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">spin_current_type</span><span class="o">=</span><span class="s2">&quot;qiao&quot;</span><span class="p">),</span> <span class="n">degen_thresh</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span>
+     <span class="p">},</span>
+    <span class="n">ibands</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">system</span><span class="o">.</span><span class="n">num_wann</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;path&quot;</span><span class="p">,</span>
+ <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">k_nodes</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># W</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># L</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span> <span class="c1"># Gamma</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">],</span> <span class="c1"># X</span>
+        <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="c1"># W</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span> <span class="c1"># Gamma</span>
+    <span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;$\Gamma$&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;$\Gamma$&quot;</span><span class="p">],</span>
+    <span class="n">length</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">result_spin_berry</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">system</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+    <span class="n">calculators</span><span class="o">=</span><span class="n">calculators</span><span class="p">,</span>
+    <span class="n">parallel</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">,</span>
+    <span class="n">print_Kpoints</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Calculation along a path - checking calculators for compatibility
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7f00f8ae1d30&gt;
+All calculators are compatible
+Symmetrization switched off for Path
+The set of k points is a Path() with 643 points and labels {0: &#39;W&#39;, 108: &#39;L&#39;, 241: &#39;$\\Gamma$&#39;, 394: &#39;X&#39;, 471: &#39;W&#39;, 642: &#39;$\\Gamma$&#39;}
+WARNING : symmetry is not used for a tabulation along path
+generating K_list
+Done
+Done, sum of weights:643.0
+symgroup : None
+processing 643 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                  64              1.8                  16.3
+                 128              3.1                  12.4
+                 192              4.4                  10.3
+                 256              5.7                   8.6
+                 320              7.0                   7.1
+                 384              8.3                   5.6
+                 448              9.5                   4.1
+                 512             10.8                   2.8
+                 576             12.2                   1.4
+                 640             13.5                   0.1
+time for processing    643 K-points on   4 processes:    13.5966 ; per K-point          0.0211 ; proc-sec per K-point          0.0846
+time1 =  0.103485107421875
+Totally processed 643 K-points
+</pre></div></div>
+</div>
+<p>Now we sum over bands to compute the k-resolved spin Berry curvature:</p>
+<div class="math notranslate nohighlight">
+\[\Omega^{\gamma}_{\alpha\beta}({\bf k}) = \sum_{n \in {\rm occ.}} \Omega^{n, \gamma}_{\alpha\beta}({\bf k})\]</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">K_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">spin_berry_ryoo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nk</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">spin_berry_qiao</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nk</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">iband</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">system</span><span class="o">.</span><span class="n">num_wann</span><span class="p">):</span>
+    <span class="c1"># Get the data for iband-th band</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">result_spin_berry</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;Energy&quot;</span><span class="p">,</span> <span class="n">iband</span><span class="p">)</span>
+    <span class="n">spin_berry_ryoo_nk</span> <span class="o">=</span> <span class="n">result_spin_berry</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;spin_berry_ryoo&quot;</span><span class="p">,</span> <span class="n">iband</span><span class="p">)</span>
+    <span class="n">spin_berry_qiao_nk</span> <span class="o">=</span> <span class="n">result_spin_berry</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;tabulate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;spin_berry_qiao&quot;</span><span class="p">,</span> <span class="n">iband</span><span class="p">)</span>
+
+    <span class="c1"># Select k-point indices where the iband-th band is occupied</span>
+    <span class="n">inds_occupied</span> <span class="o">=</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="n">efermi</span>
+
+    <span class="c1"># Add the spin Berry curvature of those bands</span>
+    <span class="n">spin_berry_ryoo</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span> <span class="o">+=</span> <span class="n">spin_berry_ryoo_nk</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span>
+    <span class="n">spin_berry_qiao</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span> <span class="o">+=</span> <span class="n">spin_berry_qiao_nk</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_signed_log10</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">kline</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">getKline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kline</span><span class="p">,</span> <span class="n">get_signed_log10</span><span class="p">(</span><span class="n">spin_berry_ryoo</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ryoo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kline</span><span class="p">,</span> <span class="n">get_signed_log10</span><span class="p">(</span><span class="n">spin_berry_qiao</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Qiao&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">kline</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">kline</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()],</span> <span class="n">path</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">kline</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">kline</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;$\mathrm</span><span class="si">{log}</span><span class="s2">_</span><span class="si">{10}</span><span class="s2"> \Omega_\mathbf</span><span class="si">{k}</span><span class="s2">$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_25_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_25_0.png" />
+</div>
+</div>
+<p>You can find that the spin Berry curvature calculated using the Qiao method shows more “wiggles” than the Ryoo method. This numerical difference has been first reported in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.104.014412">T. Ng et al, PRB 104 014412 (2021)</a>:</p>
+<blockquote>
+<div><p>It is worth noting that there is jittering along Γ-Z, which occurs in the same path in WTe2 using the same method [22] (Qiao et al). However, such jittering disappears and the spin Berry curvature along Γ-Z becomes a smooth function using the method in Ref. [45] (Ryoo et al).</p>
+</div></blockquote>
+</section>
+<section id="Generating-.sHu-and-.sIu-from-.mmn-and-.spn:-mmn2uHu">
+<h3>Generating .sHu and .sIu from .mmn and .spn: mmn2uHu<a class="headerlink" href="#Generating-.sHu-and-.sIu-from-.mmn-and-.spn:-mmn2uHu" title="Permalink to this heading"></a></h3>
+<p>Even if you have not obtained .shu and .sIu from an ab initio code, you can make them from the overlap matrix and the spin matrix. Wannierberri provides the utility <code class="docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code>, which calculated the matrices <code class="docutils literal notranslate"><span class="pre">.uHu</span></code>, <code class="docutils literal notranslate"><span class="pre">.uIu</span></code>, <code class="docutils literal notranslate"><span class="pre">.sHu</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">.sIu</span></code> from the <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">.spn</span></code>, <code class="docutils literal notranslate"><span class="pre">.eig</span></code> matrices, and also reduces the number of bands in <code class="docutils literal notranslate"><span class="pre">.amn</span></code>, <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">.eig</span></code> and <code class="docutils literal notranslate"><span class="pre">.spn</span></code> files, by means of the sum-over-states formula</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+  \langle u_{m{\bf q}}\vert\hat{s}\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}}({\bf q})\,.
+\label{eq:sHu}\tag{5}
+\end{equation}</div><div class="math notranslate nohighlight">
+\begin{equation}
+  \langle u_{m{\bf q}}\vert\hat{s}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^*   M_{ln}^{\mathbf{b}}({\bf q})\,.
+\label{eq:sIu}\tag{6}
+\end{equation}</div><p>Here, <span class="math notranslate nohighlight">\(l_{\rm max}\)</span> cannot exceed the number of bands included in the Wannier90 calculation (i.e. the <code class="docutils literal notranslate"><span class="pre">num_bands</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">Pt.win</span></code>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mmn2uHu</span></code> utility can be particularly useful when the calculation of <code class="docutils literal notranslate"><span class="pre">sHu</span></code> and <code class="docutils literal notranslate"><span class="pre">sIu</span></code> files are not implemented in the DFT code you are using.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wannierberri.utils</span> <span class="kn">import</span> <span class="n">mmn2uHu</span> <span class="k">as</span> <span class="n">mmn2uHu</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;data_Pt&quot;</span><span class="p">)</span>
+<span class="n">mmn2uHu</span><span class="o">.</span><span class="n">run_mmn2uHu</span><span class="p">(</span><span class="n">PREFIX</span><span class="o">=</span><span class="s2">&quot;Pt&quot;</span><span class="p">,</span> <span class="n">writeSHU</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">writeSIU</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">NBout</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">NBsum</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="c1"># For a command-line execution of the mmn2uHu utility, use</span>
+<span class="c1"># python3 -m wannierberri.utils.mmn2uHu Pt NBout=18,NBsum=24,targets=sHu,sIu</span>
+
+<span class="c1"># Rename sHu and sIu files</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">&quot;reduced_NB=24/Pt_nbs=24.sHu&quot;</span><span class="p">,</span> <span class="s2">&quot;reduced_NB=24/Pt.sHu&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="s2">&quot;reduced_NB=24/Pt_nbs=24.sIu&quot;</span><span class="p">,</span> <span class="s2">&quot;reduced_NB=24/Pt.sIu&quot;</span><span class="p">)</span>
+
+<span class="c1"># Copy chk and spn files</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s2">&quot;Pt.chk&quot;</span><span class="p">,</span> <span class="s2">&quot;reduced_NB=24/Pt.chk&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="s2">&quot;Pt.spn&quot;</span><span class="p">,</span> <span class="s2">&quot;reduced_NB=24/Pt.spn&quot;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+----------
+ MMN  read
+---------
+
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ MMN  read - OK
+---------
+
+[Errno 17] File exists: &#39;reduced_NB=24&#39;
+k-point 0 of 64
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+----------
+ MMN OK
+---------
+
+----------
+ AMN
+---------
+
+AMN size= (27648, 2)
+24 18 64
+----------
+ AMN  - OK
+---------
+
+[(&#39;uHu&#39;, False)]
+----------
+  uHu  NBsum=24
+---------
+uHu from mmn red to 24 sum 24 bnd 2022-09-05T14:00:29.435132
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ uHu OK
+---------
+
+----------
+ SPN
+---------
+
+using fortio to read
+Created on 13May2022 at 15:23:23
+using scipy.io to write
+----------
+ SPN OK
+---------
+
+[(&#39;sHu&#39;, False), (&#39;sIu&#39;, False)]
+----------
+  sHu  NBsum=24
+---------
+sHu from mmn red to 24 sum 24 bnd 2022-09-05T14:00:29.855327
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ sHu OK
+---------
+
+----------
+  sIu  NBsum=24
+---------
+sIu from mmn red to 24 sum 24 bnd 2022-09-05T14:00:30.043397
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ sIu OK
+---------
+
+</pre></div></div>
+</div>
+<p>Now, load the system object. Since all the data are in the <code class="docutils literal notranslate"><span class="pre">data_Pt/reduced_NB=24</span></code> directory, you should use the seedname <code class="docutils literal notranslate"><span class="pre">data_Pt/reduced_NB=24/Pt</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">system_mmn2uhu</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span><span class="s2">&quot;data_Pt/reduced_NB=24/Pt&quot;</span><span class="p">,</span> <span class="n">berry</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCryoo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCqiao</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">system_mmn2uhu</span><span class="o">.</span><span class="n">set_structure</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]],</span> <span class="p">[</span><span class="s2">&quot;Pt&quot;</span><span class="p">])</span>
+<span class="n">system_mmn2uhu</span><span class="o">.</span><span class="n">set_symmetry_from_structure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+using fortio to read
+Reading restart information from file data_Pt/reduced_NB=24/Pt.chk :
+Time to read .chk : 0.10382509231567383
+Time for MMN.__init__() : 0.343334436416626 , read : 0.3339219093322754 , headstring 0.009412527084350586
+----------
+ SPN
+---------
+
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.spn : Created on 13May2022 at 15:23:23
+----------
+ SPN OK
+---------
+
+----------
+  sIu
+---------
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.sIu : &lt;sIu from mmn red to 24 sum 24 bnd 2022-09-05T14:00:30.043397&gt;
+----------
+ sIu OK
+---------
+
+----------
+  sHu
+---------
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.sHu : &lt;sHu from mmn red to 24 sum 24 bnd 2022-09-05T14:00:29.855327&gt;
+----------
+ sHu OK
+---------
+
+time for FFT_q_to_R : 0.5799274444580078 s
+using ws_distance
+irvec_new_all shape (93,)
+using ws_dist for Ham_R
+using ws_dist for AA_R
+using ws_dist for SS_R
+using ws_dist for SA_R
+using ws_dist for SHA_R
+using ws_dist for SR_R
+using ws_dist for SH_R
+using ws_dist for SHR_R
+Number of wannier functions: 18
+Number of R points: 93
+Recommended size of FFT grid [4 4 4]
+Real-space lattice:
+ [[-1.95599772  0.          1.95599772]
+ [ 0.          1.95599772  1.95599772]
+ [-1.95599772  1.95599772  0.        ]]
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Problem:-Compare-the-SHC-computed-using-the-sHu-files-from-pw2wannier90-and-mmn2uHu.">
+<h2>Problem: Compare the SHC computed using the sHu files from pw2wannier90 and mmn2uHu.<a class="headerlink" href="#Problem:-Compare-the-SHC-computed-using-the-sHu-files-from-pw2wannier90-and-mmn2uHu." title="Permalink to this heading"></a></h2>
+<p>Compute the SHC using <code class="docutils literal notranslate"><span class="pre">system</span></code> and <code class="docutils literal notranslate"><span class="pre">system_mmn2uHu</span></code>. Since the “Qiao” method does not use the sHu and sIu files, the two systems will give exactly the same result. This may not be the case for the “Ryoo” method.</p>
+<p>Use the keyword arguments given below (Fermi level scan at 0.026 meV ~ 300 K).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">efermi_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">efermi</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">efermi</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">Efermi</span><span class="o">=</span><span class="n">efermi_list</span><span class="p">,</span>
+    <span class="n">omega</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">smr_fixed_width</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="c1"># Smearing for frequency in eV</span>
+    <span class="n">kBT</span> <span class="o">=</span> <span class="mf">0.026</span><span class="p">,</span> <span class="c1"># Smearing for Fermi level (Fermi-Dirac factor) in eV (not Kelvin)</span>
+<span class="p">)</span>
+
+<span class="c1"># Fill in the code below.</span>
+</pre></div>
+</div>
+</div>
+<section id="Further-questions">
+<h3>Further questions<a class="headerlink" href="#Further-questions" title="Permalink to this heading"></a></h3>
+<p>If you are interested, try to answer the following questions: - Try to converge the calculation using a different value of <code class="docutils literal notranslate"><span class="pre">smr_fixed_width</span></code>. In principle, to achieve an ideal convergence to the zero-smearing limit, one needs to first converge SHC increasing the grid size for a fixed <code class="docutils literal notranslate"><span class="pre">smr_fixed_width</span></code>, and then repeat the procedure with smaller <code class="docutils literal notranslate"><span class="pre">smr_fixed_width</span></code> until convergence. - What happens if one include more bands in the NSCF calculation? Does the two methods converge to the same
+result? (To answer this question, one needs to perform additional DFT calculations.)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../symmetrization/Symmetrization_tutorial.html" class="btn btn-neutral float-left" title="Symmetrization of Wannier Hamiltonian and matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../DIY/tutorial-wb-DIY.html" class="btn btn-neutral float-right" title="DIY tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

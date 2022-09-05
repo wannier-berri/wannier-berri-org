@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/literature.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="External software used" href="software.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="index.html">
+            <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exampleFe.html">Examples:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">External software used</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Literature</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="literature">
+<h1>Literature<a class="headerlink" href="#literature" title="Permalink to this heading"></a></h1>
+<div class="references hanging-indent docutils container" id="refs">
+<div class="docutils container" id="ref-paw">
+<p>Blöchl, P. E. 1994. “Projector Augmented-Wave Method.” <em>Phys. Rev.
+B</em> 50 (24): 17953–79. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.50.17953">https://doi.org/10.1103/PhysRevB.50.17953</a>.</p>
+</div>
+<div class="docutils container" id="ref-bouhon2019">
+<p>Bouhon, Adrien, Annica M. Black-Schaffer, and Robert-Jan Slager.
+2019. “Wilson Loop Approach to Fragile Topology of Split
+Elementary Band Representations and Topological Crystalline
+Insulators with Time-Reversal Symmetry.” <em>Phys. Rev. B</em> 100 (19):
+195135. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.100.195135">https://doi.org/10.1103/PhysRevB.100.195135</a>.</p>
+</div>
+<div class="docutils container" id="ref-bradlyn2017-tqc">
+<p>Bradlyn, Barry, L. Elcoro, Jennifer Cano, M. G. Vergniory, Zhijun
+Wang, C. Felser, M. I. Aroyo, and B. Andrei Bernevig. 2017.
+“Topological Quantum Chemistry.” <em>Nature</em> 547 (7663): 298–305.
+<a class="reference external" href="https://doi.org/10.1038/nature23268">https://doi.org/10.1038/nature23268</a>.</p>
+</div>
+<div class="docutils container" id="ref-ceresoli-2006">
+<p>Ceresoli, Davide, T. Thonhauser, David Vanderbilt, and R. Resta.
+2006. “Orbital Magnetization in Crystalline Solids: Multi-Band
+Insulators, Chern Insulators, and Metals.” <em>Phys. Rev. B</em> 74 (2):
+024408. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.74.024408">https://doi.org/10.1103/PhysRevB.74.024408</a>.</p>
+</div>
+<div class="docutils container" id="ref-cooley-tukey-1965-fft">
+<p>Cooley, J. W., and J. W. Tukey. 1965. “An Algorithm for the
+Machine Computation of the Complex Fourier Series.” <em>Math.
+Computation</em> 19: 297–301.</p>
+</div>
+<div class="docutils container" id="ref-damle-scdm2">
+<p>Damle, Anil, and Lin Lin. 2018. “Disentanglement via Entanglement:
+A Unified Method for Wannier Localization.” <em>Multiscale Modeling &amp;
+Simulation</em> 16 (3): 1392–1410. <a class="reference external" href="https://doi.org/10.1137/17M1129696">https://doi.org/10.1137/17M1129696</a>.</p>
+</div>
+<div class="docutils container" id="ref-damle-scdm">
+<p>Damle, Anil, Lin Lin, and Lexing Ying. 2015. “Compressed
+Representation of Kohn–Sham Orbitals via Selected Columns of the
+Density Matrix.” <em>Journal of Chemical Theory and Computation</em> 11
+(4): 1463–9. <a class="reference external" href="https://doi.org/10.1021/ct500985f">https://doi.org/10.1021/ct500985f</a>.</p>
+</div>
+<div class="docutils container" id="ref-destraz-2020">
+<p>Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus
+Neupert, J. Chang, A. Schilling, et al. 2020. “Magnetism and
+Anomalous Transport in the Weyl Semimetal PrAlGe: Possible Route
+to Axial Gauge Fields.” <em>Npj Quantum Materials</em> 5 (1): 5.
+<a class="reference external" href="https://doi.org/10.1038/s41535-019-0207-7">https://doi.org/10.1038/s41535-019-0207-7</a>.</p>
+</div>
+<div class="docutils container" id="ref-duhamel1990-fft">
+<p>Duhamel, P., and M. Vetterli. 1990. “Fast Fourier Transforms: A
+Tutorial Review and a State of the Art.” <em>Signal Processing</em> 19
+(4): 259–99.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/0165-1684(90)90158-U">https://doi.org/https://doi.org/10.1016/0165-1684(90)90158-U</a>.</p>
+</div>
+<div class="docutils container" id="ref-fftw05">
+<p>Frigo, Matteo, and Steven G. Johnson. 2005. “The Design and
+Implementation of FFTW3.” <em>Proceedings of the IEEE</em> 93 (2):
+216–31.</p>
+</div>
+<div class="docutils container" id="ref-garrity2020database">
+<p>Garrity, Kevin F., and Kamal Choudhary. 2020. “Database of Wannier
+Tight-Binding Hamiltonians Using High-Throughput Density
+Functional Theory.” <a class="reference external" href="http://arxiv.org/abs/2007.01205">http://arxiv.org/abs/2007.01205</a>.</p>
+</div>
+<div class="docutils container" id="ref-qe-2020">
+<p>Giannozzi, Paolo, Oscar Baseggio, Pietro Bonfà, Davide Brunato,
+Roberto Car, Ivan Carnimeo, Carlo Cavazzoni, et al. 2020. “Quantum
+Espresso Toward the Exascale.” <em>The Journal of Chemical Physics</em>
+152 (15): 154105. <a class="reference external" href="https://doi.org/10.1063/5.0005082">https://doi.org/10.1063/5.0005082</a>.</p>
+</div>
+<div class="docutils container" id="ref-giustino-eph-wan">
+<p>Giustino, Feliciano, Marvin L. Cohen, and Steven G. Louie. 2007.
+“Electron-Phonon Interaction Using Wannier Functions.” <em>Phys. Rev.
+B</em> 76 (16): 165108. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.76.165108">https://doi.org/10.1103/PhysRevB.76.165108</a>.</p>
+</div>
+<div class="docutils container" id="ref-gosalbez2015">
+<p>Gosálbez-Martı́nez, Daniel, Ivo Souza, and David Vanderbilt. 2015.
+“Chiral Degeneracies and Fermi-Surface Chern Numbers in Bcc Fe.”
+<em>Phys. Rev. B</em> 92 (8): 085138.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.92.085138">https://doi.org/10.1103/PhysRevB.92.085138</a>.</p>
+</div>
+<div class="docutils container" id="ref-pseudodojo-normconserving">
+<p>Hamann, D. R. 2013. “Optimized Norm-Conserving Vanderbilt
+Pseudopotentials.” <em>Phys. Rev. B</em> 88 (8): 085117.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.88.085117">https://doi.org/10.1103/PhysRevB.88.085117</a>.</p>
+</div>
+<div class="docutils container" id="ref-heideman-1984-fft">
+<p>Heideman, M., D. Johnson, and C. Burrus. 1984. “Gauss and the
+History of the Fast Fourier Transform.” <em>IEEE ASSP Magazine</em> 1
+(4): 14–21.</p>
+</div>
+<div class="docutils container" id="ref-matplotlib">
+<p>Hunter, J. D. 2007. “Matplotlib: A 2D Graphics Environment.”
+<em>Computing in Science &amp; Engineering</em> 9 (3): 90–95.
+<a class="reference external" href="https://doi.org/10.1109/MCSE.2007.55">https://doi.org/10.1109/MCSE.2007.55</a>.</p>
+</div>
+<div class="docutils container" id="ref-azpiroz-prb18">
+<p>Ibañez-Azpiroz, Julen, Stepan S. Tsirkin, and Ivo Souza. 2018. “Ab
+Initio Calculation of the Shift Photocurrent by Wannier
+Interpolation.” <em>Phys. Rev. B</em> 97 (24): 245143.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.97.245143">https://doi.org/10.1103/PhysRevB.97.245143</a>.</p>
+</div>
+<div class="docutils container" id="ref-inkscape">
+<p>“Inkscape Vector Graphics Editor.” n.d. <a class="reference external" href="https://inkscape.org">https://inkscape.org</a>.</p>
+</div>
+<div class="docutils container" id="ref-jarvis-wtb">
+<p>“JARVIS-WannierTB database.” n.d.
+<a class="reference external" href="https://www.ctcms.nist.gov/jarviswtb/">https://www.ctcms.nist.gov/jarviswtb/</a>.</p>
+</div>
+<div class="docutils container" id="ref-fermisurfer-paper">
+<p>Kawamura, Mitsuaki. 2019. “FermiSurfer: Fermi-Surface Viewer
+Providing Multiple Representation Schemes.” <em>Computer Physics
+Communications</em> 239: 197–203.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2019.01.017">https://doi.org/https://doi.org/10.1016/j.cpc.2019.01.017</a>.</p>
+</div>
+<div class="docutils container" id="ref-kingsmith-1993">
+<p>King-Smith, R. D., and David Vanderbilt. 1993. “Theory of
+Polarization of Crystalline Solids.” <em>Phys. Rev. B</em> 47 (3):
+1651–4. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.47.1651">https://doi.org/10.1103/PhysRevB.47.1651</a>.</p>
+</div>
+<div class="docutils container" id="ref-lazy-property">
+<p>“<code class="docutils literal notranslate"><span class="pre">lazy-property</span></code> Python Module.” n.d.
+<a class="reference external" href="https://pypi.org/project/lazy-property">https://pypi.org/project/lazy-property</a>.</p>
+</div>
+<div class="docutils container" id="ref-lopez-prb12">
+<p>Lopez, M. G., David Vanderbilt, T. Thonhauser, and Ivo Souza.
+2012. “Wannier-Based Calculation of the Orbital Magnetization in
+Crystals.” <em>Phys. Rev. B</em> 85 (1): 014435.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.85.014435">https://doi.org/10.1103/PhysRevB.85.014435</a>.</p>
+</div>
+<div class="docutils container" id="ref-marzari-review">
+<p>Marzari, Nicola, Arash A. Mostofi, Jonathan R. Yates, Ivo Souza,
+and David Vanderbilt. 2012. “Maximally Localized Wannier
+Functions: Theory and Applications.” <em>Rev. Mod. Phys.</em> 84 (4):
+1419–75. <a class="reference external" href="https://doi.org/10.1103/RevModPhys.84.1419">https://doi.org/10.1103/RevModPhys.84.1419</a>.</p>
+</div>
+<div class="docutils container" id="ref-marzari-prb97">
+<p>Marzari, N., and D. Vanderbilt. 1997. “Maximally Localized
+Generalized Wannier Functions for Composite Energy Bands.” <em>Phys.
+Rev. B</em> 56 (20): 12847. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.56.12847">https://doi.org/10.1103/PhysRevB.56.12847</a>.</p>
+</div>
+<div class="docutils container" id="ref-mostofi2008685">
+<p>Mostofi, Arash A., Jonathan R. Yates, Young-Su Lee, Ivo Souza,
+David Vanderbilt, and Nicola Marzari. 2008. “Wannier90: A Tool for
+Obtaining Maximally-Localised Wannier Functions.” <em>Computer
+Physics Communications</em> 178 (9): 685–99.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2007.11.016">https://doi.org/https://doi.org/10.1016/j.cpc.2007.11.016</a>.</p>
+</div>
+<div class="docutils container" id="ref-mostofi20142309">
+<p>Mostofi, Arash A., Jonathan R. Yates, Giovanni Pizzi, Young-Su
+Lee, Ivo Souza, David Vanderbilt, and Nicola Marzari. 2014. “An
+Updated Version of Wannier90: A Tool for Obtaining
+Maximally-Localised Wannier Functions.” <em>Computer Physics
+Communications</em> 185 (8): 2309–10.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2014.05.003">https://doi.org/https://doi.org/10.1016/j.cpc.2014.05.003</a>.</p>
+</div>
+<div class="docutils container" id="ref-multiprocessing">
+<p>“<code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> Python Module.” n.d.
+<a class="reference external" href="https://pypi.org/project/multiprocessing">https://pypi.org/project/multiprocessing</a>.</p>
+</div>
+<div class="docutils container" id="ref-mustafa2016">
+<p>Mustafa, Jamal I., Sinisa Coh, Marvin L. Cohen, and Steven G.
+Louie. 2016. “Automated Construction of Maximally Localized
+Wannier Functions for Bands with Nontrivial Topology.” <em>Phys. Rev.
+B</em> 94 (12): 125151. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.94.125151">https://doi.org/10.1103/PhysRevB.94.125151</a>.</p>
+</div>
+<div class="docutils container" id="ref-nagaosa-hall">
+<p>Nagaosa, Naoto, Jairo Sinova, Shigeki Onoda, A. H. MacDonald, and
+N. P. Ong. 2010. “Anomalous Hall Effect.” <em>Rev. Mod. Phys.</em> 82
+(2): 1539–92. <a class="reference external" href="https://doi.org/10.1103/RevModPhys.82.1539">https://doi.org/10.1103/RevModPhys.82.1539</a>.</p>
+</div>
+<div class="docutils container" id="ref-numpy">
+<p>Oliphant, Travis E. 2006. <em>A Guide to Numpy</em>. Vol. 1. Trelgol
+Publishing USA.</p>
+</div>
+<div class="docutils container" id="ref-pizzi-2020">
+<p>Pizzi, Giovanni, Valerio Vitale, Ryotaro Arita, Stefan Blügel,
+Frank Freimuth, Guillaume Géranton, Marco Gibertini, et al. 2020.
+“Wannier90 as a Community Code: New Features and Applications.”
+<em>Journal of Physics: Condensed Matter</em> 32 (16): 165902.
+<a class="reference external" href="https://doi.org/10.1088/1361-648x/ab51ff">https://doi.org/10.1088/1361-648x/ab51ff</a>.</p>
+</div>
+<div class="docutils container" id="ref-boltzwann">
+<p>Pizzi, Giovanni, Dmitri Volja, Boris Kozinsky, Marco Fornari, and
+Nicola Marzari. 2014. “BoltzWann: A Code for the Evaluation of
+Thermoelectric and Electronic Transport Properties with a
+Maximally-Localized Wannier Functions Basis.” <em>Computer Physics
+Communications</em> 185 (1): 422–29.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2013.09.015">https://doi.org/https://doi.org/10.1016/j.cpc.2013.09.015</a>.</p>
+</div>
+<div class="docutils container" id="ref-ponce-epw-2016">
+<p>Poncé, S., E. R. Margine, C. Verdi, and F. Giustino. 2016. “EPW:
+Electron–Phonon Coupling, Transport and Superconducting Properties
+Using Maximally Localized Wannier Functions.” <em>Computer Physics
+Communications</em> 209: 116–33.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2016.07.028">https://doi.org/https://doi.org/10.1016/j.cpc.2016.07.028</a>.</p>
+</div>
+<div class="docutils container" id="ref-pypi-wberri">
+<p>“PyPI Repository.” n.d. <a class="reference external" href="https://pypi.org/project/wannierberri">https://pypi.org/project/wannierberri</a>.</p>
+</div>
+<div class="docutils container" id="ref-qiao-shc">
+<p>Qiao, Junfeng, Jiaqi Zhou, Zhe Yuan, and Weisheng Zhao. 2018.
+“Calculation of Intrinsic Spin Hall Conductivity by Wannier
+Interpolation.” <em>Phys. Rev. B</em> 98 (21): 214402.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.98.214402">https://doi.org/10.1103/PhysRevB.98.214402</a>.</p>
+</div>
+<div class="docutils container" id="ref-qe-org">
+<p>“QuantumEspresso Code.” n.d. <a class="reference external" href="https://www.quantum-espresso.org/">https://www.quantum-espresso.org/</a>.</p>
+</div>
+<div class="docutils container" id="ref-resta-rmp-1994">
+<p>Resta, Raffaele. 1994. “Macroscopic Polarization in Crystalline
+Dielectrics: The Geometric Phase Approach.” <em>Rev. Mod. Phys.</em> 66
+(3): 899–915. <a class="reference external" href="https://doi.org/10.1103/RevModPhys.66.899">https://doi.org/10.1103/RevModPhys.66.899</a>.</p>
+</div>
+<div class="docutils container" id="ref-ryoo-shc">
+<p>Ryoo, Ji Hoon, Cheol-Hwan Park, and Ivo Souza. 2019. “Computation
+of Intrinsic Spin Hall Conductivities from First Principles Using
+Maximally Localized Wannier Functions.” <em>Phys. Rev. B</em> 99 (23):
+235113. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.99.235113">https://doi.org/10.1103/PhysRevB.99.235113</a>.</p>
+</div>
+<div class="docutils container" id="ref-sakuma-sawf">
+<p>Sakuma, R. 2013. “Symmetry-Adapted Wannier Functions in the
+Maximal Localization Procedure.” <em>Phys. Rev. B</em> 87 (23): 235109.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.87.235109">https://doi.org/10.1103/PhysRevB.87.235109</a>.</p>
+</div>
+<div class="docutils container" id="ref-slater-koster">
+<p>Slater, J. C., and G. F. Koster. 1954. “Simplified Lcao Method for
+the Periodic Potential Problem.” <em>Phys. Rev.</em> 94 (6): 1498–1524.
+<a class="reference external" href="https://doi.org/10.1103/PhysRev.94.1498">https://doi.org/10.1103/PhysRev.94.1498</a>.</p>
+</div>
+<div class="docutils container" id="ref-sodemann-nlhe-prl2015">
+<p>Sodemann, Inti, and Liang Fu. 2015. “Quantum Nonlinear Hall Effect
+Induced by Berry Curvature Dipole in Time-Reversal Invariant
+Materials.” <em>Phys. Rev. Lett.</em> 115 (21): 216806.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.115.216806">https://doi.org/10.1103/PhysRevLett.115.216806</a>.</p>
+</div>
+<div class="docutils container" id="ref-soluyanov2011">
+<p>Soluyanov, Alexey A., and David Vanderbilt. 2011. “Computing
+Topological Invariants Without Inversion Symmetry.” <em>Phys. Rev. B</em>
+83 (23): 235401. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.83.235401">https://doi.org/10.1103/PhysRevB.83.235401</a>.</p>
+</div>
+<div class="docutils container" id="ref-souza-disentangle">
+<p>Souza, Ivo, Nicola Marzari, and David Vanderbilt. 2001. “Maximally
+Localized Wannier Functions for Entangled Energy Bands.” <em>Phys.
+Rev. B</em> 65 (3): 035109.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.65.035109">https://doi.org/10.1103/PhysRevB.65.035109</a>.</p>
+</div>
+<div class="docutils container" id="ref-thonhauser-2005">
+<p>Thonhauser, T., Davide Ceresoli, David Vanderbilt, and R. Resta.
+2005. “Orbital Magnetization in Periodic Insulators.” <em>Phys. Rev.
+Lett.</em> 95 (13): 137205.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.95.137205">https://doi.org/10.1103/PhysRevLett.95.137205</a>.</p>
+</div>
+<div class="docutils container" id="ref-tsirkin-prb18">
+<p>Tsirkin, S. S., P. A. Puente, and I. Souza. 2018. “Gyrotropic
+Effects in Trigonal Tellurium Studied from First Principles.”
+<em>Phys. Rev. B</em> 97: 035158.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.97.035158">https://doi.org/10.1103/PhysRevB.97.035158</a>.</p>
+</div>
+<div class="docutils container" id="ref-vanderbilt-prb-1993">
+<p>Vanderbilt, David, and R. D. King-Smith. 1993. “Electric
+Polarization as a Bulk Quantity and Its Relation to Surface
+Charge.” <em>Phys. Rev. B</em> 48 (7): 4442–55.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.48.4442">https://doi.org/10.1103/PhysRevB.48.4442</a>.</p>
+</div>
+<div class="docutils container" id="ref-vanloan-book-fft">
+<p>Van Loan, Charles. 1992. <em>Computational Frameworks for the Fast
+Fourier Transform</em>. USA: Society for Industrial; Applied
+Mathematics.</p>
+</div>
+<div class="docutils container" id="ref-pseudodojo">
+<p>van Setten, M. J., M. Giantomassi, E. Bousquet, M. J. Verstraete,
+D. R. Hamann, X. Gonze, and G.-M. Rignanese. 2018. “The
+PseudoDojo: Training and Grading a 85 Element Optimized
+Norm-Conserving Pseudopotential Table.” <em>Computer Physics
+Communications</em> 226: 39–54.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2018.01.012">https://doi.org/https://doi.org/10.1016/j.cpc.2018.01.012</a>.</p>
+</div>
+<div class="docutils container" id="ref-varnava2020">
+<p>Varnava, Nicodemos, Ivo Souza, and David Vanderbilt. 2020. “Axion
+Coupling in the Hybrid Wannier Representation.” <em>Phys. Rev. B</em> 101
+(15): 155130. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.101.155130">https://doi.org/10.1103/PhysRevB.101.155130</a>.</p>
+</div>
+<div class="docutils container" id="ref-vasp">
+<p>“VASP Code.” n.d. <a class="reference external" href="https://www.vasp.at/">https://www.vasp.at/</a>.</p>
+</div>
+<div class="docutils container" id="ref-scipy">
+<p>Virtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland,
+Tyler Reddy, David Cournapeau, Evgeni Burovski, et al. 2020.
+“SciPy 1.0: Fundamental Algorithms for Scientific Computing in
+Python.” <em>Nature Methods</em> 17: 261–72.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1038/s41592-019-0686-2">https://doi.org/https://doi.org/10.1038/s41592-019-0686-2</a>.</p>
+</div>
+<div class="docutils container" id="ref-vitale2020">
+<p>Vitale, Valerio, Giovanni Pizzi, Antimo Marrazzo, Jonathan R.
+Yates, Nicola Marzari, and Arash A. Mostofi. 2020. “Automated
+High-Throughput Wannierisation.” <em>Npj Computational Materials</em> 6
+(1): 66. <a class="reference external" href="https://doi.org/10.1038/s41524-020-0312-y">https://doi.org/10.1038/s41524-020-0312-y</a>.</p>
+</div>
+<div class="docutils container" id="ref-wang-prb06">
+<p>Wang, Xinjie, Jonathan R. Yates, Ivo Souza, and David Vanderbilt.
+2006. “Ab Initio Calculation of the Anomalous Hall Conductivity by
+Wannier Interpolation.” <em>Phys. Rev. B</em> 74 (19): 195118.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.74.195118">https://doi.org/10.1103/PhysRevB.74.195118</a>.</p>
+</div>
+<div class="docutils container" id="ref-wannier-1937">
+<p>Wannier, Gregory H. 1937. “The Structure of Electronic Excitation
+Levels in Insulating Crystals.” <em>Phys. Rev.</em> 52 (3): 191–97.
+<a class="reference external" href="https://doi.org/10.1103/PhysRev.52.191">https://doi.org/10.1103/PhysRev.52.191</a>.</p>
+</div>
+<div class="docutils container" id="ref-wannier-org">
+<p>“Wannier90 Code.” n.d. <a class="reference external" href="http://www.wannier.org/">http://www.wannier.org/</a>.</p>
+</div>
+<div class="docutils container" id="ref-github-w90">
+<p>“<code class="docutils literal notranslate"><span class="pre">Wannier90</span></code> Git Repository.” n.d.
+<a class="reference external" href="https://github.com/wannier-developers/wannier90">https://github.com/wannier-developers/wannier90</a>.</p>
+</div>
+<div class="docutils container" id="ref-wberri-org">
+<p>“<code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code> Code.” n.d. <a class="reference external" href="https://wannier-berri.org/">https://wannier-berri.org/</a>.</p>
+</div>
+<div class="docutils container" id="ref-github-wberri">
+<p>“<code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code> Git Repository.” n.d.
+<a class="reference external" href="https://github.com/stepan-tsirkin/wannier-berri">https://github.com/stepan-tsirkin/wannier-berri</a>.</p>
+</div>
+<div class="docutils container" id="ref-wu-wanniertools">
+<p>Wu, QuanSheng, ShengNan Zhang, Hai-Feng Song, Matthias Troyer, and
+Alexey A. Soluyanov. 2018. “WannierTools: An Open-Source Software
+Package for Novel Topological Materials.” <em>Computer Physics
+Communications</em> 224: 405–16.
+<a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.cpc.2017.09.033">https://doi.org/https://doi.org/10.1016/j.cpc.2017.09.033</a>.</p>
+</div>
+<div class="docutils container" id="ref-xiao-rmp10">
+<p>Xiao, Di, Ming-Che Chang, and Qian Niu. 2010. “Berry Phase Effects
+on Electronic Properties.” <em>Rev. Mod. Phys.</em> 82 (3): 1959–2007.
+<a class="reference external" href="https://doi.org/10.1103/RevModPhys.82.1959">https://doi.org/10.1103/RevModPhys.82.1959</a>.</p>
+</div>
+<div class="docutils container" id="ref-xiao-nernst">
+<p>Xiao, Di, Yugui Yao, Zhong Fang, and Qian Niu. 2006. “Berry-Phase
+Effect in Anomalous Thermoelectric Transport.” <em>Phys. Rev. Lett.</em>
+97 (2): 026603. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.97.026603">https://doi.org/10.1103/PhysRevLett.97.026603</a>.</p>
+</div>
+<div class="docutils container" id="ref-yao-ahc-fe">
+<p>Yao, Yugui, Leonard Kleinman, A. H. MacDonald, Jairo Sinova, T.
+Jungwirth, Ding-sheng Wang, Enge Wang, and Qian Niu. 2004. “First
+Principles Calculation of Anomalous Hall Conductivity in
+Ferromagnetic Bcc Fe.” <em>Phys. Rev. Lett.</em> 92 (3): 037204.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.92.037204">https://doi.org/10.1103/PhysRevLett.92.037204</a>.</p>
+</div>
+<div class="docutils container" id="ref-yates-2007">
+<p>Yates, Jonathan R., Xinjie Wang, David Vanderbilt, and Ivo Souza.
+2007. “Spectral and Fermi Surface Properties from Wannier
+Interpolation.” <em>Phys. Rev. B</em> 75 (19): 195121.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.75.195121">https://doi.org/10.1103/PhysRevB.75.195121</a>.</p>
+</div>
+<div class="docutils container" id="ref-zhang-highthrtopo">
+<p>Zhang, Zeying, Run-Wu Zhang, Xinru Li, Klaus Koepernik, Yugui Yao,
+and Hongbin Zhang. 2018. “High-Throughput Screening and Automated
+Processing Toward Novel Topological Insulators.” <em>The Journal of
+Physical Chemistry Letters</em> 9 (21): 6224–31.
+<a class="reference external" href="https://doi.org/10.1021/acs.jpclett.8b02800">https://doi.org/10.1021/acs.jpclett.8b02800</a>.</p>
+</div>
+<div class="docutils container" id="ref-zhong-gme-prl2016">
+<p>Zhong, Shudan, Joel E. Moore, and Ivo Souza. 2016. “Gyrotropic
+Magnetic Effect and the Magnetic Moment on the Fermi Surface.”
+<em>Phys. Rev. Lett.</em> 116 (7): 077201.
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.116.077201">https://doi.org/10.1103/PhysRevLett.116.077201</a>.</p>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="software.html" class="btn btn-neutral float-left" title="External software used" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

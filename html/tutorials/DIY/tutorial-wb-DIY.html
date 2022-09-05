@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIY tutorial &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/tutorials/DIY/tutorial-wb-DIY.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples:" href="../../exampleFe.html" />
+    <link rel="prev" title="Spin Hall conductivity" href="../spin_hall/tutorial_spin_hall.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../../index.html">
+            <img src="../../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../timing.html">Speed</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../basic/tutorial-wb-basic.html">Preliminary notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/tutorial-wb-basic.html#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html">Fermi surface and Fermi sea calculation of the Berry curvature dipole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../symmetrization/Symmetrization_tutorial.html">Symmetrization of Wannier Hamiltonian and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spin_hall/tutorial_spin_hall.html">Spin Hall conductivity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DIY tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anomalous-Hall-conductivity">anomalous Hall conductivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Look-into-documentation">Look into documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Evaluate-ANE-using-the-new-calculator-and-plot-the-result">Evaluate ANE using the new calculator and plot the result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Questions:">Questions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#FormulaProduct">FormulaProduct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-for-a-prize:">Problem for a prize:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      <li>DIY tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="DIY-tutorial">
+<h1>DIY tutorial<a class="headerlink" href="#DIY-tutorial" title="Permalink to this heading"></a></h1>
+<p>As we learned from the basic tutorial, in WannierBerri calculations are done by <code class="docutils literal notranslate"><span class="pre">`Calculator</span></code> &lt;<a class="reference external" href="https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator">https://wannier-berri.org/docs/calculators.html#wannierberri.calculators.Calculator</a>&gt;`__s. In this tutorial we will se how to create our own calculators.</p>
+<p>As an example let’s consider anomalous Nernst conductivity (<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.97.026603">Xiao et al. 2006</a> ). In the zero-temperature limit <span class="math notranslate nohighlight">\(\alpha_{\alpha\beta}^{\rm ANE}\)</span> may be obtained from AHC <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta}(\epsilon)^{\rm AHE}\)</span> evaluated over a dense grid of Fermi levels <span class="math notranslate nohighlight">\(\epsilon\)</span></p>
+<div class="math notranslate nohighlight">
+\[\alpha_{\alpha\beta}^{\rm ANE}=-\frac{1}{e}\int d\varepsilon \frac{\partial f}{\partial\varepsilon}\sigma_{\alpha\beta}(\varepsilon)\frac{\varepsilon-\mu}{T}, \label{eq:ane} \tag{1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f(\varepsilon)=1/\left(1+e^\frac{\varepsilon-\mu}{k_{\rm B}T}\right)\)</span> and the AHC is defined as a Fermi-sea integral of Berry curvature</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\sigma^{\rm AHC}_{xy} = -\frac{e^2}{\hbar} \sum_n \int\frac{d\mathbf{k}}{(2\pi)^3} \Omega^n_\gamma f(\epsilon_n)
+\label{eq:ahc}\tag{2}
+\end{equation}</div><p>In the zero-temperature limit it reduced to</p>
+<div class="math notranslate nohighlight">
+\[\alpha_{\alpha\beta}^{\rm ANE} \propto \frac{\partial \sigma_{\alpha\beta}(\varepsilon)}{\partial \varepsilon}
+\propto \int\frac{d\mathbf{k}}{(2\pi)^3} \Omega^n_\gamma f'(\epsilon_n) \tag{3}\label{eq:ane-ahc}\]</div>
+<p>Where we omit the dimensional factor for simplicity.</p>
+<p>### Thus, there are two ways of calculating ANE : * via eq (<span class="math">\ref{eq:ane-ahc}</span>) * via eq (<span class="math">\ref{eq:ane}</span>)</p>
+<p>let’s try eq (<span class="math">\ref{eq:ane-ahc}</span>) first, because AHC is already implemented</p>
+<p>### Warning : this is an advanced tutorial. You something may not work from first try, you need to work with documentation to resolve the problem, but do not hesitate to ask the TA if you cannot.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preliminary</span>
+
+<span class="c1"># Set environment variables - not mandatory but recommended if you use Parallel()</span>
+<span class="c1">#import os</span>
+<span class="c1">#os.environ[&#39;OPENBLAS_NUM_THREADS&#39;] = &#39;1&#39;</span>
+<span class="c1">#os.environ[&#39;MKL_NUM_THREADS&#39;] = &#39;1&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">wannierberri</span> <span class="k">as</span> <span class="nn">wberri</span>
+<span class="kn">import</span> <span class="nn">wannierberri.models</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using WannierBerri version </span><span class="si">{</span><span class="n">wberri</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">cprint</span>
+
+<span class="c1">#  This block is needed if you run this cell for a second time</span>
+<span class="c1">#  because one cannot initiate two parallel environments at a time</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">parallel</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Chiose one of the options:</span>
+
+<span class="n">parallel</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">num_cpus</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#parallel = wberri.Parallel()  # automatic detection</span>
+<span class="c1">#parallel = wberri.Serial()</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using WannierBerri version 0.13.2
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-06-09 18:11:59,422 INFO services.py:1456 -- View the Ray dashboard at <span class="ansi-green-intense-fg ansi-bold">http://127.0.0.1:8265</span>
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instead of Wannier functions, we work with a Hlldane model here https://wannier-berri.org/docs/models.html</span>
+
+<span class="n">model</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Haldane_ptb</span><span class="p">()</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">System_PythTB</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+R=0 found at position(s) [[3]]
+NOT using ws_dist
+Number of wannier functions: 2
+Number of R points: 7
+Recommended size of FFT grid [3 3 1]
+<span class="ansi-green-intense-fg ansi-bold">Reading the system from PythTB finished successfully</span>
+</pre></div></div>
+</div>
+<section id="anomalous-Hall-conductivity">
+<h2>anomalous Hall conductivity<a class="headerlink" href="#anomalous-Hall-conductivity" title="Permalink to this heading"></a></h2>
+<p>Now, let’s evaluate the AHC on a grid of Ef-points, and then take a derivtive</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">Efermi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">30</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;ahc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">calculators</span><span class="o">.</span><span class="n">static</span><span class="o">.</span><span class="n">AHC</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">kwargs_formula</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;external_terms&quot;</span><span class="p">:</span><span class="kc">False</span><span class="p">})</span>
+
+<span class="n">result_run_ahc</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">file_Klist</span><span class="o">=</span><span class="s2">&quot;Klist_ahc.pickle&quot;</span><span class="p">,</span>  <span class="c1"># needed to restart a calculation in future</span>
+            <span class="n">print_Kpoints</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=None (&lt;class &#39;NoneType&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+length=30 was converted into NK=[35 35 30]
+Minimal symmetric FFT grid :  [3 3 1]
+The grids were set to NKdiv=[7 7 1], NKFFT=[5 5 1], NKtot=[35 35  1]
+<span class="ansi-cyan-intense-fg ansi-bold">Anomalous Hall conductivity (:math:`s^3 \cdot A^2 / (kg \cdot m^3) = S/m`)
+
+        | With Fermi sea integral Eq(11) in `Ref &lt;https://www.nature.com/articles/s41524-021-00498-5&gt;`_
+        | Output: :math:`O = -e^2/\hbar \int [dk] \Omega f`
+        | Instruction: :math:`j_\alpha = \sigma_{\alpha\beta} E_\beta = \epsilon_{\alpha\beta\delta} O_\delta E_\beta`
+</span>
+Grid is regular
+The set of k points is a Grid() with NKdiv=[7 7 1], NKFFT=[5 5 1], NKtot=[35 35  1]
+generating K_list
+Done in 0.0006966590881347656 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.0022857189178466797 s
+Done in 0.0023267269134521484 s
+K_list contains 49 Irreducible points(100.0%) out of initial 7x7x1=49 grid
+Done, sum of weights:1.0000000000000007
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7f54236128e0&gt;
+processing 49 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   2              0.0                   0.8
+                   4              0.1                   0.7
+                   6              0.1                   0.5
+                   8              0.1                   0.5
+                  10              0.1                   0.4
+                  12              0.1                   0.4
+                  14              0.1                   0.4
+                  16              0.2                   0.3
+                  18              0.2                   0.3
+                  20              0.2                   0.3
+                  22              0.2                   0.3
+                  24              0.2                   0.2
+                  26              0.2                   0.2
+                  28              0.3                   0.2
+                  30              0.3                   0.2
+                  32              0.3                   0.1
+                  34              0.3                   0.1
+                  36              0.3                   0.1
+                  38              0.3                   0.1
+                  40              0.3                   0.1
+                  42              0.3                   0.1
+                  44              0.3                   0.0
+                  46              0.4                   0.0
+                  48              0.4                   0.0
+time for processing     49 K-points on   2 processes:     0.3981 ; per K-point          0.0081 ; proc-sec per K-point          0.0163
+time1 =  0.0033419132232666016
+Totally processed 49 K-points
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># taking derivative and plotting</span>
+
+<span class="n">ef</span> <span class="o">=</span> <span class="n">result_run_ahc</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;ahc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ahc_z</span> <span class="o">=</span> <span class="n">result_run_ahc</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;ahc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># take the derivative</span>
+<span class="n">d_ef</span><span class="o">=</span><span class="n">ef</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">ef</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">d_ahc_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">ahc_z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">ahc_z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">d_ef</span>
+<span class="n">efnew</span> <span class="o">=</span> <span class="p">(</span><span class="n">ef</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">ef</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">efnew</span><span class="p">,</span> <span class="n">d_ahc_z</span><span class="p">)</span>
+<br/><br/><br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f5306cdedc0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_DIY_tutorial-wb-DIY_6_1.png" src="../../_images/tutorials_DIY_tutorial-wb-DIY_6_1.png" />
+</div>
+</div>
+</section>
+<section id="Look-into-documentation">
+<h2>Look into documentation<a class="headerlink" href="#Look-into-documentation" title="Permalink to this heading"></a></h2>
+<p>Look into documentation to see how the AHC calculator is defined : press the “source” link on <a class="reference external" href="https://wannier-berri.org/docs/calculators.html">https://wannier-berri.org/docs/calculators.html</a></p>
+<p>One can see that it is based on the StaticCalculator, and only redefines the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. Namely, it redefines formula that stands under the integral (Berry curvature) and <code class="docutils literal notranslate"><span class="pre">fder=0</span></code> meaning that the formula is weighted by the 0th derivative of the Fermi distribution.</p>
+<p>copy the definition of AHC calculator and redefine the and below and define the <strong>init</strong> class</p>
+<p>(hint : leave the factor the same, for simplicity) (hint : formula shouldbe imported from here : <a class="reference external" href="https://wannier-berri.org/docs/formula.html#wannierberri.formula.covariant.DerOmega">https://wannier-berri.org/docs/formula.html#wannierberri.formula.covariant.DerOmega</a> )</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wannierberri.calculators.static</span> <span class="kn">import</span> <span class="n">StaticCalculator</span>
+<span class="kn">from</span> <span class="nn">wannierberri.formula.covariant</span> <span class="kn">import</span> <span class="n">Omega</span>
+<span class="kn">from</span> <span class="nn">wannierberri</span> <span class="kn">import</span> <span class="n">__factors</span> <span class="k">as</span> <span class="n">factors</span>
+<span class="kn">from</span> <span class="nn">wannierberri.formula</span> <span class="kn">import</span> <span class="n">covariant</span> <span class="k">as</span> <span class="n">frml</span>
+
+<span class="k">class</span> <span class="nc">ANE</span><span class="p">(</span><span class="n">StaticCalculator</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="s2">&quot;describe input parameters here&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Formula</span> <span class="o">=</span> <span class="n">frml</span><span class="o">.</span><span class="n">Omega</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factor</span> <span class="o">=</span> <span class="n">factors</span><span class="o">.</span><span class="n">factor_ahc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fder</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Evaluate-ANE-using-the-new-calculator-and-plot-the-result">
+<h3>Evaluate ANE using the new calculator and plot the result<a class="headerlink" href="#Evaluate-ANE-using-the-new-calculator-and-plot-the-result" title="Permalink to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># insert the needed code below</span>
+
+<span class="n">calculators</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># Set a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>   <span class="c1"># length [ Ang] ~= 2*pi/dk</span>
+
+<span class="n">calculators</span> <span class="p">[</span><span class="s2">&quot;ane&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ANE</span><span class="p">(</span><span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span><span class="n">tetra</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">kwargs_formula</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;external_terms&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+
+<span class="n">result_run_ane</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+            <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+            <span class="n">calculators</span> <span class="o">=</span> <span class="n">calculators</span><span class="p">,</span>
+            <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+            <span class="n">restart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+           <span class="c1"># file_Klist=&quot;Klist_ahc.pickle&quot;  # needed to restart a calculation in future</span>
+            <span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+determining grids from NK=None (&lt;class &#39;NoneType&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+length=50 was converted into NK=[58 58 50]
+Minimal symmetric FFT grid :  [3 3 1]
+WARNING : the requested k-grid [58 58 50] was adjusted to [57 57 50].
+The grids were set to NKdiv=[19 19  1], NKFFT=[3 3 1], NKtot=[57 57  1]
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+Grid is regular
+The set of k points is a Grid() with NKdiv=[19 19  1], NKFFT=[3 3 1], NKtot=[57 57  1]
+generating K_list
+Done in 0.0075304508209228516 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.031450510025024414 s
+Done in 0.03195023536682129 s
+K_list contains 361 Irreducible points(100.0%) out of initial 19x19x1=361 grid
+Done, sum of weights:0.999999999999993
+iteration 0 - 361 points. New points are:
+ K-point 0 : coord in rec.lattice = [   0.000000  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 1 : coord in rec.lattice = [   0.000000  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 2 : coord in rec.lattice = [   0.000000  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 3 : coord in rec.lattice = [   0.000000  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 4 : coord in rec.lattice = [   0.000000  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 5 : coord in rec.lattice = [   0.000000  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 6 : coord in rec.lattice = [   0.000000  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 7 : coord in rec.lattice = [   0.000000  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 8 : coord in rec.lattice = [   0.000000  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 9 : coord in rec.lattice = [   0.000000  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 10 : coord in rec.lattice = [   0.000000  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 11 : coord in rec.lattice = [   0.000000  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 12 : coord in rec.lattice = [   0.000000  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 13 : coord in rec.lattice = [   0.000000  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 14 : coord in rec.lattice = [   0.000000  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 15 : coord in rec.lattice = [   0.000000  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 16 : coord in rec.lattice = [   0.000000  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 17 : coord in rec.lattice = [   0.000000  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 18 : coord in rec.lattice = [   0.000000  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 19 : coord in rec.lattice = [   0.052632  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 20 : coord in rec.lattice = [   0.052632  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 21 : coord in rec.lattice = [   0.052632  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 22 : coord in rec.lattice = [   0.052632  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 23 : coord in rec.lattice = [   0.052632  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 24 : coord in rec.lattice = [   0.052632  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 25 : coord in rec.lattice = [   0.052632  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 26 : coord in rec.lattice = [   0.052632  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 27 : coord in rec.lattice = [   0.052632  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 28 : coord in rec.lattice = [   0.052632  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 29 : coord in rec.lattice = [   0.052632  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 30 : coord in rec.lattice = [   0.052632  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 31 : coord in rec.lattice = [   0.052632  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 32 : coord in rec.lattice = [   0.052632  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 33 : coord in rec.lattice = [   0.052632  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 34 : coord in rec.lattice = [   0.052632  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 35 : coord in rec.lattice = [   0.052632  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 36 : coord in rec.lattice = [   0.052632  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 37 : coord in rec.lattice = [   0.052632  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 38 : coord in rec.lattice = [   0.105263  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 39 : coord in rec.lattice = [   0.105263  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 40 : coord in rec.lattice = [   0.105263  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 41 : coord in rec.lattice = [   0.105263  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 42 : coord in rec.lattice = [   0.105263  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 43 : coord in rec.lattice = [   0.105263  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 44 : coord in rec.lattice = [   0.105263  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 45 : coord in rec.lattice = [   0.105263  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 46 : coord in rec.lattice = [   0.105263  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 47 : coord in rec.lattice = [   0.105263  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 48 : coord in rec.lattice = [   0.105263  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 49 : coord in rec.lattice = [   0.105263  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 50 : coord in rec.lattice = [   0.105263  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 51 : coord in rec.lattice = [   0.105263  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 52 : coord in rec.lattice = [   0.105263  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 53 : coord in rec.lattice = [   0.105263  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 54 : coord in rec.lattice = [   0.105263  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 55 : coord in rec.lattice = [   0.105263  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 56 : coord in rec.lattice = [   0.105263  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 57 : coord in rec.lattice = [   0.157895  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 58 : coord in rec.lattice = [   0.157895  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 59 : coord in rec.lattice = [   0.157895  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 60 : coord in rec.lattice = [   0.157895  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 61 : coord in rec.lattice = [   0.157895  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 62 : coord in rec.lattice = [   0.157895  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 63 : coord in rec.lattice = [   0.157895  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 64 : coord in rec.lattice = [   0.157895  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 65 : coord in rec.lattice = [   0.157895  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 66 : coord in rec.lattice = [   0.157895  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 67 : coord in rec.lattice = [   0.157895  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 68 : coord in rec.lattice = [   0.157895  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 69 : coord in rec.lattice = [   0.157895  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 70 : coord in rec.lattice = [   0.157895  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 71 : coord in rec.lattice = [   0.157895  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 72 : coord in rec.lattice = [   0.157895  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 73 : coord in rec.lattice = [   0.157895  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 74 : coord in rec.lattice = [   0.157895  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 75 : coord in rec.lattice = [   0.157895  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 76 : coord in rec.lattice = [   0.210526  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 77 : coord in rec.lattice = [   0.210526  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 78 : coord in rec.lattice = [   0.210526  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 79 : coord in rec.lattice = [   0.210526  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 80 : coord in rec.lattice = [   0.210526  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 81 : coord in rec.lattice = [   0.210526  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 82 : coord in rec.lattice = [   0.210526  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 83 : coord in rec.lattice = [   0.210526  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 84 : coord in rec.lattice = [   0.210526  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 85 : coord in rec.lattice = [   0.210526  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 86 : coord in rec.lattice = [   0.210526  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 87 : coord in rec.lattice = [   0.210526  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 88 : coord in rec.lattice = [   0.210526  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 89 : coord in rec.lattice = [   0.210526  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 90 : coord in rec.lattice = [   0.210526  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 91 : coord in rec.lattice = [   0.210526  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 92 : coord in rec.lattice = [   0.210526  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 93 : coord in rec.lattice = [   0.210526  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 94 : coord in rec.lattice = [   0.210526  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 95 : coord in rec.lattice = [   0.263158  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 96 : coord in rec.lattice = [   0.263158  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 97 : coord in rec.lattice = [   0.263158  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 98 : coord in rec.lattice = [   0.263158  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 99 : coord in rec.lattice = [   0.263158  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 100 : coord in rec.lattice = [   0.263158  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 101 : coord in rec.lattice = [   0.263158  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 102 : coord in rec.lattice = [   0.263158  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 103 : coord in rec.lattice = [   0.263158  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 104 : coord in rec.lattice = [   0.263158  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 105 : coord in rec.lattice = [   0.263158  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 106 : coord in rec.lattice = [   0.263158  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 107 : coord in rec.lattice = [   0.263158  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 108 : coord in rec.lattice = [   0.263158  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 109 : coord in rec.lattice = [   0.263158  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 110 : coord in rec.lattice = [   0.263158  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 111 : coord in rec.lattice = [   0.263158  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 112 : coord in rec.lattice = [   0.263158  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 113 : coord in rec.lattice = [   0.263158  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 114 : coord in rec.lattice = [   0.315789  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 115 : coord in rec.lattice = [   0.315789  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 116 : coord in rec.lattice = [   0.315789  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 117 : coord in rec.lattice = [   0.315789  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 118 : coord in rec.lattice = [   0.315789  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 119 : coord in rec.lattice = [   0.315789  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 120 : coord in rec.lattice = [   0.315789  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 121 : coord in rec.lattice = [   0.315789  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 122 : coord in rec.lattice = [   0.315789  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 123 : coord in rec.lattice = [   0.315789  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 124 : coord in rec.lattice = [   0.315789  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 125 : coord in rec.lattice = [   0.315789  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 126 : coord in rec.lattice = [   0.315789  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 127 : coord in rec.lattice = [   0.315789  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 128 : coord in rec.lattice = [   0.315789  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 129 : coord in rec.lattice = [   0.315789  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 130 : coord in rec.lattice = [   0.315789  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 131 : coord in rec.lattice = [   0.315789  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 132 : coord in rec.lattice = [   0.315789  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 133 : coord in rec.lattice = [   0.368421  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 134 : coord in rec.lattice = [   0.368421  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 135 : coord in rec.lattice = [   0.368421  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 136 : coord in rec.lattice = [   0.368421  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 137 : coord in rec.lattice = [   0.368421  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 138 : coord in rec.lattice = [   0.368421  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 139 : coord in rec.lattice = [   0.368421  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 140 : coord in rec.lattice = [   0.368421  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 141 : coord in rec.lattice = [   0.368421  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 142 : coord in rec.lattice = [   0.368421  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 143 : coord in rec.lattice = [   0.368421  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 144 : coord in rec.lattice = [   0.368421  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 145 : coord in rec.lattice = [   0.368421  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 146 : coord in rec.lattice = [   0.368421  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 147 : coord in rec.lattice = [   0.368421  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 148 : coord in rec.lattice = [   0.368421  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 149 : coord in rec.lattice = [   0.368421  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 150 : coord in rec.lattice = [   0.368421  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 151 : coord in rec.lattice = [   0.368421  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 152 : coord in rec.lattice = [   0.421053  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 153 : coord in rec.lattice = [   0.421053  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 154 : coord in rec.lattice = [   0.421053  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 155 : coord in rec.lattice = [   0.421053  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 156 : coord in rec.lattice = [   0.421053  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 157 : coord in rec.lattice = [   0.421053  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 158 : coord in rec.lattice = [   0.421053  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 159 : coord in rec.lattice = [   0.421053  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 160 : coord in rec.lattice = [   0.421053  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 161 : coord in rec.lattice = [   0.421053  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 162 : coord in rec.lattice = [   0.421053  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 163 : coord in rec.lattice = [   0.421053  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 164 : coord in rec.lattice = [   0.421053  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 165 : coord in rec.lattice = [   0.421053  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 166 : coord in rec.lattice = [   0.421053  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 167 : coord in rec.lattice = [   0.421053  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 168 : coord in rec.lattice = [   0.421053  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 169 : coord in rec.lattice = [   0.421053  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 170 : coord in rec.lattice = [   0.421053  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 171 : coord in rec.lattice = [   0.473684  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 172 : coord in rec.lattice = [   0.473684  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 173 : coord in rec.lattice = [   0.473684  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 174 : coord in rec.lattice = [   0.473684  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 175 : coord in rec.lattice = [   0.473684  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 176 : coord in rec.lattice = [   0.473684  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 177 : coord in rec.lattice = [   0.473684  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 178 : coord in rec.lattice = [   0.473684  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 179 : coord in rec.lattice = [   0.473684  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 180 : coord in rec.lattice = [   0.473684  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 181 : coord in rec.lattice = [   0.473684  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 182 : coord in rec.lattice = [   0.473684  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 183 : coord in rec.lattice = [   0.473684  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 184 : coord in rec.lattice = [   0.473684  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 185 : coord in rec.lattice = [   0.473684  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 186 : coord in rec.lattice = [   0.473684  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 187 : coord in rec.lattice = [   0.473684  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 188 : coord in rec.lattice = [   0.473684  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 189 : coord in rec.lattice = [   0.473684  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 190 : coord in rec.lattice = [   0.526316  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 191 : coord in rec.lattice = [   0.526316  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 192 : coord in rec.lattice = [   0.526316  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 193 : coord in rec.lattice = [   0.526316  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 194 : coord in rec.lattice = [   0.526316  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 195 : coord in rec.lattice = [   0.526316  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 196 : coord in rec.lattice = [   0.526316  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 197 : coord in rec.lattice = [   0.526316  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 198 : coord in rec.lattice = [   0.526316  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 199 : coord in rec.lattice = [   0.526316  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 200 : coord in rec.lattice = [   0.526316  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 201 : coord in rec.lattice = [   0.526316  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 202 : coord in rec.lattice = [   0.526316  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 203 : coord in rec.lattice = [   0.526316  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 204 : coord in rec.lattice = [   0.526316  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 205 : coord in rec.lattice = [   0.526316  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 206 : coord in rec.lattice = [   0.526316  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 207 : coord in rec.lattice = [   0.526316  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 208 : coord in rec.lattice = [   0.526316  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 209 : coord in rec.lattice = [   0.578947  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 210 : coord in rec.lattice = [   0.578947  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 211 : coord in rec.lattice = [   0.578947  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 212 : coord in rec.lattice = [   0.578947  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 213 : coord in rec.lattice = [   0.578947  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 214 : coord in rec.lattice = [   0.578947  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 215 : coord in rec.lattice = [   0.578947  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 216 : coord in rec.lattice = [   0.578947  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 217 : coord in rec.lattice = [   0.578947  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 218 : coord in rec.lattice = [   0.578947  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 219 : coord in rec.lattice = [   0.578947  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 220 : coord in rec.lattice = [   0.578947  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 221 : coord in rec.lattice = [   0.578947  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 222 : coord in rec.lattice = [   0.578947  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 223 : coord in rec.lattice = [   0.578947  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 224 : coord in rec.lattice = [   0.578947  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 225 : coord in rec.lattice = [   0.578947  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 226 : coord in rec.lattice = [   0.578947  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 227 : coord in rec.lattice = [   0.578947  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 228 : coord in rec.lattice = [   0.631579  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 229 : coord in rec.lattice = [   0.631579  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 230 : coord in rec.lattice = [   0.631579  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 231 : coord in rec.lattice = [   0.631579  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 232 : coord in rec.lattice = [   0.631579  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 233 : coord in rec.lattice = [   0.631579  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 234 : coord in rec.lattice = [   0.631579  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 235 : coord in rec.lattice = [   0.631579  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 236 : coord in rec.lattice = [   0.631579  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 237 : coord in rec.lattice = [   0.631579  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 238 : coord in rec.lattice = [   0.631579  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 239 : coord in rec.lattice = [   0.631579  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 240 : coord in rec.lattice = [   0.631579  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 241 : coord in rec.lattice = [   0.631579  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 242 : coord in rec.lattice = [   0.631579  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 243 : coord in rec.lattice = [   0.631579  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 244 : coord in rec.lattice = [   0.631579  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 245 : coord in rec.lattice = [   0.631579  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 246 : coord in rec.lattice = [   0.631579  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 247 : coord in rec.lattice = [   0.684211  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 248 : coord in rec.lattice = [   0.684211  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 249 : coord in rec.lattice = [   0.684211  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 250 : coord in rec.lattice = [   0.684211  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 251 : coord in rec.lattice = [   0.684211  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 252 : coord in rec.lattice = [   0.684211  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 253 : coord in rec.lattice = [   0.684211  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 254 : coord in rec.lattice = [   0.684211  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 255 : coord in rec.lattice = [   0.684211  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 256 : coord in rec.lattice = [   0.684211  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 257 : coord in rec.lattice = [   0.684211  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 258 : coord in rec.lattice = [   0.684211  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 259 : coord in rec.lattice = [   0.684211  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 260 : coord in rec.lattice = [   0.684211  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 261 : coord in rec.lattice = [   0.684211  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 262 : coord in rec.lattice = [   0.684211  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 263 : coord in rec.lattice = [   0.684211  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 264 : coord in rec.lattice = [   0.684211  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 265 : coord in rec.lattice = [   0.684211  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 266 : coord in rec.lattice = [   0.736842  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 267 : coord in rec.lattice = [   0.736842  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 268 : coord in rec.lattice = [   0.736842  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 269 : coord in rec.lattice = [   0.736842  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 270 : coord in rec.lattice = [   0.736842  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 271 : coord in rec.lattice = [   0.736842  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 272 : coord in rec.lattice = [   0.736842  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 273 : coord in rec.lattice = [   0.736842  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 274 : coord in rec.lattice = [   0.736842  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 275 : coord in rec.lattice = [   0.736842  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 276 : coord in rec.lattice = [   0.736842  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 277 : coord in rec.lattice = [   0.736842  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 278 : coord in rec.lattice = [   0.736842  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 279 : coord in rec.lattice = [   0.736842  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 280 : coord in rec.lattice = [   0.736842  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 281 : coord in rec.lattice = [   0.736842  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 282 : coord in rec.lattice = [   0.736842  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 283 : coord in rec.lattice = [   0.736842  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 284 : coord in rec.lattice = [   0.736842  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 285 : coord in rec.lattice = [   0.789474  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 286 : coord in rec.lattice = [   0.789474  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 287 : coord in rec.lattice = [   0.789474  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 288 : coord in rec.lattice = [   0.789474  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 289 : coord in rec.lattice = [   0.789474  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 290 : coord in rec.lattice = [   0.789474  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 291 : coord in rec.lattice = [   0.789474  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 292 : coord in rec.lattice = [   0.789474  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 293 : coord in rec.lattice = [   0.789474  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 294 : coord in rec.lattice = [   0.789474  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 295 : coord in rec.lattice = [   0.789474  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 296 : coord in rec.lattice = [   0.789474  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 297 : coord in rec.lattice = [   0.789474  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 298 : coord in rec.lattice = [   0.789474  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 299 : coord in rec.lattice = [   0.789474  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 300 : coord in rec.lattice = [   0.789474  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 301 : coord in rec.lattice = [   0.789474  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 302 : coord in rec.lattice = [   0.789474  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 303 : coord in rec.lattice = [   0.789474  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 304 : coord in rec.lattice = [   0.842105  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 305 : coord in rec.lattice = [   0.842105  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 306 : coord in rec.lattice = [   0.842105  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 307 : coord in rec.lattice = [   0.842105  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 308 : coord in rec.lattice = [   0.842105  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 309 : coord in rec.lattice = [   0.842105  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 310 : coord in rec.lattice = [   0.842105  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 311 : coord in rec.lattice = [   0.842105  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 312 : coord in rec.lattice = [   0.842105  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 313 : coord in rec.lattice = [   0.842105  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 314 : coord in rec.lattice = [   0.842105  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 315 : coord in rec.lattice = [   0.842105  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 316 : coord in rec.lattice = [   0.842105  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 317 : coord in rec.lattice = [   0.842105  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 318 : coord in rec.lattice = [   0.842105  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 319 : coord in rec.lattice = [   0.842105  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 320 : coord in rec.lattice = [   0.842105  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 321 : coord in rec.lattice = [   0.842105  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 322 : coord in rec.lattice = [   0.842105  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 323 : coord in rec.lattice = [   0.894737  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 324 : coord in rec.lattice = [   0.894737  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 325 : coord in rec.lattice = [   0.894737  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 326 : coord in rec.lattice = [   0.894737  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 327 : coord in rec.lattice = [   0.894737  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 328 : coord in rec.lattice = [   0.894737  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 329 : coord in rec.lattice = [   0.894737  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 330 : coord in rec.lattice = [   0.894737  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 331 : coord in rec.lattice = [   0.894737  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 332 : coord in rec.lattice = [   0.894737  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 333 : coord in rec.lattice = [   0.894737  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 334 : coord in rec.lattice = [   0.894737  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 335 : coord in rec.lattice = [   0.894737  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 336 : coord in rec.lattice = [   0.894737  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 337 : coord in rec.lattice = [   0.894737  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 338 : coord in rec.lattice = [   0.894737  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 339 : coord in rec.lattice = [   0.894737  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 340 : coord in rec.lattice = [   0.894737  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 341 : coord in rec.lattice = [   0.894737  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 342 : coord in rec.lattice = [   0.947368  ,   0.000000 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 343 : coord in rec.lattice = [   0.947368  ,   0.052632 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 344 : coord in rec.lattice = [   0.947368  ,   0.105263 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 345 : coord in rec.lattice = [   0.947368  ,   0.157895 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 346 : coord in rec.lattice = [   0.947368  ,   0.210526 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 347 : coord in rec.lattice = [   0.947368  ,   0.263158 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 348 : coord in rec.lattice = [   0.947368  ,   0.315789 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 349 : coord in rec.lattice = [   0.947368  ,   0.368421 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 350 : coord in rec.lattice = [   0.947368  ,   0.421053 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 351 : coord in rec.lattice = [   0.947368  ,   0.473684 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 352 : coord in rec.lattice = [   0.947368  ,   0.526316 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 353 : coord in rec.lattice = [   0.947368  ,   0.578947 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 354 : coord in rec.lattice = [   0.947368  ,   0.631579 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 355 : coord in rec.lattice = [   0.947368  ,   0.684211 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 356 : coord in rec.lattice = [   0.947368  ,   0.736842 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 357 : coord in rec.lattice = [   0.947368  ,   0.789474 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 358 : coord in rec.lattice = [   0.947368  ,   0.842105 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 359 : coord in rec.lattice = [   0.947368  ,   0.894737 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+ K-point 360 : coord in rec.lattice = [   0.947368  ,   0.947368 ,    0.000000 ], refinement level:0, dK=[0.05263158 0.05263158 1.        ]
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7f54236128e0&gt;
+processing 361 K points : using  2 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   4              7.0                 623.7
+                   8              7.0                 310.9
+                  12              7.1                 205.9
+                  16              7.1                 153.3
+                  20              7.1                 121.8
+                  24              7.2                 100.7
+                  28              7.2                  85.8
+                  32              7.2                  74.5
+                  36              7.3                  65.7
+                  40              7.3                  58.6
+                  44              7.3                  52.9
+                  48              7.4                  48.1
+                  52              7.4                  44.0
+                  56              7.4                  40.5
+                  60              7.5                  37.4
+                  64              7.5                  34.7
+                  68              7.5                  32.4
+                  72              7.5                  30.3
+                  76              7.6                  28.4
+                  80              7.6                  26.7
+                  84              7.6                  25.2
+                  88              7.7                  23.8
+                  92              7.7                  22.5
+                  96              7.7                  21.3
+                 100              7.7                  20.2
+                 104              7.8                  19.2
+                 108              7.8                  18.3
+                 112              7.8                  17.4
+                 116              7.9                  16.6
+                 120              7.9                  15.9
+                 124              7.9                  15.1
+                 128              8.0                  14.5
+                 132              8.0                  13.8
+                 136              8.0                  13.3
+                 140              8.0                  12.7
+                 144              8.1                  12.1
+                 148              8.1                  11.6
+                 152              8.1                  11.2
+                 156              8.1                  10.7
+                 160              8.2                  10.3
+                 164              8.2                   9.8
+                 168              8.2                   9.4
+                 172              8.2                   9.1
+                 176              8.3                   8.7
+                 180              8.3                   8.3
+                 184              8.3                   8.0
+                 188              8.3                   7.7
+                 192              8.4                   7.4
+                 196              8.4                   7.1
+                 200              8.4                   6.8
+                 204              8.5                   6.5
+                 208              8.5                   6.2
+                 212              8.5                   6.0
+                 216              8.5                   5.7
+                 220              8.6                   5.5
+                 224              8.6                   5.3
+                 228              8.6                   5.0
+                 232              8.6                   4.8
+                 236              8.7                   4.6
+                 240              8.7                   4.4
+                 244              8.7                   4.2
+                 248              8.8                   4.0
+                 252              8.8                   3.8
+                 256              8.8                   3.6
+                 260              8.9                   3.4
+                 264              8.9                   3.3
+                 268              8.9                   3.1
+                 272              8.9                   2.9
+                 276              9.0                   2.8
+                 280              9.0                   2.6
+                 284              9.0                   2.4
+                 288              9.0                   2.3
+                 292              9.1                   2.1
+                 296              9.1                   2.0
+                 300              9.1                   1.9
+                 304              9.1                   1.7
+                 308              9.1                   1.6
+                 312              9.2                   1.4
+                 316              9.2                   1.3
+                 320              9.3                   1.2
+                 324              9.3                   1.1
+                 328              9.6                   1.0
+                 332              9.6                   0.8
+                 336              9.7                   0.7
+                 340              9.7                   0.6
+                 344              9.7                   0.5
+                 348              9.7                   0.4
+                 352              9.8                   0.2
+                 356              9.8                   0.1
+                 360              9.8                   0.0
+time for processing    361 K-points on   2 processes:    10.1896 ; per K-point          0.0282 ; proc-sec per K-point          0.0565
+time1 =  0.022312402725219727
+Totally processed 361 K-points
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">ef</span> <span class="o">=</span> <span class="n">result_run_ane</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;ane&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Energies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ane_z</span> <span class="o">=</span> <span class="n">result_run_ane</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;ane&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">efnew</span><span class="p">,</span><span class="n">d_ahc_z</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;derivative of AHC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ef</span><span class="p">,</span> <span class="n">ane_z</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;calculated&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_DIY_tutorial-wb-DIY_11_0.png" src="../../_images/tutorials_DIY_tutorial-wb-DIY_11_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="Questions:">
+<h2>Questions:<a class="headerlink" href="#Questions:" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Make the k-points or Efermi denser. Will the agreement improve?</p></li>
+<li><p>we calculated the AHC and ANE with zero refinement iterations, and the results matched well (or at least they should). If we calculate them separately, but with some refinement iterations, will the results match?</p></li>
+<li><p>What if we use refinement itrations and run the two calculations together, in one <code class="docutils literal notranslate"><span class="pre">run()</span></code> call ?</p></li>
+</ol>
+</section>
+<section id="FormulaProduct">
+<h2>FormulaProduct<a class="headerlink" href="#FormulaProduct" title="Permalink to this heading"></a></h2>
+<p>Look at the definition of erryDipole_FermiSurf</p>
+<p><a class="reference external" href="https://wannier-berri.org/_modules/wannierberri/calculators/static.html">https://wannier-berri.org/_modules/wannierberri/calculators/static.html</a></p>
+<p>It evaluates</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+D_{ab} =\sum_n \int\frac{d\mathbf{k}}{(2\pi)^3} v_a\Omega^n_b f(\epsilon_n)
+\label{eq:ahc}\tag{2}
+\end{equation}</div><p>also look at definition of the Feormula <a class="reference external" href="https://wannier-berri.org/docs/formula.html">https://wannier-berri.org/docs/formula.html</a></p>
+<p>you can see that it is base on a FormulaProduct. Essentially, by analogy you may define any tensor, e.g.</p>
+<div class="math notranslate nohighlight">
+\[\sum_n \int\frac{d\mathbf{k}}{(2\pi)^3} v_a\Omega^n_b v_c f''(\epsilon_n)\]</div>
+<p>i.e. product of several quantities weighted by rge second derivative of Fermi distribution. You may write any analogous formula, if you want. Try to define corresponding FormulaProduct and StaticCalculator classes, and try to evaluate them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Problem-for-a-prize:">
+<h2>Problem for a prize:<a class="headerlink" href="#Problem-for-a-prize:" title="Permalink to this heading"></a></h2>
+<p>try to prove (analytically and numerically) that</p>
+<div class="math notranslate nohighlight">
+\[\sum_n \int\frac{d\mathbf{k}}{(2\pi)^3} \partial_a \partial_b \partial_c \epsilon_{n\mathbf{k}} f(\epsilon_{n\mathbf{k}}) \propto \sum_n \int\frac{d\mathbf{k}}{(2\pi)^3} \partial_a \epsilon_{n\mathbf{k}}  \partial_b \epsilon_{n\mathbf{k}}  \partial_c \epsilon_{n\mathbf{k}} f''(\epsilon_{n\mathbf{k}})\]</div>
+<p>and tell me what is the factor missing?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../spin_hall/tutorial_spin_hall.html" class="btn btn-neutral float-left" title="Spin Hall conductivity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../exampleFe.html" class="btn btn-neutral float-right" title="Examples:" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

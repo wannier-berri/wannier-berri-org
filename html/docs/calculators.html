@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculators &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/docs/calculators.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Formula" href="formula.html" />
+    <link rel="prev" title="Running a calculation" href="run.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system.html">Initializing a System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">Running a calculation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Calculators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static-dependent-only-on-fermi-level">Static (dependent only on Fermi level)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-dependent-on-fermi-level-and-frequency">Dynamic (dependent on Fermi level and frequency)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tabulating">Tabulating</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html">Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Creating a grid or Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetries.html">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoother.html">Smoother</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_K.html">Data_K class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oldAPI.html">Old interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
+      <li>Calculators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="calculators">
+<h1>Calculators<a class="headerlink" href="#calculators" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.Calculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.</span></span><span class="sig-name descname"><span class="pre">Calculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degen_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degen_Kramers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bin+txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators.html#Calculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.Calculator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<section id="static-dependent-only-on-fermi-level">
+<h2>Static (dependent only on Fermi level)<a class="headerlink" href="#static-dependent-only-on-fermi-level" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.StaticCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">StaticCalculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Efermi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tetra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smoother</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#StaticCalculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.StaticCalculator" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.StaticCalculator.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#StaticCalculator.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.StaticCalculator.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Call self as a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.StaticCalculator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Efermi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tetra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smoother</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#StaticCalculator.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.StaticCalculator.__init__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<p>In the following <cite>**kwargs</cite> refer to the arguments of <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<span class="target" id="module-wannierberri.calculators.static"></span><dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.AHC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">AHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#AHC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.AHC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Anomalous Hall conductivity (<span class="math notranslate nohighlight">\(s^3 \cdot A^2 / (kg \cdot m^3) = S/m\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral Eq(11) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(O = -e^2/\hbar \int [dk] \Omega f\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta} E_\beta = \epsilon_{\alpha\beta\delta} O_\delta E_\beta\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.BerryDipole_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">BerryDipole_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#BerryDipole_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.BerryDipole_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Berry curvature dipole (dimensionless)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral. Eq(29) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(D_{\beta\delta} = \int [dk] \partial_\beta \Omega_\delta f\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.BerryDipole_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">BerryDipole_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#BerryDipole_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.BerryDipole_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Berry curvature dipole (dimensionless)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral. Eq(8) in <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.216806">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(D_{\beta\delta} = -\int [dk] v_\beta \Omega_\delta f'\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.CumDOS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">CumDOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#CumDOS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.CumDOS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DOS</span></code></p>
+<p>Cumulative density of states</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.DOS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">DOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#DOS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.DOS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DOS</span></code></p>
+<p>Density of states</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.GME_orb_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">GME_orb_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#GME_orb_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.GME_orb_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Gyrotropic tensor orbital part (<span class="math notranslate nohighlight">\(A\)</span>)
+| With Fermi sea integral. Eq(30) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a>
+| Output: <span class="math notranslate nohighlight">\(K^{orb}_{\alpha :\mu} = -\int [dk] \partial_\alpha m_\mu f\)</span>
+| Where <span class="math notranslate nohighlight">\(m = H + G - 2E_f \cdot \Omega\)</span></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.GME_orb_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">GME_orb_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#GME_orb_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.GME_orb_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Gyrotropic tensor orbital part (<span class="math notranslate nohighlight">\(A\)</span>)
+| With Fermi surface integral. Eq(9) <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.116.077201">Ref</a>
+| Output: <span class="math notranslate nohighlight">\(K^{orb}_{\alpha :\mu} = \int [dk] v_\alpha m^{orb}_\mu f'\)</span>
+| Where <span class="math notranslate nohighlight">\(m^{orb} = H + G - 2E_f \cdot \Omega\)</span></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.GME_spin_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">GME_spin_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#GME_spin_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.GME_spin_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Gyrotropic tensor spin part (<span class="math notranslate nohighlight">\(A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral. Eq(30) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(K^{spin}_{\alpha :\mu} = -\int [dk] \partial_\alpha s_\mu f\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.GME_spin_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">GME_spin_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#GME_spin_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.GME_spin_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Gyrotropic tensor spin part (<span class="math notranslate nohighlight">\(A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral. Eq(9) <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.116.077201">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(K^{spin}_{\alpha :\mu} = \tau \int [dk] v_\alpha s_\mu f'\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.Hall_classic_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">Hall_classic_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#Hall_classic_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.Hall_classic_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Classic Hall conductivity (<span class="math notranslate nohighlight">\(S/m/T\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral.</div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta :\mu} = e^3/\hbar^2 \tau^2 \epsilon_{\gamma\mu\rho} \int [dk] v_\alpha \partial_\rho v_\beta v_\gamma f'\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta :\mu} E_\beta B_\mu\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.Morb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">Morb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#Morb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.Morb" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Orbital magnetic moment per unit cell (<span class="math notranslate nohighlight">\(\mu_B\)</span>)</p>
+<div class="line-block">
+<div class="line">Eq(1) in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.85.014435">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(M = -\int [dk] (H + G - 2E_f \cdot \Omega) f\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.NLAHC_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">NLAHC_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#NLAHC_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.NLAHC_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.BerryDipole_FermiSea" title="wannierberri.calculators.static.BerryDipole_FermiSea"><code class="xref py py-class docutils literal notranslate"><span class="pre">BerryDipole_FermiSea</span></code></a></p>
+<p>Nonlinear anomalous Hall conductivity  (<span class="math notranslate nohighlight">\(S^2/A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral. Eq(29) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(D_{\beta\delta} = e^3/\hbar^2 \tau \int [dk] \partial_\beta \Omega_\delta f\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \epsilon_{\alpha\delta\gamma} D_{\beta\delta} E_\beta E\gamma\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.NLAHC_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">NLAHC_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#NLAHC_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.NLAHC_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.BerryDipole_FermiSurf" title="wannierberri.calculators.static.BerryDipole_FermiSurf"><code class="xref py py-class docutils literal notranslate"><span class="pre">BerryDipole_FermiSurf</span></code></a></p>
+<p>Nonlinear anomalous Hall conductivity (<span class="math notranslate nohighlight">\(S^2/A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral. Eq(8) in <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.216806">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(D_{\beta\delta} = -e^3/\hbar^2 \tau \int [dk] v_\beta \Omega_\delta f'\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \epsilon_{\alpha\delta\gamma} D_{\beta\delta} E_\beta E\gamma\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.NLDrude_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">NLDrude_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#NLDrude_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.NLDrude_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Drude conductivity (<span class="math notranslate nohighlight">\(S^2/A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral. Eq(3) in <a class="reference external" href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043081">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta\gamma} = -e^3/\hbar^2 \tau^2 \int [dk] \partial_{\beta\gamma} v_\alpha f\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta\gamma} E_\beta E\gamma\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.NLDrude_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">NLDrude_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#NLDrude_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.NLDrude_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Drude conductivity (<span class="math notranslate nohighlight">\(S^2/A\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral.</div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta\gamma} = e^3/\hbar^2 \tau^2 \int [dk] \partial_\beta v_\alpha v_\gamma f'\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta\gamma} E_\beta E\gamma\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.NLDrude_Fermider2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">NLDrude_Fermider2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#NLDrude_Fermider2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.NLDrude_Fermider2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Drude conductivity (<span class="math notranslate nohighlight">\(S^2/A\)</span>)</p>
+<div class="line-block">
+<div class="line">With second derivative of distribution function. Eq(A28) in <a class="reference external" href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043081">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta\gamma} = -e^3/\hbar^2 \tau^2 \int [dk] v_\beta v_\alpha v_\gamma f'\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta\gamma} E_\beta E\gamma\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.Ohmic_FermiSea">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">Ohmic_FermiSea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#Ohmic_FermiSea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.Ohmic_FermiSea" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Ohmic conductivity (<span class="math notranslate nohighlight">\(S/m\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi sea integral. Eq(31) in <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">Ref</a></div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta} = e^2/\hbar \tau \int [dk] \partial_\beta v_\alpha f\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.Ohmic_FermiSurf">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">Ohmic_FermiSurf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#Ohmic_FermiSurf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.Ohmic_FermiSurf" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Ohmic conductivity (<span class="math notranslate nohighlight">\(S/m\)</span>)</p>
+<div class="line-block">
+<div class="line">With Fermi surface integral.</div>
+<div class="line">Output: <span class="math notranslate nohighlight">\(\sigma_{\alpha\beta} = -e^2/\hbar \tau \int [dk] v_\alpha v_\beta f'\)</span></div>
+<div class="line">Instruction: <span class="math notranslate nohighlight">\(j_\alpha = \sigma_{\alpha\beta} E_\beta\)</span></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.static.Spin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.static.</span></span><span class="sig-name descname"><span class="pre">Spin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/static.html#Spin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.static.Spin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.static.StaticCalculator" title="wannierberri.calculators.static.StaticCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticCalculator</span></code></a></p>
+<p>Spin per unit cell (dimensionless)</p>
+<div class="line-block">
+<div class="line">Output: <span class="math notranslate nohighlight">\(\int [dk] s f\)</span></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="dynamic-dependent-on-fermi-level-and-frequency">
+<h2>Dynamic (dependent on Fermi level and frequency)<a class="headerlink" href="#dynamic-dependent-on-fermi-level-and-frequency" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.DynamicCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">DynamicCalculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Efermi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kBT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smr_fixed_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smr_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Lorentzian'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#DynamicCalculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.DynamicCalculator" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-wannierberri.calculators.dynamic"></span><dl class="py function">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.FermiDirac">
+<span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">FermiDirac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kBT</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#FermiDirac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.FermiDirac" title="Permalink to this definition"></a></dt>
+<dd><p>here E is a number, mu is an array</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_OptCond">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">Formula_OptCond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_OptCond"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_OptCond" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_OptCond.trace_ln">
+<span class="sig-name descname"><span class="pre">trace_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_OptCond.trace_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_OptCond.trace_ln" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_SHC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">Formula_SHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SHC_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ryoo'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shc_abc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_SHC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_SHC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_SHC.trace_ln">
+<span class="sig-name descname"><span class="pre">trace_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_SHC.trace_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_SHC.trace_ln" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_dyn_ident">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">Formula_dyn_ident</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_dyn_ident"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_dyn_ident" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.Formula_dyn_ident.trace_ln">
+<span class="sig-name descname"><span class="pre">trace_ln</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ik</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#Formula_dyn_ident.trace_ln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.Formula_dyn_ident.trace_ln" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.JDOS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">JDOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#JDOS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.JDOS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.dynamic.DynamicCalculator" title="wannierberri.calculators.dynamic.DynamicCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicCalculator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.JDOS.energy_factor">
+<span class="sig-name descname"><span class="pre">energy_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#JDOS.energy_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.JDOS.energy_factor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.JDOS.nonzero">
+<span class="sig-name descname"><span class="pre">nonzero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#JDOS.nonzero"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.JDOS.nonzero" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.OpticalConductivity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">OpticalConductivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#OpticalConductivity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.OpticalConductivity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.dynamic.DynamicCalculator" title="wannierberri.calculators.dynamic.DynamicCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicCalculator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.OpticalConductivity.factor_omega">
+<span class="sig-name descname"><span class="pre">factor_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#OpticalConductivity.factor_omega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.OpticalConductivity.factor_omega" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.SHC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.dynamic.</span></span><span class="sig-name descname"><span class="pre">SHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SHC_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ryoo'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shc_abc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#SHC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.SHC" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_SHC</span></code></p>
+<p>a more laconic implementation of the energy factor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wannierberri.calculators.dynamic.SHC.factor_omega">
+<span class="sig-name descname"><span class="pre">factor_omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/dynamic.html#SHC.factor_omega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.dynamic.SHC.factor_omega" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tabulating">
+<h2>Tabulating<a class="headerlink" href="#tabulating" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.TabulatorAll">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.</span></span><span class="sig-name descname"><span class="pre">TabulatorAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabulators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ibands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grid'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators.html#TabulatorAll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.TabulatorAll" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.Calculator" title="wannierberri.calculators.Calculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Calculator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.Tabulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">Tabulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs_formula</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#Tabulator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.Tabulator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.Calculator" title="wannierberri.calculators.Calculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Calculator</span></code></a></p>
+</dd></dl>
+
+<span class="target" id="module-wannierberri.calculators.tabulate"></span><dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.BerryCurvature">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">BerryCurvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#BerryCurvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.BerryCurvature" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.DerBerryCurvature">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">DerBerryCurvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#DerBerryCurvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.DerBerryCurvature" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+<p>Derivative of Berry curvature <span class="math notranslate nohighlight">\(X_{ab}\partial_b\Omega_a\)</span></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.DerOrbitalMoment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">DerOrbitalMoment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#DerOrbitalMoment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.DerOrbitalMoment" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.Energy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">Energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#Energy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.Energy" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.OrbitalMoment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">OrbitalMoment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#OrbitalMoment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.OrbitalMoment" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.Spin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">Spin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#Spin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.Spin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+<p>Spin expectation :math:` langle u | mathbf{sigma} | u rangle`</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.SpinBerry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">SpinBerry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#SpinBerry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.SpinBerry" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.calculators.tabulate.Velocity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.calculators.tabulate.</span></span><span class="sig-name descname"><span class="pre">Velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/calculators/tabulate.html#Velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.calculators.tabulate.Velocity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.calculators.tabulate.Tabulator" title="wannierberri.calculators.tabulate.Tabulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tabulator</span></code></a></p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="run.html" class="btn btn-neutral float-left" title="Running a calculation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="formula.html" class="btn btn-neutral float-right" title="Formula" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

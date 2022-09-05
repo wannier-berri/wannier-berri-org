@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old interface &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/docs/oldAPI.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Methods" href="../methods.html" />
+    <link rel="prev" title="Models" href="models.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system.html">Initializing a System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">Running a calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculators.html">Calculators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html">Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Creating a grid or Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetries.html">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoother.html">Smoother</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_K.html">Data_K class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Old interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integrating">Integrating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tabulating">Tabulating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-parameters">Specifying parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters"><cite>parameters</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specific-parameters-same-quantity-with-different-parameters-in-one-run"><cite>specific_parameters</cite> – same quantity with different parameters in one run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters-k"><cite>parameters_K</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
+      <li>Old interface</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="old-interface">
+<h1>Old interface<a class="headerlink" href="#old-interface" title="Permalink to this heading"></a></h1>
+<p>While the following functions still work, they are not guaranteed to be supported in the future.
+Please adapt to the new, more versatile interface of the <a class="reference internal" href="run.html#wannierberri.run" title="wannierberri.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a></p>
+<section id="integrating">
+<h2>Integrating<a class="headerlink" href="#integrating" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="wannierberri.integrate">
+<span class="sig-prename descclassname"><span class="pre">wannierberri.</span></span><span class="sig-name descname"><span class="pre">integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Efermi=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ef0=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smearEf=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smearW=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantities=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_quantities={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adpt_num_iter=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adpt_fac=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_irred_kpt=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrize=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fout_name='wberri'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_txt=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_bin=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restart=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_Klist='Klist'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel=&lt;wannierberri.parallel.Serial</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_Kpoints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_K={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_parameters={}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/__old_API/__main.html#integrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.integrate" title="Permalink to this definition"></a></dt>
+<dd><p>Integrate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system</strong> (<a class="reference internal" href="system.html#wannierberri.system.System" title="wannierberri.system.System"><code class="xref py py-class docutils literal notranslate"><span class="pre">System</span></code></a>) – System under investigation</p></li>
+<li><p><strong>grid</strong> (<a class="reference internal" href="grid.html#wannierberri.Grid" title="wannierberri.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a>) – initial grid for integration</p></li>
+<li><p><strong>Efermi</strong> (<em>numpy.array</em>) – The list of Fermi levels to be scanned (for Fermi-sea or Fermi-surface properties)</p></li>
+<li><p><strong>omega</strong> (<em>numpy.array</em>) – The list of ferequencies levels to be scanned (for optical properties)</p></li>
+<li><p><strong>smearEf</strong> (<em>float</em>) – smearing over Fermi levels (in Kelvin)</p></li>
+<li><p><strong>quantities</strong> (<em>list of str</em>) – quantities to be integrated. See <a class="reference internal" href="../capabilities.html#sec-capabilities"><span class="std std-ref">Capabilities</span></a>
+One can append any label after a ‘^’ symbol. In this case same quantity
+may be calculated several times in one run, but with different parameters (see specifuc_parameters)</p></li>
+<li><p><strong>user_quantities</strong> (<em>dict</em>) – a dictionary <cite>{name:function}</cite>, where <cite>name</cite> is any string, and <cite>function(data_K,Efermi)</cite>
+takes two arguments
+<cite>data_K</cite> of  of type <a class="reference internal" href="data_K.html#wannierberri.data_K.Data_K" title="wannierberri.data_K.Data_K"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data_K</span></code></a>  and Efermi -  <cite>np.array</cite>
+and returns an object  <a class="reference internal" href="result.html#wannierberri.result.EnergyResult" title="wannierberri.result.EnergyResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyResult</span></code></a></p></li>
+<li><p><strong>adpt_num_iter</strong> (<em>int</em>) – number of recursive adaptive refinement iterations. See <a class="reference internal" href="../methods.html#sec-refine"><span class="std std-ref">Recursive adaptive refinement</span></a></p></li>
+<li><p><strong>adpt_fac</strong> (<em>int</em>) – number of K-points to be refined per quantity and criteria.</p></li>
+<li><p><strong>parallel</strong> (<a class="reference internal" href="parallel.html#wannierberri.parallel.Parallel" title="wannierberri.parallel.Parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parallel</span></code></a>) – object describing parallelization scheme</p></li>
+<li><p><strong>use_irred_kpt</strong> (<em>bool</em>) – evaluate only symmetry-irreducible K-points</p></li>
+<li><p><strong>symmetrize</strong> (<em>bool</em>) – symmetrize the result (always <cite>True</cite> if <cite>use_irred_kpt == True</cite>)</p></li>
+<li><p><strong>fout_name</strong> (<em>str</em>) – beginning of the output files for each quantity after each iteration</p></li>
+<li><p><strong>write_txt</strong> (<em>bool</em>) – write results after each iteration as text files (“.dat”)</p></li>
+<li><p><strong>write_bin</strong> (<em>bool</em>) – write results after each iteration as binary files (“.npz”).
+See <code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code> for file format</p></li>
+<li><p><strong>print_Kpoints</strong> (<em>bool</em>) – print the list of K points</p></li>
+<li><p><strong>parameters</strong> (<em>dict</em>) – <cite>{‘name’:value,…}</cite> , Each quantity that
+recognizes a parameter with the given name will use it</p></li>
+<li><p><strong>specific_parameters</strong> (<em>dict</em>) – <cite>‘quantity^label’:dict</cite>, where dict is analogous to  <cite>parameters</cite>. This values will override
+for the instance of the quantity labeled by ‘^label’</p></li>
+<li><p><strong>parameters_K</strong> (<em>dict</em>) – parameters to be passed to the <a class="reference internal" href="data_K.html#wannierberri.data_K.Data_K" title="wannierberri.data_K.Data_K"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data_K</span></code></a>,
+so they are common for the calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dictionary of  <a class="reference internal" href="result.html#wannierberri.result.EnergyResult" title="wannierberri.result.EnergyResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyResult</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Results are also printed to ASCII files</p>
+</dd></dl>
+
+</section>
+<section id="tabulating">
+<h2>Tabulating<a class="headerlink" href="#tabulating" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="wannierberri.tabulate">
+<span class="sig-prename descclassname"><span class="pre">wannierberri.</span></span><span class="sig-name descname"><span class="pre">tabulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantities=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_quantities={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frmsf_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ibands=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ef0=0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_irred_kpt=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetrize=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_K={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_parameters={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degen_thresh=0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degen_Kramers=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parallel=&lt;wannierberri.parallel.Serial</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_Kpoints=True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/__old_API/__main.html#tabulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.tabulate" title="Permalink to this definition"></a></dt>
+<dd><p>Tabulate quantities to be plotted</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>system</strong> (<a class="reference internal" href="system.html#wannierberri.system.System" title="wannierberri.system.System"><code class="xref py py-class docutils literal notranslate"><span class="pre">System</span></code></a>) – System under investigation</p></li>
+<li><p><strong>grid</strong> (<a class="reference internal" href="grid.html#wannierberri.Grid" title="wannierberri.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a>) – initial grid for integration</p></li>
+<li><p><strong>Ef0</strong> (<em>float</em>) – a single  Fermi level. all energies are given with respect to Ef0</p></li>
+<li><p><strong>quantities</strong> (<em>list of str</em>) – quantities to be integrated. See <a class="reference internal" href="../capabilities.html#sec-capabilities"><span class="std std-ref">Capabilities</span></a></p></li>
+<li><p><strong>user_quantities</strong> (<em>dict</em>) – a dictionary <cite>{name:formula}</cite>, where <cite>name</cite> is any string, and <cite>formula</cite>
+is a name of a child class of  <a class="reference internal" href="formula.html#wannierberri.formula.Formula_ln" title="wannierberri.formula.Formula_ln"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula_ln</span></code></a>
+which should have defined attributes <cite>nn</cite> , <cite>TRodd</cite>, <cite>Iodd</cite></p></li>
+<li><p><strong>use_irred_kpt</strong> (<em>bool</em>) – evaluate only symmetry-irreducible K-points</p></li>
+<li><p><strong>symmetrize</strong> (<em>bool</em>) – symmetrize the result</p></li>
+<li><p><strong>frmsf_name</strong> (<em>str</em>) – if not None, the results are also printed to text files, ready to plot by for <a class="reference external" href="https://fermisurfer.osdn.jp/">FermiSurfer</a></p></li>
+<li><p><strong>parallel</strong> (<a class="reference internal" href="parallel.html#wannierberri.parallel.Parallel" title="wannierberri.parallel.Parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parallel</span></code></a>) – object describing parallelization scheme</p></li>
+<li><p><strong>print_Kpoints</strong> (<em>bool</em>) – print the list of K points</p></li>
+<li><p><strong>parameters</strong> (<em>dict</em>) – <cite>{‘name’:value,…}</cite> , Each quantity that
+recognizes a parameter with the given name will use it</p></li>
+<li><p><strong>specific_parameters</strong> (<em>dict</em>) – <cite>‘quantity^label’:dict</cite>, where dict is analogous to  <cite>parameters</cite>. This values will override
+for the instance of the quantity labeled by ‘^label’</p></li>
+<li><p><strong>parameters_K</strong> (<em>dict</em>) – parameters to be passed to the <a class="reference internal" href="data_K.html#wannierberri.data_K.Data_K" title="wannierberri.data_K.Data_K"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data_K</span></code></a>,
+so they are common for the calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="result.html#wannierberri.result.TABresult" title="wannierberri.result.TABresult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TABresult</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="specifying-parameters">
+<span id="doc-parameters"></span><h2>Specifying parameters<a class="headerlink" href="#specifying-parameters" title="Permalink to this heading"></a></h2>
+<p>While the basic parameters of the calculation in the <a class="reference internal" href="#wannierberri.integrate" title="wannierberri.integrate"><code class="xref py py-func docutils literal notranslate"><span class="pre">integrate()</span></code></a> and <code class="xref py py-func docutils literal notranslate"><span class="pre">tabulte()</span></code>
+methods determine the general behaviour of the calculation (grid, refinement etc.) , the specific evauation of each
+quantity are determined by the dictionaries <cite>parameters</cite> and <cite>specific_parameters</cite></p>
+<section id="parameters">
+<h3><cite>parameters</cite><a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<p>a dictionary like <cite>{‘parameter1’:value1, ‘parameter2’:value2, …}</cite>. Each quantity will look for parameters that it can recognize,
+and take the corresponding values from the dictionary. The unrecognized paremeters will be ignored. A complete list of available
+options for each quantity may be obtained by running <cite>wannierberri.__old_API.__main.print_options()</cite></p>
+</section>
+<section id="specific-parameters-same-quantity-with-different-parameters-in-one-run">
+<h3><cite>specific_parameters</cite> – same quantity with different parameters in one run<a class="headerlink" href="#specific-parameters-same-quantity-with-different-parameters-in-one-run" title="Permalink to this heading"></a></h3>
+<p>One can specify the same quantity several times in the <cite>quantities</cite> list and to distinguish them,
+a label may be added after the <cite>‘^’</cite> symbol, e.g. <cite>quantities = [‘ahc^int’,’ahc^ext’]</cite>.
+Further, different parameters  may be passed to <cite>‘ahc^int’</cite> and <cite>‘ahc^ext’</cite> by means of <cite>specific_parameters</cite> option, which
+is a dictionary like <cite>{‘quantity1^label1’:{‘parameter1’:value1,…},…}</cite>.
+Values found in  <cite>specific_parameters</cite> will always override those found in <cite>parameters</cite></p>
+<p>For example, after a run</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wberri</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+          <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+          <span class="n">Efermi</span><span class="o">=</span><span class="n">Efermi</span><span class="p">,</span>
+          <span class="n">quantities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ahc^int&#39;</span><span class="p">,</span><span class="s1">&#39;ahc^ext&#39;</span><span class="p">],</span>
+          <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tetra&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span><span class="s1">&#39;internal_terms&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span><span class="s1">&#39;external_terms&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">},</span>
+          <span class="n">specific_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ahc^int&#39;</span><span class="p">:{</span><span class="s1">&#39;internal_terms&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">},</span><span class="s1">&#39;ahc^ext&#39;</span><span class="p">:{</span><span class="s1">&#39;external_terms&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}},</span>
+          <span class="n">fout_name</span><span class="o">=</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+          <span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>Fe-ahc^int_iter-0000.dat</cite> will contain contributions from internal terms only, and
+<cite>Fe-ahc^ext_iter-0000.dat</cite> will contain contributions from external terms.</p>
+</section>
+<section id="parameters-k">
+<h3><cite>parameters_K</cite><a class="headerlink" href="#parameters-k" title="Permalink to this heading"></a></h3>
+<p>In addition, there is a dictionary of parameters <cite>parameters_K</cite> that will de passed to the constructor of the
+<a class="reference internal" href="data_K.html#wannierberri.data_K.Data_K" title="wannierberri.data_K.Data_K"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data_K</span></code></a> object. Therefore, these parameters will be common for all quantities calculated</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../methods.html" class="btn btn-neutral float-right" title="Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorials &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/tutorials/index.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preliminary notes" href="basic/tutorial-wb-basic.html" />
+    <link rel="prev" title="Speed" href="../timing.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html">Preliminary notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html">Fermi surface and Fermi sea calculation of the Berry curvature dipole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetrization/Symmetrization_tutorial.html">Symmetrization of Wannier Hamiltonian and matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spin_hall/tutorial_spin_hall.html">Spin Hall conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html">DIY tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tutorials</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic/tutorial-wb-basic.html">Preliminary notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#1.-Do-not-be-afraid-of-python">1. Do not be afraid of python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#2.-Jupyter-Notebooks">2. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#3.-Documentation">3. Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#4.-New-interface">4. New interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#5.-Feedback">5. Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic/tutorial-wb-basic.html#Tutorial-on-Wannier-Berri-:-interpolating-bands,-Berry-curvatures,-and-integrating-them">Tutorial on Wannier Berri : interpolating bands, Berry curvatures, and integrating them</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#We-can-use-the-same-tabulators,-but-now-we-pack-them-into-TabulatorAll-in-&quot;grid&quot;-mode">We can use the same tabulators, but now we pack them into TabulatorAll in “grid” mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#And-we-run-the-calculation-in-the-same-way">And we run the calculation in the same way</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#fill-the-missing-parts-and-evaluate-the-Berry-curvature-summed-over-all-states-below-EF-=-12.6-eV.-Plot-in-on-a-plane-k3=const-(in-reduced-coordinates)">fill the missing parts and evaluate the Berry curvature summed over all states below EF = 12.6 eV. Plot in on a plane k3=const (in reduced coordinates)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/tutorial-wb-basic.html#start-from-a-denser-grid-(length=100-or-200)-and-do-the-integration-again-with-20-iterations.-Plot-the-results">start from a denser grid (length=100 or 200) and do the integration again with 20 iterations. Plot the results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html">Fermi surface and Fermi sea calculation of the Berry curvature dipole</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html#Model-1:-Chiral-tight-binding-model">Model 1: Chiral tight-binding model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html#Model-2:-Ferroelectric-germanium-telluride-(α-GeTe)">Model 2: Ferroelectric germanium telluride (α-GeTe)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fermi_sea_vs_fermi_surface/tutorial_sea_vs_surface.html#Further-questions">Further questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="symmetrization/Symmetrization_tutorial.html">Symmetrization of Wannier Hamiltonian and matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="symmetrization/Symmetrization_tutorial.html#Nonmagnetic-system-(trigonal-Te)">Nonmagnetic system (trigonal Te)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetrization/Symmetrization_tutorial.html#Magnetic-system-with-SOC-(bcc-Fe)">Magnetic system with SOC (bcc Fe)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spin_hall/tutorial_spin_hall.html">Spin Hall conductivity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spin_hall/tutorial_spin_hall.html#Model,-band-structure">Model, band structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spin_hall/tutorial_spin_hall.html#Problem:-Compare-the-SHC-computed-using-the-sHu-files-from-pw2wannier90-and-mmn2uHu.">Problem: Compare the SHC computed using the sHu files from pw2wannier90 and mmn2uHu.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DIY/tutorial-wb-DIY.html">DIY tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html#anomalous-Hall-conductivity">anomalous Hall conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html#Look-into-documentation">Look into documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html#Questions:">Questions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html#FormulaProduct">FormulaProduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DIY/tutorial-wb-DIY.html#Problem-for-a-prize:">Problem for a prize:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../timing.html" class="btn btn-neutral float-left" title="Speed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic/tutorial-wb-basic.html" class="btn btn-neutral float-right" title="Preliminary notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

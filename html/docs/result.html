@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result &mdash; Wannier Berri 0.13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/docs/result.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri 0.13.4 documentation"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parallel execution" href="parallel.html" />
+    <link rel="prev" title="Formula" href="formula.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+            <a href="../index.html">
+            <img src="../_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../newfeatures.html"> New features in version-0.10.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">NEWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exampleFe.html">Examples:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system.html">Initializing a System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run.html">Running a calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculators.html">Calculators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formula.html">Formula</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Creating a grid or Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetries.html">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smoother.html">Smoother</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_K.html">Data_K class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oldAPI.html">Old interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">External software used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../documentation.html">Documentation</a> &raquo;</li>
+      <li>Result</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="result">
+<h1>Result<a class="headerlink" href="#result" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.result.Result">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.result.</span></span><span class="sig-name descname"><span class="pre">Result</span></span><a class="reference internal" href="../_modules/wannierberri/result/__result.html#Result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.result.Result" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.result.ResultDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.result.</span></span><span class="sig-name descname"><span class="pre">ResultDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/result/__resultdict.html#ResultDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.result.ResultDict" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.result.Result" title="wannierberri.result.__result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></p>
+<p>Stores a dictionary of instances of the class Result.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.result.EnergyResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.result.</span></span><span class="sig-name descname"><span class="pre">EnergyResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Energies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smoothers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Iodd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRtrans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['Efermi',</span> <span class="pre">'Omega']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'txt+bin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_npz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'undocumented'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/result/__energyresult.html#EnergyResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.result.EnergyResult" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.result.Result" title="wannierberri.result.__result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></p>
+<dl class="simple">
+<dt>A class to store data dependent on several energies, e.g. Efermi and Omega</dt><dd><p>Energy may also be an empty list, then the quantity does not depend on any energy (does it work?)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Energies</strong> (<em>1D array</em><em> or </em><em>list of 1D arrays</em>) – <div class="line-block">
+<div class="line">The energies, on which the data depend</div>
+<div class="line">Energy may also be an empty list, then the quantity does not depend on any energy (does it work?)</div>
+</div>
+</p></li>
+<li><p><strong>data</strong> (<em>array</em><em>(</em><em>float</em><em>) or </em><em>array</em><em>(</em><em>complex</em><em>)</em>) – <div class="line-block">
+<div class="line">the data. The first dimensions should match the sizes of the Energies arrays. The rest should be equal to 3</div>
+</div>
+</p></li>
+<li><p><strong>smoothers</strong> (a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Smoother</span></code>) – <div class="line-block">
+<div class="line">smoothers, one per each energy variable (usually do not need to be set by the calculator function.</div>
+<div class="line">but are set automaticaly for Fermi levels and Omega’s , and during the further * and + operations</div>
+</div>
+</p></li>
+<li><p><strong>TRodd</strong> (<em>bool</em>) – <div class="line-block">
+<div class="line">True if the symmetric part of the result is Odd under time-reversal operation (False if it is even)</div>
+<div class="line">relevant if system has TimeReversal, either alone or in combination with spatial symmetyries</div>
+</div>
+</p></li>
+<li><p><strong>TRtrans</strong> (<em>bool</em>) – <div class="line-block">
+<div class="line">True if the result is should be transposed under time-reversal operation. (i.e. the symmetric and</div>
+<div class="line">antisymmetric parts have different parity under TR)</div>
+<div class="line">allowed only for rank-2 tensors</div>
+<div class="line">relevant if system has TimeReversal, either alone or in combination with spatial symmetyries</div>
+</div>
+</p></li>
+<li><p><strong>Iodd</strong> (<em>bool</em>) – <div class="line-block">
+<div class="line"><cite>True</cite> if the result is Odd under spatial inversion (<cite>False</cite> if it is even)</div>
+<div class="line">relevant if system has Inversion, either alone or as part of other symmetyries (e.g. Mx=C2x*I)</div>
+</div>
+</p></li>
+<li><p><strong>rank</strong> (<em>int</em>) – <div class="line-block">
+<div class="line">of the tensor, usually no need, to specify, it is set automatically to the number of dimensions</div>
+<div class="line">of the <cite>data</cite> array minus number of energies</div>
+</div>
+</p></li>
+<li><p><strong>E_titles</strong> (<em>list of str</em>) – <div class="line-block">
+<div class="line">titles to be printed above the energy columns</div>
+</div>
+</p></li>
+<li><p><strong>file_npz</strong> (<em>str</em>) – <div class="line-block">
+<div class="line">path to a np file (if provided, the parameters <cite>Enegries</cite>, <cite>data</cite>, <cite>TRodd</cite>, <cite>Iodd</cite>, <cite>rank</cite> and</div>
+<div class="line"><cite>E_titles</cite> are neglected)</div>
+</div>
+</p></li>
+<li><p><strong>comment</strong> (<em>str</em>) – <div class="line-block">
+<div class="line">Any line that can mark what is in the result</div>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.result.KBandResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.result.</span></span><span class="sig-name descname"><span class="pre">KBandResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRodd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Iodd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/result/__kbandresult.html#KBandResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.result.KBandResult" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.result.Result" title="wannierberri.result.__result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wannierberri.result.TABresult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wannierberri.result.</span></span><span class="sig-name descname"><span class="pre">TABresult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recip_lattice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grid'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wannierberri/result/__tabresult.html#TABresult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wannierberri.result.TABresult" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wannierberri.result.Result" title="wannierberri.result.__result.Result"><code class="xref py py-class docutils literal notranslate"><span class="pre">Result</span></code></a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="formula.html" class="btn btn-neutral float-left" title="Formula" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
