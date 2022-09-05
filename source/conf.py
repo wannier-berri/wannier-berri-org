@@ -119,6 +119,8 @@ html_favicon = 'imag/logo-WB/WB-logo.ico'
 html_logo = 'imag/logo-WB/WANNIERBERRI-redblack.png'
 html_show_sourcelink = False
 
+nbsphinx_allow_errors = True
+
 # True Basque colors
 bred='#D62618' 
 bgreen= '#009C46'
