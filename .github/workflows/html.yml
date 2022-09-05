@@ -31,18 +31,10 @@ jobs:
       run: |
         make
     - name: Commit files
-      id: commit
       run: |
-        git add -f html
-        if [-z "$(git status --porcelain)"]; then
-          echo "::set-output name=push::false"
-        else
-          git commit -m "Add html" -a
-          echo "::set-output name=push::true"
-        fi
-      shell: bash
-    - name: Push changes
-      if: steps.commit.outputs.push == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        git config --global user.name "Liu-Xiaoxiong"
+        git config --global user.email "xxliu@physik.uzh.ch"
+
+        git add html
+        git commit -m "commit message"
+        git push
