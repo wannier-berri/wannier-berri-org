@@ -442,7 +442,7 @@ and <code class="docutils literal notranslate"><span class="pre">sIu</span></cod
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-09-05 15:11:03,569 INFO worker.py:1509 -- Started a local Ray instance. View the dashboard at <span class="ansi-green-intense-fg ansi-bold">127.0.0.1:8265 </span>
+2022-09-05 15:27:01,359 INFO worker.py:1509 -- Started a local Ray instance. View the dashboard at <span class="ansi-green-intense-fg ansi-bold">127.0.0.1:8265 </span>
 </pre></div></div>
 </div>
 <section id="Model,-band-structure">
@@ -468,8 +468,8 @@ and <code class="docutils literal notranslate"><span class="pre">sIu</span></cod
 <div class="highlight"><pre>
 using fortio to read
 Reading restart information from file data_Pt/Pt.chk :
-Time to read .chk : 0.11723875999450684
-Time for MMN.__init__() : 0.39177441596984863 , read : 0.3785123825073242 , headstring 0.013262033462524414
+Time to read .chk : 0.16887259483337402
+Time for MMN.__init__() : 0.5381078720092773 , read : 0.5264289379119873 , headstring 0.011678934097290039
 ----------
  SPN
 ---------
@@ -498,7 +498,7 @@ reading data_Pt/Pt.sHu : &lt;Created on 13May2022 at 15:23:23&gt;
  sHu OK
 ---------
 
-time for FFT_q_to_R : 0.9493932723999023 s
+time for FFT_q_to_R : 1.0874583721160889 s
 using ws_distance
 irvec_new_all shape (93,)
 using ws_dist for Ham_R
@@ -562,7 +562,7 @@ Real-space lattice:
 <span class="ansi-cyan-intense-fg ansi-bold">calculator not described
 </span>
 Calculation along a path - checking calculators for compatibility
-tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fa91017c910&gt;
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fea242890a0&gt;
 All calculators are compatible
 Symmetrization switched off for Path
 The set of k points is a Path() with 322 points and labels {0: &#39;W&#39;, 54: &#39;L&#39;, 120: &#39;$\\Gamma$&#39;, 197: &#39;X&#39;, 235: &#39;W&#39;, 321: &#39;$\\Gamma$&#39;}
@@ -573,18 +573,18 @@ Done, sum of weights:322.0
 symgroup : None
 processing 322 K points : using  4 processes.
 # K-points calculated  Wall time (sec)  Est. remaining (sec)
-                  32              3.1                  28.3
-                  64              3.4                  13.9
-                  96              3.8                   8.8
-                 128              4.1                   6.2
-                 160              4.4                   4.5
-                 192              4.7                   3.2
-                 224              5.1                   2.2
-                 256              5.4                   1.4
-                 288              5.7                   0.7
-                 320              6.1                   0.0
-time for processing    322 K-points on   4 processes:     6.1069 ; per K-point          0.0190 ; proc-sec per K-point          0.0759
-time1 =  0.021396398544311523
+                  32              4.1                  36.7
+                  64              4.5                  18.0
+                  96              4.8                  11.4
+                 128              5.3                   8.0
+                 160              5.7                   5.7
+                 192              6.1                   4.1
+                 224              6.5                   2.8
+                 256              6.9                   1.8
+                 288              7.3                   0.9
+                 320              7.7                   0.0
+time for processing    322 K-points on   4 processes:     7.7343 ; per K-point          0.0240 ; proc-sec per K-point          0.0961
+time1 =  0.020120620727539062
 Totally processed 322 K-points
 </pre></div></div>
 </div>
@@ -670,20 +670,20 @@ The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
 Grid is regular
 The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
 generating K_list
-Done in 0.0026047229766845703 s
+Done in 0.002763986587524414 s
 excluding symmetry-equivalent K-points from initial grid
-Done in 0.10001802444458008 s
-Done in 0.1000983715057373 s
+Done in 0.11371755599975586 s
+Done in 0.11384940147399902 s
 K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
 Done, sum of weights:0.9999999999999997
-symgroup : &lt;wannierberri.symmetry.Group object at 0x7fa9100ddf10&gt;
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fea243f2a90&gt;
 processing 16 K points : using  4 processes.
 # K-points calculated  Wall time (sec)  Est. remaining (sec)
-                   4             14.8                  44.3
-                   8             29.3                  29.3
-                  12             43.7                  14.6
-time for processing     16 K-points on   4 processes:    57.3851 ; per K-point          3.5866 ; proc-sec per K-point         14.3463
-time1 =  0.002900838851928711
+                   4             17.3                  51.8
+                   8             33.1                  33.1
+                  12             48.7                  16.2
+time for processing     16 K-points on   4 processes:    64.0240 ; per K-point          4.0015 ; proc-sec per K-point         16.0060
+time1 =  0.0033326148986816406
 Totally processed 16 K-points
 </pre></div></div>
 </div>
@@ -798,20 +798,20 @@ The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
 Grid is regular
 The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
 generating K_list
-Done in 0.001990079879760742 s
+Done in 0.003281116485595703 s
 excluding symmetry-equivalent K-points from initial grid
-Done in 0.09890222549438477 s
-Done in 0.09898614883422852 s
+Done in 0.11312651634216309 s
+Done in 0.11327314376831055 s
 K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
 Done, sum of weights:0.9999999999999997
-symgroup : &lt;wannierberri.symmetry.Group object at 0x7fa9100ddf10&gt;
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fea243f2a90&gt;
 processing 16 K points : using  4 processes.
 # K-points calculated  Wall time (sec)  Est. remaining (sec)
-                   4             12.3                  36.9
-                   8             22.9                  22.9
-                  12             33.8                  11.3
-time for processing     16 K-points on   4 processes:    43.9754 ; per K-point          2.7485 ; proc-sec per K-point         10.9938
-time1 =  0.005049943923950195
+                   4             13.8                  41.5
+                   8             26.2                  26.2
+                  12             38.0                  12.7
+time for processing     16 K-points on   4 processes:    49.0079 ; per K-point          3.0630 ; proc-sec per K-point         12.2520
+time1 =  0.0037038326263427734
 Totally processed 16 K-points
 </pre></div></div>
 </div>
@@ -928,7 +928,7 @@ Totally processed 16 K-points
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Calculation along a path - checking calculators for compatibility
-tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fa908efffa0&gt;
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fea2406d970&gt;
 All calculators are compatible
 Symmetrization switched off for Path
 The set of k points is a Path() with 643 points and labels {0: &#39;W&#39;, 108: &#39;L&#39;, 241: &#39;$\\Gamma$&#39;, 394: &#39;X&#39;, 471: &#39;W&#39;, 642: &#39;$\\Gamma$&#39;}
@@ -939,18 +939,18 @@ Done, sum of weights:643.0
 symgroup : None
 processing 643 K points : using  4 processes.
 # K-points calculated  Wall time (sec)  Est. remaining (sec)
-                  64              2.4                  22.1
-                 128              4.1                  16.4
-                 192              5.8                  13.5
-                 256              7.3                  11.0
-                 320              8.9                   9.0
-                 384             10.5                   7.1
-                 448             12.0                   5.2
-                 512             13.7                   3.5
-                 576             15.3                   1.8
-                 640             16.9                   0.1
-time for processing    643 K-points on   4 processes:    16.9600 ; per K-point          0.0264 ; proc-sec per K-point          0.1055
-time1 =  0.12469315528869629
+                  64              2.5                  22.4
+                 128              4.2                  16.9
+                 192              5.9                  13.9
+                 256              7.8                  11.8
+                 320              9.7                   9.8
+                 384             11.4                   7.7
+                 448             13.2                   5.7
+                 512             14.9                   3.8
+                 576             16.8                   2.0
+                 640             18.6                   0.1
+time for processing    643 K-points on   4 processes:    18.7099 ; per K-point          0.0291 ; proc-sec per K-point          0.1164
+time1 =  0.16102385520935059
 Totally processed 643 K-points
 </pre></div></div>
 </div>
@@ -1212,7 +1212,7 @@ AMN size= (27648, 2)
 ----------
   uHu  NBsum=24
 ---------
-uHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:24.728009
+uHu from mmn red to 24 sum 24 bnd 2022-09-05T15:29:40.240483
 60
 using scipy.io to write
 k-point 1 of 64
@@ -1298,7 +1298,7 @@ using scipy.io to write
 ----------
   sHu  NBsum=24
 ---------
-sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.291202
+sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:29:40.926152
 60
 using scipy.io to write
 k-point 1 of 64
@@ -1372,7 +1372,7 @@ k-point 64 of 64
 ----------
   sIu  NBsum=24
 ---------
-sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.543599
+sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:29:41.245190
 60
 using scipy.io to write
 k-point 1 of 64
@@ -1463,8 +1463,8 @@ k-point 64 of 64
 <div class="highlight"><pre>
 using fortio to read
 Reading restart information from file data_Pt/reduced_NB=24/Pt.chk :
-Time to read .chk : 0.0814046859741211
-Time for MMN.__init__() : 0.4081876277923584 , read : 0.3976304531097412 , headstring 0.010557174682617188
+Time to read .chk : 0.13168787956237793
+Time for MMN.__init__() : 0.5430495738983154 , read : 0.5305747985839844 , headstring 0.012474775314331055
 ----------
  SPN
 ---------
@@ -1479,7 +1479,7 @@ reading data_Pt/reduced_NB=24/Pt.spn : Created on 13May2022 at 15:23:23
   sIu
 ---------
 using fortio to read
-reading data_Pt/reduced_NB=24/Pt.sIu : &lt;sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.543599&gt;
+reading data_Pt/reduced_NB=24/Pt.sIu : &lt;sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:29:41.245190&gt;
 ----------
  sIu OK
 ---------
@@ -1488,12 +1488,12 @@ reading data_Pt/reduced_NB=24/Pt.sIu : &lt;sIu from mmn red to 24 sum 24 bnd 202
   sHu
 ---------
 using fortio to read
-reading data_Pt/reduced_NB=24/Pt.sHu : &lt;sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.291202&gt;
+reading data_Pt/reduced_NB=24/Pt.sHu : &lt;sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:29:40.926152&gt;
 ----------
  sHu OK
 ---------
 
-time for FFT_q_to_R : 0.924527645111084 s
+time for FFT_q_to_R : 1.0809836387634277 s
 using ws_distance
 irvec_new_all shape (93,)
 using ws_dist for Ham_R
