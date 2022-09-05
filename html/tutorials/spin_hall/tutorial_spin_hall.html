@@ -442,7 +442,7 @@ and <code class="docutils literal notranslate"><span class="pre">sIu</span></cod
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-09-05 14:56:35,026 INFO worker.py:1509 -- Started a local Ray instance. View the dashboard at <span class="ansi-green-intense-fg ansi-bold">127.0.0.1:8265 </span>
+2022-09-05 15:11:03,569 INFO worker.py:1509 -- Started a local Ray instance. View the dashboard at <span class="ansi-green-intense-fg ansi-bold">127.0.0.1:8265 </span>
 </pre></div></div>
 </div>
 <section id="Model,-band-structure">
@@ -461,60 +461,61 @@ and <code class="docutils literal notranslate"><span class="pre">sIu</span></cod
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-using fortio to read
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [2]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> system <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">wberri</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">System_w90</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">data_Pt/Pt</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">berry</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">SHCryoo</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">SHCqiao</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> system<span style="color: rgb(98,98,98)">.</span>set_structure([[<span style="color: rgb(98,98,98)">0.</span>, <span style="color: rgb(98,98,98)">0.</span>, <span style="color: rgb(98,98,98)">0.</span>]], [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Pt</span><span style="color: rgb(175,0,0)">&#34;</span>])
-<span class="ansi-green-intense-fg ansi-bold">      3</span> system<span style="color: rgb(98,98,98)">.</span>set_symmetry_from_structure()
+using fortio to read
+Reading restart information from file data_Pt/Pt.chk :
+Time to read .chk : 0.11723875999450684
+Time for MMN.__init__() : 0.39177441596984863 , read : 0.3785123825073242 , headstring 0.013262033462524414
+----------
+ SPN
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/system/system_w90.py:62</span>, in <span class="ansi-cyan-fg">System_w90.__init__</span><span class="ansi-blue-fg">(self, seedname, transl_inv, guiding_centers, fft, npar, **parameters)</span>
-<span class="ansi-green-intense-fg ansi-bold">     59</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>npar <span style="color: rgb(98,98,98)">=</span> npar
-<span class="ansi-green-intense-fg ansi-bold">     60</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>seedname <span style="color: rgb(98,98,98)">=</span> seedname
-<span class="ansi-green-fg">---&gt; 62</span> chk <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">CheckPoint</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">seedname</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     63</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>real_lattice, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>recip_lattice <span style="color: rgb(98,98,98)">=</span> real_recip_lattice(chk<span style="color: rgb(98,98,98)">.</span>real_lattice, chk<span style="color: rgb(98,98,98)">.</span>recip_lattice)
-<span class="ansi-green-intense-fg ansi-bold">     64</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>mp_grid <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+using fortio to read
+reading data_Pt/Pt.spn : Created on 13May2022 at 15:23:23
+----------
+ SPN OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/__w90_files.py:31</span>, in <span class="ansi-cyan-fg">CheckPoint.__init__</span><span class="ansi-blue-fg">(self, seedname)</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span> t0 <span style="color: rgb(98,98,98)">=</span> time()
-<span class="ansi-green-intense-fg ansi-bold">     30</span> seedname <span style="color: rgb(98,98,98)">=</span> seedname<span style="color: rgb(98,98,98)">.</span>strip()
-<span class="ansi-green-fg">---&gt; 31</span> FIN <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">FortranFileR</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">seedname</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">.chk</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     32</span> readint <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span>: FIN<span style="color: rgb(98,98,98)">.</span>read_record(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">i4</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     33</span> readfloat <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span>: FIN<span style="color: rgb(98,98,98)">.</span>read_record(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">f8</span><span style="color: rgb(175,0,0)">&#39;</span>)
+----------
+  sIu
+---------
+using fortio to read
+reading data_Pt/Pt.sIu : &lt;Created on 13May2022 at 15:23:23&gt;
+----------
+ sIu OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/__utility.py:38</span>, in <span class="ansi-cyan-fg">FortranFileR.__init__</span><span class="ansi-blue-fg">(self, filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">     36</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">using fortio to read</span><span style="color: rgb(175,0,0)">&#34;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     37</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">---&gt; 38</span>     <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,255)">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">r</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">header_dtype</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">uint32</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">auto_endian</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">check_file</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     39</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>:
-<span class="ansi-green-intense-fg ansi-bold">     40</span>     <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">File </span><span style="color: rgb(175,0,0)">&#39;</span><span class="ansi-bold" style="color: rgb(175,95,135)">{}</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)"> contains subrecords - using header_dtype=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">int32</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(98,98,98)">.</span>format(filename))
+----------
+  sHu
+---------
+using fortio to read
+reading data_Pt/Pt.sHu : &lt;Created on 13May2022 at 15:23:23&gt;
+----------
+ sHu OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/fortio.py:83</span>, in <span class="ansi-cyan-fg">FortranFile.__init__</span><span class="ansi-blue-fg">(self, filename, mode, header_dtype, auto_endian, check_file)</span>
-<span class="ansi-green-intense-fg ansi-bold">     80</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">header_dtype should be integer type.</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     82</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>file <span style="color: rgb(98,98,98)">=</span> filename
-<span class="ansi-green-fg">---&gt; 83</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>filesize <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">os</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">getsize</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     84</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>mode <span style="color: rgb(98,98,98)">=</span> mode
-<span class="ansi-green-intense-fg ansi-bold">     85</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>header_dtype <span style="color: rgb(98,98,98)">=</span> header_dtype
-
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/genericpath.py:50</span>, in <span class="ansi-cyan-fg">getsize</span><span class="ansi-blue-fg">(filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">     48</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">getsize</span>(filename):
-<span class="ansi-green-intense-fg ansi-bold">     49</span>     <span style="color: rgb(175,0,0)">&#34;&#34;&#34;Return the size of a file, reported by os.stat().&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">---&gt; 50</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">os</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">stat</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>st_size
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/wannier-berri-org/wannier-berri-org/source/tutorials/spin_hall/data_Pt/Pt.chk&#39;
+time for FFT_q_to_R : 0.9493932723999023 s
+using ws_distance
+irvec_new_all shape (93,)
+using ws_dist for Ham_R
+using ws_dist for AA_R
+using ws_dist for SS_R
+using ws_dist for SA_R
+using ws_dist for SHA_R
+using ws_dist for SR_R
+using ws_dist for SH_R
+using ws_dist for SHR_R
+Number of wannier functions: 18
+Number of R points: 93
+Recommended size of FFT grid [4 4 4]
+Real-space lattice:
+ [[-1.95599772  0.          1.95599772]
+ [ 0.          1.95599772  1.95599772]
+ [-1.95599772  1.95599772  0.        ]]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -558,26 +559,33 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/pyth
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [3]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> path <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>Path(
-<span class="ansi-green-fg">----&gt; 2</span>     <span class="ansi-yellow-bg">system</span>,
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     k_nodes<span style="color: rgb(98,98,98)">=</span>[
-<span class="ansi-green-intense-fg ansi-bold">      4</span>         [<span style="color: rgb(98,98,98)">0.25</span>, <span style="color: rgb(98,98,98)">0.75</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># W</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># L</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>         [<span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>], <span style="color: rgb(95,135,135)"># Gamma</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># X</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.25</span>, <span style="color: rgb(98,98,98)">0.75</span>], <span style="color: rgb(95,135,135)"># W</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>         [<span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>], <span style="color: rgb(95,135,135)"># Gamma</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     ],
-<span class="ansi-green-intense-fg ansi-bold">     11</span>     labels<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">W</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">L</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">$</span><span style="color: rgb(175,0,0)">\</span><span style="color: rgb(175,0,0)">Gamma$</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">X</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">W</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">$</span><span style="color: rgb(175,0,0)">\</span><span style="color: rgb(175,0,0)">Gamma$</span><span style="color: rgb(175,0,0)">&#34;</span>],
-<span class="ansi-green-intense-fg ansi-bold">     12</span>     length<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">300</span>,
-<span class="ansi-green-intense-fg ansi-bold">     13</span> )
-<span class="ansi-green-intense-fg ansi-bold">     15</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">wannierberri</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> calculators <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> calc
-<span class="ansi-green-intense-fg ansi-bold">     16</span> calculators <span style="color: rgb(98,98,98)">=</span> {}
-
-<span class="ansi-red-fg">NameError</span>: name &#39;system&#39; is not defined
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+Calculation along a path - checking calculators for compatibility
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fa91017c910&gt;
+All calculators are compatible
+Symmetrization switched off for Path
+The set of k points is a Path() with 322 points and labels {0: &#39;W&#39;, 54: &#39;L&#39;, 120: &#39;$\\Gamma$&#39;, 197: &#39;X&#39;, 235: &#39;W&#39;, 321: &#39;$\\Gamma$&#39;}
+WARNING : symmetry is not used for a tabulation along path
+generating K_list
+Done
+Done, sum of weights:322.0
+symgroup : None
+processing 322 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                  32              3.1                  28.3
+                  64              3.4                  13.9
+                  96              3.8                   8.8
+                 128              4.1                   6.2
+                 160              4.4                   4.5
+                 192              4.7                   3.2
+                 224              5.1                   2.2
+                 256              5.4                   1.4
+                 288              5.7                   0.7
+                 320              6.1                   0.0
+time for processing    322 K-points on   4 processes:     6.1069 ; per K-point          0.0190 ; proc-sec per K-point          0.0759
+time1 =  0.021396398544311523
+Totally processed 322 K-points
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -596,16 +604,8 @@ Input <span class="ansi-green-fg">In [3]</span>, in <span class="ansi-cyan-fg">&
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [4]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> fig <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">path_result</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">tabulate</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>plot_path_fat(path, close_fig<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, show_fig<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>)
-<span class="ansi-green-intense-fg ansi-bold">      3</span> ax <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>get_axes()[<span style="color: rgb(98,98,98)">0</span>]
-<span class="ansi-green-intense-fg ansi-bold">      4</span> ax<span style="color: rgb(98,98,98)">.</span>axhline(efermi, c<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">r</span><span style="color: rgb(175,0,0)">&#34;</span>, ls<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">--</span><span style="color: rgb(175,0,0)">&#34;</span>)
-
-<span class="ansi-red-fg">NameError</span>: name &#39;path_result&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_8_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_8_0.png" />
+</div>
 </div>
 <section id="Static-spin-Hall-conductivity">
 <h3>Static spin Hall conductivity<a class="headerlink" href="#Static-spin-Hall-conductivity" title="Permalink to this heading"></a></h3>
@@ -637,23 +637,10 @@ Input <span class="ansi-green-fg">In [4]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">wannierberri</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> calculators <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> calc
-<span class="ansi-green-fg">----&gt; 3</span> efermi_list <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>linspace(<span class="ansi-yellow-bg">efermi</span> <span style="color: rgb(98,98,98)">-</span> <span style="color: rgb(98,98,98)">1.0</span>, efermi <span style="color: rgb(98,98,98)">+</span> <span style="color: rgb(98,98,98)">1.0</span>, <span style="color: rgb(98,98,98)">101</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
-<span class="ansi-green-intense-fg ansi-bold">      5</span> kwargs <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">dict</span>(
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     Efermi<span style="color: rgb(98,98,98)">=</span>efermi_list,
-<span class="ansi-green-intense-fg ansi-bold">      7</span>     omega<span style="color: rgb(98,98,98)">=</span>np<span style="color: rgb(98,98,98)">.</span>array([<span style="color: rgb(98,98,98)">0.</span>]),
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     smr_fixed_width <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.1</span>, <span style="color: rgb(95,135,135)"># Smearing for frequency in eV</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>     kBT <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.026</span>, <span style="color: rgb(95,135,135)"># Smearing for Fermi level (Fermi-Dirac factor) in eV (not Kelvin)</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> )
-<span class="ansi-green-intense-fg ansi-bold">     12</span> calculators <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">dict</span>(
-<span class="ansi-green-intense-fg ansi-bold">     13</span>     SHC_ryoo <span style="color: rgb(98,98,98)">=</span> calc<span style="color: rgb(98,98,98)">.</span>dynamic<span style="color: rgb(98,98,98)">.</span>SHC(SHC_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs),
-<span class="ansi-green-intense-fg ansi-bold">     14</span>     SHC_qiao <span style="color: rgb(98,98,98)">=</span> calc<span style="color: rgb(98,98,98)">.</span>dynamic<span style="color: rgb(98,98,98)">.</span>SHC(SHC_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">qiao</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs),
-<span class="ansi-green-intense-fg ansi-bold">     15</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;efermi&#39; is not defined
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -677,19 +664,27 @@ Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> nk <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">30</span>
-<span class="ansi-green-fg">----&gt; 2</span> grid <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>Grid(<span class="ansi-yellow-bg">system</span>, NK<span style="color: rgb(98,98,98)">=</span>nk)
-<span class="ansi-green-intense-fg ansi-bold">      3</span> result <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>run(
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     system,
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     grid<span style="color: rgb(98,98,98)">=</span>grid,
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     print_Kpoints <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>,
-<span class="ansi-green-intense-fg ansi-bold">      9</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;system&#39; is not defined
+determining grids from NK=30 (&lt;class &#39;int&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+Grid is regular
+The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+generating K_list
+Done in 0.0026047229766845703 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.10001802444458008 s
+Done in 0.1000983715057373 s
+K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
+Done, sum of weights:0.9999999999999997
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fa9100ddf10&gt;
+processing 16 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   4             14.8                  44.3
+                   8             29.3                  29.3
+                  12             43.7                  14.6
+time for processing     16 K-points on   4 processes:    57.3851 ; per K-point          3.5866 ; proc-sec per K-point         14.3463
+time1 =  0.002900838851928711
+Totally processed 16 K-points
 </pre></div></div>
 </div>
 <p>The SHC data has 5 indices: 1. The Fermi level index, 2. The frequency index, 3. The spin current direction index, 4. The electric field direction index, and 5. The spin polarization index.</p>
@@ -706,12 +701,7 @@ Input <span class="ansi-green-fg">In [6]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [7]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">result.results[</span><span class="ansi-bold" style="color: rgb(175,95,0)">\&#34;</span><span style="color: rgb(175,0,0)">SHC_ryoo</span><span class="ansi-bold" style="color: rgb(175,95,0)">\&#34;</span><span style="color: rgb(175,0,0)">].data.shape = </span><span style="color: rgb(175,0,0)">&#34;</span>, <span class="ansi-yellow-bg">result</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">SHC_ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>data<span style="color: rgb(98,98,98)">.</span>shape)
-
-<span class="ansi-red-fg">NameError</span>: name &#39;result&#39; is not defined
+result.results[&#34;SHC_ryoo&#34;].data.shape =  (101, 1, 3, 3, 3)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -740,16 +730,8 @@ Input <span class="ansi-green-fg">In [7]</span>, in <span class="ansi-cyan-fg">&
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [8]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> shc_ryoo <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">result</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">SHC_ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>data[:, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]
-<span class="ansi-green-intense-fg ansi-bold">      2</span> shc_qiao <span style="color: rgb(98,98,98)">=</span> result<span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">SHC_qiao</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>data[:, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]
-<span class="ansi-green-intense-fg ansi-bold">      4</span> fig, axes <span style="color: rgb(98,98,98)">=</span> plt<span style="color: rgb(98,98,98)">.</span>subplots(<span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>, figsize<span style="color: rgb(98,98,98)">=</span>(<span style="color: rgb(98,98,98)">12</span>, <span style="color: rgb(98,98,98)">4</span>))
-
-<span class="ansi-red-fg">NameError</span>: name &#39;result&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_14_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_14_0.png" />
+</div>
 </div>
 </section>
 <section id="Dynamic-spin-Hall-conductivity">
@@ -783,23 +765,10 @@ Input <span class="ansi-green-fg">In [8]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [9]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 5&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">wannierberri</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> calculators <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> calc
-<span class="ansi-green-intense-fg ansi-bold">      3</span> omega <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>linspace(<span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">4</span>, <span style="color: rgb(98,98,98)">101</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
-<span class="ansi-green-intense-fg ansi-bold">      5</span> kwargs <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">dict</span>(
-<span class="ansi-green-fg">----&gt; 6</span>     Efermi<span style="color: rgb(98,98,98)">=</span>np<span style="color: rgb(98,98,98)">.</span>array([<span class="ansi-yellow-bg">efermi</span>]),
-<span class="ansi-green-intense-fg ansi-bold">      7</span>     omega<span style="color: rgb(98,98,98)">=</span>omega,
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     smr_fixed_width <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.1</span>, <span style="color: rgb(95,135,135)"># Smearing for frequency in eV</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>     kBT <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.026</span>, <span style="color: rgb(95,135,135)"># Smearing for Fermi level (Fermi-Dirac factor)</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span> )
-<span class="ansi-green-intense-fg ansi-bold">     12</span> calculators <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">dict</span>(
-<span class="ansi-green-intense-fg ansi-bold">     13</span>     SHC_ryoo <span style="color: rgb(98,98,98)">=</span> calc<span style="color: rgb(98,98,98)">.</span>dynamic<span style="color: rgb(98,98,98)">.</span>SHC(SHC_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs),
-<span class="ansi-green-intense-fg ansi-bold">     14</span>     SHC_qiao <span style="color: rgb(98,98,98)">=</span> calc<span style="color: rgb(98,98,98)">.</span>dynamic<span style="color: rgb(98,98,98)">.</span>SHC(SHC_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">qiao</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs),
-<span class="ansi-green-intense-fg ansi-bold">     15</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;efermi&#39; is not defined
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">a more laconic implementation of the energy factor
+</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -823,19 +792,27 @@ Input <span class="ansi-green-fg">In [9]</span>, in <span class="ansi-cyan-fg">&
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [10]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> nk <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">30</span>
-<span class="ansi-green-fg">----&gt; 2</span> grid <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>Grid(<span class="ansi-yellow-bg">system</span>, NK<span style="color: rgb(98,98,98)">=</span>nk)
-<span class="ansi-green-intense-fg ansi-bold">      3</span> result <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>run(
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     system,
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     grid<span style="color: rgb(98,98,98)">=</span>grid,
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     print_Kpoints <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>,
-<span class="ansi-green-intense-fg ansi-bold">      9</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;system&#39; is not defined
+determining grids from NK=30 (&lt;class &#39;int&#39;&gt;), NKdiv=None (&lt;class &#39;NoneType&#39;&gt;), NKFFT=None (&lt;class &#39;NoneType&#39;&gt;)
+Minimal symmetric FFT grid :  [4 4 4]
+The grids were set to NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+Grid is regular
+The set of k points is a Grid() with NKdiv=[6 6 6], NKFFT=[5 5 5], NKtot=[30 30 30]
+generating K_list
+Done in 0.001990079879760742 s
+excluding symmetry-equivalent K-points from initial grid
+Done in 0.09890222549438477 s
+Done in 0.09898614883422852 s
+K_list contains 16 Irreducible points(7.41%) out of initial 6x6x6=216 grid
+Done, sum of weights:0.9999999999999997
+symgroup : &lt;wannierberri.symmetry.Group object at 0x7fa9100ddf10&gt;
+processing 16 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                   4             12.3                  36.9
+                   8             22.9                  22.9
+                  12             33.8                  11.3
+time for processing     16 K-points on   4 processes:    43.9754 ; per K-point          2.7485 ; proc-sec per K-point         10.9938
+time1 =  0.005049943923950195
+Totally processed 16 K-points
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -864,16 +841,8 @@ Input <span class="ansi-green-fg">In [10]</span>, in <span class="ansi-cyan-fg">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [11]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> shc_ryoo <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">result</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">SHC_ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>data[<span style="color: rgb(98,98,98)">0</span>, :, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]
-<span class="ansi-green-intense-fg ansi-bold">      2</span> shc_qiao <span style="color: rgb(98,98,98)">=</span> result<span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">SHC_qiao</span><span style="color: rgb(175,0,0)">&#34;</span>]<span style="color: rgb(98,98,98)">.</span>data[<span style="color: rgb(98,98,98)">0</span>, :, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]
-<span class="ansi-green-intense-fg ansi-bold">      4</span> fig, axes <span style="color: rgb(98,98,98)">=</span> plt<span style="color: rgb(98,98,98)">.</span>subplots(<span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>, figsize<span style="color: rgb(98,98,98)">=</span>(<span style="color: rgb(98,98,98)">12</span>, <span style="color: rgb(98,98,98)">4</span>))
-
-<span class="ansi-red-fg">NameError</span>: name &#39;result&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_18_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_18_0.png" />
+</div>
 </div>
 </section>
 <section id="Spin-Berry-curvature">
@@ -912,40 +881,17 @@ Input <span class="ansi-green-fg">In [11]</span>, in <span class="ansi-cyan-fg">
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
-</span>
-<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
-</span>
-<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
-</span>
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [12]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">wannierberri</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> calculators <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> calc
-<span class="ansi-green-intense-fg ansi-bold">      2</span> calculators <span style="color: rgb(98,98,98)">=</span> {}
-<span class="ansi-green-intense-fg ansi-bold">      3</span> calculators[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">tabulate</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> calc<span style="color: rgb(98,98,98)">.</span>TabulatorAll(
-<span class="ansi-green-intense-fg ansi-bold">      4</span>      {
-<span class="ansi-green-intense-fg ansi-bold">      5</span>          <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Energy</span><span style="color: rgb(175,0,0)">&#34;</span>: calc<span style="color: rgb(98,98,98)">.</span>tabulate<span style="color: rgb(98,98,98)">.</span>Energy(),
-<span class="ansi-green-intense-fg ansi-bold">      6</span>          <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">spin_berry_ryoo</span><span style="color: rgb(175,0,0)">&#39;</span>: calc<span style="color: rgb(98,98,98)">.</span>tabulate<span style="color: rgb(98,98,98)">.</span>SpinBerry(kwargs_formula<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(0,135,0)">dict</span>(spin_current_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">ryoo</span><span style="color: rgb(175,0,0)">&#34;</span>), degen_thresh<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">1e-2</span>),
-<span class="ansi-green-intense-fg ansi-bold">      7</span>          <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">spin_berry_qiao</span><span style="color: rgb(175,0,0)">&#39;</span>: calc<span style="color: rgb(98,98,98)">.</span>tabulate<span style="color: rgb(98,98,98)">.</span>SpinBerry(kwargs_formula<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(0,135,0)">dict</span>(spin_current_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">qiao</span><span style="color: rgb(175,0,0)">&#34;</span>), degen_thresh<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">1e-2</span>),
-<span class="ansi-green-intense-fg ansi-bold">      8</span>      },
-<span class="ansi-green-fg">----&gt; 9</span>     ibands<span style="color: rgb(98,98,98)">=</span>np<span style="color: rgb(98,98,98)">.</span>arange(<span class="ansi-yellow-bg">system</span><span style="color: rgb(98,98,98)">.</span>num_wann),
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     mode<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">path</span><span style="color: rgb(175,0,0)">&#34;</span>,
-<span class="ansi-green-intense-fg ansi-bold">     11</span>  )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;system&#39; is not defined
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
+<span class="ansi-cyan-intense-fg ansi-bold">calculator not described
+</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -981,36 +927,37 @@ Input <span class="ansi-green-fg">In [12]</span>, in <span class="ansi-cyan-fg">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [13]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> path <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>Path(
-<span class="ansi-green-fg">----&gt; 2</span>     <span class="ansi-yellow-bg">system</span>,
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     k_nodes<span style="color: rgb(98,98,98)">=</span>[
-<span class="ansi-green-intense-fg ansi-bold">      4</span>         [<span style="color: rgb(98,98,98)">0.25</span>, <span style="color: rgb(98,98,98)">0.75</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># W</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># L</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span>         [<span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>], <span style="color: rgb(95,135,135)"># Gamma</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.50</span>], <span style="color: rgb(95,135,135)"># X</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>         [<span style="color: rgb(98,98,98)">0.50</span>, <span style="color: rgb(98,98,98)">0.25</span>, <span style="color: rgb(98,98,98)">0.75</span>], <span style="color: rgb(95,135,135)"># W</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>         [<span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>, <span style="color: rgb(98,98,98)">0.00</span>], <span style="color: rgb(95,135,135)"># Gamma</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     ],
-<span class="ansi-green-intense-fg ansi-bold">     11</span>     labels<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">W</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">L</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">$</span><span style="color: rgb(175,0,0)">\</span><span style="color: rgb(175,0,0)">Gamma$</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">X</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">W</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">$</span><span style="color: rgb(175,0,0)">\</span><span style="color: rgb(175,0,0)">Gamma$</span><span style="color: rgb(175,0,0)">&#34;</span>],
-<span class="ansi-green-intense-fg ansi-bold">     12</span>     length<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">600</span>,
-<span class="ansi-green-intense-fg ansi-bold">     13</span> )
-<span class="ansi-green-intense-fg ansi-bold">     15</span> result_spin_berry <span style="color: rgb(98,98,98)">=</span> wberri<span style="color: rgb(98,98,98)">.</span>run(
-<span class="ansi-green-intense-fg ansi-bold">     16</span>     system,
-<span class="ansi-green-intense-fg ansi-bold">     17</span>     grid<span style="color: rgb(98,98,98)">=</span>path,
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">     20</span>     print_Kpoints <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>,
-<span class="ansi-green-intense-fg ansi-bold">     21</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;system&#39; is not defined
+Calculation along a path - checking calculators for compatibility
+tabulate &lt;wannierberri.calculators.TabulatorAll object at 0x7fa908efffa0&gt;
+All calculators are compatible
+Symmetrization switched off for Path
+The set of k points is a Path() with 643 points and labels {0: &#39;W&#39;, 108: &#39;L&#39;, 241: &#39;$\\Gamma$&#39;, 394: &#39;X&#39;, 471: &#39;W&#39;, 642: &#39;$\\Gamma$&#39;}
+WARNING : symmetry is not used for a tabulation along path
+generating K_list
+Done
+Done, sum of weights:643.0
+symgroup : None
+processing 643 K points : using  4 processes.
+# K-points calculated  Wall time (sec)  Est. remaining (sec)
+                  64              2.4                  22.1
+                 128              4.1                  16.4
+                 192              5.8                  13.5
+                 256              7.3                  11.0
+                 320              8.9                   9.0
+                 384             10.5                   7.1
+                 448             12.0                   5.2
+                 512             13.7                   3.5
+                 576             15.3                   1.8
+                 640             16.9                   0.1
+time for processing    643 K-points on   4 processes:    16.9600 ; per K-point          0.0264 ; proc-sec per K-point          0.1055
+time1 =  0.12469315528869629
+Totally processed 643 K-points
 </pre></div></div>
 </div>
 <p>Now we sum over bands to compute the k-resolved spin Berry curvature:</p>
 <div class="math notranslate nohighlight">
 \[\Omega^{\gamma}_{\alpha\beta}({\bf k}) = \sum_{n \in {\rm occ.}} \Omega^{n, \gamma}_{\alpha\beta}({\bf k})\]</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
@@ -1032,21 +979,6 @@ Input <span class="ansi-green-fg">In [13]</span>, in <span class="ansi-cyan-fg">
     <span class="n">spin_berry_qiao</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span> <span class="o">+=</span> <span class="n">spin_berry_qiao_nk</span><span class="p">[</span><span class="n">inds_occupied</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [14]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> nk <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">path</span><span style="color: rgb(98,98,98)">.</span>K_list<span style="color: rgb(98,98,98)">.</span>shape[<span style="color: rgb(98,98,98)">0</span>]
-<span class="ansi-green-intense-fg ansi-bold">      2</span> spin_berry_ryoo <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros((nk, <span style="color: rgb(98,98,98)">3</span>, <span style="color: rgb(98,98,98)">3</span>, <span style="color: rgb(98,98,98)">3</span>))
-<span class="ansi-green-intense-fg ansi-bold">      3</span> spin_berry_qiao <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros((nk, <span style="color: rgb(98,98,98)">3</span>, <span style="color: rgb(98,98,98)">3</span>, <span style="color: rgb(98,98,98)">3</span>))
-
-<span class="ansi-red-fg">NameError</span>: name &#39;path&#39; is not defined
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -1075,18 +1007,8 @@ Input <span class="ansi-green-fg">In [14]</span>, in <span class="ansi-cyan-fg">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [15]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 4&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">get_signed_log10</span>(x):
-<span class="ansi-green-intense-fg ansi-bold">      2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> np<span style="color: rgb(98,98,98)">.</span>log10(<span style="color: rgb(0,135,0)">abs</span>(x)) <span style="color: rgb(98,98,98)">*</span> np<span style="color: rgb(98,98,98)">.</span>sign(x)
-<span class="ansi-green-fg">----&gt; 4</span> kline <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">path</span><span style="color: rgb(98,98,98)">.</span>getKline()
-<span class="ansi-green-intense-fg ansi-bold">      5</span> plt<span style="color: rgb(98,98,98)">.</span>plot(kline, get_signed_log10(spin_berry_ryoo[:, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]), <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">k-</span><span style="color: rgb(175,0,0)">&#34;</span>, label<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Ryoo</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">      6</span> plt<span style="color: rgb(98,98,98)">.</span>plot(kline, get_signed_log10(spin_berry_qiao[:, <span style="color: rgb(98,98,98)">0</span>, <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>]), <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">r--</span><span style="color: rgb(175,0,0)">&#34;</span>, label<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Qiao</span><span style="color: rgb(175,0,0)">&#39;</span>)
-
-<span class="ansi-red-fg">NameError</span>: name &#39;path&#39; is not defined
-</pre></div></div>
+<img alt="../../_images/tutorials_spin_hall_tutorial_spin_hall_25_0.png" src="../../_images/tutorials_spin_hall_tutorial_spin_hall_25_0.png" />
+</div>
 </div>
 <p>You can find that the spin Berry curvature calculated using the Qiao method shows more “wiggles” than the Ryoo method. This numerical difference has been first reported in <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.104.014412">T. Ng et al, PRB 104 014412 (2021)</a>:</p>
 <blockquote>
@@ -1135,18 +1057,392 @@ Input <span class="ansi-green-fg">In [15]</span>, in <span class="ansi-cyan-fg">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [16]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">wannierberri</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">utils</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> mmn2uHu <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> mmn2uHu
-<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">os</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">chdir</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">data_Pt</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> mmn2uHu<span style="color: rgb(98,98,98)">.</span>run_mmn2uHu(PREFIX<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Pt</span><span style="color: rgb(175,0,0)">&#34;</span>, writeSHU<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, writeSIU<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, NBout<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">18</span>, NBsum<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">24</span>)
-<span class="ansi-green-intense-fg ansi-bold">      5</span> <span style="color: rgb(95,135,135)"># For a command-line execution of the mmn2uHu utility, use</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> <span style="color: rgb(95,135,135)"># python3 -m wannierberri.utils.mmn2uHu Pt NBout=18,NBsum=24,targets=sHu,sIu</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span> <span style="color: rgb(95,135,135)"># Rename sHu and sIu files</span>
+----------
+ MMN  read
+---------
 
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data_Pt&#39;
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ MMN  read - OK
+---------
+
+[Errno 17] File exists: &#39;reduced_NB=24&#39;
+k-point 0 of 64
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+----------
+ MMN OK
+---------
+
+----------
+ AMN
+---------
+
+AMN size= (27648, 2)
+24 18 64
+----------
+ AMN  - OK
+---------
+
+[(&#39;uHu&#39;, False)]
+----------
+  uHu  NBsum=24
+---------
+uHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:24.728009
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ uHu OK
+---------
+
+----------
+ SPN
+---------
+
+using fortio to read
+Created on 13May2022 at 15:23:23
+using scipy.io to write
+----------
+ SPN OK
+---------
+
+[(&#39;sHu&#39;, False), (&#39;sIu&#39;, False)]
+----------
+  sHu  NBsum=24
+---------
+sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.291202
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ sHu OK
+---------
+
+----------
+  sIu  NBsum=24
+---------
+sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.543599
+60
+using scipy.io to write
+k-point 1 of 64
+k-point 2 of 64
+k-point 3 of 64
+k-point 4 of 64
+k-point 5 of 64
+k-point 6 of 64
+k-point 7 of 64
+k-point 8 of 64
+k-point 9 of 64
+k-point 10 of 64
+k-point 11 of 64
+k-point 12 of 64
+k-point 13 of 64
+k-point 14 of 64
+k-point 15 of 64
+k-point 16 of 64
+k-point 17 of 64
+k-point 18 of 64
+k-point 19 of 64
+k-point 20 of 64
+k-point 21 of 64
+k-point 22 of 64
+k-point 23 of 64
+k-point 24 of 64
+k-point 25 of 64
+k-point 26 of 64
+k-point 27 of 64
+k-point 28 of 64
+k-point 29 of 64
+k-point 30 of 64
+k-point 31 of 64
+k-point 32 of 64
+k-point 33 of 64
+k-point 34 of 64
+k-point 35 of 64
+k-point 36 of 64
+k-point 37 of 64
+k-point 38 of 64
+k-point 39 of 64
+k-point 40 of 64
+k-point 41 of 64
+k-point 42 of 64
+k-point 43 of 64
+k-point 44 of 64
+k-point 45 of 64
+k-point 46 of 64
+k-point 47 of 64
+k-point 48 of 64
+k-point 49 of 64
+k-point 50 of 64
+k-point 51 of 64
+k-point 52 of 64
+k-point 53 of 64
+k-point 54 of 64
+k-point 55 of 64
+k-point 56 of 64
+k-point 57 of 64
+k-point 58 of 64
+k-point 59 of 64
+k-point 60 of 64
+k-point 61 of 64
+k-point 62 of 64
+k-point 63 of 64
+k-point 64 of 64
+----------
+ sIu OK
+---------
+
 </pre></div></div>
 </div>
 <p>Now, load the system object. Since all the data are in the <code class="docutils literal notranslate"><span class="pre">data_Pt/reduced_NB=24</span></code> directory, you should use the seedname <code class="docutils literal notranslate"><span class="pre">data_Pt/reduced_NB=24/Pt</span></code>.</p>
@@ -1160,60 +1456,61 @@ Input <span class="ansi-green-fg">In [16]</span>, in <span class="ansi-cyan-fg">
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-using fortio to read
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [17]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> system_mmn2uhu <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">wberri</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">System_w90</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">data_Pt/reduced_NB=24/Pt</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">berry</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">SHCryoo</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">SHCqiao</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> system_mmn2uhu<span style="color: rgb(98,98,98)">.</span>set_structure([[<span style="color: rgb(98,98,98)">0.</span>, <span style="color: rgb(98,98,98)">0.</span>, <span style="color: rgb(98,98,98)">0.</span>]], [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Pt</span><span style="color: rgb(175,0,0)">&#34;</span>])
-<span class="ansi-green-intense-fg ansi-bold">      3</span> system_mmn2uhu<span style="color: rgb(98,98,98)">.</span>set_symmetry_from_structure()
+using fortio to read
+Reading restart information from file data_Pt/reduced_NB=24/Pt.chk :
+Time to read .chk : 0.0814046859741211
+Time for MMN.__init__() : 0.4081876277923584 , read : 0.3976304531097412 , headstring 0.010557174682617188
+----------
+ SPN
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/system/system_w90.py:62</span>, in <span class="ansi-cyan-fg">System_w90.__init__</span><span class="ansi-blue-fg">(self, seedname, transl_inv, guiding_centers, fft, npar, **parameters)</span>
-<span class="ansi-green-intense-fg ansi-bold">     59</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>npar <span style="color: rgb(98,98,98)">=</span> npar
-<span class="ansi-green-intense-fg ansi-bold">     60</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>seedname <span style="color: rgb(98,98,98)">=</span> seedname
-<span class="ansi-green-fg">---&gt; 62</span> chk <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">CheckPoint</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">seedname</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     63</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>real_lattice, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>recip_lattice <span style="color: rgb(98,98,98)">=</span> real_recip_lattice(chk<span style="color: rgb(98,98,98)">.</span>real_lattice, chk<span style="color: rgb(98,98,98)">.</span>recip_lattice)
-<span class="ansi-green-intense-fg ansi-bold">     64</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>mp_grid <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.spn : Created on 13May2022 at 15:23:23
+----------
+ SPN OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/__w90_files.py:31</span>, in <span class="ansi-cyan-fg">CheckPoint.__init__</span><span class="ansi-blue-fg">(self, seedname)</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span> t0 <span style="color: rgb(98,98,98)">=</span> time()
-<span class="ansi-green-intense-fg ansi-bold">     30</span> seedname <span style="color: rgb(98,98,98)">=</span> seedname<span style="color: rgb(98,98,98)">.</span>strip()
-<span class="ansi-green-fg">---&gt; 31</span> FIN <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">FortranFileR</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">seedname</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">.chk</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     32</span> readint <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span>: FIN<span style="color: rgb(98,98,98)">.</span>read_record(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">i4</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     33</span> readfloat <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">lambda</span>: FIN<span style="color: rgb(98,98,98)">.</span>read_record(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">f8</span><span style="color: rgb(175,0,0)">&#39;</span>)
+----------
+  sIu
+---------
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.sIu : &lt;sIu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.543599&gt;
+----------
+ sIu OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/wannierberri/__utility.py:38</span>, in <span class="ansi-cyan-fg">FortranFileR.__init__</span><span class="ansi-blue-fg">(self, filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">     36</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">using fortio to read</span><span style="color: rgb(175,0,0)">&#34;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     37</span> <span class="ansi-bold" style="color: rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">---&gt; 38</span>     <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,255)">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">r</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">header_dtype</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">uint32</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">auto_endian</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">check_file</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     39</span> <span class="ansi-bold" style="color: rgb(0,135,0)">except</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ValueError</span>:
-<span class="ansi-green-intense-fg ansi-bold">     40</span>     <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">File </span><span style="color: rgb(175,0,0)">&#39;</span><span class="ansi-bold" style="color: rgb(175,95,135)">{}</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)"> contains subrecords - using header_dtype=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">int32</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(98,98,98)">.</span>format(filename))
+----------
+  sHu
+---------
+using fortio to read
+reading data_Pt/reduced_NB=24/Pt.sHu : &lt;sHu from mmn red to 24 sum 24 bnd 2022-09-05T15:13:25.291202&gt;
+----------
+ sHu OK
+---------
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages/fortio.py:83</span>, in <span class="ansi-cyan-fg">FortranFile.__init__</span><span class="ansi-blue-fg">(self, filename, mode, header_dtype, auto_endian, check_file)</span>
-<span class="ansi-green-intense-fg ansi-bold">     80</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">header_dtype should be integer type.</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     82</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>file <span style="color: rgb(98,98,98)">=</span> filename
-<span class="ansi-green-fg">---&gt; 83</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>filesize <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">os</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">getsize</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     84</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>mode <span style="color: rgb(98,98,98)">=</span> mode
-<span class="ansi-green-intense-fg ansi-bold">     85</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>header_dtype <span style="color: rgb(98,98,98)">=</span> header_dtype
-
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/genericpath.py:50</span>, in <span class="ansi-cyan-fg">getsize</span><span class="ansi-blue-fg">(filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">     48</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">getsize</span>(filename):
-<span class="ansi-green-intense-fg ansi-bold">     49</span>     <span style="color: rgb(175,0,0)">&#34;&#34;&#34;Return the size of a file, reported by os.stat().&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">---&gt; 50</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">os</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">stat</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>st_size
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/wannier-berri-org/wannier-berri-org/source/tutorials/spin_hall/data_Pt/reduced_NB=24/Pt.chk&#39;
+time for FFT_q_to_R : 0.924527645111084 s
+using ws_distance
+irvec_new_all shape (93,)
+using ws_dist for Ham_R
+using ws_dist for AA_R
+using ws_dist for SS_R
+using ws_dist for SA_R
+using ws_dist for SHA_R
+using ws_dist for SR_R
+using ws_dist for SH_R
+using ws_dist for SHR_R
+Number of wannier functions: 18
+Number of R points: 93
+Recommended size of FFT grid [4 4 4]
+Real-space lattice:
+ [[-1.95599772  0.          1.95599772]
+ [ 0.          1.95599772  1.95599772]
+ [-1.95599772  1.95599772  0.        ]]
 </pre></div></div>
 </div>
 </section>
@@ -1222,7 +1519,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/pyth
 <h2>Problem: Compare the SHC computed using the sHu files from pw2wannier90 and mmn2uHu.<a class="headerlink" href="#Problem:-Compare-the-SHC-computed-using-the-sHu-files-from-pw2wannier90-and-mmn2uHu." title="Permalink to this heading"></a></h2>
 <p>Compute the SHC using <code class="docutils literal notranslate"><span class="pre">system</span></code> and <code class="docutils literal notranslate"><span class="pre">system_mmn2uHu</span></code>. Since the “Qiao” method does not use the sHu and sIu files, the two systems will give exactly the same result. This may not be the case for the “Ryoo” method.</p>
 <p>Use the keyword arguments given below (Fermi level scan at 0.026 meV ~ 300 K).</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
@@ -1238,25 +1535,6 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.9.13/x64/lib/pyth
 <span class="c1"># Fill in the code below.</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [18]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span> efermi_list <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>linspace(<span class="ansi-yellow-bg">efermi</span> <span style="color: rgb(98,98,98)">-</span> <span style="color: rgb(98,98,98)">1.0</span>, efermi <span style="color: rgb(98,98,98)">+</span> <span style="color: rgb(98,98,98)">1.0</span>, <span style="color: rgb(98,98,98)">101</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
-<span class="ansi-green-intense-fg ansi-bold">      3</span> kwargs <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">dict</span>(
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     Efermi<span style="color: rgb(98,98,98)">=</span>efermi_list,
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     omega<span style="color: rgb(98,98,98)">=</span>np<span style="color: rgb(98,98,98)">.</span>array([<span style="color: rgb(98,98,98)">0.</span>]),
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     smr_fixed_width <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.1</span>, <span style="color: rgb(95,135,135)"># Smearing for frequency in eV</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>     kBT <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0.026</span>, <span style="color: rgb(95,135,135)"># Smearing for Fermi level (Fermi-Dirac factor) in eV (not Kelvin)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span> )
-
-<span class="ansi-red-fg">NameError</span>: name &#39;efermi&#39; is not defined
-</pre></div></div>
 </div>
 <section id="Further-questions">
 <h3>Further questions<a class="headerlink" href="#Further-questions" title="Permalink to this heading"></a></h3>
