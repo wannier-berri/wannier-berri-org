@@ -33,8 +33,6 @@ jobs:
     - name: Commit files
       id: commit
       run: |
-        git config --local user.email "xxliu@physik.uzh.ch"
-        git config --local user.name "Liu-Xiaoxiong"
         git add html
         if [-z "$(git status --porcelain)"]; then
           echo "::set-output name=push::false"
