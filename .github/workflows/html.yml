@@ -22,7 +22,8 @@ jobs:
         pip install wannierberri
         pip install sphinx
         pip install nbsphinx
-        apt-get install pdf2svg
+        set -ev
+        sudo apt-get install pdf2svg
     - name: make
       run: |
         make
