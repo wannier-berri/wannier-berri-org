@@ -1,0 +1,23 @@
+name: wannier-berri-org-html
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: .github/install_script.sh
+    - name: make
+      run: |
+        make
