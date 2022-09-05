@@ -30,13 +30,11 @@ jobs:
     - name: make
       run: |
         make
-    - name: Modifiy the specific files using action
-      uses: action-owner/action-repo@ref
     - name: Commit files
       run: |
-        git config --global user.name "Liu-Xiaoxiong"
-        git config --global user.email "xxliu@physik.uzh.ch"
+        git config --global -f user.name "Liu-Xiaoxiong"
+        git config --global -f user.email "xxliu@physik.uzh.ch"
 
-        git add html
+        git add -f html
         git commit -m "commit message"
         git push
