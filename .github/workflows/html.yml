@@ -33,7 +33,7 @@ jobs:
     - name: Commit files
       id: commit
       run: |
-        git -f add html
+        git add -f html
         if [-z "$(git status --porcelain)"]; then
           echo "::set-output name=push::false"
         else
