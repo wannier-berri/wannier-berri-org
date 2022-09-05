@@ -21,6 +21,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install wannierberri
         pip install sphinx sphinx-rtd-theme sphinx-pyreverse nbsphinx sphinx_sitemap
+        pip install --upgrade ipython ipykernel
+        ipython kernel install --name "python3" --user
+        docker-compose build
+        docker-compose up
         set -ev
         sudo apt-get install pdf2svg
         sudo wget https://github.com/jgm/pandoc/releases/download/1.15.1/pandoc-1.15.1-1-amd64.deb
