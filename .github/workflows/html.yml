@@ -23,6 +23,8 @@ jobs:
         pip install sphinx sphinx-rtd-theme sphinx-pyreverse nbsphinx sphinx_sitemap
         set -ev
         sudo apt-get install pdf2svg
+        sudo wget https://github.com/jgm/pandoc/releases/download/1.15.1/pandoc-1.15.1-1-amd64.deb
+        sudo dpkg -i pandoc-1.15.1-1-amd64.deb
     - name: make
       run: |
         make
