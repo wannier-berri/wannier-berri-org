@@ -32,9 +32,9 @@ jobs:
         make
     - name: Commit files
       run: |
-        git config --global -f user.name "Liu-Xiaoxiong"
-        git config --global -f user.email "xxliu@physik.uzh.ch"
+        git config --global user.name "Liu-Xiaoxiong"
+        git config --global user.email "xxliu@physik.uzh.ch"
 
-        git add -f html
+        git add html
         git commit -m "commit message"
         git push
