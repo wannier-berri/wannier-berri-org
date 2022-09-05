@@ -20,7 +20,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install wannierberri
-        pip install sphinx sphinx-pyreverse nbsphinx sphinx_sitemap
+        pip install sphinx sphinx-rtd-theme sphinx-pyreverse nbsphinx sphinx_sitemap
         set -ev
         sudo apt-get install pdf2svg
     - name: make
