@@ -8,7 +8,11 @@ to generate the html just type "make"  and you will get the result in the `./htm
 
 you need the sphinx installed, and prbably some other extensions
 
-`pip3 install sphinx sphinx_pyreverse sphinx_sitemap sphinx_rtd_theme`
+```
+sudo apt-get install pdf2svg python3_sphinx pandoc
+pip3 install sphinx sphinx_pyreverse sphinx_sitemap sphinx_rtd_theme nbsphinx pandoc
+```
+
 
 Autodoc
 -------
