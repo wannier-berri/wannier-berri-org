@@ -36,7 +36,7 @@ release = wannierberri.__version__
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon',
-    'nbsphinx',
+#    'nbsphinx',
 ]
 
 
@@ -119,7 +119,7 @@ html_favicon = 'imag/logo-WB/WB-logo.ico'
 html_logo = 'imag/logo-WB/WANNIERBERRI-redblack.png'
 html_show_sourcelink = False
 
-nbsphinx_allow_errors = True
+#nbsphinx_allow_errors = True
 
 # True Basque colors
 bred='#D62618' 

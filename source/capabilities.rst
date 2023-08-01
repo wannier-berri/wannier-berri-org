@@ -1,19 +1,21 @@
 
 .. _sec-capabilities:
 
-*********************
-Capabilities  
-*********************
+********************************
+Capabilities (incomplete list)
+********************************
 
 .. role:: red
 .. role:: green
+
+**Note** : This is an incomplete list. Please refer to `Documentation <https://doc.wannier-berri.org>`__ for details.
 
 
 Integration
 -----------
 
 The code may be used to evaluate the following quantities, represented
-as Brillouin zone integrals (by means of the |integrate| function):
+as Brillouin zone integrals.
 
 Static (frequency-independent) quantities
 ++++++++++++++++++++++++++++++++++++++++++
@@ -160,25 +162,14 @@ Tabulating
    :math:`\Omega_z`. Figure produced using `FermiSurfer <https://fermisurfer.osdn.jp/>`_.
 
 ``WannerBerri`` can also tabulate certain band-resolved quantities over the
-Brillouin zone. This feature is called with |tabulate| function, e.g.
-
-.. code:: python
-
-   WB.tabulate(system, grid,
-                quantities=["berry"],
-                fout_name="Fe",
-                numproc=16,
-                ibands=np.arange(4,10),
-                Ef0=12.610)
-
-which will produce files ``Fe_berry-?.frmsf``, containing the Energies
+Brillouin zone producing files ``Fe_berry-?.frmsf``, containing the Energies
 and Berry curvature of bands ``4-9`` (band counting starts from zero).
 The format of the files allows to be directly passed to the
 ``FermiSurfer`` visualization tool (Kawamura 2019) which can produce a
 plot like :numref:`figFefrmsf`. Transformation of files to other
 visualization software is straightforward.
 
-Currently the following quantities are available to tabulate:
+Some of the quantites that are available to tabulate are:
 
 -  ``'berry'``: Berry curvature [Å\ :sup:`2`\]
 

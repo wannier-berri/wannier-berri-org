@@ -15,29 +15,6 @@
 a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.
 
 
-###################################
-New features in version-0.10.0
-###################################
-[ links to documentation will be added here ]
-
-    * Multi-node parallelization
-
-    * Fermi-sea formulas for many quantities
-
-    * External vs internal terms
-
-    * Tetrahedron method
-
-    * One quantity with differnet parameters in one run
-
-    * user-defined quantities
-
-    * two conventions for the Bloch sums
-
-    * more quantities to tabulate
-
-    * pre-defined TB models for illustration
-
 #############
 Advantages
 #############
@@ -67,18 +44,31 @@ Please cite
         to Axial Gauge Fields.”` `Npj Quantum Materials 5 (1): 5. <https://doi.org/10.1038/s41535-019-0207-7>`_.
 
 
+
+################
+Documentation
+################
+
+Link to detailed `Documentation <https://doc.wannier-berri.org>`__
+
+
+################
+Tutorials
+################
+
+Tutorials in Jupyter notebooks are available on `GitHub  <https://github.com/wannier-berri/WannierBerri-tutorial>`__
+
+
 ##############
 Contact:
 ##############
 
-    *    Please, ask any questions to the `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ .
+    *    The **preferred** way of commonication is  the `GitHub repository: <https://github.com/wannier-berri/wannier-berri>`_   via |github-issue| or  |github-discussion|
+    *    |github|
+    *    Consider subscribing to the `mailing list <https://physik.lists.uzh.ch/sympa/info/wannier-berri>`_ .
+         If you do not wish to register on GitHub, questions also may be asked there
          Also updates to the code are announced there.
-         It is the **preferred** way of communication with the authors and other users, to ask any questions, report bugs, request new features, etc. 
          Also please search through the mailing list `archive <https://physik.lists.uzh.ch/sympa/arc/wannier-berri>`_
-    *    | GitHub repository: `<https://github.com/wannier-berri/wannier-berri>`_  
-         | |github|
-    *    |github-follow|
-    *    |twitter-button|
     
 .. |twitter-button| raw:: html
 
@@ -88,15 +78,21 @@ Contact:
 .. |github|    raw:: html
 
    <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/subscription" data-icon="octicon-eye" aria-label="Watch wannier-berri/wannier-berri on GitHub">Watch</a>
-   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Issue</a>
    <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/archive/master.zip" data-icon="octicon-download" aria-label="Download wannier-berri/wannier-berri on GitHub">Download</a>
    <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/fork" data-icon="octicon-repo-forked" aria-label="Fork wannier-berri/wannier-berri on GitHub">Fork</a>
    <a class="github-button" href="https://github.com/wannier-berri/wannier-berri" data-icon="octicon-star" aria-label="Star wannier-berri/wannier-berri on GitHub">Star</a>
-
-.. |github-follow|  raw:: html
-
    <a class="github-button" href="https://github.com/wannier-berri" aria-label="Follow @wannier-berri on GitHub">Follow @wannier-berri</a>
 
+
+
+.. |github-issue|  raw:: html
+
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Issue</a>
+
+
+.. |github-discussion|  raw:: html
+
+   <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/discussions" data-icon="octicon-discussion-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Discussion</a>
 
 
 ################################################################################################################
@@ -110,19 +106,17 @@ Install  via ``pip``  (`PyPI <https://pypi.org/project/wannierberri>`_):
 #########################
 Author
 #########################
-`Stepan Tsirkin  <https://www.physik.uzh.ch/en/groups/neupert/team/tsirkin.html>`_,   
-`Condensed Matter Theory <https://www.physik.uzh.ch/en/groups/neupert.html>`_ group at the University of Zurich
+`Stepan Tsirkin  <https://www.ikerbasque.net/es/stepan-tsirkin>`_,   
+Ikerbasque Research Fellow at `Materials Physics Center <https://cfm.ehu.es/team/stepan-tsirkin/>`__, San Sebastian, Spain.
 
 .. toctree:: 
    :maxdepth: 3
    :hidden:
 
-   newfeatures
-   news
    capabilities
    timing
-   tutorials/index
    exampleFe
+   tutorial
    documentation
    methods
    install
@@ -130,7 +124,6 @@ Author
    people
    contribute
    software
-   literature
 
 
 .. |NEW| image:: imag/NEW.jpg
