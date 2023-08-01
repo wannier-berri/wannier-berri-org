@@ -5,7 +5,7 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = source
+SOURCEDIR     = docs
 BUILDDIR      = ./
 
 default: html
@@ -39,7 +39,7 @@ html : Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 clean_fig_svg :
-	rm source/imag/*/*.pdf.svg
+	rm docs/imag/*/*.pdf.svg
 
 clean_html :
 	rm html/*.html

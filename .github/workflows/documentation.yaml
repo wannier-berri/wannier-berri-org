@@ -10,7 +10,10 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme
+          pip install wannierberri
+          pip install sphinx sphinx-rtd-theme sphinx-pyreverse sphinx_sitemap
+          set -ev
+          sudo apt-get install pdf2svg
       - name: Sphinx build
         run: |
           sphinx-build docs _build
