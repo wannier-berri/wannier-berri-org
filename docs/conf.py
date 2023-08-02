@@ -14,8 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 
-import wannierberri
-
 # -- Project information -----------------------------------------------------
 
 project = 'Wannier Berri'
@@ -24,7 +22,6 @@ author = 'Stepan Tsirkin'
 numfig = True
 
 # The full version, including alpha/beta/rc tags
-release = wannierberri.__version__
 
 # -- General configuration ---------------------------------------------------
 
