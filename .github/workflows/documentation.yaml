@@ -20,6 +20,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install sphinx sphinx-rtd-theme sphinx-pyreverse sphinx_sitemap
+        set -ev
+        sudo apt-get install pdf2svg
     - name: make
       run: |
         make
