@@ -30,6 +30,7 @@ jobs:
         rm -r docs/doctrees
         mv  docs/html/* docs
         rm -r docs/html
+        touch docs/.nojekyll
         git config --global user.name "stepan-tsirkin"
         git config --global user.email "stepan.tsirkin@ehu.eus"
 
