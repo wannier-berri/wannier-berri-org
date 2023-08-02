@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methods &mdash; Wannier Berri  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/methods.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri  documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation and technical remarks" href="install.html" />
+    <link rel="prev" title="Documentation" href="documentation.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities (incomplete list)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exampleFe.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-equations-for-wannier-interpolation">General equations for Wannier interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mixed-fourier-transform">Mixed Fourier transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symmetries">Symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recursive-adaptive-refinement">Recursive adaptive refinement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimal-distance-replica-selection-method">Minimal-distance replica selection method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">External software used</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Methods</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h1>
+<p>Methods implemented in WannierBerri and allowing the performance boost are described in the following preprint article</p>
+<p>Stepan S. Tsirkin. “High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code”, <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">npj Comput Mater 7, 33 (2021).</a> (Open Access).</p>
+<p>Below is given a section from that paper, just for reference.</p>
+<section id="general-equations-for-wannier-interpolation">
+<span id="sec-wanfun"></span><h2>General equations for Wannier interpolation<a class="headerlink" href="#general-equations-for-wannier-interpolation" title="Permalink to this heading"></a></h2>
+<p>The goal of this section is to introduce notation necessary for further
+discussion. For more details please refer to review (<a class="reference external" href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.84.1419">Marzari et al. 2012</a>)
+and original articles cited therein. The problem of Wannier
+interpolation is stated in the following way. First we evaluate the
+energies <span class="math notranslate nohighlight">\(E_{n{\bf q}}\)</span> and wavefunctions
+<span class="math notranslate nohighlight">\(\psi_{n{\bf q}}({\bf r})\equiv e^{i{\bf q}\cdot{\bf r}}u_{n{\bf q}}({\bf r})\)</span>
+from first principles on a rather coarse grid of
+<span class="math notranslate nohighlight">\(N_{\bf q}=N_{\bf q}^1\times N_{\bf q}^2\times N_{\bf q}^3\)</span>
+wavevectors <span class="math notranslate nohighlight">\({\bf q}\)</span> within the reciprocal unit cell. Next we
+want to find the energies and wavefunctions at points on a denser grid
+of wavevectors <span class="math notranslate nohighlight">\({\bf k}\)</span>. Further we will consistently use
+<span class="math notranslate nohighlight">\({\bf q}\)</span> and <span class="math notranslate nohighlight">\({\bf k}\)</span> to denote the <em>ab initio</em> and
+interpolation grids respectively.</p>
+<p>For a group of entangled bands one can define a set of <span class="math notranslate nohighlight">\(J\)</span> WFs
+defined as</p>
+<div class="math notranslate nohighlight">
+\[\vert{\bf R}n\rangle=\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} \sum_{m=1}^{{\cal J}_{\bf q}} \vert\psi_{m{\bf q}}\rangle V_{mn}({\bf q}),\]</div>
+<p>where <span class="math notranslate nohighlight">\({\cal J}_{\bf q}\ge J\)</span> and <span class="math notranslate nohighlight">\({\bf R}\)</span> are real-space
+lattice vectors. The matrices <span class="math notranslate nohighlight">\(V_{mn'}({\bf q})\)</span> contain all the
+information of the construction of WFs, and may be generated by
+Wannier90 code. They are constrained by
+<span class="math notranslate nohighlight">\(\sum_{m=1}^{{\cal J}_{\bf q}} V^*_{mn}({\bf q})V_{mn'}({\bf q})=\delta_{nn'}\)</span>
+and are chosen in such a way that the WFs are localized, which yields
+that the Bloch wavefunctions in the Wannier gauge</p>
+<div class="math notranslate nohighlight" id="equation-eq-psiw">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-psiw" title="Permalink to this equation"></a></span>\[\vert\psi_{n{\bf k}}^{\rm W}\rangle \equiv e^{i{\bf k}\cdot{\bf r}}\vert u_{n{\bf k}}^{\rm W}\rangle\equiv  \sum_{{\bf R}}e^{i{\bf k}\cdot{\bf R}}\vert{\bf R}n\rangle  \label{eq:psiW}\]</div>
+<p>vary slowly with the <span class="math notranslate nohighlight">\({\bf k}\)</span> vector, unlike the true
+wavefunctions. Now let us see how WFs may be used to interpolate the
+band energies. First, one evaluates the matrix elements of the
+Hamiltonian</p>
+<div class="math notranslate nohighlight" id="equation-eq-fourier-q-to-r-h">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-fourier-q-to-r-h" title="Permalink to this equation"></a></span>\[\begin{split}\begin{gathered}
+    H_{mn}({\bf R})\equiv\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} \langle\psi_{m{\bf q}}^{\rm W}\vert\hat{H}\vert\psi_{n{\bf q}}^{\rm W}\rangle=\\
+    =\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}}\sum_{l}V^*_{lm}({\bf q})E_{l{\bf q}}V_{ln}({\bf q}).
+    \label{eq:fourier_q_to_R_H}\end{gathered}\end{split}\]</div>
+<p>Next, to obtain energies at an arbitrary point <span class="math notranslate nohighlight">\({\bf k}\)</span> one needs
+to construct the Wannier Hamiltonian</p>
+<div class="math notranslate nohighlight" id="equation-eq-hwann">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-hwann" title="Permalink to this equation"></a></span>\[H_{mn}^{\rm W}({\bf k})=\sum_{\bf R}H_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}}, \label{eq:Hwann}\]</div>
+<p>which further may be diagonalized as</p>
+<div class="math notranslate nohighlight">
+\[\sum_{mn} U_{ml}^*({\bf k}) H_{mn}^{\rm W}({\bf k})U_{nl'}({\bf k})=E_l({\bf k}) \delta_{ll'},\]</div>
+<p>where <span class="math notranslate nohighlight">\(U_{nl'}({\bf k})\)</span> are unitary matrices with columns
+corresponding to the eigenvectors of the Hamiltonian
+<a class="reference internal" href="#equation-eq-hwann">(6)</a>. In a similar way, for any operator
+<span class="math notranslate nohighlight">\(\hat{X}\)</span>, for which the matrix elements are evaluated on the <em>ab
+initio</em> grid, one may obtain the real-space matrix elements</p>
+<div class="math notranslate nohighlight" id="equation-eq-fourier-q-to-r">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-fourier-q-to-r" title="Permalink to this equation"></a></span>\[X_{mn}({\bf R})\equiv\frac{1}{N_{\bf q}}\sum_{\bf q}e^{-i{\bf q}\cdot{\bf R}} X_{mn}^{\text{W}}({\bf q}), \label{eq:fourier_q_to_R}\]</div>
+<p>where in a simple case (e.g. <span class="math notranslate nohighlight">\(\hat{X}=\boldsymbol{\sigma}\)</span>)</p>
+<div class="math notranslate nohighlight" id="equation-eq-h-to-w">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-h-to-w" title="Permalink to this equation"></a></span>\[X_{mn}^{\text{W}}({\bf q})= \sum_{ll'}V_{lm}^*({\bf q}) \langle\psi_{m{\bf q}}\vert\hat{X}\vert\psi_{n{\bf q}}\rangle V_{l'n}({\bf q}), \label{eq:H_to_W}\]</div>
+<p>or if <span class="math notranslate nohighlight">\(\hat{X}\)</span> involves momentum-space derivatives, (e.g. the
+position operator
+<span class="math notranslate nohighlight">\(\hat{r}_\alpha\equiv i\partial/\partial k\alpha\)</span>) may also
+involve matrix elements between neighbouring <span class="math notranslate nohighlight">\({\bf q}\)</span> points (see
+<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118">Wang et al. 2006</a>,
+<a class="reference external" href="https://doi.org/10.1103/PhysRevB.85.014435.">Lopez et al. 2012</a> for details). Then the matrix
+elements may be interpolated to any <span class="math notranslate nohighlight">\({\bf k}\)</span> point in the Wannier
+gauge by</p>
+<div class="math notranslate nohighlight" id="equation-eq-fourier-r-to-k">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-fourier-r-to-k" title="Permalink to this equation"></a></span>\[X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}X_{mn}({\bf R})e^{i{\bf k}\cdot{\bf R}} , \label{eq:fourier_R_to_k}\]</div>
+<p>and further rotated to the Hamiltonian gauge</p>
+<div class="math notranslate nohighlight" id="equation-eq-rotate-gauge">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-rotate-gauge" title="Permalink to this equation"></a></span>\[\overline{X}_{mn}^{\rm H}({\bf k})=\left( U^\dagger\cdot X^{\rm W}\cdot U \right)_{mn} . \label{eq:rotate_gauge}\]</div>
+<p>Note that equations <a class="reference internal" href="#equation-eq-fourier-q-to-r-h">(5)</a>,
+<a class="reference internal" href="#equation-eq-hwann">(6)</a> are particular cases of
+<a class="reference internal" href="#equation-eq-fourier-q-to-r">(7)</a> and
+<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>. Equation
+<a class="reference internal" href="#equation-eq-fourier-q-to-r">(7)</a> can be performed by means
+of FFT, and its result is periodic in <span class="math notranslate nohighlight">\({\bf R}\)</span> with a supercell
+formed by vectors <span class="math notranslate nohighlight">\(\mathbf{A}_i=\mathbf{a}_iN_{\bf q}^i\)</span>, where
+<span class="math notranslate nohighlight">\(\mathbf{a}_i\)</span> (<span class="math notranslate nohighlight">\(i=1,2,3\)</span>) are the primitive unit cell
+vectors. Among the equivalent <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors we choose those
+belonging to the corresponding Wigner-Seitz (WS) supercell. If an
+<span class="math notranslate nohighlight">\({\bf R}\)</span> vector belongs to the WS supercell boundary, we include
+all equivalent vectors on the boundary with the corresponding elements
+<span class="math notranslate nohighlight">\(X({\bf R})\)</span> divided by the degeneracy of the <span class="math notranslate nohighlight">\({\bf R}\)</span>
+vector. Further, the MDRS method (see <a class="reference internal" href="#sec-replica"><span class="std std-ref">Minimal-distance replica selection method</span></a>) may also slightly modify the set
+of <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors.</p>
+<p>As an example, the total Berry curvature of the occupied manifold is
+interpolated (<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118">Wang et al. 2006</a>) via</p>
+<div class="math notranslate nohighlight" id="equation-eq-berry-wanint">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-berry-wanint" title="Permalink to this equation"></a></span>\[\begin{split}\begin{gathered}
+\Omega_\gamma ({\bf k}) =   {\rm Re\,}\sum_n^{\text{occ}}\overline{\Omega}^{\rm H}_{nn,\gamma}
+-2\epsilon_{\alpha\beta\gamma}{\rm Re\,}\sum_n^{\text{occ}}\sum_l^{\text{unocc}}D_{nl,\alpha}\overline{A}^{\rm H}_{ln,\beta}  \\
+ +\epsilon_{\alpha\beta\gamma}{\rm Im\,}\sum_n^{\text{occ}}\sum_l^{\text{unocc}}D_{nl,\alpha} D_{ln,\beta} ,
+\label{eq:Berry-wanint}\end{gathered}\end{split}\]</div>
+<p>where the ingredients of the equation are obtained using
+eqs. <a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>,
+<a class="reference internal" href="#equation-eq-rotate-gauge">(10)</a> starting from
+<span class="math notranslate nohighlight">\(D_{nl,\alpha}\equiv\frac{\overline{H}_{nl,\alpha}^{\rm H}}{E_l-E_n}\)</span>,
+<span class="math notranslate nohighlight">\(H_\alpha^{\rm W}\equiv\partial_\alpha H^{\rm W}\)</span>,
+<span class="math notranslate nohighlight">\(A_{mn,\alpha}({\bf R})\equiv\langle\mathbf{0}m\vert\hat{r}_\alpha\vert{\bf R}n\rangle\)</span>,
+<span class="math notranslate nohighlight">\(\overline{\Omega}_\gamma^{\rm W} \equiv\epsilon_{\alpha\beta\gamma}\partial_\alpha A^{\rm W}_\beta\)</span>,
+<span class="math notranslate nohighlight">\(\partial_\alpha\equiv \partial/\partial{k_\alpha}\)</span>. The anomalous
+Hall conductivity is evaluated as an integral</p>
+<div class="math notranslate nohighlight" id="equation-eq-ahc">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-ahc" title="Permalink to this equation"></a></span>\[\sigma_{\alpha\beta}^{\rm AHE}=-\frac{e^2}{\hbar}\epsilon_{\alpha\beta\gamma}\int \frac{d{\bf k}}{(2\pi)^3}\Omega_\gamma({\bf k}).
+    \label{eq:AHC}\]</div>
+<p>Note, that while the direct Fourier transform
+(<a class="reference internal" href="#equation-eq-fourier-q-to-r">(7)</a>) is performed only once
+for the calculation, and is not repeated for the multiple
+<span class="math notranslate nohighlight">\({\bf k}\)</span> points upon interpolation, the inverse Fourier transform
+(<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>) is repeated for every
+interpolation <span class="math notranslate nohighlight">\({\bf k}\)</span> point. And in fact it presents the most
+time-consuming part of the calculation involving Wannier interpolation
+as implemented in the Wannier90 code.</p>
+</section>
+<section id="mixed-fourier-transform">
+<span id="sec-fft"></span><h2>Mixed Fourier transform<a class="headerlink" href="#mixed-fourier-transform" title="Permalink to this heading"></a></h2>
+<figure class="align-default" id="id7">
+<span id="figrefinement"></span><a class="reference internal image-reference" href="_images/refinement.pdf.svg"><img alt="_images/refinement.pdf.svg" src="_images/refinement.pdf.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">(a-f) Illustration of the procedure of mixed Fourier transform, adaptive refinement and use of symmetries.
+2D picture is used for visualization purposes, while the code actually works in 3D.
+The area of colored circles corresponds to the weight of the <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>-point,
+gray crosses denote the points with zero weight. See the text for detailed description.
+(g) AHC of bcc Fe, evaluated from a grid of <span class="math notranslate nohighlight">\(52\times 52\times 52\)</span> <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> points and 20 recursive adaptive refinement iterations.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>In this section we will see how the evaluation of
+(<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>) may be accelerated. It is
+easy to see that the computation time of a straightforward discrete
+Fourier transform scales with the number of <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors and
+<span class="math notranslate nohighlight">\({\bf k}\)</span> points as <span class="math notranslate nohighlight">\(t\propto N_{\bf R}N_{\bf k}\)</span>, and we
+are typically interested in a case <span class="math notranslate nohighlight">\(N_{\bf k}\gg N_{\bf R}\)</span>
+(<span class="math notranslate nohighlight">\(N_{\bf R}\approx N_{\bf q}\)</span>).</p>
+<p>When the Fourier transform is done on a regular grid of <span class="math notranslate nohighlight">\({\bf k}\)</span>
+points, it is usually appealing to use the FFT. For that one needs to
+place the <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors on a regular grid of size
+<span class="math notranslate nohighlight">\(N_{\bf k}\)</span>, fill the missing spots with zeros and perform the
+standard FFT, which will scale as
+<span class="math notranslate nohighlight">\(t\propto N_{\bf k}\log{N_{\bf k}}\)</span>. However there are some
+dificulties with such FFT. Mainly, because to perform FFT on a large
+grid implies storing the data for all <span class="math notranslate nohighlight">\({\bf k}\)</span> points in memory
+at the same time, which becomes a severe computational limitation. Also
+FFT does not allow to reduce computation to only the
+symmetry-irreducible <span class="math notranslate nohighlight">\({\bf k}\)</span> points, and is more difficult to do
+in parallel. However there is a way to combine the advantages of both
+the FFT and the usual discrete Fourier transform, leading to the concept
+of <em>mixed Fourier transform</em>.</p>
+<p>We want to evaluate (<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>) for a
+set of <span class="math notranslate nohighlight">\({\bf k}\)</span> points.</p>
+<div class="math notranslate nohighlight" id="equation-eq-kgrid">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-kgrid" title="Permalink to this equation"></a></span>\[{\bf k}_{n_1,n_2,n_3}=\frac{n_1}{N_{\bf k}^1}{\bf b}_1 +\frac{n_2}{N_{\bf k}^2}{\bf b}_2 +\frac{n_3}{N_{\bf k}^3}{\bf b}_3 ,   \label{eq:kgrid}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0\le n_i&lt; N_{\bf k}^i\)</span> – integers (<span class="math notranslate nohighlight">\(i=1,2,3\)</span>),
+<span class="math notranslate nohighlight">\(N_{\bf k}^i\)</span> – size of interpolation grid, <span class="math notranslate nohighlight">\({\bf b}_i\)</span> —
+reciprocal lattice vectors. Now suppose we can factorize
+<span class="math notranslate nohighlight">\(N_{\bf k}^i=N_{\rm FFT}^i N_{\bf K}^i\)</span> <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> . Then the set of
+points (<a class="reference internal" href="#equation-eq-kgrid">(14)</a>) is equivalent to a set of points
+<span class="math notranslate nohighlight">\({\bf k}={\bf K}+\boldsymbol{\kappa}\)</span>, where</p>
+<div class="math notranslate nohighlight" id="equation-eq-kgrid">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-kgrid" title="Permalink to this equation"></a></span>\[\begin{split}\begin{aligned}
+{\bf K}_{l_1,l_2,l_3}&amp;=&amp;\frac{l_1}{N_{\bf k}^1}{\bf b}_1 +\frac{l_2}{N_{\bf k}^2}{\bf b}_2 +\frac{l_3}{N_{\bf k}^3}{\bf b}_3,  \label{eq:Kgrid}  \\
+\boldsymbol{\kappa}_{m_1,m_2,m_3}&amp;=&amp;\frac{m_1}{N_{\rm FFT}^1}{\bf b}_1 +\frac{m_2}{N_{\rm FFT}^2}{\bf b}_2 +\frac{m_3}{N_{\rm FFT}^3}{\bf b}_3,    \end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0\le l_i&lt; N_{\bf K}^i\)</span>,
+<span class="math notranslate nohighlight">\(N_{\bf K}=\prod_i N_{\bf K}^i\)</span>, <span class="math notranslate nohighlight">\(0\le m_i&lt; N_{\rm FFT}^i\)</span>.
+This separation is illustrated in
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> (a), which shows a
+2<span class="math notranslate nohighlight">\(\times\)</span>2 <span class="math notranslate nohighlight">\({\bf K}\)</span>-grid, each corresponding to
+4<span class="math notranslate nohighlight">\(\times\)</span>4 FFT grid (dots of a certain color). Now for each
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-point we can define</p>
+<div class="math notranslate nohighlight" id="equation-eq-xkr">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-xkr" title="Permalink to this equation"></a></span>\[X_{mn}({\bf K},{\bf R})\equiv X_{mn}({\bf R})e^{i{\bf K}\cdot{\bf R}} \label{eq:XKR}\]</div>
+<p>and then <a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a> reads as</p>
+<div class="math notranslate nohighlight" id="equation-eq-xkk">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-xkk" title="Permalink to this equation"></a></span>\[X_{mn}^{\rm W}({\bf k}={\bf K}+\boldsymbol{\kappa}) = \sum_{\bf R}X_{mn}({\bf K},{\bf R})e^{i\boldsymbol{\kappa}\cdot{\bf R}} \label{eq:XKk}\]</div>
+<p>The principle idea of mixed Fourier transform consists in performing the
+Fourier transform <a class="reference internal" href="#equation-eq-xkk">(16)</a> as FFT, while
+<a class="reference internal" href="#equation-eq-xkr">(15)</a> is performed directly. To perform the FFT we put
+all the <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors on a grid
+<span class="math notranslate nohighlight">\(N_{\rm FFT}^1\times N_{\rm FFT}^2\times N_{\rm FFT}^3\)</span>, and a
+vector <span class="math notranslate nohighlight">\({\bf R}=\sum_{i=1}^3 n_i\mathbf{a}_i\)</span> is placed on a slot
+with coordinates <span class="math notranslate nohighlight">\(\widetilde{n}_i= n_i\,{\rm mod}\,N_{\rm FFT}^i\)</span>
+(<span class="math notranslate nohighlight">\(n_i\)</span> are both positive and negative integers, while
+<span class="math notranslate nohighlight">\(0\le \widetilde{n}_i&lt;N_{\rm FFT}^i\)</span>). It is important to choose
+the FFT grid big enough, so that two different <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors
+are not placed on the same slot in the grid.</p>
+<p>The advantages of this approach are the following. First, the
+computational time scales as <span class="math notranslate nohighlight">\(t_1\propto N_{\bf K}N_{\bf R}\)</span> for
+<a class="reference internal" href="#equation-eq-xkr">(15)</a> and
+<span class="math notranslate nohighlight">\(t_2\propto N_{\bf K}N_{\rm FFT}\log N_{\rm FFT}\)</span> for
+<a class="reference internal" href="#equation-eq-xkk">(16)</a>. Because it is required that
+<span class="math notranslate nohighlight">\(N_{\rm FFT}\ge N_{\bf R}\)</span> (to fit all <span class="math notranslate nohighlight">\({\bf R}\)</span>-vectors in
+the FFT box), we have
+<span class="math notranslate nohighlight">\(t_1 \le t_2 \propto N_{\bf k}\log N_{\rm FFT}\)</span> (in practice it
+occurs that <span class="math notranslate nohighlight">\(t_1 \ll t_2\)</span>), which scales better then both the Fast
+and ’slow’ Fourier transforms. Next, we can perform
+Eqs. <a class="reference internal" href="#equation-eq-xkr">(15)</a> and <a class="reference internal" href="#equation-eq-xkk">(16)</a> independently for
+different <span class="math notranslate nohighlight">\({\bf K}\)</span>-points. This saves us memory, and also offers
+a simple parallelization scheme. Also we can further restrict evaluation
+only to symmetry irreducible <span class="math notranslate nohighlight">\({\bf K}\)</span>-points
+(<a class="reference internal" href="#sec-symmetry"><span class="std std-ref">Symmetries</span></a>) and also perform adaptive
+refinement over <span class="math notranslate nohighlight">\({\bf K}\)</span>-points
+(<a class="reference internal" href="#sec-refine"><span class="std std-ref">Recursive adaptive refinement</span></a>).</p>
+<p>Moreover, the evaluation time of a mixed Fourier transform only
+logarithmically depends on the size of the <em>ab initio</em> grid (recall that
+<span class="math notranslate nohighlight">\(N_{\rm FFT}\sim N_{\bf R}\sim N_{\bf q}\)</span>), while for the slow
+Fourier transform, the dependence is linear. However, in practice we
+will see  (<a class="reference internal" href="timing.html#sec-timing"><span class="std std-ref">Speed</span></a>) that the Fourier transform in
+the present implementation consumes only a small portion of
+computational time, and therefore the overall computational time is
+practically independent of the size of the <em>ab initio</em> grid.</p>
+</section>
+<section id="symmetries">
+<span id="sec-symmetry"></span><h2>Symmetries<a class="headerlink" href="#symmetries" title="Permalink to this heading"></a></h2>
+<p>When we integrate some quantity over the BZ, at every
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-point (after summing over <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span>
+points) we obtain the result as a rank-<span class="math notranslate nohighlight">\(m\)</span> tensor
+<span class="math notranslate nohighlight">\(X_{i_1,\ldots,i_m}({\bf K})\)</span>, for example the berry curvature
+vector <span class="math notranslate nohighlight">\(\Omega_\gamma\)</span> or the conductivity tensor
+<span class="math notranslate nohighlight">\(\sigma_{xy}\)</span>. Then the BZ integral is expressed as a sum</p>
+<div class="math notranslate nohighlight" id="equation-eq-sumk">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-sumk" title="Permalink to this equation"></a></span>\[{\cal X}=\sum_{\bf K}^{\rm all}  X({\bf K})w_{\bf K}\label{eq:sumK}\]</div>
+<p>and we initially set <span class="math notranslate nohighlight">\(\{{\bf K}\}\)</span> as a regular grid
+<a class="reference internal" href="#equation-eq-kgrid">(14)</a> and <span class="math notranslate nohighlight">\(w_{\bf K}=1/N_{\bf K}\)</span>. Suppose
+<span class="math notranslate nohighlight">\(G\)</span> is the magnetic point group of the system. <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> We define the
+set of symmetry-irreducible <span class="math notranslate nohighlight">\({\bf K}\)</span> points <span class="math notranslate nohighlight">\(\rm irr\)</span> as a
+a set of points that <span class="math notranslate nohighlight">\(\forall {\bf K},{\bf K}'\in{\rm irr}\)</span>,
+<span class="math notranslate nohighlight">\(\forall g\in G\)</span> holds <span class="math notranslate nohighlight">\(g{\bf K}\neq{\bf K}'\)</span>, unless
+<span class="math notranslate nohighlight">\(g=E\)</span> (identity). Then we can rewrite the sum
+<a class="reference internal" href="#equation-eq-sumk">(17)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-sumk-split">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-sumk-split" title="Permalink to this equation"></a></span>\[{\cal X}=\sum_{\bf K}^{\rm all}  g_{\bf K}X(g_{\bf K}^{-1}{\bf K})w_{\bf K}
+      \label{eq:sumK-split}\]</div>
+<p>where we choose <span class="math notranslate nohighlight">\(g_{\bf K}\)</span> such that
+<span class="math notranslate nohighlight">\(g_{\bf K}^{-1}{\bf K}\in{\rm irr}\)</span> (this choice may be not
+unique), and obviously <span class="math notranslate nohighlight">\(g_{\bf K}=E\)</span> for
+<span class="math notranslate nohighlight">\({\bf K}\in{\rm irr}\)</span>. Thus, only the irreducible <span class="math notranslate nohighlight">\({\bf K}\)</span>
+points need to be evaluated. Next, to make sure that the result respects
+the symmetries, despite possible numerical inaccuracies, we symmetrize
+the result as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-symmetrize">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-symmetrize" title="Permalink to this equation"></a></span>\[{\cal\widetilde X} = \frac{1}{|G|}\sum_f^{G} f {\cal X}.   \label{eq:symmetrize}\]</div>
+<p>Note, that <span class="math notranslate nohighlight">\({\cal\widetilde X}={\cal X}\)</span> if the model respects the
+symmetry precisely (e.g. when symmetry-adapted WFs (Sakuma 2013) are
+used). Combining <a class="reference internal" href="#equation-eq-sumk-split">(18)</a> and
+<a class="reference internal" href="#equation-eq-symmetrize">(19)</a> and using
+<span class="math notranslate nohighlight">\(\sum_f^{G} f\cdot g_{\bf K}= \sum_f^{G} f\)</span> we get</p>
+<div class="math notranslate nohighlight" id="equation-eq-symmetrize-final">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-symmetrize-final" title="Permalink to this equation"></a></span>\[{\cal\widetilde X}= \frac{1}{|G|}\sum_f^{G} f \left[\sum_{\bf K}^{\rm irr}  X({\bf K}) \left( \sum_{{\bf K}'}^{G\cdot{\bf K}} w_{{\bf K}'} \right) \right] , \label{eq:symmetrize-final}\]</div>
+<p>where <span class="math notranslate nohighlight">\(G\cdot{\bf K}\)</span> denotes the orbit of <span class="math notranslate nohighlight">\({\bf K}\)</span> under
+action of group <span class="math notranslate nohighlight">\(G\)</span>. The latter equation reflects the
+implementation in the <code class="docutils literal notranslate"><span class="pre">WB</span></code> code. Starting from a regular grid of
+<span class="math notranslate nohighlight">\({\bf K}\)</span> points we search for pairs of symmetry-equivalent
+points. Whenever such a pair is found, one of the points is excluded and
+it’s weight is transferred to the other point. Compare
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> (a) and (b): the red
+points are removed and their weight is moved to green points. Thus we
+end with a set of irreducible <span class="math notranslate nohighlight">\({\bf K}\)</span>-point with weights
+<span class="math notranslate nohighlight">\(\widetilde{w}_{\bf K}=\sum_{{\bf K}'}^{G\cdot{\bf K}} w_{{\bf K}'}\)</span>.
+Next we evaluate <span class="math notranslate nohighlight">\(X({\bf K})\)</span> (employing the corresponding
+interpolation scheme) only at symmetry-irreducible
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-points. Note, that although some <span class="math notranslate nohighlight">\({\bf k}\)</span>-points
+corresponding to the same <span class="math notranslate nohighlight">\({\bf K}\)</span>-point (same color in
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> are equivalent, we have to
+evaluate them all to be able to use the FFT. Finally, after summation,
+we symmetrize the result. The described procedure achieves two goals:
+(i) reduce the computational costs and (ii) make the result precisely
+symmetric, even if the WFs are not perfectly symmetric. In the present
+example we managed to obtain highly symmetric WFs (although without
+employment of symmetry-adapted WFs method), and therefore the
+symmetrization procedure does not change the result (within relative
+accuracy <span class="math notranslate nohighlight">\(\sim 10^{-5}\)</span>). However, for complex materials such
+quality of WFs is not always easy to achieve.</p>
+</section>
+<section id="recursive-adaptive-refinement">
+<span id="sec-refine"></span><h2>Recursive adaptive refinement<a class="headerlink" href="#recursive-adaptive-refinement" title="Permalink to this heading"></a></h2>
+<p>It is well known that in calculations of quantities involving Berry
+curvature or orbital moments, one performs integration over
+<span class="math notranslate nohighlight">\({\bf k}\)</span>-space of a function that rapidly changes with
+<span class="math notranslate nohighlight">\({\bf k}\)</span>. As a result, small areas of <span class="math notranslate nohighlight">\({\bf k}\)</span>-space give
+the major contribution to the integral. Such areas often appear in the
+vicinity of Weyl points, nodal lines, as well as avoided crossings. To
+accelerate convergence with respect to the number of <span class="math notranslate nohighlight">\({\bf k}\)</span>
+points, we utilize adaptive mesh refinement similar to Refs. (
+<a class="reference external" href="https://doi.org/10.1103/PhysRevLett.92.037204.">Yao et al. 2004</a>;
+<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.74.195118">Wang et al. 2006</a>). The authors of (Yao et al. 2004; Wang et al.
+2006) assumed a pre-defined threshold, and the <span class="math notranslate nohighlight">\({\bf k}\)</span>-points
+yielding Berry curvature above the threshold were refined. This is
+inconvenient because one needs a good intuition to guess an optimal
+value for this threshold, because it depends both on the quantity one
+wants to calculate, and the material considered.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">WB</span></code> it is implemented in a way that does not require initial guess
+from the user. This procedure, in combination with symmetrization
+described above, is illustrated in
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> in two dimensions (2D),
+while the actual work in 3D is described below. After excluding
+symmetry-equivalent <span class="math notranslate nohighlight">\({\bf K}\)</span>-points
+(<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> (b)) the results are
+evaluated for every <span class="math notranslate nohighlight">\({\bf K}\)</span> point and stored. We assume that
+initially each <span class="math notranslate nohighlight">\({\bf K}\)</span> point has weight
+<span class="math notranslate nohighlight">\(\widetilde{w}_{\bf K}\)</span> and corresponds to a volume defined by
+vectors <span class="math notranslate nohighlight">\(\mathbf{c}_{\bf K}^i=\mathbf{b}_i/N_{\bf k}^i\)</span> centered
+at <span class="math notranslate nohighlight">\({\bf K}\)</span>. Then we pick a few “most important
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-points”. The criteria of importance may be different -
+either the Maximal value for any <span class="math notranslate nohighlight">\(E_F\)</span>, or maximal value summed
+over all <span class="math notranslate nohighlight">\(E_F\)</span>, or yielding most variation over the <span class="math notranslate nohighlight">\(E_F\)</span>
+(if the evaluated quantity is a function of Fermi level <span class="math notranslate nohighlight">\(E_F\)</span>).
+Suppose we selected the magenta point. Then those points are refined —
+replaced with 8 points around it with coordinates</p>
+<div class="math notranslate nohighlight">
+\[{\bf K}'={\bf K}\pm\frac{\mathbf{c}_{\bf K}^1}{4}\pm\frac{\mathbf{c}_{\bf K}^2}{4}\pm\frac{\mathbf{c}_{\bf K}^3}{4},\]</div>
+<p>where all combinationgs of <span class="math notranslate nohighlight">\(\pm\)</span> signs are used. In
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> (c) 4 new blue
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-points in the 2D case. The weight and volume of the
+initial point is distributed over the new points, thus
+<span class="math notranslate nohighlight">\(w_{{\bf K}'}=\widetilde{w}_{\bf K}/8\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{c}_{{\bf K}'}^i=\mathbf{c}_{{\bf K}}^i/2\)</span>. Then the
+symmetrization is applied again (the four blue points are connected by
+4-fold rotation) to exclude the equivalent points, and the weight of the
+equivalent points is collected on the remaining point, while the vectors
+<span class="math notranslate nohighlight">\(\mathbf{c}_{{\bf K}'}^i\)</span> are not changed. After the new
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-points are evaluated, we go to the next iteration of
+refinement. On each iteration any point may be refined, including both
+those from the initial regular grid, and those created during previous
+refinement iterations. The procedure stops after the pre-defined number
+of iterations was performed.
+<a class="reference internal" href="#figrefinement"><span class="std std-numref">Fig. 5</span></a> (g) shows how undesired
+artificial peaks of the the AHC curve are removed iteration by
+iteration, yielding a smooth curve (See <a class="reference internal" href="exampleFe.html#sec-example"><span class="std std-ref">Examples</span></a> for details).</p>
+</section>
+<section id="minimal-distance-replica-selection-method">
+<span id="sec-replica"></span><h2>Minimal-distance replica selection method<a class="headerlink" href="#minimal-distance-replica-selection-method" title="Permalink to this heading"></a></h2>
+<p>The MDRS method (<a class="reference external" href="https://doi.org/10.1088/1361-648x/ab51ff.">Pizzi et al. 2020</a>) allows to obtain a more accurate
+Wannier interpolation, in particular when moderate <span class="math notranslate nohighlight">\({\bf q}\)</span>-grids
+are used in the <em>ab initio</em> calculations. With MDRS method the Fourier
+transform <a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a> is modified in
+the following way:</p>
+<div class="math notranslate nohighlight" id="equation-eq-replica">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-replica" title="Permalink to this equation"></a></span>\[X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}\frac{1}{{\cal N}_{mn{\bf R}}} X_{mn}({\bf R})\sum_{j=1}^{{\cal N}_{mn{\bf R}}} e^{i{\bf k}\cdot\left({\bf R}+\mathbf{T}_{mn{\bf R}}^{(j)}\right)} ,\label{eq:replica}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{T}_{mn{\bf R}}^{(j)}\)</span> are
+<span class="math notranslate nohighlight">\({\cal N}_{mn{\bf R}}\)</span> lattice vectors that minimise the distance
+<span class="math notranslate nohighlight">\(|{\bf r}_m-({\bf r}_n+{\bf R}+{\bf T})|\)</span> for a given set
+<span class="math notranslate nohighlight">\(m,n,{\bf R}\)</span>. However, the evaluation of
+<a class="reference internal" href="#equation-eq-replica">(21)</a> is quite slower than
+<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>, because every
+<span class="math notranslate nohighlight">\({\bf k},m,n,{\bf R}\)</span> an extra loop over <span class="math notranslate nohighlight">\(j\)</span> is needed.
+Therefore calculations employing MDRS in <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code> (which is enabled
+by default) takes more time. Instead it is convenient to re-define the
+modified real-space matrix elements as</p>
+<div class="math notranslate nohighlight" id="equation-eq-replica1">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-replica1" title="Permalink to this equation"></a></span>\[\widetilde{X}_{mn}({\bf R}) = \sum_{{\bf R}'} \frac{1}{{\cal N}_{mn{\bf R}'}} X_{mn}({\bf R}') \sum_{j=1}^{{\cal N}_{mn{\bf R}'}}   \delta_{{\bf R},{\bf R}'+\mathbf{T}_{mn{\bf R}'}^{(j)}}\label{eq:replica1}\]</div>
+<p>only once for the calculation, and then the transformation to
+<span class="math notranslate nohighlight">\({\bf k}\)</span>-space is performed via</p>
+<div class="math notranslate nohighlight" id="equation-eq-replica2">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-replica2" title="Permalink to this equation"></a></span>\[X_{mn}^{\rm W}({\bf k})=\sum_{\bf R}e^{i{\bf k}{\bf R}} \widetilde{X}_{mn}({\bf R}). \label{eq:replica2}\]</div>
+<p>Note, that the set of <span class="math notranslate nohighlight">\({\bf R}\)</span> vectors in
+<a class="reference internal" href="#equation-eq-replica1">(22)</a> is increased compared to the initial
+set of vectors in <a class="reference internal" href="#equation-eq-fourier-q-to-r">(7)</a> in order
+to fit all nonzero elements <span class="math notranslate nohighlight">\(\widetilde{X}_{mn}({\bf R})\)</span> Equation
+<a class="reference internal" href="#equation-eq-replica2">(23)</a> having essentially same form as
+<a class="reference internal" href="#equation-eq-fourier-r-to-k">(9)</a>, can be evaluated via mixed
+Fourier transform, as described in <a class="reference internal" href="#sec-fft"><span class="std std-ref">Mixed Fourier transform</span></a>.</p>
+<p>Thus the MDRS method implemented in <code class="docutils literal notranslate"><span class="pre">WB</span></code> via
+Eqs. <a class="reference internal" href="#equation-eq-replica1">(22)</a>-<a class="reference internal" href="#equation-eq-replica2">(23)</a>,
+and has practically no extra computational cost, while giving notable
+accuracy improvement.</p>
+<span class="target" id="sec-fermisea"></span><aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>This is always possible unless <span class="math notranslate nohighlight">\(N_{\bf k}^i\)</span> is a prime number.
+But for really dense grids, we can adjust <span class="math notranslate nohighlight">\(N_{\bf k}^i\)</span> a bit,
+to be factorizable in any way we want.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Because <span class="math notranslate nohighlight">\(X({\bf K})\)</span> is invariant under translations, here we
+are interested in the point group, rather then space group.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="documentation.html" class="btn btn-neutral float-left" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation and technical remarks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

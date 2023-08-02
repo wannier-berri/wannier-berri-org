@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; Wannier Berri  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/exampleFe.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri  documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorials" href="tutorial.html" />
+    <link rel="prev" title="Speed" href="timing.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities (incomplete list)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Speed</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ahc-of-bcc-fe">AHC of bcc Fe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tabulating-berry-curvature">Tabulating Berry curvature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-lines-and-planes-from-the-3d-grid-tab-plot">Plotting lines and planes from the 3D grid(tab_plot)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-along-lines">Plotting along lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optical-conductivity">Optical conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spin-hall-conductivity">Spin Hall conductivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">External software used</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<span id="sec-example"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h1>
+<p><strong>Note</strong>: The following exampole is written with an outdated (but still working so far) inteface using ithe <cite>integrate()</cite> and <cite>tabulate()</cite> functions.
+This is done only for demonstaration purposes.  Updated tutorials in Jupyter notebooks are available on <a class="reference external" href="https://github.com/wannier-berri/WannierBerri-tutorial">GitHub</a></p>
+<section id="ahc-of-bcc-fe">
+<h2>AHC of bcc Fe<a class="headerlink" href="#ahc-of-bcc-fe" title="Permalink to this heading"></a></h2>
+<p>First let’s consider a simple example - we will calculate a anomalous
+Hall conductivity of bcc iron, and also visualize the Berry curvature
+over the Fermi surface. This is equivalent to example18 of Wannier90.</p>
+<p>We assume that we have performed the ab-initio calculations and
+constructed the MLWFs for bcc iron with magnetization along [001]
+direction (<span class="math notranslate nohighlight">\(z\)</span>). For information how to do it, please refer to the
+manuals of the abinitio codes and Wannier90. Also a nicely ilustrated tutorial is published
+on the <a class="reference external" href="https://www.wanniertools.org/tutorials/high-quality-wfs/">WanierToools</a> website.</p>
+<p>After that, the calculation is performed by the following short python
+script. First, we import the needed packages</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wannierberri</span> <span class="k">as</span> <span class="nn">wberri</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>Then we read the information about the system. Either we read the
+information abot Wanier functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">system</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span><span class="n">berry</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>thie reads the files <code class="docutils literal notranslate"><span class="pre">’Fe.chk’</span></code>, <code class="docutils literal notranslate"><span class="pre">’Fe.eig’</span></code>, <code class="docutils literal notranslate"><span class="pre">’Fe.mmn’</span></code>. <a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>
+Alternatively, we can read all information from a file <code class="docutils literal notranslate"><span class="pre">Fe_tb.dat</span></code>,
+which is also written by Wannier90, or maybe composed by user from any
+tight-binding model. This can be done by the following line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">system</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">System_tb</span><span class="p">(</span><span class="s1">&#39;Fe_tb.dat&#39;</span><span class="p">,</span><span class="n">berry</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we define the symmetries of the system that we wish to take into
+account:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generators</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Inversion&#39;</span><span class="p">,</span><span class="s1">&#39;C4z&#39;</span><span class="p">,</span><span class="s1">&#39;TimeReversal*C2x&#39;</span><span class="p">]</span>
+<span class="n">system</span><span class="o">.</span><span class="n">set_symmetry</span><span class="p">(</span><span class="n">generators</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the ab initio calculation we have specified the magnetization along
+the <span class="math notranslate nohighlight">\(z\)</span> axis, hence the symmetries that are preserved are
+inversion <span class="math notranslate nohighlight">\(\cal I\)</span>, 4-fold rotation around the <span class="math notranslate nohighlight">\(z\)</span> axis
+<span class="math notranslate nohighlight">\(C_{4z}\)</span>,and a combination of time-reversal <span class="math notranslate nohighlight">\(\cal T\)</span> and
+2-fold rotation around the <span class="math notranslate nohighlight">\(x\)</span> axis <span class="math notranslate nohighlight">\(C_{2x}\)</span>. Here we need
+only the generators of the symmetry group. The other symmetries will be
+automatically obtained by taking products of these generators. E.g. the
+mirror <span class="math notranslate nohighlight">\(M_z=(C_{4z})^2\cdot \cal I\)</span>. Next we need to set the
+<span class="math notranslate nohighlight">\({\bf k}\)</span>-point grid. Most conveniently it can be done by setting
+the <code class="docutils literal notranslate"><span class="pre">’length’</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">system</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will guarantee the grid to be consistent with the symmetries, and
+the spacing of <span class="math notranslate nohighlight">\(k\)</span>-points will be
+<span class="math notranslate nohighlight">\(\Delta k\approx \frac{2\pi}{\rm length}\)</span>. In this particular case
+a grid of <span class="math notranslate nohighlight">\(52\times52\times52\)</span> will be generated, but that
+is dependent on the size of the unit cell.</p>
+<p>To determine all parameters of parallel execution we define an object
+of class <code class="xref py py-class docutils literal notranslate"><span class="pre">Parallel</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ray&quot;</span><span class="p">,</span><span class="n">num_cpus</span><span class="o">=</span><span class="n">num_proc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or, if for a serial execution just set <cite>paralle=None</cite>.</p>
+<p>Next, we want to integrate the Berry curvature to get the AHC. This is
+done by the <code class="docutils literal notranslate"><span class="pre">wberri.integrate</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wberri</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span>
+            <span class="n">Efermi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">13.</span><span class="p">,</span><span class="mi">1001</span><span class="p">),</span>
+            <span class="n">smearEf</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># 10K</span>
+            <span class="n">quantities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ahc&quot;</span><span class="p">,</span><span class="s2">&quot;dos&quot;</span><span class="p">,</span><span class="s2">&quot;cumdos&quot;</span><span class="p">],</span>
+            <span class="n">parallel</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">,</span>
+            <span class="n">adpt_num_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">fout_name</span><span class="o">=</span><span class="s2">&quot;Fe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and in addition to AHC we evaluate the density of states (DOS) and
+cumulative DOS. We consider Fermi level as a free parameter, and we scan
+over a set of Fermi levels from 12 to 13 eV with a step of 1 meV. To
+avoid too strong jittering of the curve, we introduce a small smearing
+over the Fermi level corresponding to temperature 10K (<span class="math notranslate nohighlight">\(\sim1\)</span>
+meV). It is known, that in BZ integrations, some <span class="math notranslate nohighlight">\({\bf k}\)</span> points
+give huge spites in the <span class="math notranslate nohighlight">\(E_F\)</span>-resolved curves. This is especially
+strong for Berry curvature, which diverges near band degeneracies and
+avoided crossings, that fall close to the Fermi level. To make the
+calculation more precise around those points, and adaptive recursive
+refinement algorithm is used, and we set the number of iterations to
+10 <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The integration is done in parallel by means of the
+<code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> module and the parameter <code class="docutils literal notranslate"><span class="pre">’numproc’</span></code> specifies
+that a <code class="docutils literal notranslate"><span class="pre">Pool</span></code> of 16 worker processes is used. Both the smeared and
+unsmeared result is written to the files, e.g. <code class="docutils literal notranslate"><span class="pre">Fe-???_iter-????.dat</span></code>.
+In particular, from the cumulative dos (<code class="docutils literal notranslate"><span class="pre">Fe-cumdos_iter-????.dat</span></code>) we
+can find the precise position of the Fermi level <span class="math notranslate nohighlight">\(E_F=12.610\)</span> eV —
+the energy at which the cumulative DOS reaches 8 electrons per unit
+cell. This is much more accurate, then the result of the <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code> which
+is evaluated from a coarse abinitio grid.</p>
+<p>Next, it is instructive to plot the AHC after each iteration
+(<a class="reference internal" href="#figfeahc"><span class="std std-numref">Fig. 4</span></a>). One can see that already after a few
+iterations most of the chaotic peaks are removed, and we can get a
+reasonably sooth curve already starting from a not very dense grid.</p>
+<figure class="align-default" id="id9">
+<span id="figfeahc"></span><a class="reference internal image-reference" href="_images/Fe-ahc.pdf.svg"><img alt="_images/Fe-ahc.pdf.svg" src="_images/Fe-ahc.pdf.svg" width="60%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">AHC of bcc iron after each refinement iteration</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tabulating-berry-curvature">
+<h2>Tabulating Berry curvature<a class="headerlink" href="#tabulating-berry-curvature" title="Permalink to this heading"></a></h2>
+<p>Now we wish to visualize the Berry curvature to see, from which parts of
+the BZ mostly contribute for the AHC. For that purpose we employ the
+following method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wberri</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span>
+             <span class="n">quantities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;berry&quot;</span><span class="p">],</span>
+             <span class="n">frmsf_name</span><span class="o">=</span><span class="s2">&quot;Fe&quot;</span><span class="p">,</span>
+             <span class="n">parallel</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">,</span>
+             <span class="n">ibands</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
+             <span class="n">Ef0</span><span class="o">=</span><span class="mf">12.6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which produce files <code class="docutils literal notranslate"><span class="pre">Fe_berry-x.frmsf</span></code>, <code class="docutils literal notranslate"><span class="pre">Fe_berry-y.frmsf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Fe_berry-z.frmsf</span></code>, containing the Energies and Berry curvature of
+bands <code class="docutils literal notranslate"><span class="pre">4,5,6,7,8,9</span></code> <a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> over. The format is chosen such that the
+files can be directly passed to the <code class="docutils literal notranslate"><span class="pre">FermiSurfer</span></code> <a class="reference external" href="https://fermisurfer.osdn.jp/"><img alt="FermiSurfer" src="https://fermisurfer.osdn.jp/figs/fermisurfer.png" style="height: 30px;" /></a> visualization
+tool(“Fermisurfer Visualization Tool,” n.d.; Kawamura 2019) <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>
+However, the hotspots of Berry curvature usually present tiny areas with
+huge magnitude of <span class="math notranslate nohighlight">\({\cal O}\)</span>. Hence to get a smoother picture we
+apply a logarithmic scale as</p>
+<div class="math notranslate nohighlight">
+\[f(x)={\rm sign}(x)\ln(1+|x|/x_0)
+\label{eq:logscale}\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_0=1\)</span> ???. Now we can use the <code class="docutils literal notranslate"><span class="pre">FermiSurfer</span></code> to produce
+<a class="reference internal" href="capabilities.html#figfefrmsf"><span class="std std-numref">Fig. 1</span></a></p>
+<p>It is often more convinient to get <code class="xref py py-class docutils literal notranslate"><span class="pre">TABresult</span></code> object, and saving the large formatted files only when needed, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tab_result</span> <span class="o">=</span> <span class="n">wberri</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                             <span class="n">grid</span><span class="p">,</span>
+                             <span class="n">quantities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;berry&quot;</span><span class="p">],</span>
+                             <span class="p">)</span>
+</pre></div>
+</div>
+<p>Ths object can be pickled (saved to disk):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">tab_result</span><span class="p">,</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Te_berry.pickle&quot;</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">))</span>  <span class="c1">#Then the result is saved in the file &quot;Te_berry.pickle&quot; now.</span>
+</pre></div>
+</div>
+<p>and then loaded in another script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tab_result</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Te_berry.pickle&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and then get the FermiSurfer files only for specific components and bands, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Te-berry-x.frmsf&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tab_result</span><span class="o">.</span><span class="n">fermiSurfer</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">component</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">efermi</span><span class="o">=</span><span class="n">Ef0</span><span class="p">,</span><span class="n">npar</span><span class="o">=</span><span class="n">num_proc</span><span class="p">,</span><span class="n">iband</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">18</span><span class="p">)))</span> <span class="c1">#iband - counts from zero</span>
+<span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Te-E.frmsf&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tab_result</span><span class="o">.</span><span class="n">fermiSurfer</span><span class="p">(</span><span class="n">efermi</span><span class="o">=</span><span class="n">Ef0</span><span class="p">,</span><span class="n">npar</span><span class="o">=</span><span class="n">num_proc</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>One can also extract the data as arrays like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Energy_CB</span><span class="o">=</span><span class="n">tab_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+<span class="n">berry</span><span class="o">=</span><span class="n">tab_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">iband</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">component</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to further process in any other way.</p>
+</section>
+<section id="plotting-lines-and-planes-from-the-3d-grid-tab-plot">
+<h2>Plotting lines and planes from the 3D grid(tab_plot)<a class="headerlink" href="#plotting-lines-and-planes-from-the-3d-grid-tab-plot" title="Permalink to this heading"></a></h2>
+<p>Once we have the <code class="xref py py-class docutils literal notranslate"><span class="pre">TABresult</span></code> object, we can plot the band structure with a quantity on a path or a plane of k-points</p>
+<p>Path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">wannierberri</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tab_plot</span> <span class="n">tab_result</span><span class="o">.</span><span class="n">pickle</span> <span class="nb">type</span><span class="o">=</span><span class="n">Line</span> <span class="n">quantity</span><span class="o">=</span><span class="kc">True</span> <span class="n">kpath</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span> <span class="n">namelist</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">Z</span> <span class="n">qtype</span><span class="o">=</span><span class="n">berry</span> <span class="n">component</span><span class="o">=</span><span class="n">z</span>
+</pre></div>
+</div>
+<p>plane:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">wannierberri</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tab_plot</span> <span class="n">tab_result</span><span class="o">.</span><span class="n">pickle</span> <span class="nb">type</span><span class="o">=</span><span class="n">Plane</span> <span class="n">quantity</span><span class="o">=</span><span class="kc">True</span> <span class="n">Efermi</span><span class="o">=-</span><span class="mf">0.5</span> <span class="n">vec1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="n">vec2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="n">qtype</span><span class="o">=</span><span class="n">berry</span> <span class="n">component</span><span class="o">=</span><span class="n">z</span>
+</pre></div>
+</div>
+<p>For more comments on the parameters please check</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">wannierberri</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tab_plot</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-along-lines">
+<h2>Plotting along lines<a class="headerlink" href="#plotting-along-lines" title="Permalink to this heading"></a></h2>
+<p>Since version 0.8.2 it is also possible to tabulate  bands and other properties (e.g. spin or berry curvature)
+along any arbitrary pathes in the BZ.
+This feature is not well tested yet, so please try it and report any problems you meet.
+An example for valence band of tellurium along the K-H-K line is given below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                 <span class="n">k_nodes</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span><span class="kc">None</span><span class="p">,[</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],],</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;K1&quot;</span><span class="p">,</span><span class="s2">&quot;H&quot;</span><span class="p">,</span><span class="s2">&quot;H&quot;</span><span class="p">,</span><span class="s2">&quot;K2&quot;</span><span class="p">],</span>
+                 <span class="n">length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">path_result</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                 <span class="n">grid</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+                 <span class="n">quantities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;berry&#39;</span><span class="p">],</span>
+                 <span class="p">)</span>
+</pre></div>
+</div>
+<p>now plot the result</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path_result</span><span class="o">.</span><span class="n">plot_path_fat</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span>
+              <span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span>
+              <span class="n">component</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span>
+              <span class="n">save_file</span><span class="o">=</span><span class="s2">&quot;Te-berry-VB.pdf&quot;</span><span class="p">,</span>
+              <span class="n">Eshift</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">Emin</span><span class="o">=</span><span class="mf">5.65</span><span class="p">,</span>  <span class="n">Emax</span><span class="o">=</span><span class="mf">5.85</span><span class="p">,</span>
+              <span class="n">iband</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fatband&quot;</span><span class="p">,</span>
+              <span class="n">fatfactor</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+              <span class="n">cut_k</span><span class="o">=</span><span class="kc">True</span>
+              <span class="p">)</span>
+</pre></div>
+</div>
+<p>Which should produce a figure like this:</p>
+<figure class="align-default" id="figteberry">
+<a class="reference internal image-reference" href="_images/Te-berry-VB.pdf.svg"><img alt="_images/Te-berry-VB.pdf.svg" src="_images/Te-berry-VB.pdf.svg" width="40%" /></a>
+</figure>
+<p>or you may get the data to plot in whatever way you like</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">getKline</span><span class="p">()</span>
+<span class="n">E</span><span class="o">=</span><span class="n">path_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span><span class="n">iband</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">))</span>
+<span class="n">curv</span><span class="o">=</span><span class="n">path_result</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">quantity</span><span class="o">=</span><span class="s1">&#39;berry&#39;</span><span class="p">,</span><span class="n">iband</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">),</span><span class="n">component</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="optical-conductivity">
+<span id="sec-optconf-example"></span><h2>Optical conductivity<a class="headerlink" href="#optical-conductivity" title="Permalink to this heading"></a></h2>
+<p>The Kubo formula <a class="reference internal" href="capabilities.html#equation-optcondform">(2)</a> for the (interband) optical conductivity may be evaluated by adding ‘opt_conductivity’
+to the list of quantities to integrate, for more details see the example below.</p>
+<p>The implementation is based on the one in postw90. Thus, with identical input and equivalent parameters,
+it reproduces the results from postw90. Note, however, that when using the full power of wannier-berri (symmetries, adaptive refinement etc.)
+small deviations are to be expected. Please refer to <a class="reference internal" href="benchmark.html#sec-benchmark"><span class="std std-ref">Benchmarking with postw90.x</span></a>.</p>
+<p>In contrast to the other quantities currently implemented, this is an optical quantity and therefore requires a list of frequencies rather than a list of Fermi energies; the relevant argument name for wberri.integrate() is omega and its values are expected to be in eV. Additionally, there are several options (following the usual syntax of wannier-berri) that can be specified:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>‘mu’</strong> : chemical potential in units of eV</p></li>
+<li><p><strong>‘kBT’</strong> : temperature in units of eV/kB (can also be 0)</p></li>
+<li><p><strong>‘smr_fixed_width’</strong> : fixed smearing parameter in units of eV</p></li>
+<li><p><strong>‘smr_type’</strong> : analytical form of the broadened delta function (must be one of ‘Lorentzian’ or ‘Gaussian’)</p></li>
+</ul>
+</div></blockquote>
+<p>Here smearing refers to the approximation of the delta function in the Kubo formula.</p>
+<p>An example call might look as follows (with appropriate initialization):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wberri</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+        <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mi">701</span><span class="p">),</span>
+        <span class="n">Efermi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">13.</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span>
+        <span class="n">smearEf</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">quantities</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;opt_conductivity&#39;</span> <span class="p">],</span>
+        <span class="n">adpt_num_iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">fout_name</span> <span class="o">=</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+        <span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;smr_fixed_width&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;smr_type&#39;</span><span class="p">:</span><span class="s1">&#39;Gaussian&#39;</span> <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>However, note that <cite>smearEf</cite> parameter has a sence only when many Fermi levels are considered,
+(when difference between Fermi levels is smaller then <cite>smearEf</cite> in eV) otherwise ` ‘kBT’:&lt;value in eV&gt; ` shoould be added to the
+<cite>parameters</cite> dictionary. But do not use both <cite>kBT</cite> and <cite>smearEf</cite> at the same time.</p>
+</section>
+<section id="spin-hall-conductivity">
+<h2>Spin Hall conductivity<a class="headerlink" href="#spin-hall-conductivity" title="Permalink to this heading"></a></h2>
+<p>Utilizing the similar formula as the optical conductivity, the intrinsic spin Hall conductivity(SHC) can be calculated. Two methods are available:
+<code class="docutils literal notranslate"><span class="pre">SHCryoo</span></code> and <code class="docutils literal notranslate"><span class="pre">SHCqiao</span></code>. The former requires <code class="docutils literal notranslate"><span class="pre">.sHu</span></code> and <code class="docutils literal notranslate"><span class="pre">.sIu</span></code> files from pw2wannier90.x(see <span class="xref std std-ref">mmn2uHu</span>),
+while the latter does not and instead uses an approximation <span class="math notranslate nohighlight">\(\mathbf{1}=\sum_{l\in \it{ab\,initio}} \vert u_{l{\bf q}}\rangle\langle u_{l{\bf q}}\vert\)</span>.</p>
+<p>There are more additional quantities than optical conductivity that can be specified.
+Note that if one of these is not specified, the module will calculate all the 27 components of SHC.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>‘shc_alpha’</strong> : direction of spin current (1, 2, 3)</p></li>
+<li><p><strong>‘shc_beta’</strong> : direction of applied electric field (1, 2, 3)</p></li>
+<li><p><strong>‘shc_gamma’</strong> : direction of spin polarization (1, 2, 3)</p></li>
+</ul>
+</div></blockquote>
+<p>You can check which component to calculate by the code below, considering the point group your material belongs to.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wberri</span><span class="o">.</span><span class="n">symmetry</span><span class="o">.</span><span class="n">Group</span><span class="p">([</span><span class="s1">&#39;Inversion&#39;</span><span class="p">,</span> <span class="s1">&#39;C4x&#39;</span><span class="p">,</span> <span class="s1">&#39;C4y&#39;</span><span class="p">,</span> <span class="s1">&#39;C4z&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">get_symmetric_components</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also set symmetry before integrating, but note that specification of <code class="docutils literal notranslate"><span class="pre">shc_alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">shc_beta</span></code>, and <code class="docutils literal notranslate"><span class="pre">shc_gamma</span></code> may not work with symmetry when the point group does not belong to the Laue group cubic I, so it is not recommended to use specification and symmetry at the same time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># with symmetry</span>
+<span class="n">system</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span><span class="n">seedname</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">SHCryoo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCqiao</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_ws</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transl_inv</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">generators</span><span class="o">=</span><span class="p">[</span><span class="n">SYM</span><span class="o">.</span><span class="n">Inversion</span><span class="p">,</span> <span class="n">SYM</span><span class="o">.</span><span class="n">C4z</span><span class="p">,</span> <span class="n">SYM</span><span class="o">.</span><span class="n">C4x</span><span class="p">,</span> <span class="n">SYM</span><span class="o">.</span><span class="n">C4y</span><span class="p">]</span>
+<span class="n">system</span><span class="o">.</span><span class="n">set_symmetry</span><span class="p">(</span><span class="n">generators</span><span class="p">)</span>
+
+<span class="n">wberri</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+        <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mi">701</span><span class="p">),</span>
+        <span class="n">Efermi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">13.</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span>
+        <span class="n">smearEf</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">quantities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SHC_ryoo&#39;</span><span class="p">,</span> <span class="s1">&#39;SHC_qiao&#39;</span><span class="p">],</span>
+        <span class="n">adpt_num_iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">fout_name</span> <span class="o">=</span> <span class="s1">&#39;pt&#39;</span><span class="p">,</span>
+        <span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;smr_fixed_width&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;smr_type&#39;</span><span class="p">:</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># with specification of shc_alpha, shc_beta, and shc_gamma</span>
+<span class="n">system</span><span class="o">=</span><span class="n">wberri</span><span class="o">.</span><span class="n">System_w90</span><span class="p">(</span><span class="n">seedname</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">SHCryoo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">SHCqiao</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_ws</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transl_inv</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">wberri</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+        <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mi">701</span><span class="p">),</span>
+        <span class="n">Efermi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">12.</span><span class="p">,</span><span class="mf">13.</span><span class="p">,</span><span class="mi">21</span><span class="p">),</span>
+        <span class="n">smearEf</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">quantities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SHC_ryoo&#39;</span><span class="p">,</span> <span class="s1">&#39;SHC_qiao&#39;</span><span class="p">],</span>
+        <span class="n">adpt_num_iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">fout_name</span> <span class="o">=</span> <span class="s1">&#39;pt&#39;</span><span class="p">,</span>
+        <span class="n">restart</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;smr_fixed_width&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;smr_type&#39;</span><span class="p">:</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;shc_alpha&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;shc_beta&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;shc_gamma&#39;</span><span class="p">:</span><span class="mi">3</span> <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">6</a><span class="fn-bracket">]</span></span>
+<p>the first is written by Wannier90, the other two by the interface of
+the ab initio code (e.g. pw2wannier90.x)</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">7</a><span class="fn-bracket">]</span></span>
+<p>see Sec. <a class="reference internal" href="methods.html#sec-refine"><span class="std std-ref">Recursive adaptive refinement</span></a></p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">8</a><span class="fn-bracket">]</span></span>
+<p>counting starts from zero</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">9</a><span class="fn-bracket">]</span></span>
+<p>For description of the format please refer to (<cite>Kawamura 2019 &lt;https://www.sciencedirect.com/science/article/pii/S0010465519300347?via%3Dihub&gt;</cite>). This
+format is an arbitrary choice, and by means of simple manipulations
+the file may be transformed to be used by ant other visualization
+software.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="timing.html" class="btn btn-neutral float-left" title="Speed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

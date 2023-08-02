@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wannier Berri &mdash; Wannier Berri  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/index.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri  documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Capabilities (incomplete list)" href="capabilities.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities (incomplete list)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exampleFe.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation and technical remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking with <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to the code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">External software used</a></li>
+</ul>
+
+    <a href="genindex.html">Index</a>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Wannier Berri</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <a class="reference internal image-reference" href="_images/WANNIERBERRI-line-redblack.png"><img alt="Wannier Berri" class="align-center" src="_images/WANNIERBERRI-line-redblack.png" style="width: 700px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.</p>
+<section id="advantages">
+<h1>Advantages<a class="headerlink" href="#advantages" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>speed</strong>  - it may be upto <strong>1000 or more times faster</strong> then <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code> : <a class="reference internal" href="timing.html#sec-timing"><span class="std std-ref">comparison</span></a></p></li>
+<li><p><strong>extensive functionality</strong> – see <a class="reference internal" href="capabilities.html#sec-capabilities"><span class="std std-ref">Capabilities (incomplete list)</span></a></p></li>
+<li><p><strong>felxibility</strong> – may be used with Wannier functions and tight-binding models</p></li>
+<li><p>use of  <a class="reference internal" href="methods.html#sec-symmetry"><span class="std std-ref">symmetries</span></a>  to reduce evaluation to symmetry-irreducible <strong>k</strong> points.</p></li>
+<li><p><a class="reference internal" href="methods.html#sec-fft"><span class="std std-ref">fast Fourier transform</span></a></p></li>
+<li><p>Recursive adaptive <a class="reference internal" href="methods.html#sec-refine"><span class="std std-ref">refinement</span></a> for enhanced accuracy.</p></li>
+<li><p><a class="reference internal" href="methods.html#sec-fermisea"><span class="std std-ref">Fermi scan</span></a>  and <a class="reference internal" href="methods.html#sec-replica"><span class="std std-ref">minimal distance replica selection</span></a> have no cost</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="please-cite">
+<h1>Please cite<a class="headerlink" href="#please-cite" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>Stepan S. Tsirkin. High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code. <a class="reference external" href="https://www.nature.com/articles/s41524-021-00498-5">npj Comput Mater 7, 33 (2021).</a> (Open Access).</p></li>
+<li><p>Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. <cite>“Magnetism and
+Anomalous Transport in the Weyl Semimetal PrAlGe: Possible Route
+to Axial Gauge Fields.”</cite> <a class="reference external" href="https://doi.org/10.1038/s41535-019-0207-7">Npj Quantum Materials 5 (1): 5.</a>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h1>
+<p>Link to detailed <a class="reference external" href="https://doc.wannier-berri.org">Documentation</a></p>
+</section>
+<section id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h1>
+<p>Tutorials in Jupyter notebooks are available on <a class="reference external" href="https://github.com/wannier-berri/WannierBerri-tutorial">GitHub</a></p>
+</section>
+<section id="contact">
+<h1>Contact:<a class="headerlink" href="#contact" title="Permalink to this heading"></a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <strong>preferred</strong> way of commonication is  the <a class="reference external" href="https://github.com/wannier-berri/wannier-berri">GitHub repository:</a>   via <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/issues" data-icon="octicon-issue-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Issue</a> or  <a class="github-button" href="https://github.com/wannier-berri/wannier-berri/discussions" data-icon="octicon-discussion-opened" aria-label="Issue wannier-berri/wannier-berri on GitHub">Discussion</a></p></li>
+<li><p><a class="github-button" href="https://github.com/wannier-berri/wannier-berri/subscription" data-icon="octicon-eye" aria-label="Watch wannier-berri/wannier-berri on GitHub">Watch</a>
+<a class="github-button" href="https://github.com/wannier-berri/wannier-berri/archive/master.zip" data-icon="octicon-download" aria-label="Download wannier-berri/wannier-berri on GitHub">Download</a>
+<a class="github-button" href="https://github.com/wannier-berri/wannier-berri/fork" data-icon="octicon-repo-forked" aria-label="Fork wannier-berri/wannier-berri on GitHub">Fork</a>
+<a class="github-button" href="https://github.com/wannier-berri/wannier-berri" data-icon="octicon-star" aria-label="Star wannier-berri/wannier-berri on GitHub">Star</a>
+<a class="github-button" href="https://github.com/wannier-berri" aria-label="Follow @wannier-berri on GitHub">Follow @wannier-berri</a></p></li>
+<li><p>Consider subscribing to the <a class="reference external" href="https://physik.lists.uzh.ch/sympa/info/wannier-berri">mailing list</a> .
+If you do not wish to register on GitHub, questions also may be asked there
+Also updates to the code are announced there.
+Also please search through the mailing list <a class="reference external" href="https://physik.lists.uzh.ch/sympa/arc/wannier-berri">archive</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="install-via-pip-pypi">
+<h1>Install  via <code class="docutils literal notranslate"><span class="pre">pip</span></code>  (<a class="reference external" href="https://pypi.org/project/wannierberri">PyPI</a>):<a class="headerlink" href="#install-via-pip-pypi" title="Permalink to this heading"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">wannierberri</span>
+</pre></div>
+</div>
+</section>
+<section id="author">
+<h1>Author<a class="headerlink" href="#author" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://www.ikerbasque.net/es/stepan-tsirkin">Stepan Tsirkin</a>,
+Ikerbasque Research Fellow at <a class="reference external" href="https://cfm.ehu.es/team/stepan-tsirkin/">Materials Physics Center</a>, San Sebastian, Spain.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="capabilities.html" class="btn btn-neutral float-right" title="Capabilities (incomplete list)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
