@@ -5,8 +5,8 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = docs
-BUILDDIR      = ./
+SOURCEDIR     = source
+BUILDDIR      = ./docs
 
 default: html
 
@@ -42,6 +42,6 @@ clean_fig_svg :
 	rm docs/imag/*/*.pdf.svg
 
 clean_html :
-	rm html/*.html
+	rm docs/*.html
 	rm -r doctrees
 
