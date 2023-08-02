@@ -45,3 +45,5 @@ clean_html :
 	rm docs/*.html
 	rm -r doctrees
 
+clean_all :
+	rm -r docs

@@ -24,6 +24,7 @@ jobs:
         sudo apt-get install pdf2svg
     - name: make
       run: |
+        make clean_all
         make
     - name: Commit files
       run: |
