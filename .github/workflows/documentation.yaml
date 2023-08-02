@@ -28,7 +28,7 @@ jobs:
     - name: Commit files
       run: |
         rm -r docs/doctrees
-        mv -r docs/html/* docs
+        mv  docs/html/* docs
         rm -r docs/html
         git config --global user.name "stepan-tsirkin"
         git config --global user.email "stepan.tsirkin@ehu.eus"
