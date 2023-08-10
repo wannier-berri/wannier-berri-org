@@ -119,11 +119,9 @@ Ikerbasque Research Fellow at `Materials Physics Center <https://cfm.ehu.es/team
    tutorial
    documentation
    methods
-   install
    benchmark
    people
    contribute
-   software
 
 
 .. |NEW| image:: imag/NEW.jpg
