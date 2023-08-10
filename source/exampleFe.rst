@@ -1,7 +1,11 @@
 .. _sec-example:
 
-Examples: 
+Examples 
 ====================================
+
+**Note**: The following exampole is written with an outdated (but still working so far) inteface using ithe `integrate()` and `tabulate()` functions. 
+This is done only for demonstaration purposes.  Updated tutorials in Jupyter notebooks are available on `GitHub  <https://github.com/wannier-berri/WannierBerri-tutorial>`__
+
 
 AHC of bcc Fe
 ---------------

@@ -14,8 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
 
-import wannierberri
-
 # -- Project information -----------------------------------------------------
 
 project = 'Wannier Berri'
@@ -24,7 +22,6 @@ author = 'Stepan Tsirkin'
 numfig = True
 
 # The full version, including alpha/beta/rc tags
-release = wannierberri.__version__
 
 # -- General configuration ---------------------------------------------------
 
@@ -36,7 +33,7 @@ release = wannierberri.__version__
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon',
-    'nbsphinx',
+#    'nbsphinx',
 ]
 
 
@@ -119,7 +116,7 @@ html_favicon = 'imag/logo-WB/WB-logo.ico'
 html_logo = 'imag/logo-WB/WANNIERBERRI-redblack.png'
 html_show_sourcelink = False
 
-nbsphinx_allow_errors = True
+#nbsphinx_allow_errors = True
 
 # True Basque colors
 bred='#D62618' 
