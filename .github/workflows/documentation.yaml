@@ -1,42 +1,24 @@
-name: wannier-berri-org-html
-
-on:
-  pull_request:
-  push:
-
+name: Docs
+on: [push, pull_request, workflow_dispatch]
+permissions:
+    contents: write
 jobs:
-  build:
-
+  docs:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install sphinx sphinx-rtd-theme sphinx-pyreverse sphinx_sitemap
-        set -ev
-        sudo apt-get install pdf2svg
-    - name: make
-      run: |
-        make clean_all
-        make
-    - name: Commit files
-      run: |
-        rm -r docs/doctrees
-        mv  docs/html/* docs
-        rm -r docs/html
-        touch docs/.nojekyll
-        echo "wannier-berri.org" > docs/CNAME
-        git config --global user.name "stepan-tsirkin"
-        git config --global user.email "stepan.tsirkin@ehu.eus"
-
-        git add docs
-        git commit -m "deployed sphinx"
-        git push
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install dependencies
+        run: |
+          pip install sphinx sphinx_rtd_theme sphinx-pyreverse sphinx_sitemap
+      - name: Sphinx build
+        run: |
+          sphinx-build source _build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/
+          force_orphan: true
