@@ -2,5 +2,5 @@
 Documentation
 *********************
 
-Link to detailed `Documentation <https://doc.wannier-berri.org>`__
+Link to detailed `Documentation <https://docs.wannier-berri.org>`__
 
