@@ -39,11 +39,6 @@ Please cite
 
     *   Stepan S. Tsirkin. High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code. `npj Comput Mater 7, 33 (2021).  <https://www.nature.com/articles/s41524-021-00498-5>`_ (Open Access).
 
-    *   Destraz, Daniel, Lakshmi Das, Stepan S. Tsirkin, Yang Xu, Titus Neupert, J. Chang, A. Schilling, et al. 2020. `“Magnetism and
-        Anomalous Transport in the Weyl Semimetal PrAlGe: Possible Route
-        to Axial Gauge Fields.”` `Npj Quantum Materials 5 (1): 5. <https://doi.org/10.1038/s41535-019-0207-7>`_.
-
-
 
 ################
 Documentation
@@ -109,19 +104,28 @@ Author
 `Stepan Tsirkin  <https://www.ikerbasque.net/es/stepan-tsirkin>`_,   
 Ikerbasque Research Fellow at `Materials Physics Center <https://cfm.ehu.es/team/stepan-tsirkin/>`__, San Sebastian, Spain.
 
+
+************************
+Contributing to the code
+************************
+
+``WannierBerri``\ is a free open-source projec, under the GNU public
+Licence v2, and everyone is welcome to modify the code to better match
+one’s own needs. Contributions that might be useful for general public
+are encouraged to be submitted via pull request to the  
+`gitHub repository <https://github.com/wannier-berri/wannier-berri>`_.
+
+
 .. toctree:: 
    :maxdepth: 3
    :hidden:
 
    capabilities
-   timing
+   Documentation <https://docs.wannier-berri.org>
+   Tutorials  <https://tutorial.wannier-berri.org>
    exampleFe
-   tutorial
-   documentation
-   methods
-   benchmark
+   timing
    people
-   contribute
 
 
 .. |NEW| image:: imag/NEW.jpg
