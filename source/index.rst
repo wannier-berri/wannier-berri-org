@@ -14,6 +14,7 @@
 
 a code to calculate different properties by means of Wannier interpolation: Berry curvature, orbital moment and derived properties.
 
+|NEW| :ref:`WannierBerri World Tour <sec-worldtour>`  is open for applications
 
 #############
 Advantages
@@ -120,6 +121,7 @@ are encouraged to be submitted via pull request to the
    :maxdepth: 3
    :hidden:
 
+   worldtour
    capabilities
    Documentation <https://docs.wannier-berri.org>
    Tutorials  <https://tutorial.wannier-berri.org>
