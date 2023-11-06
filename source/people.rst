@@ -6,12 +6,12 @@ People
 Author
 ==============
 
-Stepan Tsirkin, University of Zurich
+Stepan Tsirkin, Ikerbasque Foundation
 
-.. image:: imag/photo/stepan-kaffeberri-mask.jpg
+.. image:: imag/photo/Stepan.jpg
    :width: 300px
    :alt: Stepan Tsirkin
-   :target: https://www.physik.uzh.ch/en/groups/neupert/team/tsirkin.html
+   :target: https://www.ikerbasque.net/es/stepan-tsirkin
 
 |
 
@@ -109,9 +109,9 @@ Contributed
 Working on 
 ============
 
-.. list-table:: 
+.. list-table::
    :align: left
-   :widths: 33 33 33
+   :widths: 33 33
    :header-rows: 0
 
 
@@ -121,27 +121,33 @@ Working on
         Donostia International Physics Center
 
         San Sebastián, Spain
-       
+
         .. image:: https://pbs.twimg.com/profile_images/1166671811062501376/YBQfHmSm_400x400.jpg
            :width: 200px
            :alt: Inigo Robredo
 
-      -
+      - Óscar Pozo Ocaña
 
-      -
+        Centro de Física de Materiales
 
+        San Sebastián, Spain
+
+        .. image:: imag/photo/Oscar.jpg
+           :width: 200px
+           :alt: Oscar Pozo
+           :target: https://cfm.ehu.es/team/oscar-pozo-ocana/
 
 
 Consultants
 ==============
-.. list-table:: 
+.. list-table::
    :align: left
    :widths: 33 33 
    :header-rows: 0
 
    *  - Ivo Souza
 
-        IKERBASQUE foundation
+        Ikerbasque Foundation
 
         .. image:: https://cfm.ehu.es/view/files/Perfil-Ivo-Souza_mini.jpg
            :width: 200px
