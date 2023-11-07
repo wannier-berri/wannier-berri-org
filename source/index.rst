@@ -128,7 +128,7 @@ are encouraged to be submitted via pull request to the
    exampleFe
    timing
    people
-   citations
+   publications
 
 
 .. |NEW| image:: imag/NEW.jpg

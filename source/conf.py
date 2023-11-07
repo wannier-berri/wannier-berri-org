@@ -33,9 +33,26 @@ numfig = True
 extensions = [
     'sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode', 'sphinx_pyreverse' , 'sphinx_sitemap' , 'sphinx.ext.napoleon',
+    'sphinxcontrib.bibtex'
 #    'nbsphinx',
 ]
 
+#latex_elements = {
+# 'preamble': r'''
+#     \usepackage{hyperref,doi}
+# '''
+#}
+
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
+from bibstyle import MyStyle
+import pybtex.plugin
+pybtex.plugin.register_plugin('pybtex.style.formatting', 'mystyle', MyStyle)
+bibtex_bibfiles = ['citing-wb.bib', 'using-wb.bib', 'using-wb-tmp.bib']
+bibtex_default_style = 'mystyle'
+#bibtex_default_style = 'unsrt'
+#bibtex_encoding = 'latin'
 
 html_baseurl = 'https://wannier-berri.org'
 # Add any paths that contain templates here, relative to this directory.
