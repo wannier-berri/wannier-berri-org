@@ -78,10 +78,10 @@ Contributed
           :alt: Miguel Angel Jimenez Herrera
           :target: https://cfm.ehu.es/team/miguel-angel-jimenez-herrera/
 
-     - Ji Hoon Ryoo, 
-      
+     - Ji Hoon Ryoo,
+
        Seoul National University
-       
+
        Republic of Korea
 
        .. image:: imag/photo/jihoon.png
@@ -100,7 +100,15 @@ Contributed
            :alt: Julen
            :target: https://cfm.ehu.es/team/julen-ibanez-azpiroz/
 
-     - 
+     - Seung-Ju Hong,
+
+       Seoul National University
+
+       Republic of Korea
+
+       .. image:: imag/photo/SeungJu.jpg
+           :height: 200px
+           :alt: Seung-Ju
 
      - 
 
