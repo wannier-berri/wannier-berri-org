@@ -8,7 +8,7 @@ Capabilities (incomplete list)
 .. role:: red
 .. role:: green
 
-**Note** : This is an incomplete list. Please refer to `Documentation <https://doc.wannier-berri.org>`__ for details.
+**Note** : This is an incomplete list. Please refer to `Documentation for calculators <https://docs.wannier-berri.org/en/master/docs/calculators.html>`__ for details.
 
 
 Integration
