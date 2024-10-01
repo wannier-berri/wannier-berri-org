@@ -125,7 +125,6 @@ are encouraged to be submitted via pull request to the
    capabilities
    Documentation <https://docs.wannier-berri.org>
    Tutorials  <https://tutorial.wannier-berri.org>
-   exampleFe
    timing
    people
    publications
