@@ -110,40 +110,39 @@ Contributed
            :height: 200px
            :alt: Seung-Ju
 
-     - 
+     - Óscar Pozo Ocaña
 
+       Centro de Física de Materiales
 
+       San Sebastián, Spain
 
-Working on 
-============
-
-.. list-table::
-   :align: left
-   :widths: 33 33
-   :header-rows: 0
-
-
-
-   *  - Iñigo Robredo Magro
-
-        Donostia International Physics Center
-
-        San Sebastián, Spain
-
-        .. image:: https://pbs.twimg.com/profile_images/1166671811062501376/YBQfHmSm_400x400.jpg
-           :width: 200px
-           :alt: Inigo Robredo
-
-      - Óscar Pozo Ocaña
-
-        Centro de Física de Materiales
-
-        San Sebastián, Spain
-
-        .. image:: imag/photo/Oscar.jpg
+       .. image:: imag/photo/Oscar.jpg
            :width: 200px
            :alt: Oscar Pozo
            :target: https://cfm.ehu.es/team/oscar-pozo-ocana/
+
+
+
+.. Working on 
+.. ============
+
+.. .. list-table::
+..    :align: left
+..    :widths: 33 33
+..    :header-rows: 0
+
+
+
+..    *  - Iñigo Robredo Magro
+
+..         Donostia International Physics Center
+
+..         San Sebastián, Spain
+
+..         .. image:: https://pbs.twimg.com/profile_images/1166671811062501376/YBQfHmSm_400x400.jpg
+..            :width: 200px
+..            :alt: Inigo Robredo
+
 
 
 Consultants

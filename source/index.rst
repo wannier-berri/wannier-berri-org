@@ -20,26 +20,46 @@ a code to calculate different properties by means of Wannier interpolation: Berr
 Advantages
 #############
 
+    * |NEW| Symmetry adapted Wannier functions (R. Sakuma `Phys. Rev. B 87, 235109 (2013) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.87.235109>`__ )with 
+
+      - spin-orbit coupling
+      - time-reversal symmetry
+      - magnetic symmetries
+      - frozen window
+      - compatible with Quantum ESPRESSO, VASP, and Abinit 
+
+      See `documentation <https://docs.wannier-berri.org/en/master/docs/wannierisation.html>`__ 
+      and `tutorial <https://tutorial.wannier-berri.org/tutorials/6_wannierisation/wannierise.html>`__  for details
+
     *  **speed**  - it may be upto **1000 or more times faster** then ``postw90.x`` : :ref:`comparison  <sec-timing>`
 
     *  **extensive functionality** -- see :ref:`sec-capabilities`
 
-    *  **felxibility** -- may be used with Wannier functions and tight-binding models
+    *  **felxibility** -- may be used with 
+         - Wannier functions calculated by 
+               +  WannierBerri itself ( `docs <https://docs.wannier-berri.org/en/master/docs/wannierisation.html>`__ )
+               +  Wannier90 ( `docs <https://docs.wannier-berri.org/en/master/docs/system.html#id1>`__ )
+               +  FPLO ( `docs <https://docs.wannier-berri.org/en/master/docs/system.html#fplo>`__ )
+               +  ASE ( `docs <https://docs.wannier-berri.org/en/master/docs/system.html#ase>`__ )
+         -  tight-binding models
+               + PythTB ( `docs <https://docs.wannier-berri.org/en/master/docs/system.html#pythtb>`__ )
+               + TBmodels ( `docs <https://docs.wannier-berri.org/en/master/docs/system.html#tbmodels>`__ )
+         - :math:`k\cdot p` `models <https://docs.wannier-berri.org/en/master/docs/system.html#mathbf-k-cdot-mathbf-p-models>`__
+         
+    *  use of `symmetries <https://docs.wannier-berri.org/en/master/symmetries.html>`__  to reduce evaluation to symmetry-irreducible **k** points and increase precision.
 
-    *  use of  :ref:`symmetries <sec-symmetry>`  to reduce evaluation to symmetry-irreducible **k** points.
+    *  `fast Fourier transform  <https://www.nature.com/articles/s41524-021-00498-5/figures/1>`__  
 
-    *  :ref:`fast Fourier transform  <sec-FFT>`  
+    *  Recursive adaptive  `refinement   <https://www.nature.com/articles/s41524-021-00498-5/figures/1>`__ for enhanced accuracy.
 
-    *  Recursive adaptive :ref:`refinement   <sec-refine>` for enhanced accuracy.
-
-    *  :ref:`Fermi scan <sec-fermisea>`  and :ref:`minimal distance replica selection  <sec-replica>` have no cost
+    *  `Fermi scan <https://www.nature.com/articles/s41524-021-00498-5/figures/4>`__  and
+       `minimal distance replica selection  <https://www.nature.com/articles/s41524-021-00498-5/figures/3>`__ have no cost
 
 #############
 Please cite
 #############
 
     *   Stepan S. Tsirkin. High performance Wannier interpolation of Berry curvature and related quantities with WannierBerri code. `npj Comput Mater 7, 33 (2021).  <https://www.nature.com/articles/s41524-021-00498-5>`_ (Open Access).
-
 
 ################
 Documentation
