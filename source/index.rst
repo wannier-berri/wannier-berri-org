@@ -31,6 +31,10 @@ Advantages
       See `documentation <https://docs.wannier-berri.org/en/master/docs/wannierisation.html>`__ 
       and `tutorial <https://tutorial.wannier-berri.org/tutorials/6_wannierisation/wannierise.html>`__  for details
 
+   * |NEW| Search for suitable projections based on the symmetry indecators of the DFT bands within the frozen window. 
+     See `documentation <https://docs.wannier-berri.org/en/master/docs/projections_searcher.html>`__ 
+     and `tutorial <https://tutorial.wannier-berri.org/tutorials/7_find_projections/find_projections.html>`__  for details
+
     *  **speed**  - it may be upto **1000 or more times faster** then ``postw90.x`` : :ref:`comparison  <sec-timing>`
 
     *  **extensive functionality** -- see :ref:`sec-capabilities`
@@ -150,6 +154,5 @@ are encouraged to be submitted via pull request to the
    publications
 
 
-.. |NEW| image:: imag/NEW.jpg
-   :width: 100px
-   :alt: NEW!
+.. include:: shortcuts.rst
+

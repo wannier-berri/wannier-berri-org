@@ -3,4 +3,9 @@
 .. |integrate| replace:: :obj:`wannierberri.__old_API.__main.integrate`
 .. |tabulate| replace:: :obj:`wannierberri.__old_API.__main.tabulate`
 
+
+.. |NEW| image:: imag/new.png
+   :width: 60px
+   :alt: NEW!
+
 .. role:: red

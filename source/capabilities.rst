@@ -11,6 +11,28 @@ Capabilities
 **Note** : This is an incomplete list. Please refer to `Documentation for calculators <https://docs.wannier-berri.org/en/master/docs/calculators.html>`__ for details.
 
 
+|NEW| Wannierisation
+---------------
+
+ WannierBerri can now construct Symmetry adapted Wannier functions (R. Sakuma `Phys. Rev. B 87, 235109 (2013) <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.87.235109>`__ )with 
+
+   - spin-orbit coupling
+   - time-reversal symmetry
+   - magnetic symmetries
+   - frozen window
+   - compatible with Quantum ESPRESSO, VASP, and Abinit 
+
+See `documentation <https://docs.wannier-berri.org/en/master/docs/wannierisation.html>`__ 
+and `tutorial <https://tutorial.wannier-berri.org/tutorials/6_wannierisation/wannierise.html>`__  for details
+
+|NEW| Automated search for projections
+--------------------------------
+
+ Search for suitable projections based on the symmetry indecators of the DFT bands within the frozen window. 
+See `documentation <https://docs.wannier-berri.org/en/master/docs/projections_searcher.html>`__ 
+and `tutorial <https://tutorial.wannier-berri.org/tutorials/7_find_projections/find_projections.html>`__  for details
+
+
 Integration
 -----------
 
@@ -130,3 +152,5 @@ The |mmn2uHu| and |vaspspn| modules were initially developed and
 used in (`Tsirkin, Puente, and Souza 2018 <https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035158>`_) as separate scripts. 
 
 .. include:: shortcuts.rst
+
+
