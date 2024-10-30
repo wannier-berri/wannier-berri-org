@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speed &mdash; Wannier Berri  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css?v=bc4545fb" />
+
+  
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/timing.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri  documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="People" href="people.html" />
+    <link rel="prev" title="Capabilities" href="capabilities.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="worldtour.html">WannierBerri World Tour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.wannier-berri.org">Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://tutorial.wannier-berri.org">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications using WannierBerri</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Speed</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="speed">
+<span id="sec-timing"></span><h1>Speed<a class="headerlink" href="#speed" title="Link to this heading"></a></h1>
+<p>In this section we will compare the calculation time for the
+calculations of anomalous Hall conductivity using Wannier90 and
+<code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>. We will take the example of bcc Fe and vary different
+parameters. Calculations were performed on identical 32-core virtual
+nodes of the ScienceCloud cluster at University of Zurich. The nodes are
+based on AMD EPYC 7702 64-Core Processors with frequency 2GHz and 128 GB
+RAM per node, and one node was used per task.</p>
+<p>The computation consists of two phases. First, some preliminary
+operations are done. Those include reading the input files and
+performing Fourier transform from ab initio grid <span class="math notranslate nohighlight">\({\bf q}\)</span> to
+real-space vectors <span class="math notranslate nohighlight">\({\bf R}\)</span> :
+eqs. <a class="reference external" href="#eq:fourier_q_to_R_H">[eq:fourier_q_to_R_H]</a> and
+<a class="reference external" href="#eq:fourier_q_to_R">[eq:fourier_q_to_R]</a>. This operation takes in
+<code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>(postw90) between 2 (3) seconds for the small ab-initio grid
+4x4x4 and 2 (3) minutes for a large grid of 16x16x16. This time is
+mostly taken by reading the large formatted text file <code class="docutils literal notranslate"><span class="pre">Fe.mmn</span></code>, and it
+is done only once and does not scale with the density of the
+interpolation grid. In <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>this is done in the constructor of
+the <code class="docutils literal notranslate"><span class="pre">System\_w90</span></code> class, and the object can be saved on disk using a
+<code class="docutils literal notranslate"><span class="pre">pickle</span></code> module, so that this operation does not repeat for further
+calculations.</p>
+<p>Next comes the interpolation part itself, for which the evaluation time
+scales linearly with the number of <span class="math notranslate nohighlight">\({\bf k}\)</span>-points used. Further
+the time for an interpolation grid 200x200x200 is given, which is a
+rather good grid to make an accurate calculation for this material.</p>
+<figure class="align-default" id="fig-timing">
+<img alt="_images/timing-NK.pdf.svg" src="_images/timing-NK.pdf.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Computational time for AHC using <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>(triangles)
+and <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>(circles) for different ab initio grids. For
+<code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>the calculations are done with (yellow) and without
+(purple) MDRS. Fpr <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>the calculations are done with (cyan)
+and without (red) use of symmetries.</span><a class="headerlink" href="#fig-timing" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>We start with comparing time with the MDRS switched off
+(<code class="docutils literal notranslate"><span class="pre">use_ws_distance=False</span></code>) and without use of symmetries in <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>.
+As can be seen in <a class="reference internal" href="#fig-timing"><span class="std std-numref">Fig. 2</span></a>, for a small abinitio
+<span class="math notranslate nohighlight">\({\bf q}\)</span>-grid 4x4x4 <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>is just slightly faster then
+<code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>. However, for dense <span class="math notranslate nohighlight">\({\bf q}\)</span>-grids the
+computational time of <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>grows linearly with the number of
+<span class="math notranslate nohighlight">\({\bf q}\)</span> points, while in <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>it stays almost the same.
+This happens because in <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>the Fourier transform is major
+time-consuming routine. On the other hand, in <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>, although cost
+of the mixed Fourier transform is expected to grow logarithmically with
+the ab-initio grid (see <span class="xref std std-ref">sec-FFT</span>), we do not see it
+because Fourier transform amounts only to <span class="math notranslate nohighlight">\(\sim 10\)</span>% of the
+computational time.</p>
+<p>Next, we switch on the MDRS method (<code class="docutils literal notranslate"><span class="pre">use_ws_distance=True</span></code>) in
+<code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>, and the computational time grows by a factor of 5. On the
+other hand the computational time does not change (not shown), just by
+construction, as described in <span class="xref std std-ref">sec-replica</span>.</p>
+<p>Finally let’s switch on the use of symmetries in <span class="math notranslate nohighlight">\({ \tt WannierBerri }\)</span>.
+Thus the computational time decreases by a factor of 8. In the
+ultra-dense grid limit one would expect the speedup to be approximately
+equal to the number of elements in the group — 16 in the present
+example, due to exclusion of symmetry-equivalent <span class="math notranslate nohighlight">\({\bf K}\)</span>-points.
+But this does not happen, because we use an FFT grid of 25x25x25
+<span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span>-points, hence the <span class="math notranslate nohighlight">\({\bf K}\)</span>-grid is
+only <span class="math notranslate nohighlight">\(8x8x8\)</span>, and a considerable part of <span class="math notranslate nohighlight">\({\bf K}\)</span>-points
+are at high-symmetry positions. Therefore they do not have symmetric
+partners to be excluded from the calculation.</p>
+<figure class="align-default" id="fig-timing-fscan">
+<img alt="_images/timing-Efermi.pdf.svg" src="_images/timing-Efermi.pdf.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Computational time for scanning multiple chemical
+potentials using <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>and <code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>for different ab
+initio grids. MDRS method and symmetries are disabled here.</span><a class="headerlink" href="#fig-timing-fscan" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Thus we can see that the difference in computational time with
+<code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>and <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>reaches 3 orders of magnitude for this
+example. Note that The examples above were performed only for the
+pristene Fermi level. Now let’s see what happens upon scanning the
+chemical potential (<a class="reference internal" href="#fig-timing-fscan"><span class="std std-numref">Fig. 3</span></a>). In <code class="docutils literal notranslate"><span class="pre">WannierBerri</span></code>the
+computational time remains practically unchanged when we use upto
+<span class="math notranslate nohighlight">\(N_\mu\approx1000\)</span> chemical potentials, and only start to grow
+considerably at <span class="math notranslate nohighlight">\(N_\mu\sim 10^4\)</span>. On the other hand in
+<code class="docutils literal notranslate"><span class="pre">postw90.x</span></code>the computational time significantly grows with
+<span class="math notranslate nohighlight">\(N_\mu\)</span>, which is especially remarkable for small
+<span class="math notranslate nohighlight">\({\bf q}\)</span>-grids.</p>
+<p>In this section we did not use the adaptive refinement procedure.
+However when on starts from a rather dense grid of
+<span class="math notranslate nohighlight">\({\bf K}\)</span>-points, the new <span class="math notranslate nohighlight">\({\bf K}\)</span>-points coming from the
+refinement procedure constitute only a small portion of the initial
+grid, and hence do not contribute much into computational time.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="capabilities.html" class="btn btn-neutral float-left" title="Capabilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="people.html" class="btn btn-neutral float-right" title="People" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

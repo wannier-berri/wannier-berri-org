@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capabilities &mdash; Wannier Berri  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css?v=bc4545fb" />
+
+  
+    <link rel="shortcut icon" href="_static/WB-logo.ico"/>
+    <link rel="canonical" href="https://wannier-berri.org/capabilities.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Wannier Berri  documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Speed" href="timing.html" />
+    <link rel="prev" title="WannierBerri World Tour" href="worldtour.html" />
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #009C46" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/WANNIERBERRI-redblack.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="worldtour.html">WannierBerri World Tour</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Capabilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#new-wannierisation"> Wannierisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-automated-search-for-projections"> Automated search for projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration">Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#static-frequency-independent-quantities">Static (frequency-independent) quantities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-frequency-dependent-quantities">Dynamic (frequency-dependent) quantities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tabulating">Tabulating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-of-additional-matrix-elements">Evaluation of additional matrix elements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mmn2uhu">mmn2uHu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vaspspn">vaspspn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.wannier-berri.org">Documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://tutorial.wannier-berri.org">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timing.html">Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">People</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications using WannierBerri</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #009C46" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wannier Berri</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Capabilities</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="capabilities">
+<span id="sec-capabilities"></span><h1>Capabilities<a class="headerlink" href="#capabilities" title="Link to this heading"></a></h1>
+<p><strong>Note</strong> : This is an incomplete list. Please refer to <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/calculators.html">Documentation for calculators</a> for details.</p>
+<section id="new-wannierisation">
+<h2><a class="reference internal" href="_images/new.png"><img alt="NEW!" src="_images/new.png" style="width: 60px;" /></a> Wannierisation<a class="headerlink" href="#new-wannierisation" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>WannierBerri can now construct Symmetry adapted Wannier functions (R. Sakuma <a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.87.235109">Phys. Rev. B 87, 235109 (2013)</a> )with</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>spin-orbit coupling</p></li>
+<li><p>time-reversal symmetry</p></li>
+<li><p>magnetic symmetries</p></li>
+<li><p>frozen window</p></li>
+<li><p>compatible with Quantum ESPRESSO, VASP, and Abinit</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>See <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/wannierisation.html">documentation</a>
+and <a class="reference external" href="https://tutorial.wannier-berri.org/tutorials/6_wannierisation/wannierise.html">tutorial</a>  for details</p>
+</section>
+<section id="new-automated-search-for-projections">
+<h2><a class="reference internal" href="_images/new.png"><img alt="NEW!" src="_images/new.png" style="width: 60px;" /></a> Automated search for projections<a class="headerlink" href="#new-automated-search-for-projections" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>Search for suitable projections based on the symmetry indecators of the DFT bands within the frozen window.</p>
+</div></blockquote>
+<p>See <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/projections_searcher.html">documentation</a>
+and <a class="reference external" href="https://tutorial.wannier-berri.org/tutorials/7_find_projections/find_projections.html">tutorial</a>  for details</p>
+</section>
+<section id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Link to this heading"></a></h2>
+<p>see <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/calculators.html">Calculators</a> for details</p>
+<p>The code may be used to evaluate the following quantities, represented
+as Brillouin zone integrals.</p>
+<section id="static-frequency-independent-quantities">
+<h3>Static (frequency-independent) quantities<a class="headerlink" href="#static-frequency-independent-quantities" title="Link to this heading"></a></h3>
+<p>see <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/calculators.html#static-dependent-only-on-fermi-level">StaticCalculator</a> for details</p>
+</section>
+<section id="dynamic-frequency-dependent-quantities">
+<h3>Dynamic (frequency-dependent) quantities<a class="headerlink" href="#dynamic-frequency-dependent-quantities" title="Link to this heading"></a></h3>
+<p>see <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/calculators.html#dynamic-dependent-on-fermi-level-and-frequency">DynamicCalculator</a> for details</p>
+</section>
+</section>
+<section id="tabulating">
+<h2>Tabulating<a class="headerlink" href="#tabulating" title="Link to this heading"></a></h2>
+<figure class="align-default" id="id1">
+<span id="figfefrmsf"></span><img alt="_images/Fe-berry.pdf.svg" src="_images/Fe-berry.pdf.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Fermi surface of bcc iron, colored by the Berry curvature
+<span class="math notranslate nohighlight">\(\Omega_z\)</span>. Figure produced using <a class="reference external" href="https://fermisurfer.osdn.jp/">FermiSurfer</a>.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">WannerBerri</span></code> can also tabulate certain band-resolved quantities over the
+Brillouin zone producing files <code class="docutils literal notranslate"><span class="pre">Fe_berry-?.frmsf</span></code>, containing the Energies
+and Berry curvature of bands <code class="docutils literal notranslate"><span class="pre">4-9</span></code> (band counting starts from zero).
+The format of the files allows to be directly passed to the
+<code class="docutils literal notranslate"><span class="pre">FermiSurfer</span></code> visualization tool (Kawamura 2019) which can produce a
+plot like <a class="reference internal" href="#figfefrmsf"><span class="std std-numref">Fig. 1</span></a>. Transformation of files to other
+visualization software is straightforward.</p>
+<p>Some of the quantites that are available to tabulate are:</p>
+<ul>
+<li><p>Berry curvature [Å<sup>2</sup>]</p>
+<div class="math notranslate nohighlight">
+\[\Omega^\gamma_n({\bf k})=-\epsilon_{\alpha\beta\gamma}{\rm Im\,}\langle\partial_\alpha u_{n{\bf k}}\vert\partial_\beta u_{n{\bf k}}\rangle;\]</div>
+</li>
+<li><p>orbital moment of Bloch states [eV·Å<sup>2</sup>]</p>
+<div class="math notranslate nohighlight">
+\[m^\gamma_n({\bf k})=\frac{e}{2\hbar}\epsilon_{\alpha\beta\gamma}{\rm Im\,}\langle\partial_\alpha u_{n{\bf k}}\vert H_{\bf k}-E_{n{\bf k}}\vert\partial_\beta u_{n{\bf k}}\rangle;\]</div>
+</li>
+<li><p>the expectation value of the Pauli operator [ħ]</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{s}_n({\bf k})=\langle u_{n{\bf k}}\vert\hat{\bf \sigma}\vert u_{n{\bf k}}\rangle;\]</div>
+</li>
+<li><p>the band gradients [eV·Å] <span class="math notranslate nohighlight">\(\nabla_{\bf k}E_{n{\bf k}}\)</span>.</p></li>
+<li><p>Spin Berry curvature [ħ·Å<sup>2</sup>]. Requires an additional parameter <code class="docutils literal notranslate"><span class="pre">spin_current_type</span></code> which can be <code class="docutils literal notranslate"><span class="pre">&quot;ryoo&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;qiao&quot;</span></code>.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\Omega^{{\rm spin};\,\gamma}_{\alpha\beta, n}({\bf k}) = -2 {\rm Im} \sum_{\substack{l \\ \varepsilon_{l{\bf k}} \neq \varepsilon_{n{\bf k}}}}
+\frac{\langle\psi_{n{\bf k}}\vert \frac{1}{2} \{ s^{\gamma}, v_\alpha \} \vert\psi_{l{\bf k}}\rangle
+\langle\psi_{l{\bf k}}\vert v_\beta\vert\psi_{n{\bf k}}\rangle}
+{(\varepsilon_{n{\bf k}}-\varepsilon_{l{\bf k}})^2}.\end{split}\]</div>
+</div></blockquote>
+</li>
+<li><p>k-space derivatives of the above quantities (following the <a class="reference external" href="https://arxiv.org/abs/2303.10129">paper</a>)</p></li>
+</ul>
+<p>see <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/calculators.html#tabulating">full list here</a></p>
+</section>
+<section id="evaluation-of-additional-matrix-elements">
+<h2>Evaluation of additional matrix elements<a class="headerlink" href="#evaluation-of-additional-matrix-elements" title="Link to this heading"></a></h2>
+<p>In order to produce the matrix elements that are not evaluated by a particular <em>ab initio</em> code, the following interfaces
+have been developed:</p>
+<section id="mmn2uhu">
+<h3>mmn2uHu<a class="headerlink" href="#mmn2uhu" title="Link to this heading"></a></h3>
+<p>see <a class="reference external" href="https://docs.wannier-berri.org/en/master/docs/mmn2uHu.html">documentation</a> for more details</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code> module evaluates the (<code class="docutils literal notranslate"><span class="pre">.uHu</span></code> file) containing the matrix elements needed for orbital moment calculations</p>
+<div class="math notranslate nohighlight">
+\[C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})=\langle u_{m{\bf q}+\mathbf{b}_1}\vert\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}_2}\rangle.\]</div>
+<p>on the basis of the <code class="docutils literal notranslate"><span class="pre">.mmn</span></code> and <code class="docutils literal notranslate"><span class="pre">.eig</span></code> files by means of the sum-over-states formula</p>
+<div class="math notranslate nohighlight">
+\[C_{mn}^{\mathbf{b}_1,\mathbf{b}_2}({\bf q})\approx\sum_l^{l_{\rm max}}  \left(M_{lm}^{\mathbf{b}_1}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}_2}({\bf q}).\]</div>
+<p>and the (<code class="docutils literal notranslate"><span class="pre">.sHu</span></code> and <code class="docutils literal notranslate"><span class="pre">.sIu</span></code> file) containing the matrix elements needed for Ryoo’s spin current calculations(<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.235113">Ryoo, Park, and Souza 2019</a>)
+on the basis of the <code class="docutils literal notranslate"><span class="pre">.mmn</span></code>, <code class="docutils literal notranslate"><span class="pre">.spn</span></code> and <code class="docutils literal notranslate"><span class="pre">.eig</span></code> files by means of the sum-over-states formula</p>
+<div class="math notranslate nohighlight">
+\[\langle u_{m{\bf q}}\vert\hat{s}\hat{H}_{\bf q}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^* E_{l{\bf q}}   M_{ln}^{\mathbf{b}}({\bf q}).\]</div>
+<div class="math notranslate nohighlight">
+\[\langle u_{m{\bf q}}\vert\hat{s}\vert u_{n{\bf q}+\mathbf{b}}\rangle \approx \sum_l^{l_{\rm max}}  \left(s_{lm}({\bf q})\right)^*   M_{ln}^{\mathbf{b}}({\bf q}).\]</div>
+</section>
+<section id="vaspspn">
+<h3>vaspspn<a class="headerlink" href="#vaspspn" title="Link to this heading"></a></h3>
+<p>see <a class="reference external" href="file://///wsl.localhost/Ubuntu-24.04/home/stepan/github/wannier-berri-org/docs/html/capabilities.html#vaspspn">documentation</a> for more details</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.vaspspn</span></code> computes the spin matrix</p>
+<div class="math notranslate nohighlight">
+\[s_{mn}({\bf q})=\langle u_{m{\bf q}}\vert\hat{\sigma}\vert u_{n{\bf q}}\rangle\]</div>
+<p>based on the normalized pseudo-wavefunction read from the <code class="docutils literal notranslate"><span class="pre">WAVECAR</span></code> file written by
+<a class="reference external" href="https://www.vasp.at/">VASP</a></p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.mmn2uHu</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">wannierberri.utils.vaspspn</span></code> modules were initially developed and
+used in (<a class="reference external" href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035158">Tsirkin, Puente, and Souza 2018</a>) as separate scripts.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="worldtour.html" class="btn btn-neutral float-left" title="WannierBerri World Tour" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="timing.html" class="btn btn-neutral float-right" title="Speed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Stepan Tsirkin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
